@@ -1,0 +1,40 @@
+D:\Project\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.deps.json
+D:\Project\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\Project\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfo.cs
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\Project\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.deps.json
+E:\office_project\new\CWB\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\projects\working_copy\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.deps.json
+E:\projects\working_copy\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\projects\working_copy\CWB\CWB.Logging\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\projects\working_copy\CWB\CWB.Logging\obj\Debug\netcoreapp3.1\CWB.Logging.pdb

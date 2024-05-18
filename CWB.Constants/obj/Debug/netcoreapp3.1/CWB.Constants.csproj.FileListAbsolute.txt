@@ -1,0 +1,40 @@
+D:\Project\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.deps.json
+D:\Project\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\Project\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfo.cs
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\Project\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.deps.json
+E:\office_project\new\CWB\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\projects\working_copy\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.deps.json
+E:\projects\working_copy\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\projects\working_copy\CWB\CWB.Constants\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\projects\working_copy\CWB\CWB.Constants\obj\Debug\netcoreapp3.1\CWB.Constants.pdb

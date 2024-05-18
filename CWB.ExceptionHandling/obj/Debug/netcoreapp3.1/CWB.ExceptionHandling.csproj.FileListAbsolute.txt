@@ -1,0 +1,60 @@
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.deps.json
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\Project\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfo.cs
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CopyComplete
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\Project\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CopyComplete
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.deps.json
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CopyComplete
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.deps.json
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.csproj.CopyComplete
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\projects\working_copy\CWB\CWB.ExceptionHandling\obj\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb

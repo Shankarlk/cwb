@@ -1,0 +1,476 @@
+2023-12-19 04:14:54.2023 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 05:46:37.7427 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 05:47:33.0280 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 05:48:21.0330 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 05:48:42.3662 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 05:49:23.6581 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:07:57.4429 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:09:31.2319 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:46:20.0974 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:46:46.5034 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Type Map configuration:
+RoutingStepVM -> RoutingStep
+CWB.Masters.ViewModels.Routing.RoutingStepVM -> CWB.Masters.Domain.RoutingStep
+
+Destination Member:
+StepNumber
+
+ ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , RoutingStep , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.RoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 73
+   at CWB.Masters.Controllers.RoutingsController.PostRoutingStep(RoutingStepVM routingStepVM) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 137
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:57:03.4124 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderedEnumerable`2 -> IEnumerable`1
+System.Linq.OrderedEnumerable`2[[CWB.Masters.Domain.RoutingStep, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]] -> System.Collections.Generic.IEnumerable`1[[CWB.Masters.ViewModels.Routing.RoutingStepVM, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> System.InvalidCastException: Can't convert VarChar to Int32
+   at MySqlConnector.Core.Row.GetInt32(Int32 ordinal) in /_/src/MySqlConnector/Core/Row.cs:line 208
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source, Int32& length)
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.GetStepsForRoutingId(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 50
+   at CWB.Masters.Controllers.RoutingsController.RoutingSteps(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 58
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:57:31.7877 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderedEnumerable`2 -> IEnumerable`1
+System.Linq.OrderedEnumerable`2[[CWB.Masters.Domain.RoutingStep, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]] -> System.Collections.Generic.IEnumerable`1[[CWB.Masters.ViewModels.Routing.RoutingStepVM, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> System.InvalidCastException: Can't convert VarChar to Int32
+   at MySqlConnector.Core.Row.GetInt32(Int32 ordinal) in /_/src/MySqlConnector/Core/Row.cs:line 208
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source, Int32& length)
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.GetStepsForRoutingId(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 50
+   at CWB.Masters.Controllers.RoutingsController.RoutingSteps(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 58
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 06:57:56.4431 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderedEnumerable`2 -> IEnumerable`1
+System.Linq.OrderedEnumerable`2[[CWB.Masters.Domain.RoutingStep, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]] -> System.Collections.Generic.IEnumerable`1[[CWB.Masters.ViewModels.Routing.RoutingStepVM, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> System.InvalidCastException: Can't convert VarChar to Int32
+   at MySqlConnector.Core.Row.GetInt32(Int32 ordinal) in /_/src/MySqlConnector/Core/Row.cs:line 208
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source, Int32& length)
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.GetStepsForRoutingId(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 50
+   at CWB.Masters.Controllers.RoutingsController.RoutingSteps(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 58
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26
+2023-12-19 07:01:11.2245 ERROR Error: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderedEnumerable`2 -> IEnumerable`1
+System.Linq.OrderedEnumerable`2[[CWB.Masters.Domain.RoutingStep, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]] -> System.Collections.Generic.IEnumerable`1[[CWB.Masters.ViewModels.Routing.RoutingStepVM, CWB.Masters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> System.InvalidCastException: Can't convert VarChar to Int32
+   at MySqlConnector.Core.Row.GetInt32(Int32 ordinal) in /_/src/MySqlConnector/Core/Row.cs:line 208
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source, Int32& length)
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at CWB.Masters.Services.Routing.RoutingService.GetStepsForRoutingId(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Services\Routing\RoutingService.cs:line 50
+   at CWB.Masters.Controllers.RoutingsController.RoutingSteps(Int32 routingId) in D:\projects\working_copy\CWB\CWB.Masters\Controllers\RoutingsController.cs:line 58
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CWB.ExceptionHandling.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\projects\working_copy\CWB\CWB.ExceptionHandling\ExceptionMiddleware.cs:line 26

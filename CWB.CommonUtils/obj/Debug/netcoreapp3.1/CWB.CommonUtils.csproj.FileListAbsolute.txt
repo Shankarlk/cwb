@@ -1,0 +1,40 @@
+D:\Project\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.deps.json
+D:\Project\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\Project\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfo.cs
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\Project\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB (1)\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.deps.json
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\projects\working_copy\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.deps.json
+E:\projects\working_copy\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\projects\working_copy\CWB\CWB.CommonUtils\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\projects\working_copy\CWB\CWB.CommonUtils\obj\Debug\netcoreapp3.1\CWB.CommonUtils.pdb

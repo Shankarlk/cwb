@@ -1,0 +1,736 @@
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.exe
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.deps.json
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.json
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.dev.json
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.pdb
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.pdb
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\RestSharp.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\Project\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfo.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Manifest.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Pack.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.CWB.App.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.CWB.App.props
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.CWB.App.props
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.CWB.App.props
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.input.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.output.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorCoreGenerate.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\Index.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\_ContactsDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\Index.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineCostDetailsDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineGeneralDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineListDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineMaintenanceInfoDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineModelHeader.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachinePMScheduleDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocFormDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineTypeDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\BOF.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\Index.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\ManufPart.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\MasterDetails.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\RawMaterial.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocuments.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocumentUpload.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\Index.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDialog.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDocumentType.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AppLayout.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavPartial.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cache
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cs
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.Views.pdb
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CopyComplete
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.dll
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.pdb
+D:\Project\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.genruntimeconfig.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.json
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.exe
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.json
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.dev.json
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\RestSharp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Manifest.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.input.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.output.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorCoreGenerate.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\Index.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\_ContactsDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\Index.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineCostDetailsDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineGeneralDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineListDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineMaintenanceInfoDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineModelHeader.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachinePMScheduleDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocFormDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineTypeDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\BOF.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\Index.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\ManufPart.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\MasterDetails.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\RawMaterial.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocuments.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocumentUpload.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\Index.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDialog.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDocumentType.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AppLayout.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavPartial.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.Views.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CopyComplete
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.dll
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.genruntimeconfig.cache
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.xml
+E:\office_project\new\CWB (1)\CWB\CWB.App\obj\Debug\netcoreapp3.1\scopedcss\bundle\CWB.App.styles.css
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.json
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.exe
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.deps.json
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.json
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.dev.json
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.pdb
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.pdb
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\RestSharp.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Manifest.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.xml
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\scopedcss\bundle\CWB.App.styles.css
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.input.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.output.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorCoreGenerate.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\Index.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\_ContactsDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\Index.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineCostDetailsDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineGeneralDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineListDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineMaintenanceInfoDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineModelHeader.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachinePMScheduleDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocFormDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineTypeDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\BOF.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\Index.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\ManufPart.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\MasterDetails.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\RawMaterial.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocuments.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocumentUpload.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\Index.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDialog.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDocumentType.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AppLayout.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavPartial.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cache
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.Views.pdb
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CopyComplete
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.dll
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.pdb
+E:\office_project\new\CWB\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.genruntimeconfig.cache
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.json
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.StaticWebAssets.xml
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.exe
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.deps.json
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.json
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.dev.json
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.pdb
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.pdb
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\RestSharp.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Manifest.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Pack.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.CWB.App.Microsoft.AspNetCore.StaticWebAssets.props
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.CWB.App.props
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.CWB.App.props
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.CWB.App.props
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.input.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.output.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorCoreGenerate.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\Index.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\Index.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineCostDetailsDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineGeneralDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineListDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineMaintenanceInfoDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineModelHeader.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachinePMScheduleDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocFormDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineTypeDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\BOF.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\Index.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\ManufPart.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\MasterDetails.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\RawMaterial.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocuments.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocumentUpload.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\Index.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDocumentType.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddUOM.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AppLayout.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CompanyDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ContactsDialog.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CustomerSuppliedRM.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditUOM.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ExistingPart.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavPartial.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RawMaterialSelection.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cache
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.Views.pdb
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CopyComplete
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.dll
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.pdb
+E:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.genruntimeconfig.cache
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\appsettings.json
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.StaticWebAssets.xml
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.exe
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.deps.json
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.json
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.runtimeconfig.dev.json
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.pdb
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.App.Views.pdb
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\RestSharp.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\projects\working_copy\CWB\CWB.App\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.AssemblyReference.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfoInputs.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.AssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CoreCompileInputs.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.MvcApplicationPartsAssemblyInfo.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorAssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.input.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.TagHelpers.output.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorCoreGenerate.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\BusinessAquisition\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\BusinessAquisition\OrderEntry.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Contacts\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Designation\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\DocumentType\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\EmployeeMaster\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineCostDetailsDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineGeneralDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineListDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineMaintenanceInfoDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineModelHeader.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachinePMScheduleDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineProcessDocFormDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Machine\_MachineTypeDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\BOF.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\EditBOF.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\EditManufPart.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\EditRawMaterial.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\ManufPart.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\MasterDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\RawMaterial.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocuments.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Masters\_ReferenceDocumentUpload.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\OperationList\_OperationListDocumentType.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Plant\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Routings\Index.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Routings\RoutingDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\temp.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Add-Machine.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Add-SubCon.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Add-Supplier.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddBaseRM.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddEdit-SubConCommon.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddRawMaterialSpec.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddRawMaterialStandard.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddRawMaterialType.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AddUOM.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AltRoute.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AppLayout.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_DeliverySchedule.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_EditSalesOrder.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_ExistingPart.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_NewOrderEntry.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_PODelete.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_POHold.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_POLog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BA_POResume.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ContactsDialog.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CustomerSuppliedRM.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteBOM.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteMachine.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteMakeFrom.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeletePurchaseDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteRoute.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteStep.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteSubCon.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteSupplier.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditBOM.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditMakeFrom.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditPurchaseDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditRoutingName.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditUOM.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ExistingPart.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ExistingPartBOF.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ManuF_Tab1.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ManuF_Tab2.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ManuF_Tab3.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ManuF_Templates.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavPartial.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NewRoute.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PreferredRouting.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PurchaseDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RawMaterialSelection.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RouteMachines.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RouteSubCons.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RouteSuppliers.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TabRoutingAvailable.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TabRoutingDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TabRoutingStepDetails.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.RazorTargetAssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.Views.pdb
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Manifest.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\CWB.App.StaticWebAssets.Pack.cache
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.CWB.App.Microsoft.AspNetCore.StaticWebAssets.props
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.CWB.App.props
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.CWB.App.props
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.CWB.App.props
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.csproj.CopyComplete
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.dll
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.pdb
+D:\projects\working_copy\CWB\CWB.App\obj\Debug\netcoreapp3.1\CWB.App.genruntimeconfig.cache

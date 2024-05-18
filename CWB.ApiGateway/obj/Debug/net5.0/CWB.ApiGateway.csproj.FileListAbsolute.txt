@@ -1,0 +1,190 @@
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.Development.json
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.json
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\ocelot.json
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.exe
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.deps.json
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.json
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.dev.json
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.pdb
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\FluentValidation.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\Project\CWB\CWB.ApiGateway\bin\Debug\net5.0\Ocelot.dll
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfo.cs
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cs
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\scopedcss\bundle\CWB.ApiGateway.styles.css
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Manifest.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Pack.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.CWB.ApiGateway.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.build.CWB.ApiGateway.props
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.CWB.ApiGateway.props
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.CWB.ApiGateway.props
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.RazorTargetAssemblyInfo.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CopyComplete
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.dll
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\refint\CWB.ApiGateway.dll
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.pdb
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.genruntimeconfig.cache
+D:\Project\CWB\CWB.ApiGateway\obj\Debug\net5.0\ref\CWB.ApiGateway.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.Development.json
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.json
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\ocelot.json
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.exe
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.json
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.dev.json
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\FluentValidation.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\Ocelot.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Manifest.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\scopedcss\bundle\CWB.ApiGateway.styles.css
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.RazorTargetAssemblyInfo.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CopyComplete
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\ref\CWB.ApiGateway.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.genruntimeconfig.cache
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\bin\Debug\net5.0\ref\CWB.ApiGateway.dll
+E:\office_project\new\CWB (1)\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.xml
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.Development.json
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.json
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\ocelot.json
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.exe
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.deps.json
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.json
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.dev.json
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\ref\CWB.ApiGateway.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.pdb
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\FluentValidation.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\bin\Debug\net5.0\Ocelot.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cache
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Manifest.cache
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.xml
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\scopedcss\bundle\CWB.ApiGateway.styles.css
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.RazorTargetAssemblyInfo.cache
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CopyComplete
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\ref\CWB.ApiGateway.dll
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.pdb
+E:\office_project\new\CWB\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.genruntimeconfig.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.Development.json
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.json
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\ocelot.json
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.StaticWebAssets.xml
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.exe
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.deps.json
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.json
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.dev.json
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.pdb
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\FluentValidation.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Ocelot.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\scopedcss\bundle\CWB.ApiGateway.styles.css
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Manifest.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Pack.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.CWB.ApiGateway.Microsoft.AspNetCore.StaticWebAssets.props
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.build.CWB.ApiGateway.props
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.CWB.ApiGateway.props
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.CWB.ApiGateway.props
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.RazorTargetAssemblyInfo.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CopyComplete
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\refint\CWB.ApiGateway.dll
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.pdb
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.genruntimeconfig.cache
+E:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\ref\CWB.ApiGateway.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.Development.json
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\appsettings.json
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\ocelot.json
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.StaticWebAssets.xml
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.exe
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.deps.json
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.json
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.runtimeconfig.dev.json
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\CWB.ApiGateway.pdb
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\AutoMapper.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\FluentValidation.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\Ocelot.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.AssemblyReference.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfoInputs.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.AssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CoreCompileInputs.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.MvcApplicationPartsAssemblyInfo.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.RazorTargetAssemblyInfo.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\scopedcss\bundle\CWB.ApiGateway.styles.css
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Manifest.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\CWB.ApiGateway.StaticWebAssets.Pack.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.CWB.ApiGateway.Microsoft.AspNetCore.StaticWebAssets.props
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.build.CWB.ApiGateway.props
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.CWB.ApiGateway.props
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.CWB.ApiGateway.props
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.csproj.CopyComplete
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\refint\CWB.ApiGateway.dll
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.pdb
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\CWB.ApiGateway.genruntimeconfig.cache
+D:\projects\working_copy\CWB\CWB.ApiGateway\obj\Debug\net5.0\ref\CWB.ApiGateway.dll

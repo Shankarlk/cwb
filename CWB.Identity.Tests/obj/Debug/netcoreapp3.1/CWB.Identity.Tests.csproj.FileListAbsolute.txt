@@ -1,0 +1,1310 @@
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.deps.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.dev.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\nlog.config
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-09DE6CED5AD1D013738D58295647F672.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-38DA0582511B0D22B3041A9D73B47325.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-81BDB77EDB333C0473D0B75A8DE1FEBA.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8D3B8940E4E11AAA577841FE3FF94402.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AD006660B0428D2524B6FF92F12BAA59.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C14D770EE2433BF1E5F071B7EB426487.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D552DF1BC6E10B4B969584C86466C9FC.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E783546DFEE8A16B01D80BBFF2E86899.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F75B1B1904C47AD3C955D726AF6BE581.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F7FE62B539FFC43792F738B0D1488590.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FC7E2A5B2E768D6AB22060349D1A16F5.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.exe
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.deps.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.dev.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.AspNetIdentity.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.Storage.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentAssertions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\IdentityModel.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CommunicationUtilities.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CrossPlatEngine.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.Utilities.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\testhost.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\RestSharp.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.assert.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.core.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfo.cs
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CopyComplete
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+D:\Project\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.genruntimeconfig.cache
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-968B5943078EB8F533271A7740A45F75.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2916CD2CF46579C919872FB3301BD704.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-948772159E9DD2FB12B7859B72F305D1.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F2DD1E87ED11EA9CFC154705052E5737.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FDA8EA68C6B9CC524877F0233280A36D.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-04C6088560102FAA2CB31E571ED9793B.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-02A43A413814D82B51DCE636A7C16F78.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5BF17F612BBA8AB5611333BD7E6C8A16.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-585027A74C0688A448826425BCA3B1EA.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-DC1F88B9F03313BB5A04DF14EF578F17.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E73CFEBFE8AC716E5428C6A90CBEE319.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FB26AA60DE361211044A9C8E95B9076B.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8EAE135ED16250F55D03BC25BF27124C.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-92A14DD575BEBC39F6AB7245C8EE8195.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7B57A400B8D400A328DA9EC53CE52BC0.json
+D:\Project\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1DFE23C69EED28D2E891924F9704AE7E.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\nlog.config
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-02A43A413814D82B51DCE636A7C16F78.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-04C6088560102FAA2CB31E571ED9793B.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-09DE6CED5AD1D013738D58295647F672.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1DFE23C69EED28D2E891924F9704AE7E.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2916CD2CF46579C919872FB3301BD704.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-38DA0582511B0D22B3041A9D73B47325.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-585027A74C0688A448826425BCA3B1EA.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5BF17F612BBA8AB5611333BD7E6C8A16.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7B57A400B8D400A328DA9EC53CE52BC0.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-81BDB77EDB333C0473D0B75A8DE1FEBA.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8D3B8940E4E11AAA577841FE3FF94402.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8EAE135ED16250F55D03BC25BF27124C.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-92A14DD575BEBC39F6AB7245C8EE8195.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-948772159E9DD2FB12B7859B72F305D1.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-968B5943078EB8F533271A7740A45F75.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AD006660B0428D2524B6FF92F12BAA59.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C14D770EE2433BF1E5F071B7EB426487.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D552DF1BC6E10B4B969584C86466C9FC.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-DC1F88B9F03313BB5A04DF14EF578F17.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E73CFEBFE8AC716E5428C6A90CBEE319.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E783546DFEE8A16B01D80BBFF2E86899.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F2DD1E87ED11EA9CFC154705052E5737.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F75B1B1904C47AD3C955D726AF6BE581.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F7FE62B539FFC43792F738B0D1488590.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FB26AA60DE361211044A9C8E95B9076B.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FC7E2A5B2E768D6AB22060349D1A16F5.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FDA8EA68C6B9CC524877F0233280A36D.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.dev.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7A075520F13B1954F8BA381EF5316781.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B592514502ACC8E6E352A2C693831C8E.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.exe
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.dev.json
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.AspNetIdentity.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.Storage.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentAssertions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\IdentityModel.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CommunicationUtilities.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CrossPlatEngine.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.Utilities.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\testhost.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\RestSharp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.assert.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.core.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CopyComplete
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.genruntimeconfig.cache
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.deps.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.dev.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\nlog.config
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-02A43A413814D82B51DCE636A7C16F78.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-04C6088560102FAA2CB31E571ED9793B.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-09DE6CED5AD1D013738D58295647F672.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1DFE23C69EED28D2E891924F9704AE7E.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2916CD2CF46579C919872FB3301BD704.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2A671790F6B6000CD2FC3392AD4FD313.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-38DA0582511B0D22B3041A9D73B47325.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-585027A74C0688A448826425BCA3B1EA.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5BF17F612BBA8AB5611333BD7E6C8A16.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7A075520F13B1954F8BA381EF5316781.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7B57A400B8D400A328DA9EC53CE52BC0.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-81BDB77EDB333C0473D0B75A8DE1FEBA.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8D3B8940E4E11AAA577841FE3FF94402.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8EAE135ED16250F55D03BC25BF27124C.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-92A14DD575BEBC39F6AB7245C8EE8195.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-948772159E9DD2FB12B7859B72F305D1.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-968B5943078EB8F533271A7740A45F75.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AD006660B0428D2524B6FF92F12BAA59.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B041D86D68A2FBE26F398141175743B8.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B592514502ACC8E6E352A2C693831C8E.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C14D770EE2433BF1E5F071B7EB426487.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D552DF1BC6E10B4B969584C86466C9FC.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-DC1F88B9F03313BB5A04DF14EF578F17.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E73CFEBFE8AC716E5428C6A90CBEE319.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E783546DFEE8A16B01D80BBFF2E86899.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F2DD1E87ED11EA9CFC154705052E5737.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F75B1B1904C47AD3C955D726AF6BE581.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F7FE62B539FFC43792F738B0D1488590.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FB26AA60DE361211044A9C8E95B9076B.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FC7E2A5B2E768D6AB22060349D1A16F5.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FDA8EA68C6B9CC524877F0233280A36D.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.exe
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.deps.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.dev.json
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.AspNetIdentity.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.Storage.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentAssertions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\IdentityModel.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CommunicationUtilities.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CrossPlatEngine.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.Utilities.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\testhost.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\RestSharp.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.assert.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.core.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CopyComplete
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+E:\office_project\new\CWB\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.genruntimeconfig.cache
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.deps.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.dev.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.StaticWebAssets.xml
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\nlog.config
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-02A43A413814D82B51DCE636A7C16F78.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-03C28427AE880B8D2B9BFAFFF93B95AA.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-04C6088560102FAA2CB31E571ED9793B.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-09DE6CED5AD1D013738D58295647F672.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-11D4B19A81A43B877DBFCF2F0B6ED033.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1DFE23C69EED28D2E891924F9704AE7E.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2916CD2CF46579C919872FB3301BD704.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2A671790F6B6000CD2FC3392AD4FD313.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-38DA0582511B0D22B3041A9D73B47325.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-465CB027CF95E3EA7119EEBABFA936C6.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-48047E0FFD7342D8737C8EA37673DB33.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-585027A74C0688A448826425BCA3B1EA.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5BF17F612BBA8AB5611333BD7E6C8A16.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-631945EC7535840640F8C1188B290A99.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-68E3BFC24B5B54001EA2676BF7D58EC3.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7228F62096BF4C1939A81F8C76FD1B6A.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-73651A75ABCC6DD42EED2F484337EB9C.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7A075520F13B1954F8BA381EF5316781.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7B57A400B8D400A328DA9EC53CE52BC0.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7EA1B5AF5399A8386603DE33BBEB4216.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-81BDB77EDB333C0473D0B75A8DE1FEBA.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8D3B8940E4E11AAA577841FE3FF94402.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8EAE135ED16250F55D03BC25BF27124C.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8FA9EFCEF478C041DE003BE86F33D3D8.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-92A14DD575BEBC39F6AB7245C8EE8195.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-948772159E9DD2FB12B7859B72F305D1.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-968B5943078EB8F533271A7740A45F75.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AD006660B0428D2524B6FF92F12BAA59.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B041D86D68A2FBE26F398141175743B8.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B592514502ACC8E6E352A2C693831C8E.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C14D770EE2433BF1E5F071B7EB426487.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C4FFDD9E0394DF1CBDF87991A81BA65D.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D552DF1BC6E10B4B969584C86466C9FC.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-DC1F88B9F03313BB5A04DF14EF578F17.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E73CFEBFE8AC716E5428C6A90CBEE319.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E783546DFEE8A16B01D80BBFF2E86899.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F2DD1E87ED11EA9CFC154705052E5737.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F75B1B1904C47AD3C955D726AF6BE581.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F7FE62B539FFC43792F738B0D1488590.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FB26AA60DE361211044A9C8E95B9076B.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FC7E2A5B2E768D6AB22060349D1A16F5.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FDA8EA68C6B9CC524877F0233280A36D.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.exe
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.deps.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.dev.json
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.AspNetIdentity.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.Storage.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentAssertions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\IdentityModel.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CommunicationUtilities.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CrossPlatEngine.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.Utilities.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\testhost.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\RestSharp.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.assert.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.core.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CopyComplete
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+E:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.genruntimeconfig.cache
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Views.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.deps.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.runtimeconfig.dev.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.StaticWebAssets.xml
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\nlog.config
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\appsettings.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-01A89D2DACEC472D9A8F4FCA9D5E09C0.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-02A43A413814D82B51DCE636A7C16F78.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-03C28427AE880B8D2B9BFAFFF93B95AA.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-04C6088560102FAA2CB31E571ED9793B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-05576536A7BA65F3C1582ED931BD0973.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-0747FE0028880912481E1120C82758CE.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-097D9604005592914E0ECD751BCD6A07.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-09DE6CED5AD1D013738D58295647F672.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-0B5046FC88B00A961DFA8B92DF054A04.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-107382C4FF55BED6D807860FAEADEC70.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-11C2FDB203F96C3195F48A84F83379C7.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-11D4B19A81A43B877DBFCF2F0B6ED033.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-128633F99E48D33071127DA04B73D24F.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-12ED32896C30FAC29B85306CDD1176AD.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1341622AB679574D502DDE5EA78494DD.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-14DEE48249E1F668F22F1A21E66C4285.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1B87D2DAE6AC860EDC940E25420E70C8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1BD55B2F2FD77FFB6B3F44E7630A490E.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1D3BA6024C465BF25D5EF0DEF163A832.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1DFE23C69EED28D2E891924F9704AE7E.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-1E545E5678FD41CA823592F739A2E9D3.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2079BD8A776749CBCA59C7F14A9DF0CA.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-20CFF720AF778864246FB1489BB9CAA4.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-22DB9E52FD5ECD77E4B99C92C043FBE3.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-249FF2B22BDE289ECFF710FFE5198B15.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-257375F84E17E66CC68951DE886EEEF1.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-257FE13B0500194767DD58C2F2BDAB0B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-26815678FB4444D5BBE7C53CB6EDFB69.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2698CEB6B131C245EAD1615D689549A8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-275B4E2ADE24883AE642DA0F30438629.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2916CD2CF46579C919872FB3301BD704.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-29C0805E7C5DA8855CFA40D4D2FD1D71.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2A671790F6B6000CD2FC3392AD4FD313.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2A7D3A79F30A05D24E10FFA3A76F7092.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2B53F824F3A993CD6193B81B6CC773B8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-2F2BAD62EF2F7994440E0166BB44C25D.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-32E14BFBE31C8910666C2B875C007424.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-37C08478EAA4F04862D0C435A75221A2.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-38DA0582511B0D22B3041A9D73B47325.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-3905125536E1BFAB7BA79262FCAAA182.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-3CB5AD1F2DF23F0A67205F3927CF780A.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-3EC522AA1BC9AC3668081F74B3AA3ECF.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-45E770CA0FBB9F9A1EAC7F8C3DD4F8F3.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-46567792493F09A4FEDC203E803A04F6.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-465CB027CF95E3EA7119EEBABFA936C6.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-48047E0FFD7342D8737C8EA37673DB33.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-58133CB254BC8F8E4C06B4FF2B79292C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-585027A74C0688A448826425BCA3B1EA.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-58604139F5453E1360543A8E0CCBE906.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5A23C526620E281287481A929865A1DB.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5AE9BF91C7128D72614769ACC948CAAD.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5BF17F612BBA8AB5611333BD7E6C8A16.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5C56D5528A96B50F91F1F843935E5C3E.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-5CA64DA0784E30488CBF9D075DF1B6CE.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-61904E4FC3F533208F6D7B65C96D8BF6.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-631945EC7535840640F8C1188B290A99.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-63220F498FB6AEBDE812D26A41577937.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-64A0F22C5CC307D3EDBF8BD849E66603.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-65DB3CA5F125192E278B26F9BFD93A6B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-67C37457FAC80AE30A6D6B0E22A36617.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6880A8E6AFF836F41BE422AFB4AEFD9C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-68972310E1826F1C349F1DF16B6C79E7.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-68E3BFC24B5B54001EA2676BF7D58EC3.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-68F3C700CCF3E196F0FC0780A800C595.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6BE4B05A86FD75999EF9D8319AFB68B7.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6C8676C21FE50A338AE19690EAE887B2.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6C976A489F66119D6ABE7C694143D3D9.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6D1A2190EFDF8B7A7239306E55BA2A95.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6E8CC60C1163BDD8C0975E58A82A095D.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6F2F0F3008968CE586C807BCAEC3E2E5.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-6FC62696BFA84C67821623B11430F8A4.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-713A60B5397476C05D3FBD9099B0F7D7.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-715E8B7BD61EEB7D29AB95D67F3BF9BA.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7228F62096BF4C1939A81F8C76FD1B6A.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-72FCE0053418886D3C252F610EF5CD95.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-73651A75ABCC6DD42EED2F484337EB9C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-745FD2DD6A138381A2E4F866017BD1A4.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-77AF8EB4E8B1A75A400A8F0B7333EA1E.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7A075520F13B1954F8BA381EF5316781.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7B57A400B8D400A328DA9EC53CE52BC0.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7BED09A013474CD2736E787B6978493B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7C3BAEA45641091208C7CC16807F998A.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7C721C85F75034B914C801410DC32A28.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7CF5942D22636CBE3B8A7F0EC4E3E10B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7DB100CB45F640A428F505731678FA3A.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7EA1B5AF5399A8386603DE33BBEB4216.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-7F4AA594AF5C0D1C4D0510AFA8F81B24.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-80052406486DD9CA56804262F44CA772.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-81A90486152407817929A353B4EDFC2E.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-81BDB77EDB333C0473D0B75A8DE1FEBA.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-82996E1890E85070F6C8EC3858167780.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-869DA94805468F8417442491189FF3DE.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-86C96CC153BD3B59B8ED5554E6420A8F.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-87BD035FFD596C60BD4C81CD9162ABBC.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8BDADDDFE9F34F9AE62EDC061DC6B177.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8D3B8940E4E11AAA577841FE3FF94402.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8E5DBCC9ACE2CF3436B7C4FCA950AB7D.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8EAE135ED16250F55D03BC25BF27124C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-8FA9EFCEF478C041DE003BE86F33D3D8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-9081EEE3B63FF713C564DB0E263402C5.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-921544F8EAAAFBD9F283D20E51199867.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-92A14DD575BEBC39F6AB7245C8EE8195.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-92F0C7C97EE2BCF07D096F80D2838561.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-93F29A322240D1F49C42A50283567EDE.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-948772159E9DD2FB12B7859B72F305D1.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-958BF0DCBEBC92C49B0B9F1BC9A090BC.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-961447DFE26798278402B3163F5CAA44.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-968B5943078EB8F533271A7740A45F75.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-974DDA4BCD2FFE63079026F59F4F03FE.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-98ABD84B4E414FA06D258B6382FD1438.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-9BF5409007BBC454A618E878AEAAB208.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-9C2FE0EB3D1329E0A67E537E343F4FA3.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-9D19FF8075B215ECBD02052B2C33D970.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-9D5112F56FD92110D4526FBAAE85BC6F.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A5FB4A799DEC44501C8BE1DC394A4388.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A609243D93BACC6C132A56BAF9E40917.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A626700AB9CFA63980F006CB9216128B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A6483B11AE1AD1492B68EBECA8E230CA.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A7209DE9B60CFC71B48F7AD6C2149EED.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A92D623CDA29063A303B6C26786329C6.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-A968E815A2BC8D2CDA6296A357B6D198.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AA9C2E235CE91F13B2BE4E62452AE64B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AC4CF43FB82E4EF607C642892AB7A5B8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-ACB5F9836D4114F04DCD51B43AA0549A.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AD006660B0428D2524B6FF92F12BAA59.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AD3BE92A0209C24C9B72F1B9F48A7E26.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AE5A08DB86B388AAE771E33461D6CB80.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-AEE7036B42704D6AB1E9C2FD30ABAB0C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B041D86D68A2FBE26F398141175743B8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B391A29760A5AADCE6C3B3498DC1C7A2.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B4F7D85D1F6F85C99309A56BCB7EDA9C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B564ED3FF09183395A4F2F9F185C88EE.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B592514502ACC8E6E352A2C693831C8E.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B91615DDEAB5709E141FD0F47AEC8592.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-B93F7011D3E7EF0EF768AFB7FF407D7C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C149300B871507866DFB194EBD44BC61.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C14D770EE2433BF1E5F071B7EB426487.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C2BA29C7BA5A9979FA378DCAFAC8FFB3.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C307B009995E9BD73CB0A01016826E08.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-C4FFDD9E0394DF1CBDF87991A81BA65D.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-CA3D10B0EB61A44F0AB0C20CFC6C5738.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-CC208A22ACF66EA264076BBB8F3FCE1B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-CDA9208A828CBB7383AC2CB42464D79F.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-CE934770FC819CF0220ED6A76687F116.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D3261E65487E2509CB393C7B404802CF.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D552DF1BC6E10B4B969584C86466C9FC.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D5E92B0400402385B17C722446FB7F65.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-D92BF7E74A6A3E7537CFB44A0353ADC8.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-DC1F88B9F03313BB5A04DF14EF578F17.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E1290E329B52A92CDBF4B49BF04A7D21.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E31D5A932B506CB725643398623D1973.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E599E4E6EB72653EAC49817D85E348DF.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E604A88CD370C880215EA8C34B6CCC07.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E73CFEBFE8AC716E5428C6A90CBEE319.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-E783546DFEE8A16B01D80BBFF2E86899.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-EBA59CA9770712E767C5205A00981A94.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-EE2DE2CF59916D9D711C50D30A32184F.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-EEFFDC5B9092B65EA703920AAD1529EB.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F07352AFEB262834984E6E339593E2A5.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F1435C32A9795E7399ADBEA475086C88.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F2DD1E87ED11EA9CFC154705052E5737.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F59658D351CFFEB3A6BF9CBBFA15EAC7.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F5CEC24877D32F06AA5FF60C1D280460.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F75B1B1904C47AD3C955D726AF6BE581.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F7FE62B539FFC43792F738B0D1488590.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F9DDDE04BA74FD5D160E244C1464CD9C.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-F9FCFA2EFBBACE4654FADCF669953FAD.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FB26AA60DE361211044A9C8E95B9076B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FC7E2A5B2E768D6AB22060349D1A16F5.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FCFC6FF3E77BDBC72CCC5DE8C0C8038B.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\keys\is-signing-key-FDA8EA68C6B9CC524877F0233280A36D.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.exe
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.deps.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.runtimeconfig.dev.json
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Confluent.Kafka.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.AspNetIdentity.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Duende.IdentityServer.Storage.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentAssertions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\IdentityModel.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MicroElements.Swashbuckle.FluentValidation.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CommunicationUtilities.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CrossPlatEngine.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.Utilities.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\testhost.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\RestSharp.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.assert.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.core.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\librdkafka.so
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\alpine-librdkafka.so
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos6-librdkafka.so
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\centos7-librdkafka.so
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\librdkafka.so
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\librdkafka.dylib
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libcrypto-1_1-x64.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafka.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\librdkafkacpp.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libssl-1_1-x64.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\msvcp140.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\vcruntime140.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zlib1.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\zstd.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libcrypto-1_1.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafka.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\librdkafkacpp.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libssl-1_1.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp140.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\vcruntime140.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib1.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zstd.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Identity.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.AssemblyReference.cache
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfoInputs.cache
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.AssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CoreCompileInputs.cache
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.csproj.CopyComplete
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.dll
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.pdb
+D:\projects\working_copy\CWB\CWB.Identity.Tests\obj\Debug\netcoreapp3.1\CWB.Identity.Tests.genruntimeconfig.cache

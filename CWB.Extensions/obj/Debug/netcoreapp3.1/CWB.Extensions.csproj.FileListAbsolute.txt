@@ -1,0 +1,68 @@
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.deps.json
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+D:\Project\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfo.cs
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CopyComplete
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.dll
+D:\Project\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CopyComplete
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.deps.json
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\office_project\new\CWB\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CopyComplete
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\office_project\new\CWB\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.deps.json
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Extensions.pdb
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.dll
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.dll
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.dll
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.ExceptionHandling.pdb
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Logging.pdb
+E:\projects\working_copy\CWB\CWB.Extensions\bin\Debug\netcoreapp3.1\CWB.Constants.pdb
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.csproj.CopyComplete
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.dll
+E:\projects\working_copy\CWB\CWB.Extensions\obj\Debug\netcoreapp3.1\CWB.Extensions.pdb

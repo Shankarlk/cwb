@@ -1,0 +1,65 @@
+D:\Project\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.deps.json
+D:\Project\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.dll
+D:\Project\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.pdb
+D:\Project\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\Project\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.AssemblyReference.cache
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfoInputs.cache
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfo.cs
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CoreCompileInputs.cache
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CopyComplete
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.dll
+D:\Project\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.deps.json
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.AssemblyReference.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfoInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfo.cs
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CopyComplete
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.dll
+E:\office_project\new\CWB (1)\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.pdb
+E:\office_project\new\CWB\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.deps.json
+E:\office_project\new\CWB\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.dll
+E:\office_project\new\CWB\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.pdb
+E:\office_project\new\CWB\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\office_project\new\CWB\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.AssemblyReference.cache
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.GeneratedMSBuildEditorConfig.editorconfig
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfoInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfo.cs
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CoreCompileInputs.cache
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CopyComplete
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.dll
+E:\office_project\new\CWB\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.pdb
+E:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.deps.json
+E:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.dll
+E:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.pdb
+E:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+E:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.AssemblyReference.cache
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfoInputs.cache
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfo.cs
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CoreCompileInputs.cache
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CopyComplete
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.dll
+E:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.pdb
+D:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.deps.json
+D:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.dll
+D:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.Notification.pdb
+D:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.dll
+D:\projects\working_copy\CWB\CWB.Notification\bin\Debug\netcoreapp3.1\CWB.CommonUtils.pdb
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.AssemblyReference.cache
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfoInputs.cache
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.AssemblyInfo.cs
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CoreCompileInputs.cache
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.csproj.CopyComplete
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.dll
+D:\projects\working_copy\CWB\CWB.Notification\obj\Debug\netcoreapp3.1\CWB.Notification.pdb
