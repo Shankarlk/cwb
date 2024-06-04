@@ -176,6 +176,8 @@ $(function () {
                 ContactsFormUtil.UpdateFormIDs(data);
                 ContactsFormUtil.UpdateDivisonTable(data.companyId, data.divisionId);
                 $("#btnAddDivision").show();
+                ContactsFormUtil.ClearForm();
+                ContactsFormUtil.ClearConstants();
                 if (typeof OnCompanyCreated === 'function') {
                     OnCompanyCreated(data);
                 }

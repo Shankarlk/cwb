@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\working_copy\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj": {}
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj": {}
   },
   "projects": {
-    "D:\\projects\\working_copy\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj",
         "projectName": "CWB.BusinessProcesses",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.BusinessProcesses\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +32,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj"
               }
             }
           }
@@ -82,49 +86,34 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.32, 3.1.32]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
         "projectName": "CWB.CommonUtils",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -185,45 +174,34 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj",
         "projectName": "CWB.CompanySettings",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.CompanySettings\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CompanySettings\\CWB.CompanySettings.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CompanySettings\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -237,23 +215,23 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\projects\\working_copy\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj"
               }
             }
           }
@@ -303,29 +281,10 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.32, 3.1.32]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -334,21 +293,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj",
         "projectName": "CWB.Constants",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.Constants\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -389,45 +352,34 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj",
         "projectName": "CWB.ExceptionHandling",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -441,11 +393,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Constants\\CWB.Constants.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Constants\\CWB.Constants.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj"
               }
             }
           }
@@ -479,45 +431,34 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj",
         "projectName": "CWB.Extensions",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\CWB.Extensions.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.Extensions\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\CWB.Extensions.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Extensions\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -531,11 +472,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.ExceptionHandling\\CWB.ExceptionHandling.csproj"
               },
-              "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj"
               }
             }
           }
@@ -589,45 +530,34 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj",
         "projectName": "CWB.Logging",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Logging\\CWB.Logging.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.Logging\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\CWB.Logging.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Logging\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -672,31 +602,16 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     }

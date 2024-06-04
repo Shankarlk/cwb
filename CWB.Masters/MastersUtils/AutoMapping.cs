@@ -362,20 +362,24 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Deleted, s => s.MapFrom(src => src.Deleted))
                 .ForMember(s => s.OrigRoutingId, s => s.MapFrom(src => src.OrigRoutingId))
                 .ForMember(s => s.PreferredRouting, s => s.MapFrom(src => src.PreferredRouting))
+                .ForMember(s=>s.MKPartId,s=>s.MapFrom(src=>src.MKPartId))
                 .ForMember(s => s.RoutingName, s => s.MapFrom(src => src.RoutingName))
                 .ForMember(s => s.CreationDate, s => s.MapFrom(src => src.CreationDate))
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
-                .ForMember(s => s.ManufacturedPartId, s => s.MapFrom(src => src.ManufacturedPartId));
+                .ForMember(s => s.ManufacturedPartId, s => s.MapFrom(src => src.ManufacturedPartId))
+                .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
 
             CreateMap<RoutingVM, CWB.Masters.Domain.Routings.Routing>()
                 .ForMember(s => s.Id, s => s.MapFrom(src => src.RoutingId))
                 .ForMember(s => s.Deleted, s => s.MapFrom(src => src.Deleted))
                 .ForMember(s => s.OrigRoutingId, s => s.MapFrom(src => src.OrigRoutingId))
                 .ForMember(s => s.PreferredRouting, s => s.MapFrom(src => src.PreferredRouting))
+                .ForMember(s => s.MKPartId, s => s.MapFrom(src => src.MKPartId))
                 .ForMember(s => s.RoutingName, s => s.MapFrom(src => src.RoutingName))
                  .ForMember(s => s.CreationDate, s => s.MapFrom(src => src.CreationDate))
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
-                .ForMember(s => s.ManufacturedPartId, s => s.MapFrom(src => src.ManufacturedPartId));
+                .ForMember(s => s.ManufacturedPartId, s => s.MapFrom(src => src.ManufacturedPartId))
+                .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
 
             CreateMap<RoutingStep, RoutingStepVM>()
                 .ForMember(s => s.StepId, s => s.MapFrom(src => src.Id))

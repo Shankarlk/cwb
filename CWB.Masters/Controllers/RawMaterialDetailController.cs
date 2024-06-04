@@ -530,6 +530,7 @@ namespace CWB.Masters.Controllers
                                 RMSupplier = "",
                                 Supplier = "",
                                 SupplierPartNo = "",
+                                Status=mp.Status,
                                 Notes = mp?.PartDescription ?? string.Empty,
                                 Type = 0,
                                 TenantId = manuf.TenantId
@@ -554,6 +555,7 @@ namespace CWB.Masters.Controllers
                             RMSupplier = "",
                             Supplier = "",
                             SupplierPartNo = "",
+                            Status = manuf.Status,
                             Notes = manuf.Description,
                             Type = 0,
                             TenantId = manuf.TenantId
@@ -590,6 +592,7 @@ namespace CWB.Masters.Controllers
                              RMSupplier = "",
                              Supplier = "",
                              SupplierPartNo = "",
+                             Status = scojoin.Status,
                              Notes = scojoin?.PartDescription ?? string.Empty,
                              Type = 0,
                              BOFId = (int)bof.BoughtOutFinishDetailId,
@@ -637,6 +640,7 @@ namespace CWB.Masters.Controllers
                      RMSupplier = "",
                      Supplier = "",
                      SupplierPartNo = "",
+                     Status=scojoin.Status,
                      Notes = scojoin?.PartDescription ?? string.Empty,
                      Type = 0,
                      RMId = (int)rm.RawMaterialDetailId,

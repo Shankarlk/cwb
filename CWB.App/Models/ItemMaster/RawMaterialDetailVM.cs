@@ -37,7 +37,7 @@ namespace CWB.App.Models.ItemMaster
         public string PartDescription { get; set; } = string.Empty;
         public long UOMId { get; set; }
         public string Status { get; set; }
-        public string StatusChangeReason { get; set; } = string.Empty;
+        public string? StatusChangeReason { get; set; }
         public string RevNo { get; set; }
         public DateTime? RevDate { get; set; }
         public string MasterPartType { get; set; }

@@ -173,6 +173,16 @@ $(function () {
         $("#PartMadeFrom").val(this.value);
     });
 
+    $("#Status").change(function () {
+        if ($(this).val() === "Inactive") {
+            $("#StatusChangeReason").attr("required", "required");
+            $("#StatusChangeReason").attr("data-val-required", "StatusChangeReason is required when Status is Inactive.");
+        } else {
+            $("#StatusChangeReason").removeAttr("required");
+            $("#StatusChangeReason").removeAttr("data-val-required");
+        }
+    });
+
     $("#btnBOFDetailSubmit").click(function (event) {
         if (!modelObj.Edit) {
             if ($("#BoughtOutFinishDetailId").val() != "0") {

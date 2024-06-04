@@ -29,15 +29,15 @@ namespace CWB.App.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var companies = await _designationservice.GetDesignations();
-            return View(companies);
+            var designation = await _designationservice.GetDesignations();
+            return View(designation);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Designations()
+        public async Task<JsonResult> Designations()
         {
-            var companies = await _designationservice.GetDesignations();
-            return Ok(companies);
+            var designation = await _designationservice.GetDesignations();
+            return Json(designation);
 
         }
 
@@ -59,7 +59,13 @@ namespace CWB.App.Controllers
         
             var result = await _designationservice.CheckIfDesignationExisit(DesignationId.HasValue ? DesignationId.Value : 0, DesignationName);
             return Json(!result);
-    }
+        }
 
-}
+        [HttpGet]
+        public async Task<IActionResult> DelDesignation(long designationId)
+        {
+            var result = await _designationservice.DelDesignation(designationId);
+            return Json(result);
+        }
+    }
 }

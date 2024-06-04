@@ -205,7 +205,7 @@
                                 </div>
                                 <!-- ----------  -->
                             </div>
-                            <input type="text" id="WDPlantId" name="PlantId" value="0" hidden"/>
+                                <input type="text" id="WDPlantId" name="PlantId" value="0" hidden/>
                                 <input type="text" id="WDId" name="WDId" value="0" hidden />
                             <!-- =========================== -->
                             <div class="row">
@@ -230,10 +230,11 @@
                                 <input class="form-control form-control-sm mb-2" type="date" name="HolidayDate" id="HolidayDate">
                             </div>
                                     <input type="text" id="HolidayPlantId" name="PlantId" value="0" hidden />
-                                    <input type="text" id="HolidayId" name="HolidayId" value="0" />
+                                    <input type="text" id="HolidayId" name="HolidayId" value="0" hidden/>
                             <!-- -------- -->
                             <div class="col-md-3 mb-2 text-end">
                                 <button id="AddHoliday" class="btn btn-sm btn-primary">Add to List</button>
+                            </div>
                             </div>
                             </form>
                             <!-- -------- -->
@@ -266,7 +267,7 @@
     <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
-</div>
+
 <!--
      //address: "test"
     //isMainPlant: true
@@ -282,9 +283,9 @@
     <tr>
         <td data-key="Name">{name}</td>
         <td data-key="Address">{address}</td>
-        <td data-key="">---</td>
-        <td data-key="">---</td>
-        <td data-key="">---</td>
+        <td data-key="">{noOfShifts}</td>
+        <td data-key="">{weeklyOff1}</td>
+        <td data-key="">{firstShiftStartTime}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>

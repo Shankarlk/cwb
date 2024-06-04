@@ -19,7 +19,6 @@ namespace CWB.App.Controllers
     public class MastersController : Controller
     {
         private readonly ILoggerManager _logger;
-
         private readonly IMastersServices _mastersService;
         private readonly IMachineService _machineService;
         public MastersController(ILoggerManager logger, IMachineService machineService, IMastersServices mastersService)
@@ -27,7 +26,6 @@ namespace CWB.App.Controllers
             _logger = logger;
             _mastersService = mastersService;
             _machineService = machineService;
-
         }
         public IActionResult Index()
         {
@@ -35,8 +33,9 @@ namespace CWB.App.Controllers
             return View();
         }
 
-        public IActionResult MasterDetails()
+        public async Task<IActionResult> MasterDetails()
         {
+            await StatusViewBagForManuf();
             return View();
         }
 
@@ -454,9 +453,45 @@ namespace CWB.App.Controllers
                     }
                 }
             }
-
             return Ok(mpmakefromlist);
+        }
 
+        [HttpGet]
+        public async Task<IActionResult> SortedMPMakeFromList(string partId)
+        {
+            try
+            {
+                //getmaterparts
+                var mf = await _mastersService.GetMPMakeFromListByPartId(partId);
+                var mpart =await _mastersService.ItemMasterParts();
+                List<MPMakeFromVM> MFList = new List<MPMakeFromVM>();
+                var query = from mfl in mf
+                            join mp in mpart on mfl.MPPartId equals mp.PartId
+                            select new MPMakeFromVM
+                            {
+                                MPPartId = mfl.MPPartId,
+                                MPPartMadeFrom=mfl.MPPartMadeFrom,
+                                InputWeight=mfl.InputWeight,
+                                ScrapGenerated=mfl.ScrapGenerated,
+                                QuantityPerInput=mfl.QuantityPerInput,
+                                YieldNotes=mfl.YieldNotes,
+                                PreferedRawMaterial=mfl.PreferedRawMaterial,
+                                ManufPartId=mfl.ManufPartId,
+                                MPMakeFromId=mfl.MPMakeFromId,
+                                MFDescription=mfl.MFDescription,
+                                InputPartNo=mp.PartNo,
+                                UOM=mfl.UOM,
+                                TenantId=mfl.TenantId
+                            };
+                MFList = query
+                     .OrderBy(x => x.PreferedRawMaterial)
+                    .ToList();
+                return Ok(MFList);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]

@@ -336,6 +336,7 @@ function PostCustomerOder() {
         $('#AggregateCustomerOrderId').val(data.customerOrderId);
         $('#SalesCustomerOrderId').val(data.customerOrderId);
         console.log(data.customerOrderId);
+        alert("Customer Order Saved");
         //document.getElementById("Btn").click();
     }).catch((error) => {
         AppUtil.HandleError("CustomerOrderForm", error);
@@ -602,6 +603,7 @@ $(function () {
         if (deletesalesorder) {
             LoadSalesOrders(salesCustOrderId);
         }
+        $('#podeleteform')[0].reset();
     });
 
     $('#po-hold').on('hidden.bs.modal', function (event) {
@@ -682,7 +684,8 @@ $(function () {
         $(tablebody).html("");//empty tbody
         var tablebody = $("#POLinesTable tbody");
         $(tablebody).html("");//empty tbody
-       
+
+        $(LaunchDeliverySchedule).prop("disabled", true);
         document.getElementById("CustomerOrderForm").reset();
         document.getElementById("DeliveryScheduleForm").reset();
         document.getElementById("AggregateObjForm").reset();
@@ -702,7 +705,7 @@ $(function () {
             var podate = relatedTarget.data("podate");
             var directentrydetails = relatedTarget.data("directentrydetails");
             $('#CustomerOrderId').val(customerorderid);
-
+            $(LaunchDeliverySchedule).prop("disabled", false);
             console.log(customerorderid+"/"+customerId);
             //$("#CustomerId").select2();
             $('#CustomerId').val(customerId);
@@ -762,10 +765,9 @@ $(function () {
         LoadPOLines(customerOrderId);
     });
 
-    
     $("#BtnAddCustomerOrder").on("click", function () {
         // alert("Add CustomerOrder clicked");
-        PostCustomerOder();
+       PostCustomerOder();
     });
 
     $("#BtnPODelete").on("click", function () {

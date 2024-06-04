@@ -71,6 +71,7 @@
         {
             public const string GetDesignations = Base + "/designations/{tenantId}";
             public const string PostDesignation = Base + "/designation";
+            public const string DelDesignation = Base + "/deldesignation/{designationId}";
         }
     }
 }

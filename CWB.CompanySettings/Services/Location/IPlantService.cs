@@ -11,6 +11,7 @@ namespace CWB.CompanySettings.Services.Location
         bool CheckPlantExisit(CheckPlantVM checkPlantVM);
 
         Task<PlantVM> GetPlant(long plantId);
+        Task<IEnumerable<PlantVM>> GetPlantsWithWorkDetails(long plantId);
         Task<bool> DelPlant(long plantId);
         Task<bool> DelHoliday(long holidayId);
         IEnumerable<HolidayVM> Holidays(long plantId);

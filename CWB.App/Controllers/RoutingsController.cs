@@ -19,9 +19,7 @@ namespace CWB.App.Controllers
     [Authorize(Roles = Roles.ADMIN)]
     public class RoutingsController : Controller
     {
-
         private readonly ILoggerManager _logger;
-
         private readonly IRoutingService _routingService;
         private readonly IMastersServices _mastersServices;
         private readonly IMachineService _machineService;

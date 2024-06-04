@@ -35,10 +35,11 @@ namespace CWB.CompanySettings.Controllers
         [Route(ApiRoutes.Plant.GetPlants)]
         [Produces(AppContentTypes.ContentType, Type = typeof(List<PlantVM>))]
         [Authorize(Roles = Roles.ADMIN)]
-        public IActionResult GetPlants(long tenantId)
+        public async Task<IActionResult> GetPlants(long tenantId)
         {
-            var companyTypes = _plantService.GetPlants(tenantId);
-            return Ok(companyTypes);
+           // var companyTypes = _plantService.GetPlants(tenantId);
+            var plants = await _plantService.GetPlantsWithWorkDetails(tenantId);
+            return Ok(plants);
         }
 
         /// <summary>

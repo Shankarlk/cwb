@@ -3,6 +3,7 @@ using CWB.CompanySettings.Infrastructure;
 using CWB.CompanySettings.Repositories.Designations;
 using CWB.CompanySettings.ViewModels.Designations;
 using CWB.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,6 +57,28 @@ namespace CWB.CompanySettings.Services.Designations
         {
             var designations = _designationRepository.GetRangeAsync(d => d.TenantId == TenantId);
             return _mapper.Map<IEnumerable<DesignationListVM>>(designations);
+        }
+
+        public async Task<bool> DelDesignation(long designationId)
+        {
+            try
+            {
+                var designation = await _designationRepository.SingleOrDefaultAsync(d => d.Id == designationId);
+                if (designation != null)
+                {
+                    if (designation.Id > 0)
+                    {
+                        _designationRepository.Remove(designation);
+                        await _unitOfWork.CommitAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

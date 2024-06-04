@@ -32,6 +32,10 @@ namespace CWB.Masters.Configurations
                .HasColumnName("PreferredRouting")
                .IsRequired();
             builder
+                .Property(m => m.MKPartId)
+                .HasColumnName("MKPartId")
+                .IsRequired();
+            builder
               .Property(m => m.Status)
               .HasColumnName("Status")
               .IsRequired();

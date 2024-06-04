@@ -77,6 +77,34 @@ $(function () {
         MachineGeneralFormUtil.LoadShop($(this).val());
     });
 
+    $("#search-machine-plant").change(function () {
+        var value = $(this).find("option:selected").text().toLowerCase();
+        $("#tbl-machine-list tbody tr").filter(function () {
+            $(this).toggle($(this.children[0]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#search-machine-shop").change(function () {
+        var value = $(this).find("option:selected").text().toLowerCase();
+        $("#tbl-machine-list tbody tr").filter(function () {
+            $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#machineName").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#tbl-machine-list tbody tr").filter(function () {
+            $(this).toggle($(this.children[2]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#manufacturer").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#tbl-machine-list tbody tr").filter(function () {
+            $(this).toggle($(this.children[4]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
     $("#btnMachineGeneralSave").click(function () {
         if ($("#frmMachineGeneral").valid()) {
             var formData = AppUtil.GetFormData("frmMachineGeneral");

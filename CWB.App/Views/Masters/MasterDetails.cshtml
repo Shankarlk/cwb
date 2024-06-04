@@ -44,8 +44,7 @@
                         <!-- end col -->
                         <label class="form-label col-md-1 mb-2">Status </label>
                         <div class="col-md-3 mb-2">
-                            <select class="form-select form-select-sm" title="Select Part No from Drop Down" data-plugin="tippy" data-tippy-placement="top">
-                                <option value=""> </option>
+                            <select class="form-select form-select-sm" id="Status" name="Status" asp-items="ViewBag.Statuses" required>
                             </select>
                         </div>
                         <!-- =============== -->
@@ -214,6 +213,7 @@
                                         <th>Part No</th>
                                         <th>Description</th>
                                         <th>Notes</th>
+                                        <th hidden>Status</th>
                                         <th width="5%"></th>
                                     </tr>
                                 </thead>
@@ -253,6 +253,7 @@
         <td data-key="PartNo">{partNo}</td>
         <td data-key="Description">{description}</td>
         <td data-key="Notes">{notes}</td>
+        <td data-key="Status" hidden>{status}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>

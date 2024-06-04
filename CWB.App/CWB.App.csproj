@@ -36,6 +36,7 @@
     <ProjectReference Include="..\CWB.CommonUtils\CWB.CommonUtils.csproj" />
     <ProjectReference Include="..\CWB.Extensions\CWB.Extensions.csproj" />
     <ProjectReference Include="..\CWB.Logging\CWB.Logging.csproj" />
+    <ProjectReference Include="..\CWB.Masters\CWB.Masters.csproj" />
   </ItemGroup>
 
   <ItemGroup>

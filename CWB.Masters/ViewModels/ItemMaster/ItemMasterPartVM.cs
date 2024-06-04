@@ -18,7 +18,7 @@ namespace CWB.Masters.ViewModels.ItemMaster
         public string RMSupplier { get; set; }
         public string Supplier { get; set; }
         public string SupplierPartNo { get; set; }
-
+        public string Status { get; set; }
         public int RMId { get; set; }
         public int BOFId { get; set; }
 

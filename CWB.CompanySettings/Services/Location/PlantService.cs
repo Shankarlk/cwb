@@ -51,6 +51,13 @@ namespace CWB.CompanySettings.Services.Location
             return _mapper.Map<IEnumerable<PlantVM>>(plants);
         }
 
+        public async Task<IEnumerable<PlantVM>> GetPlantsWithWorkDetails(long tenantID)
+        {
+            var plants = await _plantWDRepository.GetPlantWorkingDetails(tenantID);
+            var plantwd= _mapper.Map<IEnumerable<PlantVM>>(plants);
+            return plantwd;
+        }
+
         public async Task<PlantVM> Plant(PlantVM plantVM)
         {
             var plant = _mapper.Map<Domain.Plant>(plantVM);

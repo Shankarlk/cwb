@@ -72,5 +72,17 @@ namespace CWB.CompanySettings.Controllers
             var result = await _designationService.Designation(designationVM);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route(ApiRoutes.Designation.DelDesignation)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public IActionResult DelDesignation(long designationId)
+        {
+            var docTypes = _designationService.DelDesignation(designationId);
+            return Ok(docTypes);
+        }
+
+
     }
 }

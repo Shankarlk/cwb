@@ -35,7 +35,6 @@ namespace CWB.Masters.Configurations
                 .Property(m => m.TenantId)
                 .HasColumnName("TenantId")
                 .IsRequired();
-
             builder
                 .HasOne(m => m.Company)
                 .WithMany(m => m.Divisions)

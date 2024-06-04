@@ -1,5 +1,6 @@
 ﻿let dataMPDList = "";
 let partType = "ManufacturedPart";
+let status = "Active";
 
 $(function () {
 
@@ -15,14 +16,19 @@ $(function () {
         $("#mptable tbody tr").filter(function () {
             $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)
         });
-    }); 
+    });
+
     $("#master_description").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $("#mptable tbody tr").filter(function () {
             $(this).toggle($(this.children[2]).text().toLowerCase().indexOf(value) > -1)
         });
-    }); 
-    
+    });
+
+    $("#Status").change(function () {
+        loadMPDList();
+    });
+
     var RawMaterialMadeType = 0;
     //////debugger;
     // Document is ready
@@ -53,12 +59,12 @@ $(function () {
         }
         else if (this.value == "3") {
           //  alert("three clicked");
-      //      loadBOFs();
+         //   loadBOFs();
             partType = "BOF";
             loadMPDList();
         } else {
           //  alert("four clicked");
-       //     loadSupplierRMS();
+          //     loadSupplierRMS();
             partType = "RawMaterial";
             dataMPDList = "";
             loadMPDList();
@@ -76,7 +82,7 @@ function ProcessTemplateDataNew(templateId, dataObj) {
         ////console.log(key + " " + dataObj[key]);
         templateElement = templateElement.replaceAll("{" + key + "}", dataObj[key])
     }
-    console.log(templateElement);
+   // console.log(templateElement);
     return templateElement;
 }
 
@@ -85,21 +91,23 @@ function loadMPDList() {
     $(tablebody).html("");//empty tbody
     //UpdatePurchaseDetailsTableFromPostData
     let i = 0;
+    var strActive = $("#Status").val();
     if (dataMPDList.length > 2) {
-        console.log(partType);
-        console.log("================");
+        //console.log(partType);
+        //console.log("================");
         let data = dataMPDList;
         for (i = 0; i < data.length; i++) {
             if (!(data[i]['masterPartType'] == partType))
                 continue;
+            if (!(data[i]['status'] == strActive))
+                continue;
             var tBody = ProcessTemplateDataNew("MasterDetaiTemplate", data[i]);
             $(tablebody).append(tBody);
-            console.log(tBody);
+            //console.log(tBody);
         }
     }
     else {
         api.getbulk("/masters/masterparts").then((data) => {
-            //console.log(data);
             dataMPDList = data;
             for (i = 0; i < data.length; i++) {
                 /*for (var key in data[i]) {
@@ -107,13 +115,15 @@ function loadMPDList() {
                     console.log(data[i][key]);
                     console.log("*****");
                 }*/
-                console.log(partType);
-                console.log("================");
+                //console.log(partType);
+                //console.log("================");
                 if (!(data[i]['masterPartType'] == partType))
+                    continue;
+                if (!(data[i]['status'] == strActive))
                     continue;
                 var tBody = ProcessTemplateDataNew("MasterDetaiTemplate", data[i]);
                 $(tablebody).append(tBody);
-                console.log(tBody);
+                //console.log(tBody);
             }
         }).catch((error) => {
         });

@@ -84,7 +84,8 @@ ViewData["Title"] = "Item Master - BOF";
                                 <!-- ========================= -->
                                 <label class="form-label col-md-2 mb-2 text-end">Status Change Reason</label>
                                 <div class="col-md-3 mb-2" title="Enter Status Change Reason" data-plugin="tippy" data-tippy-placement="top">
-                                    <input asp-for="StatusChangeReason" class="form-control form-control-sm" type="text" placeholder="enter here">
+                                    <input asp-for="StatusChangeReason" name="StatusChangeReason" id="StatusChangeReason" class="form-control form-control-sm" type="text" placeholder="enter here">
+                                    <span asp-validation-for="StatusChangeReason"></span>
                                 </div>
                                 <!-- ========================= -->
                                 <!-- ========================= -->

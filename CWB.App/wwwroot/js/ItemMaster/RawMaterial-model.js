@@ -303,6 +303,16 @@ $(function () {
 
     });
 
+    $("#Status").change(function () {
+        if ($(this).val() === "Inactive") {
+            $("#StatusChangeReason").attr("required", "required");
+            $("#StatusChangeReason").attr("data-val-required", "StatusChangeReason is required when Status is Inactive.");
+        } else {
+            $("#StatusChangeReason").removeAttr("required");
+            $("#StatusChangeReason").removeAttr("data-val-required");
+        }
+    });
+
     $("#btnRawMaterialDetailSubmit").click(function (event) {
         ////debugger;
         if (!modelObj.Edit) {

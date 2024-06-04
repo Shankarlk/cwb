@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\working_copy\\CWB\\CWB.Notification\\CWB.Notification.csproj": {}
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Notification\\CWB.Notification.csproj": {}
   },
   "projects": {
-    "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
         "projectName": "CWB.CommonUtils",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,45 +79,34 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\projects\\working_copy\\CWB\\CWB.Notification\\CWB.Notification.csproj": {
+    "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Notification\\CWB.Notification.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\working_copy\\CWB\\CWB.Notification\\CWB.Notification.csproj",
+        "projectUniqueName": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Notification\\CWB.Notification.csproj",
         "projectName": "CWB.Notification",
-        "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.Notification\\CWB.Notification.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\working_copy\\CWB\\CWB.Notification\\obj\\",
+        "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Notification\\CWB.Notification.csproj",
+        "packagesPath": "C:\\Users\\MicroApt\\.nuget\\packages\\",
+        "outputPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.Notification\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MicroApt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -127,8 +120,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
-                "projectPath": "D:\\projects\\working_copy\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
+              "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
+                "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
               }
             }
           }
@@ -162,31 +155,16 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     }

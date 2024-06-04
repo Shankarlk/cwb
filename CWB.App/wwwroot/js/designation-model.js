@@ -20,53 +20,57 @@ var DesignationsFormUtil = {
     }
 };
 
+function loadDesignation() {
+    var tablebody = $("#tbl-Designations tbody");
+    $(tablebody).html("");//empty tbody
+    api.getbulk("/designation/designations").then((data) => {
+        console.log(data);
+        for (i = 0; i < data.length; i++) {
+            $(tablebody).append(AppUtil.ProcessTemplateDataNew("designation-template", data[i], i));
+        }
+        console.log(tablebody);
+    }).catch((error) => { });
+}
+
+function DelDesignation(name, designationId) {
+    let confirmVal = confirm("Are your sure you want to delete this Designation? : " + name, "Yes", "No");
+    if (confirmVal) {
+        api.get("/designation/delDesignation?designationId=" + designationId).then((data) => {
+            loadDesignation();
+        }).catch((error) => { });
+    }
+}
+
 $(function () {
+
     $('#dialog-designation').on('show.bs.modal', function (event) {
         DesignationsFormUtil.ClearForm();
         var relatedTarget = $(event.relatedTarget);
         var DesignationId = relatedTarget.data("id");
-        //if (DesignationId == "0") {
-        //    var tablebody = $("#tbl-division tbody");
-        //    $(tablebody).html("");//empty tbody
-        //    $("#btnAddDivision").hide();
-        //    return;
-        //}
+        $("#Id").val(DesignationId);
+        var name = relatedTarget.data("designationname");
+        $("#Name").val(name);
     });
-    $('#dialog-designation').on('hide.bs.modal', function (event) {
-        DesignationsFormUtil.ClearForm();
-    //    alert("On hide..");
-       // $("#frmDesignation").resetValidation();
-        api.get("/designation/designations").then((data) => {
-            var tablebody = $("#tbl-designations tbody");
-            if (tablebody.length) { //if there is a tablebody in the parent populate it
-                $(tablebody).html("");//empty tbody
-                for (i = 0; i < data.length; i++) {
-                    $(tablebody).append(AppUtil.ProcessTemplateData("designation-template", data[i]));
-                }
-            }
-            if (typeof OnDesigDialogHidden === 'function') {
-                OnDesigDialogHidden();
-            }
-            //filter once loaded
-            ContactsUtil.FilterContacts();
-        }).catch((error) => {
 
+    //Search Designation --
+    $("#searchDesignation").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#tbl-Designations tbody tr").filter(function () {
+            $(this).toggle($(this.children[0]).text().toLowerCase().indexOf(value) > -1)
         });
     });
 
-    /*$("#btnContactClose").click(function () {
-        $("#dialog-Designation").dialog("close");
-    });*/
-
     $("#btnDesignationSubmit").click(function () {
-     //   //debugger;
+        //   //debugger;
         if ($("#frmDesignation").valid()) {
             var formData = AppUtil.GetFormData("frmDesignation");
             api.post("/designation/designation", formData).then((data) => {
                 DesignationsFormUtil.UpdateFormIDs(data);
-                if (typeof OnDesignationCreated === 'function') {
-                    OnDesignationCreated(data);
-                }
+                document.getElementById("frmDesignation").reset();
+                document.getElementById("btnDesignationClose").click();
+
+                loadDesignation();
+
             }).catch((error) => {
                 AppUtil.HandleError("frmDesignation", error);
             });

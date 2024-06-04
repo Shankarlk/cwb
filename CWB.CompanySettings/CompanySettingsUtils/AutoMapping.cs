@@ -40,6 +40,21 @@ namespace CWB.CompanySettings.CompanySettingsUtils
                 .ForMember(m => m.IsMainPlant, m => m.MapFrom(src => src.IsMainPlant))
                 .ForMember(m => m.IsProductDesigned, m => m.MapFrom(src => src.IsProductDesigned));
 
+      
+
+
+            //Designation
+            CreateMap<DesignationVM, Designation>()
+                .ForMember(m => m.Id, m => m.MapFrom(src => src.DesignationId))
+                .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
+                .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+            CreateMap<Domain.Designation, DesignationVM>()
+             .ForMember(m => m.DesignationId, m => m.MapFrom(src => src.Id))
+             .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
+             .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+            CreateMap<Designation, DesignationListVM>()
+                .ForMember(m => m.DesignationId, m => m.MapFrom(src => src.Id));
+
             CreateMap<ShopDepartment, ShopDepartmentVM>()
                 .ForMember(m => m.DepartmentId, m => m.MapFrom(src => src.Id))
                 .ForMember(m => m.PlantId, m => m.MapFrom(src => src.PlantId))
@@ -257,6 +272,24 @@ namespace CWB.CompanySettings.CompanySettingsUtils
                .ForMember(m => m.SecondShiftDuration, m => m.MapFrom(src => src.SecondShiftDuration))
                .ForMember(m => m.ThirdShiftDuration, m => m.MapFrom(src => src.ThirdShiftDuration));
 
+            CreateMap<PlantWorkingDetails, PlantVM>()
+          .ForMember(m => m.WDId, m => m.MapFrom(src => src.Id))
+          .ForMember(m => m.PlantId, m => m.MapFrom(src => src.Plant.Id))
+          .ForMember(m => m.Name, m => m.MapFrom(src => src.Plant.Name))
+          .ForMember(m => m.IsMainPlant, m => m.MapFrom(src => src.Plant.IsMainPlant))
+          .ForMember(m => m.IsProductDesigned, m => m.MapFrom(src => src.Plant.IsProductDesigned))
+          .ForMember(m => m.Address, m => m.MapFrom(src => src.Plant.Address))
+          .ForMember(m => m.Notes, m => m.MapFrom(src => src.Plant.Notes))
+          .ForMember(m => m.WeeklyOff1, m => m.MapFrom(src => src.WeeklyOff1))
+          .ForMember(m => m.NoOfShifts, m => m.MapFrom(src => src.NoOfShifts))
+          .ForMember(m => m.FirstShiftStartTime, m => m.MapFrom(src => src.FirstShiftStartTime));
+
+            CreateMap<PlantVM, PlantWorkingDetails>()
+                 .ForMember(m => m.Id, m => m.MapFrom(src => src.WDId))
+                 .ForMember(m=>m.PlantId,m=>m.MapFrom(src=>src.PlantId))
+                 .ForMember(m => m.NoOfShifts, m => m.MapFrom(src => src.NoOfShifts))
+                 .ForMember(m => m.WeeklyOff1, m => m.MapFrom(src => src.WeeklyOff1))
+                 .ForMember(m => m.FirstShiftStartTime, m => m.MapFrom(src => src.FirstShiftStartTime));
         }
     }
 }

@@ -17,6 +17,7 @@ namespace CWB.App.Models.ItemMaster
         public string RMSupplier { get; set; }
         public string Supplier { get; set; }
         public string SupplierPartNo { get; set; }
+        public string Status { get; set; }
         public string Notes { get; set; }
         public int Type { get; set; }
         public long TenantId { get; set; }

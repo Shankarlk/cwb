@@ -33,7 +33,7 @@ namespace CWB.App.Services.CompanySettings
 
         public async Task<bool> CheckIfDesignationExisit(long DesignationId, string DesignationName)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/check-designation");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/check-designation");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             var data = new { DesignationId, DesignationName, TenantId = tenantId };
             return await RestHelper<bool>.PostAsync(uri, data, headers);
@@ -41,10 +41,16 @@ namespace CWB.App.Services.CompanySettings
 
         public async Task<DesignationVM> Designation(DesignationVM designationVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/designation");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/designation");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             designationVM.TenantId = tenantId;
             return await RestHelper<DesignationVM>.PostAsync(uri, designationVM, headers);
+        }
+        public async Task<bool> DelDesignation(long designationId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/deldesignation/{designationId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
         }
     }
 }

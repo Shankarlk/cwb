@@ -8,7 +8,7 @@ namespace CWB.App.Services.CompanySettings
     {
         Task<IEnumerable<DesignationVM>> GetDesignations();
         Task<bool> CheckIfDesignationExisit(long DesignationId, string DesignationName);
-
+        Task<bool> DelDesignation(long designationId);
         Task<DesignationVM> Designation(DesignationVM designationVM);
     }
 }

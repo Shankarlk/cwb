@@ -3,6 +3,7 @@ let RoutingDetails = {};//contains page model
 
 let dataPartsRoutings = {};
 let partType = "ManufacturedPart";
+let spartType = "ManufacturedPart";
 let withRouting = true;
 let selectedManuPartId = "";
 let selectedBomId = "";
@@ -56,26 +57,38 @@ function DeleteWS(subConWSDetailsId)
 function AddMacOptions() {
     api.get("/machine/getmachines").then((data) => {
         maclist = data;
+        var macplants = $("#MAC_Plants");
+        macplants.empty();
+        var div_data = "<option value=''>--Select--</option>";
+        macplants.append(div_data);
+        var macshops = $("#MAC_Shops");
+        macshops.empty();
+        macshops.append(div_data);
+        //debugger;
+        if (maclist.length > 0) {
+            const uniquePlants = new Set();
+            const uniqueShops = new Set();
+
+            for (let i = 0; i < maclist.length; i++) {
+                const plant = maclist[i].plant;
+                const shop = maclist[i].shop;
+
+                if (!uniquePlants.has(plant)) {
+                    uniquePlants.add(plant);
+                    macplants.append("<option id='" + plant + "'>" + plant + "</option>");
+                }
+
+                if (!uniqueShops.has(shop)) {
+                    uniqueShops.add(shop);
+                    macshops.append("<option id='" + shop + "'>" + shop + "</option>");
+                }
+            }
+        }
+
+        loadMachineTypes("MAC_Type");
     }).catch((error) => {
         console.log(error);
     });
-    var macplants = $("#MAC_Plants");
-    macplants.empty();
-    var div_data = "<option value=''></option>";
-    macplants.append(div_data);
-    var macshops = $("#MAC_Shops");
-    macshops.empty();
-    macshops.append(div_data);
-    //debugger;
-    if (maclist.length > 0) {
-        for (i = 0; i < maclist.length; i++) {
-            var opt = "<option id='" + maclist[i].plant + "'>" + maclist[i].plant + "</option>";
-            macplants.append(opt);
-            opt = "<option id='" + maclist[i].shop + "'>" + maclist[i].shop + "</option>";
-            macshops.append(opt);
-        }
-    }
-    loadMachineTypes("MAC_Type");
 }
 /*function SetOpType(optype) {
     alert(optype);
@@ -153,7 +166,7 @@ function LoadSubCons() {
                 continue;
             $(tablebody).append(AppUtil.ProcessTemplateData("RouteSubConsTemplate", data[i]));
         }
-        console.log(data);
+        //console.log(data);
         //console.log(tablebody.html());
         //RouteSuppliersTable
         //RouteSupplierTemplate
@@ -787,7 +800,8 @@ $(function () {
     LoadOperations();
     LoadLocations();
     //======
-    
+
+
    
 
     $("#CancelDelSubCon").click(function (event) {
@@ -892,6 +906,8 @@ $(function () {
             hideElem(machs);
             hideElem(suplrs);
         }
+        $("#addSubCon").prop("disabled", true);
+        $("#addMachine").prop("disabled", true); 
     });
 
     /*const checkbox = document.getElementById('WithoutRouting')
@@ -1018,10 +1034,13 @@ $(function () {
         if (this.value == "1") {
             // alert("one clicked");
             partType = "ManufacturedPart";
+            spartType = "ManufacturedPart";
             DowlonadPartsRoutings();
+            $("#MakefromDiv").show();
         } else {
             partType = "Assembly";
             DowlonadPartsRoutings();
+            $("#MakefromDiv").hide();
         }
 
     });
@@ -1201,13 +1220,13 @@ $(function () {
         $("#AltManufacturedPartId").val(manufacturedPartId);
         $("#AltOrigRoutingId").val(routingid);
     });
-    $('#alt-rout').on('hide.bs.modal', function (event) {
-        window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
-    });
+    //$('#alt-rout').on('hide.bs.modal', function (event) {
+    //    window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+    //});
     
-    $('#routing-new').on('hide.bs.modal', function (event) {
-        window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
-    });
+    //$('#routing-new').on('hide.bs.modal', function (event) {
+    //    document.getElementById("BtnNewRoutingClose").click();
+    //});
 
     
 
@@ -1216,6 +1235,22 @@ $(function () {
         var manufacturedPartId = relatedTarget.data("manufacturedpartid");
         $("#ManufacturedPartId").val(manufacturedPartId);
         selectedManuPartId = manufacturedPartId;
+        //makefrom --
+        if (spartType === "ManufacturedPart") {
+            api.get("/masters/SortedMPMakeFromList?partId=" + selectedManuPartId).then((data) => {
+                var sortedMPF = data;
+                console.log(sortedMPF);
+                const uniqueMPF = [...new Set(sortedMPF.map(mpm => mpm.mpPartId))].map(mpPartId => {
+                    return sortedMPF.find(mpm => mpm.mpPartId === mpPartId);
+                });
+                $("#MKPartId").empty();
+                uniqueMPF.forEach(function (mpm) {
+                    $("#MKPartId").append("<option value='" + mpm.mpPartId + "'  name='MKPartId'>" + mpm.inputPartNo + " / " + mpm.mfDescription + "</option>");
+                });
+            }).catch((error) => {
+                AppUtil.HandleError("", error);
+            });
+        }
      /* var partNo = relatedTarget.data("partno");
         var coName = relatedTarget.data("companyname");
         var partDesc = var partNo = relatedTarget.data("partdescription");
@@ -1235,7 +1270,7 @@ $(function () {
         var formData = AppUtil.GetFormData("FormNewRoutingName");
         api.post("/routings/addnewrouting", formData).then((data) => {
             console.log(data);
-            document.getElementById("BtnNewRoutingClose").click();
+            window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
         }).catch((error) => {
             AppUtil.HandleError("FormNewRoutingName", error);
         });
@@ -1272,8 +1307,12 @@ $(function () {
             alert("Save routing step before adding machine.");
             document.getElementById("Add-Machine-Close").click();
         }
+        $.ajax({           
+            success: function (data) {
+                AddMacOptions();
+            }
+        });
         document.getElementById("FormRoutingMachine").reset();
-        AddMacOptions();
         var rTgt = $(event.relatedTarget);
         var addEdit = rTgt.data("addedit");
 
@@ -1312,6 +1351,35 @@ $(function () {
         }
 
     });
+    //Routing Step Details Filter/Search
+    $("#MAC_Plants").change(function () {
+        var value = $(this).find("option:selected").text().toLowerCase();
+        $("#AddMachineListTable tbody tr").filter(function () {
+            $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#MAC_Shops").change(function () {
+        var value = $(this).find("option:selected").text().toLowerCase();
+        $("#AddMachineListTable tbody tr").filter(function () {
+            $(this).toggle($(this.children[2]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#MAC_Name").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#AddMachineListTable tbody tr").filter(function () {
+            $(this).toggle($(this.children[4]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    //$("#MAC_Type").change(function () {
+    //    var value = $(this).find("option:selected").text().toLowerCase();
+    //    $("#AddMachineListTable tbody tr").filter(function () {
+    //        $(this).toggle($(this.children[4]).text().toLowerCase().indexOf(value) > -1)
+    //    });
+    //});
+    //end---
 
     $('#delete-machine').on('show.bs.modal', function (event) {
         var relatedTarget = $(event.relatedTarget);
@@ -1487,6 +1555,8 @@ $(function () {
             console.log("====1-End=====");
             $("#StepId").val(data.stepId);
             $("#BOMRoutingStepId").val(data.stepId);
+            document.getElementById('addMachine').removeAttribute('disabled');
+            document.getElementById('addSubCon').removeAttribute('disabled');
         }).catch((error) => {
             AppUtil.HandleError("FormRoutingStep", error);
         });

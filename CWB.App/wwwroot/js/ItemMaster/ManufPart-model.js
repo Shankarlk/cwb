@@ -651,7 +651,15 @@ $(document).ready(function () {
         return true;
     }*/
    
-
+    $("#Status").change(function () {
+        if ($(this).val() === "Inactive") {
+            $("#StatusChangeReason").attr("required", "required");
+            $("#StatusChangeReason").attr("data-val-required", "StatusChangeReason is required when Status is Inactive.");
+        } else {
+            $("#StatusChangeReason").removeAttr("required");
+            $("#StatusChangeReason").removeAttr("data-val-required");
+        }
+    });
    
 
     $("#btnManufPartDetailSubmit").click(function (event) {
@@ -1022,6 +1030,18 @@ function AddAnotherRM() {
                     tableHasOwnRMParts = true;
                     disableOtherCustRadios();
                 }
+                if (document.getElementById('csrm').checked) {
+                    document.getElementById("otmp").disabled = true;
+                    document.getElementById("owrm").disabled = true;
+                }
+                if (document.getElementById('owrm').checked) {
+                    document.getElementById("otmp").disabled = true;
+                    document.getElementById("csrm").disabled = true;
+                }
+                if (document.getElementById('otmp').checked) {
+                    document.getElementById("owrm").disabled = true;
+                    document.getElementById("csrm").disabled = true;
+                }
             }).catch((error) => {
                 AppUtil.HandleError("MPRawMaterial", error);
             });
@@ -1048,10 +1068,6 @@ function handleRadioClick() {
         searchbtn.append(templateElement);
     }
 }
-
-
-
-
 
 function downloadNLoadExistingParts() {
     var ManufPartType = $("input[name='ManufacturedPartType']:checked").val();
