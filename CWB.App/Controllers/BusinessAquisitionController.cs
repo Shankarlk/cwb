@@ -50,6 +50,75 @@ namespace CWB.App.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult WO()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> WOpost(WorkOrdersVM workOrdersVM)
+        {
+            ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)workOrdersVM.PartId);
+            workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
+            if (workOrdersVM.PartType == 1)
+            {
+                workOrdersVM.Parentlevel = 1;
+            }
+            else
+            {
+                workOrdersVM.Parentlevel = 2;
+            }
+            var postWO = await _baService.PostWO(workOrdersVM);
+            return Ok(postWO);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MultipleWOPost([FromBody] IEnumerable<WorkOrdersVM> listworkOrdersVM)
+        {
+            foreach (var workOrdersVM in listworkOrdersVM)
+            {
+                ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)workOrdersVM.PartId);
+                workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
+                if (workOrdersVM.PartType == 1)
+                {
+                    workOrdersVM.Parentlevel = 1;
+                }
+                else
+                {
+                    workOrdersVM.Parentlevel = 2;
+                }
+            }
+            var postWO = await _baService.MultiplePostWO(listworkOrdersVM);
+            return Ok(postWO);
+            //return Ok(listworkOrdersVM);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> PostWoSoRel([FromBody] IEnumerable<WOSOVM> wOSOVMs)
+        {
+            var postwoso = await _baService.PostWoSoRel(wOSOVMs);
+            return Ok(postwoso);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllWorkOrders()
+        {
+            var workOrders = await _baService.AllWorkOrders();
+            var masterparts = await _masterService.ItemMasterParts();
+            foreach (WorkOrdersVM item in workOrders)
+            {
+                foreach (ItemMasterPartVM imp in masterparts)
+                {
+                    if (item.PartId == imp.PartId)
+                    {
+                        item.PartNo = imp.PartNo;
+                    }
+                }
+            }
+            return Ok(workOrders);
+        }
+
         public IActionResult OrderEntry()
         {
             return View();
@@ -69,6 +138,32 @@ namespace CWB.App.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> AllSalesOrders()
+        {
+            var salesorders = await _baService.AllSalesOrders();
+            var masterparts = await _masterService.ItemMasterParts();
+            var customer= await _baService.GetCustomerOrders();
+            foreach (SalesOrderVM sovm in salesorders)
+            {
+                foreach (ItemMasterPartVM impvm in masterparts)
+                {
+                    if (sovm.PartId == impvm.PartId)
+                    {
+                        sovm.PartNo = impvm.PartNo;
+                    }
+                }
+                foreach(CustomerOrderVM cu in customer)
+                {
+                    if (sovm.CustomerOrderId == cu.CustomerOrderId)
+                    {
+                        sovm.Customer = cu.CustomerName;
+                    }
+                }
+            }
+            return Ok(salesorders);
+        }
+
+            [HttpGet]
         public async Task<IActionResult> GetSalesOrders(long customerOrderId,long partId=0)
         {
             var salesorders = await _baService.GetSalesOrders(customerOrderId);

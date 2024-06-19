@@ -79,6 +79,41 @@ services:
         read_only: true
         bind:
           create_host_path: true
+  cwb.businessaquisition:
+    build:
+      context: D:\EvolutionSoftware\CWB-Latest\CWB
+      dockerfile: CWB.BusinessAquisition/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: cwbbusinessprocesses
+    links:
+      - db
+    networks:
+      cwb-network: null
+    ports:
+      - mode: ingress
+        target: 443
+        published: "9018"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "9019"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: bind
+        source: C:\Users\MicroApt\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
   cwb.companysettings:
     build:
       context: D:\EvolutionSoftware\CWB-Latest\CWB
@@ -246,6 +281,41 @@ services:
       - type: bind
         source: C:\Users\MicroApt\AppData\Roaming/ASP.NET/Https
         target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  cwb.productionplanwo:
+    build:
+      context: D:\EvolutionSoftware\CWB-Latest\CWB
+      dockerfile: CWB.ProductionPlanWO/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: cwbproductionplanwo
+    links:
+      - db
+    networks:
+      cwb-network: null
+    ports:
+      - mode: ingress
+        target: 443
+        published: "9020"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "9021"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: bind
+        source: C:\Users\MicroApt\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
         read_only: true
         bind:
           create_host_path: true

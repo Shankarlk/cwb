@@ -209,23 +209,40 @@ services:
       - "9016:443"
       - "9017:80"
     restart: always
+
+  cwb.productionplanwo:
+    image: ${DOCKER_REGISTRY-}cwbproductionplanwo
+    build:
+      context: .
+      dockerfile: CWB.ProductionPlanWO/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db
+    networks:
+      - cwb-network
+    ports:
+      - "9020:443"
+      - "9021:80"
+    restart: always
   
-  #cwb.businessprocesses:
-  #  image: ${DOCKER_REGISTRY-}cwbbusinessprocesses
-  #  build:
-   #   context: .
-    #  dockerfile: CWB.BusinessProcesses/Dockerfile
-    #depends_on:
-     # db:
-      #  condition: service_healthy
-    #links:
-     # - db
-   # networks:
-    #  - cwb-network
-    #ports:
-     # - "9018:443"
-      #- "9019:80"
-    #restart: always
+  cwb.businessaquisition:
+    image: ${DOCKER_REGISTRY-}cwbbusinessprocesses
+    build:
+      context: .
+      dockerfile: CWB.BusinessAquisition/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db
+    networks:
+      - cwb-network
+    ports:
+      - "9018:443"
+      - "9019:80"
+    restart: always
 
 volumes:
   my-db:

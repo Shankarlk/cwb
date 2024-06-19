@@ -64,6 +64,32 @@
       ],
       "UpstreamPathTemplate": "/cwbcs/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    //BusinessAquisition
+    {
+      "DownstreamPathTemplate": "/api/v1/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "cwb.businessaquisition",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/cwbba/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    //ProductionPlan WO
+    {
+      "DownstreamPathTemplate": "/api/v1/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "cwb.productionplanwo",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/cwbpwo/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     }
   ],
   "GlobalConfiguration": {

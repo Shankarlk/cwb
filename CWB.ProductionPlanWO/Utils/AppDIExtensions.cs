@@ -1,0 +1,24 @@
+﻿using CWB.ProductionPlanWO.Infrastructure;
+using CWB.ProductionPlanWO.Repositories;
+using CWB.ProductionPlanWO.Services;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CWB.ProductionPlanWO.Utils
+{
+    public static class AppDIExtensions
+    {
+        public static void ConfigureAppDI(this IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IWorkOrderRepository, WorkOrdersRepository>();
+            services.AddTransient<IProcPlanRepository, ProcPlanRepository>();
+            services.AddTransient<IWOSORepository, WOSORepository>();
+            services.AddTransient<IWOStatusRepository, WOStatusRepository>();
+            services.AddTransient<IWOService, WOService>();
+        }
+    }
+}

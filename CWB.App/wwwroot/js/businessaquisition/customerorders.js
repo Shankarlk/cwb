@@ -337,6 +337,10 @@ function PostCustomerOder() {
         $('#SalesCustomerOrderId').val(data.customerOrderId);
         console.log(data.customerOrderId);
         alert("Customer Order Saved");
+        $('#CustomerOrderForm')[0].reset();
+        $("#searchpart").prop("disabled", false);
+        //  $('#').val("");
+        //$('#').val("");
         //document.getElementById("Btn").click();
     }).catch((error) => {
         AppUtil.HandleError("CustomerOrderForm", error);
@@ -686,6 +690,7 @@ $(function () {
         $(tablebody).html("");//empty tbody
 
         $(LaunchDeliverySchedule).prop("disabled", true);
+        $("#searchpart").prop("disabled", true);
         document.getElementById("CustomerOrderForm").reset();
         document.getElementById("DeliveryScheduleForm").reset();
         document.getElementById("AggregateObjForm").reset();
@@ -706,6 +711,7 @@ $(function () {
             var directentrydetails = relatedTarget.data("directentrydetails");
             $('#CustomerOrderId').val(customerorderid);
             $(LaunchDeliverySchedule).prop("disabled", false);
+            $("#searchpart").prop("disabled", false);
             console.log(customerorderid+"/"+customerId);
             //$("#CustomerId").select2();
             $('#CustomerId').val(customerId);
@@ -763,6 +769,12 @@ $(function () {
         console.log(customerOrderId);
         LoadSalesOrders(customerOrderId);
         LoadPOLines(customerOrderId);
+    });
+    $("#btnWo").on("click", function () {
+
+    });
+    $("#btnlistSO").on("click", function () {
+        LoadSalesOrders(1);
     });
 
     $("#BtnAddCustomerOrder").on("click", function () {

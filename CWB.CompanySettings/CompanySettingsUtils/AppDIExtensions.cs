@@ -5,10 +5,8 @@ using CWB.CompanySettings.Repositories.Location;
 using CWB.CompanySettings.Services.Designations;
 using CWB.CompanySettings.Services.DocType;
 using CWB.CompanySettings.Services.Location;
-using CWB.CompanySettings.Repositories.BusinessAquisition;
 
 using Microsoft.Extensions.DependencyInjection;
-using CWB.CompanySettings.Services.BusinessAquisition;
 
 namespace CWB.CompanySettings.CompanySettingsUtils
 {
@@ -28,12 +26,6 @@ namespace CWB.CompanySettings.CompanySettingsUtils
             services.AddTransient<IDesignationRepository, DesignationRepository>();
             services.AddTransient<IDesignationService, DesignationService>();
 			services.AddTransient<IDocumentTypeService, DocumentTypeService>();
-            services.AddTransient<IPOLogRepository, POLogRepository>();
-            services.AddTransient<ISalesOrderRepository, SalesOrderRepository>();
-            services.AddTransient<ICustomerOrderRepository, CustomerOderRepository>();
-            services.AddTransient<ISOAggregateRepository, SOAggregateRepository>();
-            services.AddTransient<IDeliveryScheduleRepository, DeliveryScheduleRepository>();
-            services.AddTransient<IBAService, BAService>();
 
         }
     }

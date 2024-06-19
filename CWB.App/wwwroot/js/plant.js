@@ -153,6 +153,8 @@ $(function () {
             $("#HolidayPlantId").val("0");
             $("#HolidayId").val("0");
             $("#WDId").val("0");
+            var tablebody = $("#HolidaysTable tbody");
+            $(tablebody).html("");
             return;
         }
         $("#GEN").show();
@@ -209,14 +211,14 @@ $(function () {
     //AddHoliday
     $("#SaveWorkDetails").on('click', function (event) {
         AddWorkingDetails();
+        $("#btn-shopdetails-close").prop('disabled', false);
     });
     $("#AddHoliday").on('click', function (event) {
         AddHolidayToList();
     });
 
     $("#btn-shopdetails-close").on('click', function (event) {
-     
-        LoadPlants();
+             LoadPlants();
     });
     
     $("#BtnSavePlant").on('click',function (event) {
@@ -225,10 +227,18 @@ $(function () {
            // console.log(data);
            //document.getElementById("btn-shopdetails-close").click();
             //document.getElementById("PlantForm").reset();
+            var wd = $("#WDPlantId").val();
+            if (wd === "0") {
+                $("#btn-shopdetails-close").prop('disabled', true);
+            } else {
+                $("#btn-shopdetails-close").prop('disabled', false);
+            }
             var plantID = data.plantId;
             $("#WDPlantId").val(plantID);
             $("#HolidayPlantId").val(plantID);
+            alert("Please Save the Work Details !");
             $("#tab-002").show();
+            $("#tab-001").hide();
         }).catch((error) => {
             AppUtil.HandleError("PlantForm", error);
         });

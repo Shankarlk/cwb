@@ -39,24 +39,62 @@ namespace CWB.App.Services.BusinessProcesses
             _httpContextAccessor = httpContextAccessor;
             tenantId = long.Parse(AppUtil.GetTenantId(_httpContextAccessor.HttpContext.User));
         }
+        public async Task<WorkOrdersVM> PostWO(WorkOrdersVM workOrdersVMs)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/workorder");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            workOrdersVMs.TenantId = tenantId;
+            return await RestHelper<WorkOrdersVM>.PostAsync(uri, workOrdersVMs, headers);
+        }
+
+        public async Task<List<WorkOrdersVM>> MultiplePostWO(IEnumerable<WorkOrdersVM> workOrdersVMs)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/multipleworkorder");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in workOrdersVMs)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<WorkOrdersVM>>.PostAsync(uri, workOrdersVMs, headers);
+        }
+
+        public async Task<List<WOSOVM>> PostWoSoRel(IEnumerable<WOSOVM> wOSOVMs)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/wosorel");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<WOSOVM>>.PostAsync(uri, wOSOVMs, headers);
+        }
+
+        public async Task<IEnumerable<WorkOrdersVM>> AllWorkOrders()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allworkorders/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<WorkOrdersVM>>.GetAsync(uri, headers);
+        }
 
         public async Task<IEnumerable<CustomerOrderRowVM>> GetCustomerOrders()
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getcustomerorders/{tenantId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getcustomerorders/{tenantId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<CustomerOrderRowVM>>.GetAsync(uri, headers);
         }
 
         public async Task<IEnumerable<POLogVM>> GetPOLogs(long customerOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getpologs/{tenantId}/{customerOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getpologs/{tenantId}/{customerOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<POLogVM>>.GetAsync(uri, headers);
         }
 
+        public async Task<IEnumerable<SalesOrderVM>> AllSalesOrders()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/allsalesorders/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<SalesOrderVM>>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<SalesOrderVM>> GetSalesOrders(long customerOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getsalesorders/{tenantId}/{customerOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getsalesorders/{tenantId}/{customerOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<SalesOrderVM>>.GetAsync(uri, headers);
         }
@@ -64,28 +102,28 @@ namespace CWB.App.Services.BusinessProcesses
 
         public async Task<IEnumerable<DeliveryScheduleVM>> GetSchedules(long customerOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getschedules/{tenantId}/{customerOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getschedules/{tenantId}/{customerOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<DeliveryScheduleVM>>.GetAsync(uri, headers);
         }
 
         public async Task<SOAggregateVM> GetSOAggregate(long customerOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getsoaggregate/{tenantId}/{customerOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getsoaggregate/{tenantId}/{customerOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<SOAggregateVM>.GetAsync(uri, headers);
         }
 
         public async Task<string> HelloWorld()
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/helloworld/{tenantId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/helloworld/{tenantId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<string>.GetAsync(uri, headers);
         }
 
         public async Task<CustomerOrderVM> PostCustomerOrder(CustomerOrderVM customerOrderVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/custorder");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/custorder");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             customerOrderVM.TenantId = tenantId;
             return await RestHelper<CustomerOrderVM>.PostAsync(uri, customerOrderVM, headers);
@@ -93,7 +131,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         public async Task<DeliveryScheduleVM> PostDeliverySchedule(DeliveryScheduleVM deliveryScheduleVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/deliveryschedule");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/deliveryschedule");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             deliveryScheduleVM.TenantId = tenantId;
             return await RestHelper<DeliveryScheduleVM>.PostAsync(uri, deliveryScheduleVM, headers);
@@ -101,7 +139,7 @@ namespace CWB.App.Services.BusinessProcesses
         }
         public async Task<POLogVM> PostSOLog(POLogVM poLogVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/solog");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/solog");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             poLogVM.TenantId = tenantId;
             return await RestHelper<POLogVM>.PostAsync(uri, poLogVM, headers);
@@ -109,7 +147,7 @@ namespace CWB.App.Services.BusinessProcesses
         }
         public async Task<POLogVM> PostPOLog(POLogVM poLogVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/polog");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/polog");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             poLogVM.TenantId = tenantId;
             return await RestHelper<POLogVM>.PostAsync(uri, poLogVM, headers);
@@ -118,7 +156,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         public async Task<SalesOrderVM> PostSalesOrder(SalesOrderVM salesOrderVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/salesorder");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/salesorder");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             salesOrderVM.TenantId = tenantId;
             return await RestHelper<SalesOrderVM>.PostAsync(uri, salesOrderVM, headers);
@@ -126,7 +164,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         public async Task<SOAggregateVM> PostSOAggregate(SOAggregateVM sOAggregateVM)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/soaggregate");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/soaggregate");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             sOAggregateVM.TenantId = tenantId;
             return await RestHelper<SOAggregateVM>.PostAsync(uri, sOAggregateVM, headers);
@@ -141,21 +179,21 @@ namespace CWB.App.Services.BusinessProcesses
 
         public async Task<bool> RemoveCustomerOder(long customerOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/removecustomerorder/{tenantId}/{customerOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/removecustomerorder/{tenantId}/{customerOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<bool>.GetAsync(uri, headers);
         }
 
         public async Task<bool> RemoveDeliverySchedule(long scheduleId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/removedeliveryschedule/{tenantId}/{scheduleId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/removedeliveryschedule/{tenantId}/{scheduleId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<bool>.GetAsync(uri, headers);
         }
 
         public async Task<bool> RemoveSalesOrder(long salesOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/removesalesorder/{tenantId}/{salesOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/removesalesorder/{tenantId}/{salesOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<bool>.GetAsync(uri, headers);
         }
@@ -163,7 +201,7 @@ namespace CWB.App.Services.BusinessProcesses
        
         public async Task<bool> AddSalesOrders(long customerOrderId)
         {
-            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/addsalesorders/{tenantId}/{customerOrderId}");
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/addsalesorders/{tenantId}/{customerOrderId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<bool>.GetAsync(uri, headers);
         }

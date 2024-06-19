@@ -18,7 +18,9 @@
         "kafdrop": "StartWithoutDebugging",
         "kafka": "StartWithoutDebugging",
         "zookeeper": "StartWithoutDebugging",
-        "cwb.masters": "StartDebugging"
+        "cwb.masters": "StartDebugging",
+        "cwb.businessaquisition": "StartDebugging",
+        "cwb.productionplanwo": "StartDebugging"
       }
     }
   }

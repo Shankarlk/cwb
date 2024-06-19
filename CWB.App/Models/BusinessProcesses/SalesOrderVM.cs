@@ -10,6 +10,7 @@ namespace CWB.App.Models.BusinessProcesses
         DateTime? requiredByDate = null;
         public long SalesOrderId { get; set; }
         public long CustomerOrderId { get; set; }
+        public string Customer { get; set; }
         public long WorkOrderId { get; set; }
         //public long DeliveryScheduleId { get; set; }
         public string? SONumber { get; set; }
@@ -57,7 +58,7 @@ namespace CWB.App.Models.BusinessProcesses
             }
             set { }
         }
-
+        public long BalanceSOQty { get; set; }
         public int Status { get; set; }
         public int Plan { get; set; }
         public int Matl { get; set; }

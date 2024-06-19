@@ -8,6 +8,10 @@ namespace CWB.App.Services.BusinessProcesses
     public interface IBAService
     {
 
+        Task<WorkOrdersVM> PostWO(WorkOrdersVM workOrdersVM);
+        Task<List<WorkOrdersVM>> MultiplePostWO(IEnumerable<WorkOrdersVM> workOrdersVM);
+        Task<List<WOSOVM>> PostWoSoRel(IEnumerable<WOSOVM> wOSOVMs);
+        Task<IEnumerable<WorkOrdersVM>> AllWorkOrders();
         Task<bool> RemoveSalesOrder(long salesOrderId);
         Task<bool> RemoveCustomerOder(long customerOrderId);
         Task<bool> RemoveDeliverySchedule(long scheduleId);
@@ -15,6 +19,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         Task<IEnumerable<POLogVM>> GetPOLogs(long customerOrderId);
         Task<IEnumerable<SalesOrderVM>> GetSalesOrders(long customerOrderId);
+        Task<IEnumerable<SalesOrderVM>> AllSalesOrders();
         Task<IEnumerable<CustomerOrderRowVM>> GetCustomerOrders();
         Task<IEnumerable<DeliveryScheduleVM>> GetSchedules(long customerOrderId);
 

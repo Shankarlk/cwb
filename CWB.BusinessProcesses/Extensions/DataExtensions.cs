@@ -11,7 +11,7 @@ namespace CWB.BusinessProcesses.Extensions
         {
             services.AddDbContext<BusinessProcessesDbContext>(options =>
             {
-                options.UseMySql(configuration.GetConnectionString("AppDB"), ServerVersion.AutoDetect(configuration.GetConnectionString("AppDB")), x => x.MigrationsAssembly("CWB.BusinessProcesses"));
+                //options.UseMySql(configuration.GetConnectionString("AppDB"), ServerVersion.AutoDetect(configuration.GetConnectionString("AppDB")), x => x.MigrationsAssembly("CWB.BusinessProcesses"));
             });
 
         }

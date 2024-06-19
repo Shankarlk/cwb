@@ -776,27 +776,6 @@
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
-      "CWB.BusinessProcesses/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "AutoMapper": "12.0.1",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "CWB.CommonUtils": "1.0.0",
-          "CWB.Extensions": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.25",
-          "Microsoft.EntityFrameworkCore": "5.0.15",
-          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.11.1",
-          "Newtonsoft.Json": "13.0.1",
-          "Pomelo.EntityFrameworkCore.MySql": "5.0.4"
-        },
-        "compile": {
-          "bin/placeholder/CWB.BusinessProcesses.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CWB.BusinessProcesses.dll": {}
-        }
-      },
       "CWB.CommonUtils/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2299,11 +2278,6 @@
         "version.txt"
       ]
     },
-    "CWB.BusinessProcesses/1.0.0": {
-      "type": "project",
-      "path": "../CWB.BusinessProcesses/CWB.BusinessProcesses.csproj",
-      "msbuildProject": "../CWB.BusinessProcesses/CWB.BusinessProcesses.csproj"
-    },
     "CWB.CommonUtils/1.0.0": {
       "type": "project",
       "path": "../CWB.CommonUtils/CWB.CommonUtils.csproj",
@@ -2334,7 +2308,6 @@
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
-      "CWB.BusinessProcesses >= 1.0.0",
       "CWB.CommonUtils >= 1.0.0",
       "CWB.Constants >= 1.0.0",
       "CWB.ExceptionHandling >= 1.0.0",
@@ -2379,9 +2352,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj": {
-              "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.BusinessProcesses\\CWB.BusinessProcesses.csproj"
-            },
             "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj": {
               "projectPath": "D:\\EvolutionSoftware\\CWB-Latest\\CWB\\CWB.CommonUtils\\CWB.CommonUtils.csproj"
             },
