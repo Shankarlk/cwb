@@ -82,5 +82,15 @@ namespace CWB.ProductionPlanWO.Controllers
             WorkOrdersVM singleWO = await _woSerivce.GetSingleWO(Id, tenantId);
             return Ok(singleWO);
         }
+
+        [HttpGet]
+        [Route(ApiRoutes.WO.GetSoWo)]
+        [Produces(AppContentTypes.ContentType,Type =typeof(List<WOSOVM>))]
+        [Authorize(Roles=Roles.ADMIN)]
+        public async Task<IActionResult> GetSoWo(long workOrderId)
+        {
+            var so = await _woSerivce.GetSoWo(workOrderId);
+            return Ok(so);
+        }
     }
 }

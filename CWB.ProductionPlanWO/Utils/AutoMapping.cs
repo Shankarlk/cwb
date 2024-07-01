@@ -16,8 +16,12 @@ namespace CWB.ProductionPlanWO.Utils
                .ForMember(m => m.PartType, m => m.MapFrom(src => src.PartType))
                .ForMember(m => m.Parentlevel, m => m.MapFrom(src => src.Parentlevel))
                .ForMember(m => m.CalcWOQty, m => m.MapFrom(src => src.CalcWOQty))
+               .ForMember(m => m.BuildToStock, m => m.MapFrom(src => src.BuildToStock))
                .ForMember(m => m.PlanCompletionDate, m => m.MapFrom(src => src.PlanCompletionDate))
                .ForMember(m => m.Status, m => m.MapFrom(src => src.Status))
+               .ForMember(m => m.RoutingId, m => m.MapFrom(src => src.RoutingId))
+               .ForMember(m => m.StartingOpNo, m => m.MapFrom(src => src.StartingOpNo))
+               .ForMember(m => m.EndingOpNo, m => m.MapFrom(src => src.EndingOpNo))
                .ForMember(m => m.WODate, m => m.MapFrom(src => src.WODate));
 
             CreateMap<WorkOrdersVM, WorkOrders>()
@@ -28,8 +32,13 @@ namespace CWB.ProductionPlanWO.Utils
                .ForMember(m => m.PartType, m => m.MapFrom(src => src.PartType))
                .ForMember(m => m.Parentlevel, m => m.MapFrom(src => src.Parentlevel))
                .ForMember(m => m.CalcWOQty, m => m.MapFrom(src => src.CalcWOQty))
+               .ForMember(m => m.BuildToStock, m => m.MapFrom(src => src.BuildToStock))
                .ForMember(m => m.PlanCompletionDate, m => m.MapFrom(src => src.PlanCompletionDate))
                .ForMember(m => m.Status, m => m.MapFrom(src => src.Status))
+               .ForMember(m => m.WODate, m => m.MapFrom(src => src.WODate))
+               .ForMember(m => m.RoutingId, m => m.MapFrom(src => src.RoutingId))
+               .ForMember(m => m.StartingOpNo, m => m.MapFrom(src => src.StartingOpNo))
+               .ForMember(m => m.EndingOpNo, m => m.MapFrom(src => src.EndingOpNo))
                .ForMember(m => m.WODate, m => m.MapFrom(src => src.WODate));
 
             CreateMap<WOSOVM, WOSO>()

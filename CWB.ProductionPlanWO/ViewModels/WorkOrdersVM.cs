@@ -13,9 +13,9 @@ namespace CWB.ProductionPlanWO.ViewModels
         public DateTime? WODate { get; set; }
         public long PartId { get; set; }
         public int PartType { get; set; }
-        public int Parentlevel { get; set; }
+        public char Parentlevel { get; set; }
         //public long ManufRMLinkId { get; set; }
-        //public int BuildToStock { get; set; }
+        public char BuildToStock { get; set; }
         //public int TestData { get; set; }
         public int CalcWOQty { get; set; }
         //public int QtyOnHand { get; set; }
@@ -23,9 +23,9 @@ namespace CWB.ProductionPlanWO.ViewModels
         public int Status { get; set; }
         //public int Plan { get; set; }
         public DateTime PlanCompletionDate { get; set; }
-        //public long RoutingId { get; set; }
-        //public int StartingOpNo { get; set; }
-        //public int EndingOpNo { get; set; }
+        public long RoutingId { get; set; }
+        public int StartingOpNo { get; set; }
+        public int EndingOpNo { get; set; }
         //public int CriticalPart { get; set; }
         //public int Urgent { get; set; }
         //public int For_Ref { get; set; }

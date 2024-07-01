@@ -246,6 +246,16 @@ namespace CWB.BusinessAquisition.Services
             var salesOrders = _salesOrderRepository.GetRangeAsync(d => d.TenantId == tenantId && d.CustomerOrderId == customerOrderId);
             return _mapper.Map<IEnumerable<SalesOrderVM>>(salesOrders);
         }
+
+        public async Task<SalesOrderVM> GetSingleSalesOrder(long tenantId, long salesOrderId)
+        {
+            var salesOrders =await _salesOrderRepository.SingleOrDefaultAsync(d => d.Id == salesOrderId);
+            if (salesOrders != null)
+            {
+            return _mapper.Map<SalesOrderVM>(salesOrders);
+            }
+            return new SalesOrderVM { SalesOrderId = -1 };
+        }
         public async Task<IEnumerable<SalesOrderVM>> AllSalesOrders(long tenantId)
         {
             var salesOrders = _salesOrderRepository.GetRangeAsync(d => d.TenantId == tenantId);
@@ -565,9 +575,22 @@ namespace CWB.BusinessAquisition.Services
             }
             else
             {
-                salesOrder = await _salesOrderRepository.UpdateAsync(salesOrder.Id, salesOrder);
+                var so = await _salesOrderRepository.SingleOrDefaultAsync(x => x.Id == salesOrder.Id);
+                if (so == null)
+                {
+                    return salesOrderVm;
+                }
+                so.BalanceSOQty = salesOrder.BalanceSOQty;
+                salesOrder = await _salesOrderRepository.UpdateAsync(salesOrder.Id, so);
             }
+            try
+            {
             await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
             salesOrderVm.CustomerOrderId = salesOrder.Id;
             return salesOrderVm;
         }

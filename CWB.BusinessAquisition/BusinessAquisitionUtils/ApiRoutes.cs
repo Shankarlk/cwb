@@ -11,6 +11,7 @@
         {
             public const string GetPOLogs = Base + "/getpologs/{tenantId}/{customerOrderId}";
             public const string GetSalesOrders = Base + "/getsalesorders/{tenantId}/{customerOrderId}";
+            public const string GetSingleSalesOrder = Base + "/getsinglesalesorder/{tenantId}/{salesOrderId}";
             public const string AllSalesOrders = Base + "/allsalesorders/{tenantId}";
             public const string GetCustomerOrders = Base + "/getcustomerorders/{tenantId}";
             public const string GetSchedules = Base + "/getschedules/{tenantId}/{customerOrderId}";

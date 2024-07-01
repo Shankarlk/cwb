@@ -46,7 +46,7 @@ namespace CWB.ProductionPlanWO.Services
                 if (wo.Id == 0)
                 {
                     wo.WODate = DateTime.Now;
-                    wo.WONumber = "WO_" + wo.WODate.Value.ToString("yyyyMMddHHmmss");
+                    wo.WONumber = "WO_" + wo.WODate.Value.ToString("yyyyMMddHHmmssffff");
                     wo.Status = 1;
                     try
                     {
@@ -58,10 +58,24 @@ namespace CWB.ProductionPlanWO.Services
                         string msg = ex.Message;
                     }
                 }
-                //else
-                //{
-                //    wo = await _workOrderRepository.UpdateAsync(wo.Id, wo);
-                //}
+                else
+                {
+                    //wo.WODate = DateTime.Now;
+                    var wkord = await _workOrderRepository.SingleOrDefaultAsync(x => x.Id == wo.Id);
+                    if(wkord == null)
+                    {
+                        return workOrdersVM;
+                    }
+                    wkord.CalcWOQty = wo.CalcWOQty;
+                    wkord.PlanCompletionDate = wo.PlanCompletionDate;
+                    wkord.BuildToStock = wo.BuildToStock;
+                    wkord.Parentlevel = wo.Parentlevel;
+                    wkord.Status = wo.Status;
+                    wkord.RoutingId = wo.RoutingId;
+                    wkord.StartingOpNo = wo.StartingOpNo;
+                    wkord.EndingOpNo = wo.EndingOpNo;
+                    wo = await _workOrderRepository.UpdateAsync(wo.Id, wkord);
+                }
                 try
                 {
                     await _unitOfWork.CommitAsync();
@@ -115,6 +129,8 @@ namespace CWB.ProductionPlanWO.Services
                     }
                 }
                 item.WOID = wo.Id;
+                item.WONumber = wo.WONumber;
+
             }
             return workOrdersVM;
         }
@@ -166,6 +182,19 @@ namespace CWB.ProductionPlanWO.Services
               return _mapper.Map<WorkOrdersVM>(singlewo);
             }
             return new WorkOrdersVM { WOID = -1 };
+        }
+
+        public async Task<IEnumerable<WOSOVM>> GetSoWo(long workOrderId)
+        {
+            var so = _wosoRepository.GetRangeAsync(s => s.WorkOrderId == workOrderId).OrderBy(s => s.Id);
+            try
+            {
+                return _mapper.Map<IEnumerable<WOSOVM>>(so);
+            }
+            catch (Exception ex)
+            {
+                return new List<WOSOVM>();                
+            }
         }
     }
 }

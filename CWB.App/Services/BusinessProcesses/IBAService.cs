@@ -19,6 +19,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         Task<IEnumerable<POLogVM>> GetPOLogs(long customerOrderId);
         Task<IEnumerable<SalesOrderVM>> GetSalesOrders(long customerOrderId);
+        Task<SalesOrderVM> GetOneSO(long salesOrderId);
         Task<IEnumerable<SalesOrderVM>> AllSalesOrders();
         Task<IEnumerable<CustomerOrderRowVM>> GetCustomerOrders();
         Task<IEnumerable<DeliveryScheduleVM>> GetSchedules(long customerOrderId);

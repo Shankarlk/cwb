@@ -20,6 +20,7 @@ namespace CWB.ProductionPlanWO.Utils
             public const string HelloWorld = Base + "/helloworld";
             public const string AllWorkOrders = Base + "/allworkorders/{tenantId}";
             public const string GetSingleWorkOrder = Base + "/getsingleworkorder/{Id}/{tenantId}";
+            public const string GetSoWo = Base + "/getsowo/{workOrderId}";
             public const string PostWOSORel = Base + "/wosorel";
         }
     }

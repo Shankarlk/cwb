@@ -14,6 +14,7 @@ namespace CWB.App.Models.BusinessProcesses
         public long WorkOrderId { get; set; }
         //public long DeliveryScheduleId { get; set; }
         public string? SONumber { get; set; }
+        public string? PoNumber { get; set; }
         //public long ScheduleId { get; set; }
         public string? Comment { get; set; }
 
@@ -37,6 +38,7 @@ namespace CWB.App.Models.BusinessProcesses
 
         public long PartId { get; set; }
         public string? PartNo { get; set; } = string.Empty;
+        public string? PartDesc { get; set; } = string.Empty;
 
         public int RequiredQuantity { get; set; }
 

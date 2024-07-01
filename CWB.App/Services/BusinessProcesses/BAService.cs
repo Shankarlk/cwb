@@ -99,7 +99,12 @@ namespace CWB.App.Services.BusinessProcesses
             return await RestHelper<List<SalesOrderVM>>.GetAsync(uri, headers);
         }
 
-
+        public async Task<SalesOrderVM> GetOneSO(long salesOrderId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getsinglesalesorder/{tenantId}/{salesOrderId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<SalesOrderVM>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<DeliveryScheduleVM>> GetSchedules(long customerOrderId)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getschedules/{tenantId}/{customerOrderId}");

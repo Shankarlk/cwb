@@ -37,7 +37,7 @@ namespace CWB.ProductionPlanWO.Configurations
             builder
               .Property(t => t.Parentlevel)
               .HasColumnName("Parentlevel")
-              .HasDefaultValue(0);
+              .HasDefaultValue('N');
             builder
               .Property(t => t.ManufRMLinkId)
               .HasColumnName("ManufRMLinkId")

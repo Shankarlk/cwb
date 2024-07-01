@@ -56,6 +56,16 @@ namespace BAapi.Controllers
         }
 
         [HttpGet]
+        [Route(ApiRoutes.Aquisition.GetSingleSalesOrder)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(SalesOrderVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetSingleSalesOrder(long tenantId,long salesOrderId)
+        {
+            var pologs = await _baService.GetSingleSalesOrder(tenantId,salesOrderId);
+            return Ok(pologs);
+        }
+
+        [HttpGet]
         [Route(ApiRoutes.Aquisition.GetCustomerOrders)]
         [Produces(AppContentTypes.ContentType, Type = typeof(List<CustomerOrderVM>))]
         [Authorize(Roles = Roles.ADMIN)]

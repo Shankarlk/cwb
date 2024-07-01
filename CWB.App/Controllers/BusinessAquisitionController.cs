@@ -63,11 +63,30 @@ namespace CWB.App.Controllers
             workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
             if (workOrdersVM.PartType == 1)
             {
-                workOrdersVM.Parentlevel = 1;
+                workOrdersVM.Parentlevel = 'N';
             }
             else
             {
-                workOrdersVM.Parentlevel = 2;
+                var mpBOM = await _masterService.BOMS(workOrdersVM.PartId.ToString());
+                if (mpBOM != null && mpBOM.Any())
+                {
+                    foreach (var bom in mpBOM)
+                    {
+                        var assy = await _masterService.GetManufPart((int)bom.BOMPartId);
+                        if (assy != null)
+                        {
+                            workOrdersVM.Parentlevel = 'Y';
+                        }
+                        else
+                        {
+                            workOrdersVM.Parentlevel = 'N';
+                        }
+                    }
+                }
+                else
+                {
+                    workOrdersVM.Parentlevel = 'Y';
+                }
             }
             var postWO = await _baService.PostWO(workOrdersVM);
             return Ok(postWO);
@@ -82,11 +101,31 @@ namespace CWB.App.Controllers
                 workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
                 if (workOrdersVM.PartType == 1)
                 {
-                    workOrdersVM.Parentlevel = 1;
+                    workOrdersVM.Parentlevel = 'N';
                 }
                 else
                 {
-                    workOrdersVM.Parentlevel = 2;
+                    //workOrdersVM.Parentlevel = 'Y';
+                    var mpBOM = await _masterService.BOMS(workOrdersVM.PartId.ToString());
+                    if(mpBOM != null && mpBOM.Any() )
+                    {
+                        foreach (var bom in mpBOM)
+                        {
+                            var assy = await _masterService.GetManufPart((int)bom.BOMPartId);
+                            if (assy != null)
+                            {
+                                workOrdersVM.Parentlevel = 'Y';
+                            }
+                            else
+                            {
+                                workOrdersVM.Parentlevel = 'N';
+                            }
+                        }
+                    }
+                    else
+                    {
+                        workOrdersVM.Parentlevel = 'Y';
+                    }
                 }
             }
             var postWO = await _baService.MultiplePostWO(listworkOrdersVM);

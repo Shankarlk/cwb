@@ -1,6 +1,7 @@
 ﻿using CWB.App.Services.BusinessProcesses;
 using CWB.App.Services.CompanySettings;
 using CWB.App.Services.Masters;
+using CWB.App.Services.ProductionPlanWo;
 using CWB.App.Services.Routings;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@ namespace CWB.App.AppExtensions
         public static void ConfigureAppDI(this IServiceCollection services)
         {
             services.AddTransient<IBAService, BAService>();
+            services.AddTransient<IWOService, WOService>();
             services.AddTransient<IMastersServices, MastersServices>();
             services.AddTransient<IRoutingService, RoutingService>();
             services.AddTransient<IOperationService, OperationService>();

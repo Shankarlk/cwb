@@ -13,9 +13,9 @@ namespace CWB.ProductionPlanWO.Domain
         public DateTime? WODate { get; set; }
         public long PartId { get; set; }
         public int PartType { get; set; }
-        public int Parentlevel { get; set; }
+        public char Parentlevel { get; set; }
         public long ManufRMLinkId { get; set; }
-        public int BuildToStock { get; set; }
+        public char BuildToStock { get; set; }
         public int TestData { get; set; }
         public int CalcWOQty { get; set; }
         public int QtyOnHand { get; set; }

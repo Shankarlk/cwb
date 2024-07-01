@@ -7,7 +7,7 @@ namespace CWB.ProductionPlanWO.ViewModels
 {
     public class WOSOVM
     {
-        public int WOSOId { get; set; }
+        public long WOSOId { get; set; }
         public long WorkOrderId { get; set; }
         public long SalesOrderId { get; set; }
     }
