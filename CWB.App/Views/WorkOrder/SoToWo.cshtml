@@ -95,8 +95,7 @@
                                     </button>
                                     <!-- =============================  -->
                                     <button id="btnGW" class="btn btn-sm btn-outline-purple" title=""
-                                            data-plugin="tippy" data-tippy-placement="top"
-                                            data-bs-toggle="modal" data-bs-target="#woc-partno">
+                                            data-plugin="tippy" data-tippy-placement="top">
                                         Generate WO for
                                         Selected
                                         SO
@@ -109,12 +108,11 @@
                                         Planning Session & Exit
                                     </button>
                                     <!-- =============================  -->
-                                    <button class="btn btn-sm btn-outline-purple" title=""
-                                            data-plugin="tippy" data-tippy-placement="top"
-                                            data-bs-toggle="modal" data-bs-target="#">
+                                    <a class="btn btn-sm btn-outline-purple" title="" asp-controller="WorkOrder"
+                                            asp-action="ProcPlan">
                                         Initiate Detailed
                                         Production Planning
-                                    </button>
+                                    </a>
                                     <!-- =============================  -->
                                 </div>
                             </div>
@@ -250,6 +248,7 @@
                                 <input id="PartId" name="PartId" class="form-control  form-control-sm" type="text" title="" data-plugin="tippy"
                                        data-tippy-placement="top" value="0" hidden>
                                 <input id="reqdate" type="text" value="" hidden />
+                                <input id="p1planComplDate" type="date" hidden />
                                 <input id="woStatus" type="text" value="" hidden />
                                 <!--<button class="btn btn-sm btn-primary ">Save</button>-->
                             </div>
@@ -320,7 +319,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Creation for SO Ref xxxx for Part No ./
+                    Work Order Creation for <span id="p2soNumber"></span> for Part No ./
                     Desc <span id="p2PartNo"></span> to completed by <span id="p2PlanComplDate"></span>
                 </h5>
                 <button type="button" id="btnPop2Close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -342,7 +341,7 @@
                     <div class="col-md-3 mb-2">
                         <label class="form-label"> Qnty on Hand</label>
                         <input id="p2QtyOnHand" class="form-control form-control-sm" type="text" title="" data-plugin="tippy"
-                               data-tippy-placement="top" readonly>
+                               data-tippy-placement="top" value="0" readonly>
                     </div>
                     <!-- ========================= -->
                     <div class="col-md-3 mb-2">
@@ -436,7 +435,7 @@
                     <label class="form-label col-md-2 text-end"> Sum WO Qnty</label>
                     <div class="col-md-3 mb-2">
                         <input class="form-control form-control-sm" type="text" title="" data-plugin="tippy"
-                               data-tippy-placement="top" id="popup2Sum" value="0">
+                               data-tippy-placement="top" id="popup2Sum" value="0" readonly>
                     </div>
                     <!-- ========================= -->
                     <div class="col-md-7 mb-2 text-end">
@@ -459,8 +458,8 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Creation for SO Ref xxxx for Part No ./
-                    Desc <span id="partNo"></span> to completed by <span id="woCompletedBy"></span>
+                    Work Order Creation for <span id="p3soNumber"></span> for Part No ./
+                    Desc <span id="p3partNo"></span> to completed by <span id="woCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -563,6 +562,7 @@
                         <input type="text" id="partId" hidden />
                         <input type="text" id="partType" hidden />
                         <input type="text" id="p3Status" hidden />
+                        <input type="text" id="p3ReloadOption" hidden />
                         <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
                     </div>
                     <!-- ========================= -->
@@ -581,7 +581,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Creation for SO Ref xxxx for Part No ./
+                    Work Order Creation for <span id="p3MsoNumber"></span> for Part No ./
                     Desc <span id="ManualpartNo"></span> to completed by <span id="ManualwoCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -705,7 +705,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Creation for SO Ref xxxx for Part No ./
+                    Work Order Creation for <span id="p3NsoNumber"></span> for Part No ./
                     Desc <span id="NewpartNo"></span> to completed by <span id="NewwoCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1047,7 +1047,8 @@
                        data-plancompletiondatestr='{planCompletionDateStr}'
                        data-requiredquantity={requiredQuantity}
                        data-calwoqty={calcWOQty}
-                       data-p3status={status}
+                       data-ptstatus={status}
+                       data-nreloadoption={reloadOption}
                        data-bs-target="#popup3">
                     Edit
                     </a>

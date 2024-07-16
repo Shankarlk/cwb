@@ -26,6 +26,10 @@ namespace CWB.ProductionPlanWO.Configurations
                 .HasColumnName("For_Ref")
                 .HasDefaultValue(0);
             builder
+                .Property(p => p.WorkOrderId)
+                .HasColumnName("WorkOrderId")
+                .IsRequired();
+            builder
                 .Property(p => p.PartId)
                 .HasColumnName("PartId")
                 .IsRequired();

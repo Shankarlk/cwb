@@ -306,7 +306,13 @@ namespace CWB.App.Services.Masters
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<ItemMasterPartVM>>.GetAsync(uri, headers);
         }
-
+        //itemmasterpartsbyid
+        public async Task<MasterPartVM> ItemMasterPartById(int partid)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/itemmasterpartsbyid/{partid}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<MasterPartVM>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<SelectPartVM>> SelectParts()
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/selectparts/{tenantId}");

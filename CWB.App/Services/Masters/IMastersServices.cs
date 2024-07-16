@@ -65,6 +65,7 @@ namespace CWB.App.Services.Masters
         Task<MPBomVM> GetBOM(string id);
 
         Task<IEnumerable<ItemMasterPartVM>> ItemMasterParts();
+        Task<MasterPartVM> ItemMasterPartById(int partid);
 
         Task<IEnumerable<SelectPartVM>> SelectParts();
 

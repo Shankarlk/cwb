@@ -500,6 +500,16 @@ namespace CWB.Masters.Controllers
         }
 
         [HttpGet]
+        [Route(ApiRoutes.RawMaterialDetail.GetMasterPartById)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(MasterPartVM))]
+        public async Task<MasterPartVM> GetMasterPartById(int partid)
+        {
+            var masterpart = await _masterPartService.GetMasterPart(partid);
+            return masterpart;
+        }
+
+
+        [HttpGet]
         [Route(ApiRoutes.RawMaterialDetail.GetMasterParts)]
         [Produces(AppContentTypes.ContentType, Type = typeof(List<ItemMasterPartVM>))]
         public async Task<IEnumerable<ItemMasterPartVM>> GetMasterPartView(long TenantId)

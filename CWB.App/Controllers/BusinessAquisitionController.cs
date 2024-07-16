@@ -1,7 +1,9 @@
 ﻿using CWB.App.Models.BusinessProcesses;
 using CWB.App.Models.ItemMaster;
+using CWB.App.Models.Routing;
 using CWB.App.Services.BusinessProcesses;
 using CWB.App.Services.Masters;
+using CWB.App.Services.Routings;
 using CWB.Constants.UserIdentity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,11 +41,13 @@ namespace CWB.App.Controllers
         private readonly ILogger<BusinessAquisitionController> _logger;
         private readonly IBAService _baService;
         private readonly IMastersServices _masterService;
-        public BusinessAquisitionController(ILogger<BusinessAquisitionController> logger, IBAService baService,IMastersServices masterServices)
+        private readonly IRoutingService _routingService;
+        public BusinessAquisitionController(ILogger<BusinessAquisitionController> logger, IBAService baService,IMastersServices masterServices, IRoutingService routingService)
         {
             _logger = logger;
             _baService = baService;
             _masterService = masterServices;
+            _routingService = routingService;
         }
         public IActionResult Index()
         {
@@ -61,9 +65,31 @@ namespace CWB.App.Controllers
         {
             ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)workOrdersVM.PartId);
             workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
+            RoutingVM rout = new RoutingVM();
+            var resultList = await _routingService.Routings((int)workOrdersVM.PartId);
+            foreach (var item in resultList)
+            {
+                if(item.PreferredRouting == 1)
+                {
+                    rout = item;
+                }
+                else
+                {
+                    rout= (resultList).Take(1).FirstOrDefault();
+                }
+            }
+            var result = (await _routingService.RoutingSteps(rout.RoutingId)).Take(1).FirstOrDefault();
+            workOrdersVM.RoutingId = rout.RoutingId;
+            workOrdersVM.StartingOpNo = result?.StepOperation != null
+                                        ? int.TryParse(result.StepOperation, out int opNo) ? opNo : 0
+                                        : 0;
+            workOrdersVM.EndingOpNo = result?.StepOperation != null
+                                        ? int.TryParse(result.StepOperation, out int eopNo) ? eopNo : 0
+                                        : 0;
             if (workOrdersVM.PartType == 1)
             {
                 workOrdersVM.Parentlevel = 'N';
+                
             }
             else
             {
@@ -89,6 +115,35 @@ namespace CWB.App.Controllers
                 }
             }
             var postWO = await _baService.PostWO(workOrdersVM);
+            List<BOMTempVM> bompost = new List<BOMTempVM>();
+            if (postWO.WOID > 0)
+            {
+
+                ManufacturedPartNoDetailVM mf = await _masterService.GetManufPart((int)postWO.PartId);
+                string partype = "";
+                if (postWO.PartType == 1)
+                {
+                    partype = "Manf";
+                }
+                else if (postWO.PartType == 2)
+                {
+                    partype = "Assy";
+                }
+                else
+                {
+                    partype = manuf.MasterPartType;
+                }
+                BOMTempVM bomdata = new BOMTempVM
+                {
+                    WorkOrderId = postWO.WOID,
+                    PartId = postWO.PartId,
+                    PartType = partype,
+                    Parentlevel = postWO.Parentlevel,
+                    TenantId = postWO.TenantId
+                };
+                bompost.Add(bomdata);
+            }
+            var postbom = await _baService.BOMTempPOst(bompost);
             return Ok(postWO);
         }
 
@@ -99,6 +154,27 @@ namespace CWB.App.Controllers
             {
                 ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)workOrdersVM.PartId);
                 workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
+                RoutingVM rout = new RoutingVM();
+                var resultList = await _routingService.Routings((int)workOrdersVM.PartId);
+                foreach (var item in resultList)
+                {
+                    if (item.PreferredRouting == 1)
+                    {
+                        rout = item;
+                    }
+                    else
+                    {
+                        rout = (resultList).Take(1).FirstOrDefault();
+                    }
+                }
+                var result = (await _routingService.RoutingSteps(rout.RoutingId)).Take(1).FirstOrDefault();
+                workOrdersVM.RoutingId = rout.RoutingId;
+                workOrdersVM.StartingOpNo = result?.StepOperation != null
+                                            ? int.TryParse(result.StepOperation, out int opNo) ? opNo : 0
+                                            : 0;
+                workOrdersVM.EndingOpNo = result?.StepOperation != null
+                                            ? int.TryParse(result.StepOperation, out int eopNo) ? eopNo : 0
+                                            : 0;
                 if (workOrdersVM.PartType == 1)
                 {
                     workOrdersVM.Parentlevel = 'N';
@@ -129,6 +205,39 @@ namespace CWB.App.Controllers
                 }
             }
             var postWO = await _baService.MultiplePostWO(listworkOrdersVM);
+           
+            List<BOMTempVM> bompost = new List<BOMTempVM>();
+            foreach (var item in postWO)
+            {
+                if (item.WOID > 0)
+                {
+
+                    ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)item.PartId);
+                    string partype = "";
+                    if(item.PartType == 1)
+                    {
+                        partype = "Manf";
+                    }
+                    else if(item.PartType == 2)
+                    {
+                        partype = "Assy";
+                    }
+                    else
+                    {
+                        partype = manuf.MasterPartType;
+                    }
+                    BOMTempVM bomdata = new BOMTempVM
+                    {
+                        WorkOrderId = item.WOID,
+                        PartId = item.PartId,
+                        PartType = partype,
+                        Parentlevel = item.Parentlevel,
+                        TenantId = item.TenantId
+                    };
+                    bompost.Add(bomdata);
+                }
+            }
+            var postbom = await _baService.BOMTempPOst(bompost);
             return Ok(postWO);
             //return Ok(listworkOrdersVM);
         }
@@ -385,6 +494,13 @@ namespace CWB.App.Controllers
         public async Task<bool> AddSalesOrders(long customerOrderId)
         {
             return await _baService.AddSalesOrders(customerOrderId);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> CheckPartNo(long partId)
+        {
+            var result = await _baService.CheckPartNo(partId);
+            return Json(!result);
         }
 
     }

@@ -15,6 +15,7 @@ namespace CWB.Masters.ViewModels.ItemMaster
         public string StatusChangeReason { get; set; }
         public string RevNo { get; set; }
         public DateTime RevDate { get; set; }
+        public DateTime CreationDt { get; set; }
 
         public long TenantId { get; set; }
 

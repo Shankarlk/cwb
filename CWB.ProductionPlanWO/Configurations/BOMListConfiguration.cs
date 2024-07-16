@@ -21,6 +21,45 @@ namespace CWB.ProductionPlanWO.Configurations
                 .Property(b => b.ParentWoId)
                 .HasColumnName("ParentWoId");
             builder
+                .Property(b => b.Child_Part_No_ID)
+                .HasColumnName("Child_Part_No_ID");
+            builder
+                .Property(b => b.Child_Part_No_Type)
+                .HasColumnName("Child_Part_No_Type");
+            builder
+                .Property(b => b.Manf_RM_Link_ID)
+                .HasColumnName("Manf_RM_Link_ID");
+            builder
+                .Property(b => b.Calc_Qnty)
+                .HasColumnName("Calc_Qnty");
+            builder
+                .Property(b => b.QtyOnHand)
+                .HasColumnName("QtyOnHand");
+            builder
+                .Property(b => b.Plan_Qnty)
+                .HasColumnName("Plan_Qnty");
+            builder
+                .Property(b => b.Plan_Start_Dt)
+                .HasColumnName("Plan_Start_Dt");
+            builder
+                .Property(b => b.PlanReceiptDate)
+                .HasColumnName("PlanReceiptDate");
+            builder
+                .Property(b => b.CalcReceiptDate)
+                .HasColumnName("CalcReceiptDate");
+            builder
+                .Property(b => b.Manf_Days_Avl)
+                .HasColumnName("Manf_Days_Avl");
+            builder
+                .Property(b => b.Manf_Days_Reqd)
+                .HasColumnName("Manf_Days_Reqd");
+            builder
+                .Property(b => b.CriticalPart)
+                .HasColumnName("CriticalPart");
+            builder
+                .Property(b => b.AddnQtyUser)
+                .HasColumnName("AddnQtyUser");
+            builder
                 .Property(b => b.ChildWoId)
                 .HasColumnName("ChildWoId");
             builder

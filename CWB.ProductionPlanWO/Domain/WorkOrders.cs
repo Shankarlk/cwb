@@ -16,19 +16,21 @@ namespace CWB.ProductionPlanWO.Domain
         public char Parentlevel { get; set; }
         public long ManufRMLinkId { get; set; }
         public char BuildToStock { get; set; }
-        public int TestData { get; set; }
+        public char TestData { get; set; }
         public int CalcWOQty { get; set; }
         public int QtyOnHand { get; set; }
         public int AddnOtyUser { get; set; }
         public int Status { get; set; }
-        public int Plan { get; set; }
+        public int PlanWOQnty { get; set; }
         public DateTime PlanCompletionDate { get; set; }
         public long RoutingId { get; set; }
         public int StartingOpNo { get; set; }
         public int EndingOpNo { get; set; }
+        public string ReloadOption { get; set; }
+        public int Active { get; set; }
         public int CriticalPart { get; set; }
         public int Urgent { get; set; }
-        public int For_Ref { get; set; }
+        public char For_Ref { get; set; }
         public int ManufDaysAvailable { get; set; }
         public int ManufDaysRequired { get; set; }
         public int Changed { get; set; }

@@ -25,12 +25,28 @@ function loadSO() {
 
 function loadWO() {
     api.getbulk("/WorkOrder/AllWorkOrders").then((data) => {
+        data = data.filter(item => item.active !== 2);
         var tablebody = $("#WorkOrder tbody");
         $(tablebody).html("");//empty tbody
+                                           
+
         console.log(data);
         for (i = 0; i < data.length; i++) {
             data[i].strStatus = WoOrdStatus[data[i].status];
             $(tablebody).append(AppUtil.ProcessTemplateData("WorkOrderRow", data[i]));
+        }
+    }).catch((error) => {
+    });
+}
+
+function reloadWO(reloadOption, partid) {
+    api.getbulk("/WorkOrder/ReloadWo?reloadoption=" + reloadOption + "&partid=" + partid).then((data) => {
+        var tablebody = $("#MulitpleWOs tbody");
+        $(tablebody).html("");//empty tbody
+        console.log(data);
+        for (i = 0; i < data.length; i++) {
+            data[i].strStatus = WoOrdStatus[data[i].status];
+            $(tablebody).append(AppUtil.ProcessTemplateData("MultipleWoRow", data[i]));
         }
     }).catch((error) => {
     });
@@ -80,6 +96,9 @@ $(document).ready(function () {
 
     loadSO();
     loadWO();
+    //$("#initiateDetailedbtn").on("click", function () {
+
+    //});
     $("#btnAG").on("click", function () {
         var checkboxes = $("#SalesOrders1 tbody input[type='checkbox']:checked"); // Select only checked checkboxes
         var selectedRowsData = {};
@@ -215,28 +234,81 @@ $(document).ready(function () {
 
     $("#btnGW").on("click", function () {
         var checkboxes = $("#SalesOrders1 tbody input[type='checkbox']:checked"); // Select only checked checkboxes
-        var selectedRowsData = [];
+        var selectedRowsData = {};
+        var partIdMap = {};
+        var SalesorderId = [];
+        var WoSoRel = [];
+        var WoSOMethod = {};
 
         checkboxes.each(function (index, checkbox) {
             var row = checkbox.parentNode.parentNode;
             var rowData = {
                 salesOrderId: parseInt($(row).find("td:eq(1)").text()),
-                sonumber: $(row).find("td:eq(4)").text(),
+                wonumber: "",
                 partId: parseInt($(row).find("td:eq(3)").text()),
-                totalWOQty: parseInt($(row).find("td:eq(8)").text()),
-                balanceSOQty: parseInt($(row).find("td:eq(9)").text()),
-                planCompletionDateStr: $(row).find("td:eq(11)").text(),
+                partType: 0,
+                partlevel: ' ',
+                calcWOQty: parseInt($(row).find("td:eq(8)").text()),
                 planCompletionDate: $(row).find("td:eq(12)").text()
             };
+            var balanceSoQty = parseInt($(row).find("td:eq(9)").text())
+            if (balanceSoQty > 0) {
+                rowData.calcWOQty = balanceSoQty;
+            }
+            // Group by PartId
+            if (partIdMap[rowData.partId]) {
+                partIdMap[rowData.partId].calcWOQty += rowData.calcWOQty;
+                SalesorderId.push([rowData.partId, rowData.salesOrderId]);
+                let currentDate = new Date(rowData.planCompletionDate);
+                let storedDate = new Date(partIdMap[rowData.partId].planCompletionDate);
+                if (currentDate < storedDate) {
+                    partIdMap[rowData.partId].planCompletionDate = rowData.planCompletionDate;
+                    partIdMap[rowData.partId].salesOrderId = rowData.salesOrderId;
+                }
+            } else {
+                partIdMap[rowData.partId] = rowData;
+                SalesorderId.push([rowData.partId, rowData.salesOrderId]);
+            }
+        });
 
-            selectedRowsData.push(rowData);        });
+        selectedRowsData = Object.values(partIdMap);
+
         console.log(selectedRowsData);
+
         if (selectedRowsData.length === 1) {
-            console.log("popup2");
-        }
-        else {
-            console.log("popup1");
-            MulitpleSoTo1Wo(selectedRowsData);
+            // Single checkbox selected, post to WOpost
+            api.post("/businessaquisition/WOpost", selectedRowsData[0]).then((data) => {
+                // Handle success if needed
+                loadWO();
+                SalesorderId.forEach(function (arr, outerIndex) {
+                    arr.forEach(function (ele, i) {
+                        if (ele === data.partId) {
+                            //WoSoRel.push([arr[i+1], data.woid]);
+                            WoSoRel.push({
+                                workOrderId: data.woid,
+                                salesOrderId: arr[i + 1]
+                            });
+                        }
+                    });
+                });
+                console.log(WoSoRel);
+                WoSOMethod = Object.values(WoSoRel);
+                $.ajax({
+                    type: "POST",
+                    url: '/BusinessAquisition/PostWoSoRel',
+                    contentType: "application/json; charset=utf-8",
+                    headers: { 'Content-Type': 'application/json' },
+                    data: JSON.stringify(WoSOMethod),
+                    dataType: "json",
+                    success: function (result) {
+                        window.locationre = result.url;
+                    }
+                });
+                console.log(WoSOMethod);
+            }).catch((error) => {
+                AppUtil.HandleError("WOForm", error);
+            });
+
         }
 
     });
@@ -319,8 +391,19 @@ $(document).ready(function () {
         var reqdate = $('#reqdate').val();
         var status = $('#woStatus').val();
         var selectedData = {};
-        if (planwoqty > soqty) {
-            alert("Plan WO Qnty is greater than Sales Order Qnty");
+        var rstDt = new Date(Date.parse($('#p1planComplDate').val()));
+        const restrictDt = new Date(rstDt); // Get today's date
+
+        // Check if WoComplDate is after today's date
+        if (WoComplDate < restrictDt) {
+            alert("Please Don't enter the previous completion date.");
+            $('#WoComplDate').val(""); // Clear the invalid date
+            return false; // Prevent further processing if date is invalid
+        }
+        
+
+        if (planwoqty < soqty) {
+            alert("Plan WO Qnty should be Greater than Or Equal To Sales Order Qnty");
             return false;
         }
         else {
@@ -411,6 +494,10 @@ $(document).ready(function () {
     // Event listener for when the modal is shown
     $('#woc-partno').on('shown.bs.modal', function (event) {
         // Select all checkboxes in the table with the class 'rowMCheckbox'
+        var soqty = $('#SoQty').val();
+        var qntyonhand = $('#QtyOnHand').val();
+        var balqnty = soqty - qntyonhand;
+        $('#BalQty').val(balqnty);
         const checkboxes = document.querySelectorAll('#multipleSO .rowMCheckbox');
        
         // Define the function to update the total quantity
@@ -435,10 +522,10 @@ $(document).ready(function () {
             // Update the values of the input fields with the calculated total
             if (total > 0) {
                 $('#SoQty').val(total);
-                $('#SalesOrderId').val(soid);
-                $('#reqdate').val(reqdate);
-                $('#PlanWoQty').val(total);
             }
+            $('#SalesOrderId').val(soid);
+            $('#reqdate').val(reqdate);
+            $('#PlanWoQty').val(total);
         }
         // Calculate the initial total when the modal is first shown
         updateTotalQty();
@@ -488,15 +575,27 @@ $(document).ready(function () {
         var formattedDate = WoComplDate.toISOString();
         var requestInProgress = false;
         let totalQuantity = 0;
+        var balsoqnty = $('#p2BalQty').val();
+        var qntyOnhand = $('#p2QtyOnHand').val();
+        var balmanuf = balsoqnty - qntyOnhand;
+        $('#p2BaltoManuf').val(balmanuf);
+        //document.querySelectorAll('#MulitpleWOs tbody tr').forEach(row => {
+        //    const quantity = parseInt(row.cells[1].textContent);
+        //    if (!isNaN(quantity)) {
+        //        totalQuantity += quantity;
+        //    }
+        //});
+        $('#popup2Sum').val(planwoqty);
 
-        document.querySelectorAll('#MulitpleWOs tbody tr').forEach(row => {
-            const quantity = parseInt(row.cells[1].textContent);
-            if (!isNaN(quantity)) {
-                totalQuantity += quantity;
-            }
+        var sonumber = "";
+
+        api.get("/WorkOrder/GetSoNumber?soid=" + soid).then(async (data) => {
+            console.log(data);
+            sonumber = await data.soNumber;
+            $('#p2soNumber').text(sonumber);
         });
-        $('#popup2Sum').val(totalQuantity);
-               
+
+        
 
 
         $('input[type=radio][name=radioWO]').change(function () {
@@ -507,16 +606,21 @@ $(document).ready(function () {
             } else if (this.value == "3") {
                 $('#equaldiv').hide();
                 $('#popup3ManualMultiple').modal('show');
+                $('#p3MsoNumber').text(sonumber);
                 $("#ManualpartNo").text(partNo);
                 $("#ManualwoCompletedBy").text(Compldt);
                 $("#ManualTotalSoQty").val(planwoqty);
                 $("#ManualPlanWoQty").val(planwoqty);
+                $("#ManualWoComplDt").val(Compldt.split("-").join("-"));
                 $("#Manualwoid").val(woid);
                 $("#Manualsoid").val(soid);
                 $("#ManualpartId").val(partid);
                 $("#ManualpartType").val(parttype);
                 $("#ManualWoNumber").val(wonumber);
                 $("#ManualStatus").val(wostatus);
+                $('#ManualBalSoQty').val(balsoqnty);
+                $('#ManualQtyOnHand').val(qntyOnhand);
+
             } else {
                 $('#equaldiv').hide();
             }
@@ -625,11 +729,12 @@ $(document).ready(function () {
         });
 
         $("#MultipleWo").on("click", function () {
-            if (requestInProgress) return;
-            requestInProgress = true;
+            //if (requestInProgress) return;
+            //requestInProgress = true;
             noofWOCreation.forEach((wo) => {
                 wo.partId = parseInt(partid);
                 wo.salesOrderId = parseInt(soid);
+                wo.reloadOption = "EQD";
             });
             var tdata = [];
             if (noofWOCreation.length > 1) {
@@ -674,6 +779,29 @@ $(document).ready(function () {
                                 requestInProgress = false;
                             }
                         });
+                        var woinactive = {
+                            woid: parseInt(woid),
+                            salesOrderId: parseInt(soid),
+                            wonumber: wonumber,
+                            partId: parseInt(partid),
+                            partType: parseInt(parttype),
+                            parentlevel: '',
+                            calcWOQty: parseInt(planwoqty),
+                            planCompletionDate: formattedDate,
+                            routingId: parseInt(0),
+                            startingOpNo: parseInt(0),
+                            endingOpNo: parseInt(0),
+                            reloadOption: "inactive",
+                            status: parseInt(1),
+                            active: 2
+                        };
+                        api.post("/businessaquisition/WOpost", woinactive).then((data) => {
+                            console.log(data);
+                            //$('#popup3').modal('hide');
+                            //reloadWO(reloadOption, partid);
+                            loadWO();
+                        }).catch((error) => {
+                        });
 
                     }
                 });
@@ -694,9 +822,13 @@ $(document).ready(function () {
         var partId = relatedTarget.data("partid");
         var partType = relatedTarget.data("parttype");
         var planWOQty = relatedTarget.data("calwoqty");
-        var wostatus = relatedTarget.data("p3status");
-        $("#partNo").text(partNo);
-        $("#woCompletedBy").text(planCompletionDateStr);
+        var wostatus = relatedTarget.data("ptstatus");
+        var reloadopt = relatedTarget.data("nreloadoption");
+        var partno = $("#p2PartNo").text();
+        var sonumber = $("#p2soNumber").text();
+        $("#p3soNumber").text(sonumber);
+        $("#p3partNo").text(partno);
+        $("#woCompletedBy").text(planCompletionDateStr.split("-").reverse().join("-"));
         $("#singleTotalSoQty").val(planWOQty);
         $("#singlePlanWoQty").val(planWOQty);
         $("#woid").val(workOrderId);
@@ -705,6 +837,8 @@ $(document).ready(function () {
         $("#partType").val(partType);
         $("#p3Status").val(wostatus);
         $("#singleWoNumber").val(woNumber);
+        $("#p3ReloadOption").val(reloadopt);
+        $("#singleWoComplDt").val(planCompletionDateStr.split("-").reverse().join("-"));
 
         if (partType === 1) {
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
@@ -768,17 +902,24 @@ $(document).ready(function () {
         var startingOpNo = $("#singleStartOpNo").val();
         var endingOpNo = $("#singleEndOpNo").val();
         var status = parseInt($("#p3Status").val());
-
+        var reloadOption = $("#p3ReloadOption").val();
+        var rstDt = new Date(Date.parse($('#woCompletedBy').text()));
+        const restrictDt = new Date(rstDt);
         if (isNaN(WoComplDate.getTime())) {
             alert("Please Enter the WO Compl Date.");
             return false;
             // or display an error message to the user
-        } else {
+        } else if (WoComplDate < restrictDt) {
+            alert("Wo Complition Date Should Be Greater Than Current Complition Date");
+            return false;
+            // or display an error message to the user
+        }
+        else {
             formattedDate = WoComplDate.toISOString();
         }
 
-        if (planWoQty <= 0 || planWoQty > soqty) {
-            alert("Please Enter a Valid Plan Wo Qnty.");
+        if (planWoQty < soqty) {
+            alert("Plan Wo Qnty Should be Greater or Equal to Total So Qnty.");
             return false;
         }
 
@@ -794,12 +935,14 @@ $(document).ready(function () {
             routingId: parseInt(routingid),
             startingOpNo: parseInt(startingOpNo),
             endingOpNo: parseInt(endingOpNo),
+            reloadOption: reloadOption,
             status: parseInt(status)
         };
 
         api.post("/businessaquisition/WOpost", rowData).then((data) => {
             console.log(data);
             $('#popup3').modal('hide');
+            reloadWO(reloadOption, partid);
         }).catch((error) => {
         });
 
@@ -807,7 +950,10 @@ $(document).ready(function () {
 
 
     $('#popup3ManualMultiple').on('shown.bs.modal', function (event) {
-        
+        var balSoqnty = $('#ManualBalSoQty').val();
+        var QntyOnhand = $('#ManualQtyOnHand').val();
+        var balmanuf = balSoqnty - QntyOnhand;
+        $('#ManualBalToManuf').val(balmanuf);
     });
 
     $('#popup3ManualMultiple').on('hidden.bs.modal', function (event) {
@@ -830,16 +976,23 @@ $(document).ready(function () {
         var startingOpNo = $("#ManualStartOpNo").val();
         var endingOpNo = $("#ManualEndOpNo").val();
         var resultData = [];
+        var rstDt = new Date(Date.parse($('#ManualwoCompletedBy').text()));
+        const restrictDt = new Date(rstDt);
         if (isNaN(WoComplDate.getTime())) {
             alert("Please Enter the WO Compl Date.");
+            return false;
+            // or display an error message to the user
+        }
+        if (WoComplDate < restrictDt) {
+            alert("Wo Complition Date Should Be Greater Than Current Complition Date");
             return false;
             // or display an error message to the user
         } else {
             formattedDate = WoComplDate.toISOString();
         }
 
-        if (planWoQty <= 0 || planWoQty > soqty) {
-            alert("Please Enter a Valid Plan Wo Qnty.");
+        if (planWoQty < soqty) {
+            alert("Plan Wo Qnty Should be Greater or Equal to So Total So Qnty.");
             return false;
         }
 
@@ -851,6 +1004,7 @@ $(document).ready(function () {
             partType: parseInt(parttype),
             parentlevel: '',
             calcWOQty: parseInt(planWoQty),
+            reloadOption: "Manual",
             planCompletionDate: formattedDate,
             routingId: parseInt(routingid),
             startingOpNo: parseInt(startingOpNo),
@@ -876,6 +1030,7 @@ $(document).ready(function () {
     $("#NewWoPopupBtn").on("click", function () {
         var planwoqty = $('#p2totalSoQty').val();
         var wonumber = $('#p2WoNumber').text();
+        var sonumber = $('#p2soNumber').text();
         var woid = $('#p2WOid').val();
         var soid = $('#p2SalesOrderId').val();
         var partid = $('#p2PartId').val();
@@ -885,10 +1040,12 @@ $(document).ready(function () {
         var Compldt = $('#p2PlanComplDate').text();
         var partNo = $('#p2PartNo').text();
         var formattedDate = WoComplDate.toISOString();
-        //var requestInProgress = false;
+        var balsoqnty = $('#p2BalQty').val();
+        var qntyOnhand = $('#p2QtyOnHand').val();
 
         $('#popup3NewWo').modal('show');
         $("#NewpartNo").text(partNo);
+        $("#p3NsoNumber").text(sonumber);
         $("#NewwoCompletedBy").text(Compldt);
         $("#NewTotalSoQty").val(planwoqty);
         $("#NewPlanWoQty").val(planwoqty);
@@ -898,6 +1055,9 @@ $(document).ready(function () {
         $("#NewpartType").val(parttype);
         $("#NewWoStatus").val(wostatus);
         $("#NewWoNumber").val(wonumber);
+        $("#NewBalSoQty").val(balsoqnty);
+        $("#NewQtyOnHand").val(qntyOnhand);
+        $("#NewWoComplDt").val(Compldt.split("-").join("-"));
 
     });
 
@@ -916,16 +1076,18 @@ $(document).ready(function () {
         var startingOpNo = $("#NewStartOpNo").val();
         var endingOpNo = $("#NewEndOpNo").val();
         var resultData = [];
-        if (isNaN(WoComplDate.getTime())) {
-            alert("Please Enter the WO Compl Date.");
+        var rstDt = new Date(Date.parse($('#NewwoCompletedBy').text()));
+        const restrictDt = new Date(rstDt);
+        if (planWoQty < soqty) {
+            alert("Plan Wo Qnty Should be Greater or Equal to So Total So Qnty.");
+            return false;
+        }
+        if (WoComplDate < restrictDt) {
+            alert("Wo Complition Date Should Be Greater Than Current Complition Date");
             return false;
             // or display an error message to the user
         } else {
             formattedDate = WoComplDate.toISOString();
-        }
-        if (planWoQty <= 0 || planWoQty > soqty) {
-            alert("Please Enter a Valid Plan Wo Qnty.");
-            return false;
         }
         var rowData = {
             woid: parseInt(woid),
@@ -936,6 +1098,7 @@ $(document).ready(function () {
             parentlevel: '',
             calcWOQty: parseInt(planWoQty),
             planCompletionDate: formattedDate,
+            reloadOption: "New",
             routingId: parseInt(routingid),
             startingOpNo: parseInt(startingOpNo),
             endingOpNo: parseInt(endingOpNo),
@@ -957,6 +1120,13 @@ $(document).ready(function () {
 
     });
 
+    $('#popup3NewWo').on('shown.bs.modal', function (event) {
+        var balsoq = $("#NewBalSoQty").val();
+        var qntonhand = $("#NewQtyOnHand").val();
+        var balmanuf = balsoq - qntonhand;
+        $("#NewBalToManuf").val(balmanuf);
+
+    });
     $('#popup7').on('shown.bs.modal', function (event) {
         var relatedTarget = $(event.relatedTarget);
         var workOrderId = relatedTarget.data("workorderid");
@@ -1086,8 +1256,9 @@ function EditWo(element) {
     var woNumber = relatedTarget.data("wonumber");
     var wostatus = relatedTarget.data("wostatus");
     document.getElementById('WoComplDate').value = planCompletionDateStr.split("-").reverse().join("-");
-    $('#PlanWoQty').val(planWOQty);
-    $('#SoQty').val(0);
+    document.getElementById('p1planComplDate').value = planCompletionDateStr.split("-").reverse().join("-");
+    $('#PlanWoQty').val(0);
+    $('#SoQty').val(planWOQty);
     $('#woNumber').text(woNumber);
     $('#partNo').text(partNo);
     $('#WOID').val(workOrderId);
@@ -1110,16 +1281,7 @@ function EditWo(element) {
                 };
                 temp.push(rowdata);
             });
-            //api.getbulk("/WorkOrder/GetOneSO" + JSON.stringify(temp)).then((data) => {
-            //        console.log(data);
-            //        //WOSoTable.push(data);
-            //        //console.log(WOSoTable);
-            //    }).then(() => {
-            //        //console.log(WOSoTable);
-            //        //CheckNumberOfSo(WOSoTable);                    
-                    
-            //    }).catch((error) => {
-            //    });
+            
 
             $.ajax({
                 type: "POST",

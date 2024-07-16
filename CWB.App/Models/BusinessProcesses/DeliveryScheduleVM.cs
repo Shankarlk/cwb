@@ -1,6 +1,8 @@
 ﻿using CWB.CommonUtils.Common;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CWB.App.Models.BusinessProcesses
 {
@@ -9,6 +11,15 @@ namespace CWB.App.Models.BusinessProcesses
         DateTime? requiredByDate = null;
         public int ScheduleId { get; set; }
         public long CustomerOrderId { get; set; }
+
+        [Required]
+        [Remote(
+           "CheckPartNo",
+           "BusinessAquisition",
+           AdditionalFields = "DSPartId",
+           ErrorMessage = "{0} already exists. Please enter a different {0}.",
+           HttpMethod = "GET"
+       )]
         public long DSPartId { get; set; }
 
         public string? PartNo { get; set; }

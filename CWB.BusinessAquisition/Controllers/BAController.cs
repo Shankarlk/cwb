@@ -246,6 +246,16 @@ namespace BAapi.Controllers
             var pologs = await _baService.RemoveOrderStatus(tenantId, orderStatudId);
             return pologs;
         }
-        
+
+        [HttpGet]
+        [Route(ApiRoutes.Aquisition.CheckPartNo)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckPartNo(long partId)
+        {
+            bool exists = false;
+            exists = _baService.CheckPartNo(partId);
+            return Ok(exists);
+        }
+
     }
 }

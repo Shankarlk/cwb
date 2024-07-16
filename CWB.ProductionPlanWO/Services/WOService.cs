@@ -18,19 +18,26 @@ namespace CWB.ProductionPlanWO.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWorkOrderRepository _workOrderRepository;
         private readonly IWOSORepository _wosoRepository;
+        private readonly IBOMTempRepository _bOMTempRepository;
         private readonly IProcPlanRepository _procPlanRepository;
+        private readonly IBOMListRepository _bOMListRepository;
+        private readonly IProductionPlan_WORepository _productionPlan_WORepository;
 
         public WOService(
             ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork
             , IWorkOrderRepository workOrderRepository
-            , IProcPlanRepository procPlanRepository, IWOSORepository woso)
+            , IProcPlanRepository procPlanRepository, IWOSORepository woso, IBOMTempRepository bOMTempRepository, IBOMListRepository bOMListRepository,
+            IProductionPlan_WORepository productionPlan_WORepository)
         {
             _logger = logger;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _workOrderRepository = workOrderRepository;
             _wosoRepository = woso;
+            _bOMTempRepository = bOMTempRepository;
             _procPlanRepository = procPlanRepository;
+            _bOMListRepository = bOMListRepository;
+            _productionPlan_WORepository = productionPlan_WORepository;
         }
 
         public string HelloWorld()
@@ -47,7 +54,9 @@ namespace CWB.ProductionPlanWO.Services
                 {
                     wo.WODate = DateTime.Now;
                     wo.WONumber = "WO_" + wo.WODate.Value.ToString("yyyyMMddHHmmssffff");
+                    wo.TestData = 'Y';
                     wo.Status = 1;
+                    wo.Active = 1;
                     try
                     {
                         await _workOrderRepository.AddAsync(wo);
@@ -74,6 +83,8 @@ namespace CWB.ProductionPlanWO.Services
                     wkord.RoutingId = wo.RoutingId;
                     wkord.StartingOpNo = wo.StartingOpNo;
                     wkord.EndingOpNo = wo.EndingOpNo;
+                    wkord.ReloadOption = wo.ReloadOption;
+                    wkord.Active = wo.Active;
                     wo = await _workOrderRepository.UpdateAsync(wo.Id, wkord);
                 }
                 try
@@ -86,6 +97,7 @@ namespace CWB.ProductionPlanWO.Services
                     string msg = ex.Message;
                 }
                 workOrdersVM.WOID = wo.Id;
+                workOrdersVM.TestData = wo.TestData;
                 return workOrdersVM;
             }
 
@@ -104,6 +116,7 @@ namespace CWB.ProductionPlanWO.Services
                         wo.WODate = DateTime.Now;
                         wo.WONumber = "WO_" + wo.WODate.Value.ToString("yyyyMMddHHmmssffff");
                         wo.Status = 1;
+                        wo.TestData = 'Y';
                         try
                         {
                             await _workOrderRepository.AddAsync(wo);
@@ -130,7 +143,8 @@ namespace CWB.ProductionPlanWO.Services
                 }
                 item.WOID = wo.Id;
                 item.WONumber = wo.WONumber;
-
+                item.TestData = wo.TestData;
+                item.Status = wo.Status;
             }
             return workOrdersVM;
         }
@@ -168,9 +182,104 @@ namespace CWB.ProductionPlanWO.Services
             return woso;
         }
 
+        public async Task<List<BOMTempVM>> BOMTempPost(List<BOMTempVM> bomVm)
+        {
+            foreach (BOMTempVM item in bomVm)
+            {
+                var bom = _mapper.Map<BOMTemp>(item);
+                if(bom.Id == 0)
+                {
+                    try
+                    {
+                        await _bOMTempRepository.AddAsync(bom);
+                    }catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                }
+            }
+            return bomVm;
+        }
+
+        public async Task<List<ProcPlanVM>> PostProcPlan(List<ProcPlanVM> proc)
+        {
+            foreach (ProcPlanVM item in proc)
+            {
+                var pp = _mapper.Map<ProcPlan>(item);
+                if(pp.Id == 0)
+                {
+                    DateTime dt = DateTime.Now;
+                    pp.Reference = "PP_" + dt.ToString("yyyyMMddHHmmssffff");
+                    pp.TestData = 'Y';
+                    try
+                    {
+                        await _procPlanRepository.AddAsync(pp);
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                }
+                item.ProcPlanId = pp.Id;
+            }
+            return proc;
+        }
+
+        public async Task<List<BOMListVM>> PostBomList(List<BOMListVM> bomlist)
+        {
+            foreach (BOMListVM item in bomlist)
+            {
+                var bom = _mapper.Map<BOMList>(item);
+                if (bom.Id == 0)
+                {
+                    //bom.TestData = 'Y';
+                    try
+                    {
+                        await _bOMListRepository.AddAsync(bom);
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                }
+                item.BomListId = bom.Id;
+            }
+            return bomlist;
+        }
+
         public async Task<IEnumerable<WorkOrdersVM>> AllWorkOrders(long tenantId)
         {
-            var allwo = _workOrderRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            var allwo =  _workOrderRepository.GetRangeAsync(d => d.TenantId == tenantId);
             return _mapper.Map<IEnumerable<WorkOrdersVM>>(allwo);
         }
 
@@ -195,6 +304,87 @@ namespace CWB.ProductionPlanWO.Services
             {
                 return new List<WOSOVM>();                
             }
+        }
+
+        public async Task<IEnumerable<ProcPlanVM>> AllProcPlan(long tenantId)
+        {
+            var allprocplan =_procPlanRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<ProcPlanVM>>(allprocplan);
+        }
+        public async Task<IEnumerable<BOMListVM>> AllBomList(long tenantId)
+        {
+            var allbomlist = _bOMListRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<BOMListVM>>(allbomlist);
+        }
+
+        public async Task<List<ProductionPlan_WOVM>> PostProductionPlan_Wo(List<ProductionPlan_WOVM> productions)
+        {
+            foreach (ProductionPlan_WOVM item in productions)
+            {
+                var pp = _mapper.Map<ProductionPlan_WO>(item);
+                if (pp.SalesOrderId > 0)
+                {
+                    if (pp.Id == 0)
+                    {
+                        pp.WODate = DateTime.Now;
+                        pp.PPNumber = "PP_" + pp.WODate.Value.ToString("yyyyMMddHHmmssffff");
+                        if(pp.WONumber == null)
+                        {
+                            pp.WONumber = "WO_" + pp.WODate.Value.ToString("yyyyMMddHHmmssffff");
+                        }
+                        pp.Status = 1;
+                        pp.TestData = 'Y';
+                        try
+                        {
+                            await _productionPlan_WORepository.AddAsync(pp);
+                        }
+                        catch (Exception ex)
+                        {
+                            Exception exa = ex.InnerException;
+                            string msg = ex.Message;
+                        }
+                    }
+                    else
+                    {
+                        var upp = await _productionPlan_WORepository.SingleOrDefaultAsync(x => x.Id == pp.Id);
+                        if (upp == null)
+                        {
+                            return productions;
+                        }
+                        upp.CalcWOQty = pp.CalcWOQty;
+                        upp.PlanCompletionDate = pp.PlanCompletionDate;
+                        upp.BuildToStock = pp.BuildToStock;
+                        upp.Parentlevel = pp.Parentlevel;
+                        upp.Status = pp.Status;
+                        upp.RoutingId = pp.RoutingId;
+                        upp.StartingOpNo = pp.StartingOpNo;
+                        upp.EndingOpNo = pp.EndingOpNo;
+                        upp.ReloadOption = pp.ReloadOption;
+                        upp.Active = pp.Active;
+                        pp = await _productionPlan_WORepository.UpdateAsync(pp.Id, upp);
+                    }
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                }
+                item.ProductionPlanId = pp.Id;
+                item.PPNumber = pp.PPNumber;
+                item.WONumber = pp.WONumber;
+                item.TestData = pp.TestData;
+            }
+            return productions;
+        }
+
+        public async Task<IEnumerable<ProductionPlan_WOVM>> AllProductionWo(long tenantId)
+        {
+            var allpp = _productionPlan_WORepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<ProductionPlan_WOVM>>(allpp);
         }
     }
 }

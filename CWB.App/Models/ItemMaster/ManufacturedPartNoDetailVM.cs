@@ -11,6 +11,9 @@ namespace CWB.App.Models.ItemMaster
         public int CompanyId { get; set; }
         public string FinishedWeight { get; set; }
         public long UOMId { get; set; }
+        public string ReorderLevel { get; set; }
+        public string ReorderQnty { get; set; }
+        public int LeadTimeManf { get; set; }
 
 
         //MasterParts-

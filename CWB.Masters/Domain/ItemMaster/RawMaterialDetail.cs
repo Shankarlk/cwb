@@ -17,6 +17,8 @@ namespace CWB.Masters.Domain.ItemMaster
         public string? RawMaterialNotes { get; set; }
         public long Standard { get; set; }
         public long MaterialSpecId { get; set; }
+        public string ReorderLevel { get; set; }
+        public string ReorderQnty { get; set; }
         //DbPart - End
 
         public long TenantId { get; set; }

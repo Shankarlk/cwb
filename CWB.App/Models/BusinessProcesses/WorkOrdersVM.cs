@@ -38,7 +38,7 @@ namespace CWB.App.Models.BusinessProcesses
         public char Parentlevel { get; set; }
         //public long ManufRMLinkId { get; set; }
         public char BuildToStock { get; set; }
-        //public int TestData { get; set; }
+        public char TestData { get; set; }
         public int CalcWOQty { get; set; }
         //public int QtyOnHand { get; set; }
         //public int AddnOtyUser { get; set; }
@@ -64,7 +64,9 @@ namespace CWB.App.Models.BusinessProcesses
         public int EndingOpNo { get; set; }
         //public int CriticalPart { get; set; }
         //public int Urgent { get; set; }
-        //public int For_Ref { get; set; }
+        public char For_Ref { get; set; }
+        public string ReloadOption { get; set; }
+        public int Active { get; set; }
         //public int ManufDaysAvailable { get; set; }
         //public int ManufDaysRequired { get; set; }
         //public int Changed { get; set; }
@@ -77,6 +79,7 @@ namespace CWB.App.Models.BusinessProcesses
         //public bool Hold { get; set; }
         //public bool Done { get; set; }
         public string? PartNo { get; set; } = string.Empty;
+        public string? PartDesc { get; set; } = string.Empty;
         public string Comment { get; set; }
         public long TenantId { get; set; }
     }

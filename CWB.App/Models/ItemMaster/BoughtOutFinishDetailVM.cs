@@ -13,6 +13,8 @@ namespace CWB.App.Models.ItemMaster
         public int PartId { get; set; }
         public string SupplierPartNo { get; set; }
         public string AdditionalInfo { get; set; }
+        public string ReorderLevel { get; set; }
+        public string ReorderQnty { get; set; }
         //DbPart-End
 
         //MasterParts-

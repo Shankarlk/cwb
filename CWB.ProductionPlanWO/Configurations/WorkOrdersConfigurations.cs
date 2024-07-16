@@ -67,8 +67,8 @@ namespace CWB.ProductionPlanWO.Configurations
              .HasColumnName("Status")
              .IsRequired();
             builder
-             .Property(t => t.Plan)
-             .HasColumnName("Plan")
+             .Property(t => t.PlanWOQnty)
+             .HasColumnName("PlanWOQnty")
              .HasDefaultValue(0);
             builder
              .Property(t => t.PlanCompletionDate)
@@ -85,7 +85,14 @@ namespace CWB.ProductionPlanWO.Configurations
             builder
              .Property(t => t.EndingOpNo)
              .HasColumnName("EndingOpNo");
+            builder
+             .Property(t => t.ReloadOption)
+             .HasColumnName("ReloadOption");
             //.IsRequired();
+            builder
+             .Property(t => t.Active)
+             .HasColumnName("Active")
+             .HasDefaultValue(0);
             builder
              .Property(t => t.CriticalPart)
              .HasColumnName("CriticalPart")

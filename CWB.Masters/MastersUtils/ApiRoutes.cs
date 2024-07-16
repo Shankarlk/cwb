@@ -144,6 +144,7 @@
             public const string SupplierRMS = Base + "/supplierrms/{supplierId}/{tenantId}";
 
             public const string GetMasterParts = Base + "/itemmasterparts/{tenantId}";
+            public const string GetMasterPartById = Base + "/itemmasterpartsbyid/{partid}";
             public const string GetPartsUOMs = Base + "/partsuoms/{tenantId}";
             public const string GetSelectParts = Base + "/selectparts/{tenantId}";
             //itemmasterparts

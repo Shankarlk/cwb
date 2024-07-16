@@ -32,5 +32,57 @@ namespace CWB.App.Services.ProductionPlanWo
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<IEnumerable<WOSOVM>>.GetAsync(uri, headers);
         }
+        public async Task<IEnumerable<ProductionPlan_WoVM>> AllProductionPlan_Wo()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allproductionplanwo/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<IEnumerable<ProductionPlan_WoVM>>.GetAsync(uri, headers);
+        }
+
+        public async Task<List<ProductionPlan_WoVM>> ProductionPlanWoPost(IEnumerable<ProductionPlan_WoVM> productions)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/productionplan");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in productions)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<ProductionPlan_WoVM>>.PostAsync(uri, productions, headers);
+        }
+
+        public async Task<List<ProcPlanVM>> ProcPlanPost(IEnumerable<ProcPlanVM> procPlans)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/procplan");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in procPlans)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<ProcPlanVM>>.PostAsync(uri, procPlans, headers);
+        }
+        public async Task<List<BOMListVM>> BomListPost(IEnumerable<BOMListVM> bomlist)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/bomlistwo");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in bomlist)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<BOMListVM>>.PostAsync(uri, bomlist, headers);
+        }
+
+        public async Task<IEnumerable<ProcPlanVM>> GetAllProcPlan()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allprocplan/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<IEnumerable<ProcPlanVM>>.GetAsync(uri, headers);
+        }
+
+        public async Task<IEnumerable<BOMListVM>> GetAllBomlist()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allbomlist/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<IEnumerable<BOMListVM>>.GetAsync(uri, headers);
+        }
     }
 }

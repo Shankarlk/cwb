@@ -34,6 +34,8 @@
             public const string RemoveCustomerOder = Base + "/removecustomerorder/{tenantId}/{customerOrderId}";
             public const string RemoveDeliverSchedule = Base + "/removedeliveryschedule/{tenantId}/{scheduleId}";
             public const string RemoveOrderStatus = Base + "/removeorderstatus/{tenantId}/{orderStatusId}";
+            
+            public const string CheckPartNo = Base + "/checkpartno/{partId}";
 
         }
     }

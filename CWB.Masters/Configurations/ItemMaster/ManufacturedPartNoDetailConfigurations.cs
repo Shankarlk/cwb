@@ -49,6 +49,20 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .Property(t => t.UOMId)
                 .HasColumnName("UOMId")
                 .HasMaxLength(255);
+
+            builder
+                .Property(t => t.ReorderLevel)
+                .HasColumnName("ReorderLevel")
+                .HasMaxLength(255);
+            
+            builder
+                .Property(t => t.ReorderQnty)
+                .HasColumnName("ReorderQnty")
+                .HasDefaultValue(0);
+            builder
+               .Property(t => t.LeadTimeManf)
+               .HasColumnName("LeadTimeManf")
+               .HasDefaultValue(0);
             /**
              * builder
                 .Property(t => t.PartDescription)

@@ -819,7 +819,19 @@ $(function () {
             alert("Please create a customer oder first.");
             return;
         }
-        PostDeliverySchedule();
+        var partId = $("#DSPartId").val(); // assuming DSPartId is the input field for part number
+        $.ajax({
+            type: "GET",
+            url: "/BusinessAquisition/CheckPartNo",
+            data: { partId: partId },
+            success: function (response) {
+                if (!response) {
+                    alert("This part number already exists.");
+                    return;
+                }
+                PostDeliverySchedule();
+            }
+        });
     });
 
     $("#BtnEditSO").on("click", function () {

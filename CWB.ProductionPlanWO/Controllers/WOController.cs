@@ -63,6 +63,17 @@ namespace CWB.ProductionPlanWO.Controllers
             return Ok(woso);
         }
 
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostBOMTemp)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(WOSOVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> BOMPost([FromBody] List<BOMTempVM> bomtemp)
+        {
+            var woso = await _woSerivce.BOMTempPost(bomtemp);
+            return Ok(woso);
+        }
+
+
         [HttpGet]
         [Route(ApiRoutes.WO.AllWorkOrders)]
         [Produces(AppContentTypes.ContentType,Type=typeof(List<WorkOrdersVM>))]
@@ -91,6 +102,67 @@ namespace CWB.ProductionPlanWO.Controllers
         {
             var so = await _woSerivce.GetSoWo(workOrderId);
             return Ok(so);
+        }
+
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostProcPlan)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(ProcPlanVM))] //changed
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostProcPlan([FromBody] List<ProcPlanVM> procplan)
+        {
+            var proc = await _woSerivce.PostProcPlan(procplan);
+            return Ok(proc);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostBomList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(BOMListVM))]   //changed
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostBomList([FromBody] List<BOMListVM> bOMListVMs)
+        {
+            var proc = await _woSerivce.PostBomList(bOMListVMs);
+            return Ok(proc);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostProductionPlan_Wo)]
+        [Produces(AppContentTypes.ContentType, Type =typeof(ProductionPlan_WOVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostProductionPlan_Wo([FromBody] List<ProductionPlan_WOVM> productions)
+        {
+            var productionPlan = await _woSerivce.PostProductionPlan_Wo(productions);
+            return Ok(productionPlan);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.WO.AllProductionPlanWo)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<ProductionPlan_WOVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> AllProductionWos(long tenantId)
+        {
+            var allwo = await _woSerivce.AllProductionWo(tenantId);
+            return Ok(allwo);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.WO.AllProcPlan)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<ProcPlanVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetAllProcPlan(long tenantId)
+        {
+            var allprocplan = await _woSerivce.AllProcPlan(tenantId);
+            return Ok(allprocplan);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.WO.AllBomList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<BOMListVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetAllBomList(long tenantId)
+        {
+            var allprocplan = await _woSerivce.AllBomList(tenantId);
+            return Ok(allprocplan);
         }
     }
 }

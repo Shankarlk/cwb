@@ -19,6 +19,8 @@ namespace CWB.App.Models.ItemMaster
         public string RawMaterialNotes { get; set; } = string.Empty;
         public long Standard { get; set; }
         public long MaterialSpecId { get; set; }
+        public string ReorderLevel { get; set; }
+        public string ReorderQnty { get; set; }
         //DbPart - End
 
 

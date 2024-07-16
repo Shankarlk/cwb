@@ -149,7 +149,10 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
                 .ForMember(s => s.CompanyId, s => s.MapFrom(src => src.CompanyId))
                 .ForMember(s => s.FinishedWeight, s => s.MapFrom(src => src.FinishedWeight))
-                .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId));
+                .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
+                .ForMember(s => s.LeadTimeManf, s => s.MapFrom(src => src.LeadTimeManf))
+                .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
             /**.ForMember(s => s.PartDescription, s => s.MapFrom(src => src.PartDescription))
             .ForMember(s => s.RevNo, s => s.MapFrom(src => src.RevNo))
             .ForMember(s => s.RevDate, s => s.MapFrom(src => src.RevDate))
@@ -162,7 +165,10 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
                 .ForMember(s => s.CompanyId, s => s.MapFrom(src => src.CompanyId))
                 .ForMember(s => s.FinishedWeight, s => s.MapFrom(src => src.FinishedWeight))
-                .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId));
+                .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
+                .ForMember(s => s.LeadTimeManf, s => s.MapFrom(src => src.LeadTimeManf))
+                .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
             /** .ForMember(s => s.PartDescription, s => s.MapFrom(src => src.PartDescription))
                 .ForMember(s => s.RevNo, s => s.MapFrom(src => src.RevNo))
@@ -249,7 +255,9 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.RawMaterialNotes, s => s.MapFrom(src => src.RawMaterialNotes))
                 .ForMember(s => s.Standard, s => s.MapFrom(src => src.Standard))
                 .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
-                .ForMember(s => s.MaterialSpecId, s => s.MapFrom(src => src.MaterialSpecId));
+                .ForMember(s => s.MaterialSpecId, s => s.MapFrom(src => src.MaterialSpecId))
+                .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
 
             //.ForMember(s => s.PurchaseDetailId, s => s.MapFrom(src => src.PurchaseDetailId));
@@ -267,7 +275,9 @@ namespace CWB.Masters.MastersUtils
                .ForMember(s => s.RawMaterialWeight, s => s.MapFrom(src => src.RawMaterialWeight))
                .ForMember(s => s.RawMaterialNotes, s => s.MapFrom(src => src.RawMaterialNotes))
                .ForMember(s => s.Standard, s => s.MapFrom(src => src.Standard))
-               .ForMember(s => s.MaterialSpecId, s => s.MapFrom(src => src.MaterialSpecId));
+               .ForMember(s => s.MaterialSpecId, s => s.MapFrom(src => src.MaterialSpecId))
+                .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
 
             CreateMap<BoughtOutFinishDetailVM, BoughtOutFinishDetail>()
@@ -276,7 +286,9 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
                 .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                 .ForMember(s => s.SupplierPartNo, s => s.MapFrom(src => src.SupplierPartNo))
-                .ForMember(s => s.AdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo));
+                .ForMember(s => s.AdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo))
+                .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
             CreateMap<BoughtOutFinishDetail, BoughtOutFinishDetailVM>()
                .ForMember(s => s.BoughtOutFinishDetailId, s => s.MapFrom(src => src.Id))
@@ -284,7 +296,9 @@ namespace CWB.Masters.MastersUtils
                .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
                .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                .ForMember(s => s.SupplierPartNo, s => s.MapFrom(src => src.SupplierPartNo))
-               .ForMember(s => s.AdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo));
+               .ForMember(s => s.AdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo))
+                .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
 
             CreateMap<MPMakeFromVM, MPMakeFrom>()
@@ -345,7 +359,8 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
                 .ForMember(s => s.StatusChangeReason, s => s.MapFrom(src => src.StatusChangeReason))
                 .ForMember(s => s.RevNo, s => s.MapFrom(src => src.RevNo))
-                .ForMember(s => s.RevDate, s => s.MapFrom(src => src.RevDate));
+                .ForMember(s => s.RevDate, s => s.MapFrom(src => src.RevDate))
+                .ForMember(s => s.CreationDate, s => s.MapFrom(src => src.CreationDt));
 
             CreateMap<Domain.ItemMaster.MasterPart, MasterPartVM>()
                 .ForMember(s => s.MasterPartId, s => s.MapFrom(src => src.Id))
@@ -355,7 +370,8 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
                 .ForMember(s => s.StatusChangeReason, s => s.MapFrom(src => src.StatusChangeReason))
                 .ForMember(s => s.RevNo, s => s.MapFrom(src => src.RevNo))
-                .ForMember(s => s.RevDate, s => s.MapFrom(src => src.RevDate));
+                .ForMember(s => s.RevDate, s => s.MapFrom(src => src.RevDate))
+                .ForMember(s => s.CreationDt, s => s.MapFrom(src => src.CreationDate));
 
             CreateMap<CWB.Masters.Domain.Routings.Routing, RoutingVM>()
                 .ForMember(s => s.RoutingId, s => s.MapFrom(src => src.Id))

@@ -10,6 +10,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         Task<WorkOrdersVM> PostWO(WorkOrdersVM workOrdersVM);
         Task<List<WorkOrdersVM>> MultiplePostWO(IEnumerable<WorkOrdersVM> workOrdersVM);
+        Task<List<WorkOrdersVM>> BOMTempPOst(IEnumerable<BOMTempVM> bOMTempVMs);
         Task<List<WOSOVM>> PostWoSoRel(IEnumerable<WOSOVM> wOSOVMs);
         Task<IEnumerable<WorkOrdersVM>> AllWorkOrders();
         Task<bool> RemoveSalesOrder(long salesOrderId);
@@ -37,7 +38,7 @@ namespace CWB.App.Services.BusinessProcesses
 
         //Task<DeliveryScheduleVM> PostOrderStatus();
 
-
+        Task<bool> CheckPartNo(long partId);
         Task<string> HelloWorld();
     }
 }

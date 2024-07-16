@@ -41,6 +41,16 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .HasColumnName("AdditionalInfo")
                 .IsUnicode(true)
                 .HasMaxLength(255);
+
+            builder
+                    .Property(t => t.ReorderLevel)
+                    .HasColumnName("ReorderLevel")
+                    .HasMaxLength(255);
+
+            builder
+                .Property(t => t.ReorderQnty)
+                .HasColumnName("ReorderQnty")
+                .HasDefaultValue(0);
             /*    builder
                     .Property(t => t.PartDescription)
                     .HasConversion<string>()

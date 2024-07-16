@@ -622,5 +622,15 @@ namespace CWB.BusinessAquisition.Services
             return  _mapper.Map<SOAggregateVM>(aggregate);
         }
 
+        public bool CheckPartNo(long partId)
+        {
+            var manufPs = _salesOrderRepository.GetRangeAsync(c => c.PartId == partId);
+            if (!manufPs.Any())
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }

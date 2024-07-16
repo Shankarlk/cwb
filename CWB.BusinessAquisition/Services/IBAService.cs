@@ -29,6 +29,8 @@ namespace CWB.BusinessAquisition.Services
         Task<SOAggregateVM> GetSOAggregate(long tenantId, long customerOrderId);
         Task<IEnumerable<SOAggregateVM>> GetSOAggregates(long tenantId);
 
+        bool CheckPartNo(long partId);
+
         /*IEnumerable<CompanyTypeVM> GetCompanyTypes();
 
 
