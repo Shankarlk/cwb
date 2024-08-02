@@ -45,7 +45,7 @@ function DeleteWS(subConWSDetailsId)
     let confirmval = confirm("Are your sure you want to delete this work step?", "Yes", "No");
     if (confirmval) {
         api.get("/routings/deletews?subConWSId=" + subConWSDetailsId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadSubConWSS();
         }).catch((error) => {
             AppUtil.HandleError("FormDelRoutingName", error);
@@ -87,7 +87,7 @@ function AddMacOptions() {
 
         loadMachineTypes("MAC_Type");
     }).catch((error) => {
-        console.log(error);
+        //console.log(error);
     });
 }
 /*function SetOpType(optype) {
@@ -139,9 +139,9 @@ function ShowAddSubConJob(event) {
 
         loadSuppliersToTable("SubConNamesTable", "SubConNameRow", selectedSupplierId);
         let subcons = document.getElementsByName("RadioSubConName");
-        console.log(subcons.length);
+        //console.log(subcons.length);
         for (let i = 0; i < subcons.length; i++) {
-            console.log(subcons[i].value);
+            //console.log(subcons[i].value);
             if (selectedSupplierId == subcons[i].value) {
                 subcons[i].checked = true;
             }
@@ -158,7 +158,7 @@ function LoadSubCons() {
     var tablebody = $("#SubConsTable tbody");
     $(tablebody).html("");//empty tbody
     let stepId = RoutingDetails["stepId"];
-    console.log("=====stepId" + stepId);
+    //console.log("=====stepId" + stepId);
     api.get("/routings/subcons?stepId=" + stepId).then((data) => {
 
         for (i = 0; i < data.length; i++) {
@@ -189,11 +189,11 @@ function LoadSubConWSS() {
   //  alert(subConDetailsId + "/" + stepId);
     //masters/subconwss
     api.get("/routings/subconwss?stepId=" + stepId +"&subConDetailsId="+subConDetailsId).then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateDataNew("WSRow", data[i], i));
         }
-        console.log($(tablebody).html());
+        //console.log($(tablebody).html());
     }).catch((error) => {
         //console.log(error);
     });
@@ -205,7 +205,7 @@ function DeleteSubCon(stepId,subConDetailsId) {
     var routingId = $("#DelRoutingId").val();
     alert(routingId);
     api.get("/routings/deletesubcondetails?routingId=" + routingId).then((data) => {
-        console.log(data);
+        //console.log(data);
         routdeleted = true;
         document.getElementById("BtnDelRoutingClose").click();
     }).catch((error) => {
@@ -219,13 +219,13 @@ function DeleteSubConWS(stepId, subConWSDetailsId) {
 
 function AddSubCon() {
     //masters/addsubcon
-    console.log("....AddSubCon....");
+    //console.log("....AddSubCon....");
     var formData = AppUtil.GetFormData("FormSubCon");
   //  console.log(formData);
     api.post("/routings/addsubcon", formData).then((data) => {
-        console.log("****AddSubCon****");
-        console.log(data);
-        console.log("****End-AddSubCon****");
+        //console.log("****AddSubCon****");
+        //console.log(data);
+        //console.log("****End-AddSubCon****");
         RoutingDetails["subConDetailsId"] = data.subConDetailsId;
         $("#SubConWSSubConDetailsId").val(data.subConDetailsId);
         $("#SubConWSRoutingStepId").val(RoutingDetails["stepId"]);
@@ -239,9 +239,9 @@ function AddSubCon() {
 function AddSubConWS() {
     //masters/addsubconws
     var formData = AppUtil.GetFormData("FormSubConWS");
-    console.log(formData);
+    //console.log(formData);
     api.post("/routings/addsubconws", formData).then((data) => {
-        console.log(data);
+        //console.log(data);
         let wsid = $("#SubConWSSubConDetailsId").val();
         let stepid = $("#SubConWSRoutingStepId").val();
         LoadSubConWSS();
@@ -292,7 +292,7 @@ function LoadLocations() {
                 data[i].id + "'>" +
                 data[i].name +
                 "</option>";
-            console.log(div_data);
+            //console.log(div_data);
             selElem.append(div_data);
         }
         return;
@@ -305,7 +305,7 @@ function LoadLocations() {
                 data[i].id + "'>" +
                 data[i].name +
                 "</option>";
-            console.log(div_data);
+            //console.log(div_data);
             selElem.append(div_data);
         }
     }).catch((error) => {
@@ -338,7 +338,7 @@ function LoadOperations() {
                 data[i].operationId + "'>" +
                 data[i].operation +
                 "</option>";
-            console.log(div_data);
+            //console.log(div_data);
             selElem.append(div_data);
         }
         return;
@@ -351,7 +351,7 @@ function LoadOperations() {
                 data[i].operationId + "'>" +
                 data[i].operation +
                 "</option>";
-            console.log(div_data);
+            //console.log(div_data);
             selElem.append(div_data);
         }
     }).catch((error) => {
@@ -368,7 +368,7 @@ function ProcessTemplateDataNew(templateId, dataObj) {
         ////console.log(key + " " + dataObj[key]);
         templateElement = templateElement.replaceAll("{" + key + "}", dataObj[key])
     }
-    console.log(templateElement);
+    //console.log(templateElement);
     return templateElement;
 }
 
@@ -385,11 +385,11 @@ function DowlonadPartsRoutings() {
             if (!(data[i]['masterPartType'] == partType))
                 continue;
             for (var key in data[i]) {
-                console.log(key + "/" + data[i][key]);
+                //console.log(key + "/" + data[i][key]);
             }
-            console.log("================");
-            console.log(partType);
-            console.log("================");
+            //console.log("================");
+            //console.log(partType);
+            //console.log("================");
             if (withRouting) {
                 if ((data[i]['noOfRoutes'] == 0))
                     continue;
@@ -405,17 +405,17 @@ function DowlonadPartsRoutings() {
     }
     else {
         api.getbulk("/routings/routinglistitems").then((data) => {
-            console.log(data);
+            //console.log(data);
             dataPartsRoutings = data;
             for (i = 0; i < data.length; i++) {
                 if (!(data[i]['masterPartType'] == partType))
                     continue;
                 for (var key in data[i]) {
-                    console.log(key + "/" + data[i][key]);
+                   // console.log(key + "/" + data[i][key]);
                 }
-                console.log("================");
-                console.log(partType);
-                console.log("================");
+                //console.log("================");
+                //console.log(partType);
+                //console.log("================");
                 if (withRouting) {
                     if ((data[i]['noOfRoutes'] == 0))
                         continue;
@@ -477,13 +477,13 @@ function loadSetSuppliers() {
     var tablebody = $("#RouteSuppliersTable tbody");
     $(tablebody).html("");//empty tbody
     let stepId = RoutingDetails["stepId"];
-    console.log("=====stepId" + stepId);
+    //console.log("=====stepId" + stepId);
     api.get("/routings/stepsuppliers?stepId=" + stepId).then((data) => {
 
         for (i = 0; i < data.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateData("RouteSupplierTemplate", data[i]));
         }
-        console.log(data);
+        //console.log(data);
         //console.log(tablebody.html());
         //RouteSuppliersTable
         //RouteSupplierTemplate
@@ -507,7 +507,7 @@ function loadStepMachinesForAdd() {
     var div_data = "<option value=''></option>";
     selElem.append(div_data);
     let stepId = RoutingDetails["stepId"];
-    console.log("stepId" + stepId);
+    //console.log("stepId" + stepId);
     api.get("/routings/stepmachines?stepId=" + stepId).then((data) => {
         stepMachines = data;
         for (i = 0; i < data.length; i++) {
@@ -515,7 +515,7 @@ function loadStepMachinesForAdd() {
                 data[i].routingStepMachineId + "'>" +
                 data[i].name +
                 "</option>";
-            console.log(div_data);
+           // console.log(div_data);
             selElem.append(div_data);
         }
     }).catch((error) => {
@@ -541,7 +541,7 @@ function LoadStepPartsFromData(rData) {
             }
         }
     }
-    console.log(rData);
+   // console.log(rData);
 }
 
 function LoadStepParts(partId, stepId) {
@@ -555,14 +555,14 @@ function LoadStepParts(partId, stepId) {
                 $(tablebody).append(AppUtil.ProcessTemplateData("RT_BOMQTY-template", rData[i]));
             }
         }
-        console.log(rData);
+        //console.log(rData);
         //  LoadStepPartsFromData(rData);
     }).catch((error) => {
     });
 }
 
 function SetBOMEditVals(partId, stepId, partNo, bomId, partDesc, qty) {
-    console.log(partId + "/" + stepId + "/" + partNo + "/" + bomId + "/" + partDesc + "/" + qty);
+    //console.log(partId + "/" + stepId + "/" + partNo + "/" + bomId + "/" + partDesc + "/" + qty);
     SetOp("edit");
     $("#BOMId").val(bomId);
     $("#BOMPartNo").val(partNo);
@@ -588,7 +588,7 @@ function DeleteStepPart(partId, stepId) {
     let confirmval = confirm("Are your sure you want to delete this BOM?", "Yes", "No");
     if (confirmval) {
         api.get("/routings/deletesteppart?stepId=" + stepId+"&stepPartId="+partId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadBOMList(stepId);
         }).catch((error) => {
         });
@@ -605,7 +605,7 @@ function LoadRoutingSteps(routingId) {
             $(tablebody).append(AppUtil.ProcessTemplateData("RoutingStepTemplate", rData[i]));
         }
         routingSteps = rData;
-        console.log(rData);
+        //console.log(rData);
     }).catch((error) => {
     });
 }
@@ -618,7 +618,7 @@ function LoadBOMList(stepId) {
     let i = 0;
     let manufId = RoutingDetails.manufacturedPartId;
     api.get("/routings/boms?manufId=" + manufId + "&stepId=" + stepId).then((rData) => {
-        console.log(rData);
+        //console.log(rData);
         for (i = 0; i < rData.length; i++) {
             if (rData[i].quantityUsed == "0") {
                 $(tablebody).append(AppUtil.ProcessTemplateData("RT_BOM-template", rData[i]));
@@ -667,10 +667,10 @@ function getAndShowStep(stepId, stepNumber) {
     let step = {};
     for (i = 0; i < data.length; i++) {
         if (data[i]["stepId"] == stepId) {
-            console.log("******Found Data*******");
+            //console.log("******Found Data*******");
             step = data[i];
-            console.log(data[i]);
-            console.log("*************");
+            //console.log(data[i]);
+            //console.log("*************");
         }
     }
     document.getElementById("FormRoutingStep").reset();
@@ -701,9 +701,9 @@ function getAndShowStep(stepId, stepNumber) {
 
 function getLocationId(val) {
     let data = locations;
-    console.log("Comparing..." + val);
+    //console.log("Comparing..." + val);
     for (i = 0; i < data.length; i++) {
-        console.log("With..." + data[i].name + "/" + data[i].id);
+        //console.log("With..." + data[i].name + "/" + data[i].id);
         if (data[i].name == val) {
             return data[i].id;
         }
@@ -713,9 +713,9 @@ function getLocationId(val) {
 
 function getOperationId(val) {
     let data = operations;
-    console.log("Comparing..." + val);
+    //console.log("Comparing..." + val);
     for (i = 0; i < data.length; i++) {
-        console.log("With..." + data[i].operation + "/" + data[i].operationId);
+        //console.log("With..." + data[i].operation + "/" + data[i].operationId);
         if (data[i].operation == val) {
             return data[i].operationId;
         }
@@ -739,9 +739,9 @@ function loadStepMachines() {
             }
             $(tablebody).append(AppUtil.ProcessTemplateData("RouteMachinesRowTemplate", data[i]));
         }
-        console.log("****loadStepMachines*****");
-        console.log(data);
-        console.log("*************");
+        //console.log("****loadStepMachines*****");
+        //console.log(data);
+        //console.log("*************");
         //console.log(tablebody.html());
         //RouteSuppliersTable
         //RouteSupplierTemplate
@@ -754,7 +754,7 @@ function SetPreferredMachine(event, routingStepId, routingStepMachineId) {
     var maxMachineCount = $("#NumberOfSimMachines").val();
     api.get("/routings/preferredstepmachine?routingStepId=" + routingStepId + "&routingStepMachineId=" + routingStepMachineId + "&maxMachineCount=" + maxMachineCount).then((data) => {
         //console.log(data);
-        console.log("loadStepMachines..")
+        //console.log("loadStepMachines..")
         loadStepMachines();
     }).catch((error) => {
     });
@@ -784,7 +784,7 @@ function EditRoutes(event, noOfRoutes, manufacturedPartId) {
 
 
 $(function () {
-    console.log("Ready");
+   // console.log("Ready");
     if (RoutingDetails) {
         partType = RoutingDetails['masterPartType'];
         if (partType == undefined) {
@@ -793,7 +793,7 @@ $(function () {
         if (partType == "") {
             partType = "ManufacturedPart";
         }
-        console.log("partType" + partType);
+        //console.log("partType" + partType);
     }
     DowlonadPartsRoutings();
     //LoadBOMList(16);
@@ -820,7 +820,7 @@ $(function () {
         var subcondetailsid = $("#DelSubConDetailsId").val();
         var stepid = $("#DelSubConStepId").val();
         api.get("/routings/deletesubcondetails?stepId=" + stepid + "&subConDetailsId=" + subcondetailsid).then((data) => {
-            console.log(data);
+           // console.log(data);
             subcondeleted = true;
             document.getElementById("BtnDelSubConClose").click();
         }).catch((error) => {
@@ -860,7 +860,7 @@ $(function () {
         alert(selVal + "/" + val);
         if (val == "2") {
             let data = stepMachines;
-            console.log(data);
+            //console.log(data);
             for (i = 0; i < data.length; i++) {
                 if (selVal == data[i].routingStepMachineId) {
                     $("#SetupTime").val(data[i].setupTime);
@@ -942,8 +942,8 @@ $(function () {
             $("#BOMPartDescription").val(partDesc);
             $("#QuantityAssembly").val(qtyAvailable);
             SetAssemblyIds();
-            console.log("manufacturedPartId / BOMRoutingStepId / RoutingStepPartId: " + RoutingDetails.manufacturedPartId + "/" + $("#BOMRoutingStepId").val() + "/" + $("#RoutingStepPartId").val());
-            console.log(bomId + ":" + partNo + ":" + partDesc + ":" + qty);
+            //console.log("manufacturedPartId / BOMRoutingStepId / RoutingStepPartId: " + RoutingDetails.manufacturedPartId + "/" + $("#BOMRoutingStepId").val() + "/" + $("#RoutingStepPartId").val());
+            //console.log(bomId + ":" + partNo + ":" + partDesc + ":" + qty);
         }
     });
 
@@ -1125,7 +1125,7 @@ $(function () {
         var routingId = $("#DelRoutingId").val();
         alert(routingId);
         api.get("/routings/deleterouting?routingId="+routingId).then((data) => {
-            console.log(data);
+           // console.log(data);
             routdeleted = true;
             document.getElementById("BtnDelRoutingClose").click();
         }).catch((error) => {
@@ -1200,7 +1200,7 @@ $(function () {
         //routings/addnewrouting
         var formData = AppUtil.GetFormData("FormEdRoutingName");
         api.post("/routings/addnewrouting", formData).then((data) => {
-            console.log(data);
+           // console.log(data);
             routeEdited = true;
             document.getElementById("BtnEdRoutingNameClose").click();
         }).catch((error) => {
@@ -1239,7 +1239,7 @@ $(function () {
         if (spartType === "ManufacturedPart") {
             api.get("/masters/SortedMPMakeFromList?partId=" + selectedManuPartId).then((data) => {
                 var sortedMPF = data;
-                console.log(sortedMPF);
+                //console.log(sortedMPF);
                 const uniqueMPF = [...new Set(sortedMPF.map(mpm => mpm.mpPartId))].map(mpPartId => {
                     return sortedMPF.find(mpm => mpm.mpPartId === mpPartId);
                 });
@@ -1269,7 +1269,7 @@ $(function () {
         //FormStepPart
         var formData = AppUtil.GetFormData("FormNewRoutingName");
         api.post("/routings/addnewrouting", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
         }).catch((error) => {
             AppUtil.HandleError("FormNewRoutingName", error);
@@ -1281,7 +1281,7 @@ $(function () {
         var formData = AppUtil.GetFormData("FormPreferredRouting");
         //PreferredRouting
         api.post("/routings/preferredrouting", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             document.getElementById("BtnPreferredRoutingClose").click();
         }).catch((error) => {
             AppUtil.HandleError("FormPreferredRouting", error);
@@ -1292,7 +1292,7 @@ $(function () {
         //routings/addnewrouting
         var formData = AppUtil.GetFormData("FormAltRoutingName");
         api.post("/routings/altrouting", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             document.getElementById("BtnAltRoutingClose").click();
         }).catch((error) => {
             AppUtil.HandleError("FormAltRoutingName", error);
@@ -1323,13 +1323,13 @@ $(function () {
             $("#MachineRoutingStepId").val(RoutingDetails["stepId"]);
         }
         else {
-            console.log("-------------");
-            console.log(rTgt.data("setuptime"));
+            //console.log("-------------");
+            //console.log(rTgt.data("setuptime"));
             $("#SetupTime").val(rTgt.data("setuptime"));
-            console.log(rTgt.data("floortofloortime"));
+            //console.log(rTgt.data("floortofloortime"));
             $("#FloorToFloorTime").val(rTgt.data("floortofloortime"));
-            console.log(rTgt.data("firstpieceprocessingtime"));
-            console.log("-------------");
+            //console.log(rTgt.data("firstpieceprocessingtime"));
+            //console.log("-------------");
             $("#FirstPieceProcessingTime").val(rTgt.data("firstpieceprocessingtime"));
             $("#NoOfPartsPerLoading").val(rTgt.data("noofpartsperloading"));
             $("#PreferredMachine").val(rTgt.data("preferredmachine"));
@@ -1397,7 +1397,7 @@ $(function () {
         var stepId = $("#DelMachineStepId").val();
         alert(machineId + "/" + stepId);
         api.get("/routings/deletemachine?stepId=" + stepId + "&machineId=" + machineId).then((data) => {
-            console.log(data);
+            //console.log(data);
             //console.log(tablebody.html());
             //RouteSuppliersTable
             //RouteSupplierTemplate
@@ -1512,7 +1512,7 @@ $(function () {
 
         var formData = AppUtil.GetFormData("FormRoutingSupplier");
         api.post("/routings/savestepsupplier", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             loadSetSuppliers();
             document.getElementById("Add-Supplier-Close").click();
         }).catch((error) => {
@@ -1532,7 +1532,7 @@ $(function () {
         $("#MachineId").val(machineId);
         var formData = AppUtil.GetFormData("FormRoutingMachine");
         api.post("/routings/savestepmachine", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             loadStepMachines();
             document.getElementById("Add-Machine-Close").click();
         }).catch((error) => {
@@ -1550,9 +1550,9 @@ $(function () {
             stepModel = data;
             RoutingDetails["stepNumber"] = data["stepNumber"];
             RoutingDetails["stepId"] = data["stepId"];
-            console.log("====1=====");
-            console.log(data);
-            console.log("====1-End=====");
+            //console.log("====1=====");
+            //console.log(data);
+            //console.log("====1-End=====");
             $("#StepId").val(data.stepId);
             $("#BOMRoutingStepId").val(data.stepId);
             document.getElementById('addMachine').removeAttribute('disabled');
@@ -1575,7 +1575,7 @@ $(function () {
         }
         var formData = AppUtil.GetFormData("FormStepPart");
         api.post("/routings/addBomtoassembly", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadBOMList(data.routingStepId);
             //LoadStepParts(data.manufacturedPartId,data.routingStepId);
             document.getElementById("FormStepPart").reset();

@@ -1,5 +1,6 @@
 ﻿using CWB.App.AppUtils;
 using CWB.App.Models.BusinessProcesses;
+using CWB.App.Models.WorkOrder;
 using CWB.CommonUtils.Common;
 using CWB.Logging;
 using Microsoft.AspNetCore.Http;
@@ -83,6 +84,46 @@ namespace CWB.App.Services.ProductionPlanWo
             var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allbomlist/{tenantId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<IEnumerable<BOMListVM>>.GetAsync(uri, headers);
+        }
+
+        public async Task<WOStatusVM> GetWOStatus(long Id)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/getwostatus/{Id}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<WOStatusVM>.GetAsync(uri, headers);
+        }
+
+        public async Task<List<ChildWoRelVM>> PostChildWoRel(IEnumerable<ChildWoRelVM> childWoRels)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/childworel");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in childWoRels)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<ChildWoRelVM>>.PostAsync(uri, childWoRels, headers);
+        }
+        public async Task<List<McTimeListVM>> PostMcTimeList(IEnumerable<McTimeListVM> mcTimeListVMs)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/postmctimelist");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in mcTimeListVMs)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<McTimeListVM>>.PostAsync(uri, mcTimeListVMs, headers);
+        }
+        public async Task<IEnumerable<McTimeListVM>> GetAllMcTimeList()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allmctimelist/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<IEnumerable<McTimeListVM>>.GetAsync(uri, headers);
+        }
+        public async Task<IEnumerable<WorkOrdersVM>> AllParentChildWos(long parentWoId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/allparentchildwos/{parentWoId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<WorkOrdersVM>>.GetAsync(uri, headers);
         }
     }
 }

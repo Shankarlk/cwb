@@ -9,6 +9,7 @@ namespace CWB.ProductionPlanWO.ViewModels
     {
         public long WOID { get; set; }
         public long SalesOrderId { get; set; }
+        public long ParentWoId { get; set; }
         public string? WONumber { get; set; }
         public DateTime? WODate { get; set; }
         public long PartId { get; set; }

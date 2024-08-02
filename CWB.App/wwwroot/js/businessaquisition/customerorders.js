@@ -19,7 +19,7 @@ function LoadPOLines(customerOrderId) {
     api.get("/businessaquisition/getpolines?customerOrderId=" + customerOrderId).then((data) => {
         var tablebody = $("#POLinesTable tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             data[i].strStatus = OrdStatus[data[i].status];
             if (data[i].hold) {
@@ -45,7 +45,7 @@ function LoadCustomerOrders() {
     api.get("/businessaquisition/getcustorders").then((data) => {
         var tablebody = $("#CustomerOrders tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             data[i].strStatus = OrdStatus[data[i].status];
             if (data[i].hold) {
@@ -78,7 +78,7 @@ function LoadTempForm() {
         //$("#PartId").trigger('change');
         $('#DSPartId').val(partId);
         $('#DSPartNo').val(partNo);
-        console.log(partId + "/" + partNo);
+        //console.log(partId + "/" + partNo);
         document.getElementById("LaunchDeliverySchedule").disabled = false;
     }
     $('#TotalQty').val(totalQty);
@@ -102,7 +102,7 @@ function showSalesOrdersForPart(partId,partNo) {
     $('#DSPartNo').val(partNo);
     $('#AggregateCustomerOrderId').val(customerorderid);
     $('#SalesCustomerOrderId').val(customerorderid);
-    console.log(partId + "/" + partNo);
+    //console.log(partId + "/" + partNo);
     LoadSalesOrders(customerorderid);
     LoadDeliverySchedules($('#SalesCustomerOrderId').val());
     document.getElementById("LaunchDeliverySchedule").disabled = false;
@@ -125,18 +125,35 @@ function copyPartData() {
     
     document.getElementById("DeliveryScheduleForm").reset();
     document.getElementById("AggregateObjForm").reset();
+    var partId = data[selval].partId;
+     $.ajax({
+            type: "GET",
+            url: "/BusinessAquisition/CheckPartNo",
+            data: { partId: partId },
+            success: function (response) {
+                if (!response) {
+                    alert("This part number already exists.");
+                    return;
+                }
+        //PostDeliverySchedule();
 
-    $('#PartId').val(data[selval].partId);
-    $('#PartNo').val(data[selval].partNo);
-    $('#DSPartId').val(data[selval].partId);
-    $('#DSPartNo').val(data[selval].partNo);
+                $('#PartId').val(data[selval].partId);
+                $('#PartNo').val(data[selval].partNo);
+                $('#DSPartId').val(data[selval].partId);
+                $('#DSPartNo').val(data[selval].partNo);
+                document.getElementById("LaunchDeliverySchedule").disabled = false;
+                document.getElementById("btn-close-ba-ExistingParts").click();
+            }
+     });
+
+
     $('#AggregateCustomerOrderId').val(customerorderid);
     $('#SalesCustomerOrderId').val(customerorderid);
-    console.log(data[selval].partId + "/" + data[selval].partNo);
+    //console.log(data[selval].partId + "/" + data[selval].partNo);
     LoadSalesOrders(customerorderid);
     LoadDeliverySchedules($('#SalesCustomerOrderId').val());
-    document.getElementById("LaunchDeliverySchedule").disabled = false;
-    document.getElementById("btn-close-ba-ExistingParts").click();
+
+
 }
 
 function LoadSalesOrders(customerOrderId) {
@@ -146,7 +163,7 @@ function LoadSalesOrders(customerOrderId) {
     api.get("/businessaquisition/getsalesorders?customerOrderId=" + customerOrderId).then((data) => {
         var tablebody = $("#SalesOrders tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             if (data[i].partId == partId) { }
             else { continue; }
@@ -155,7 +172,7 @@ function LoadSalesOrders(customerOrderId) {
                 continue;
             }*/
             //data[i].partNo = GetPartNo(data[i].partId);
-            data[i].strStatus = OrdStatus[data[i].status];
+            //data[i].strStatus = OrdStatus[data[i].status];
             data[i].strHold = "N";
             if (data[i].hold) {
                 data[i].strHold = "Y";
@@ -189,7 +206,7 @@ function LoadPartsForSearching() {
 function LoadPOLogs(customerOderId, salesOrderId) {
     //GetMasterParts();
     api.get("/businessaquisition/getpologs?customerOrderId=" + customerOderId).then((data) => {
-        console.log(data);
+        //console.log(data);
         var tablebody = $("#POLogTable tbody");
         $(tablebody).html("");//empty tbody
         for (i = 0; i < data.length; i++) {
@@ -217,7 +234,7 @@ function LoadPOLogs(customerOderId, salesOrderId) {
 
 function LoadSOAggregate(customerOrderId) {
     api.get("/businessaquisition/getsoaggregate?customerOrderId=" + customerOrderId).then((data) => {
-        console.log(data);
+        //console.log(data);
         $('#TotalQty').val(data.totalQty);
         $('#PartId').val(data.partId);
         $('#PartId').trigger('change');
@@ -231,11 +248,11 @@ function LoadSOAggregate(customerOrderId) {
 
 function LoadDeliverySchedules(customerOrderId) {
     api.get("/businessaquisition/getschedules?customerOrderId=" + customerOrderId).then((data) => {
-        console.log(data);
+        //console.log(data);
         schedules = new Array();
         var tablebody = $("#DeliverySchedules tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         var partId = $('#DSPartId').val();
         for (i = 0; i < data.length; i++) {
             /*if (data[i].status == 40) {
@@ -258,7 +275,7 @@ function RemoveCustomerOrder(customerOderId) {
     let confirmval = confirm("Are your sure you want to delete this Order?", "Yes", "No");
     if (confirmval) {
         api.get("/businessaquisition/removecustomerorder?cutomerOrderId=" + customerOderId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadCustomerOrders();
         }).catch((error) => {
         });
@@ -269,7 +286,7 @@ function RemoveSalesOrder(salesOrderId) {
     let confirmval = confirm("Are your sure you want to delete this Order?", "Yes", "No");
     if (confirmval) {
         api.get("/businessaquisition/removesalesorder?salesOrderId=" + salesOrderId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadSalesOrders(data.customerOderId);
         }).catch((error) => {
         });
@@ -280,7 +297,7 @@ function RemoveDeliverySchedule(scheduleId) {
     let confirmval = confirm("Are your sure you want to delete this Delivery Schedule item?", "Yes", "No");
     if (confirmval) {
         api.get("/businessaquisition/removeschedule?scheduleId=" + scheduleId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadDeliverySchedules($('#SalesCustomerOrderId').val());
         }).catch((error) => {
         });
@@ -289,13 +306,13 @@ function RemoveDeliverySchedule(scheduleId) {
 
 function PostSalesOrder() {
     //SalesOrderForm
-    console.log("....PostSalesOrder....");
+    //console.log("....PostSalesOrder....");
     var formData = AppUtil.GetFormData("SalesOrderForm");
     //  console.log(formData);
     api.post("/businessaquisition/salesorder", formData).then((data) => {
-        console.log("****SalesOrder****");
-        console.log(data);
-        console.log("****End-SalesOrder****");
+        //console.log("****SalesOrder****");
+        //console.log(data);
+        //console.log("****End-SalesOrder****");
         //document.getElementById("Btn").click();
     }).catch((error) => {
         AppUtil.HandleError("SalesOrderForm", error);
@@ -318,7 +335,7 @@ function PostAggregateObj() {
     });*/
     var cuoid = $('#AggregateCustomerOrderId').val();
     api.get("/businessaquisition/addsalesorders?customerOrderId=" + cuoid).then((data) => {
-        console.log(data);
+        //console.log(data);
         LoadSalesOrders(cuoid);
     }).catch((error) => {
     });
@@ -326,17 +343,17 @@ function PostAggregateObj() {
 
 function PostCustomerOder() {
     //CustomerOrderForm
-    console.log("....PostCustomerOrder....");
+    //console.log("....PostCustomerOrder....");
     var formData = AppUtil.GetFormData("CustomerOrderForm");
     //  console.log(formData);
     api.post("/businessaquisition/customerorder", formData).then((data) => {
-        console.log("****CustomerOrder****");
-        console.log(data);
-        console.log("****End-CustomerOrder****");
+        //console.log("****CustomerOrder****");
+        //console.log(data);
+        //console.log("****End-CustomerOrder****");
         $('#AggregateCustomerOrderId').val(data.customerOrderId);
         $('#SalesCustomerOrderId').val(data.customerOrderId);
-        console.log(data.customerOrderId);
-        alert("Customer Order Saved");
+        //console.log(data.customerOrderId);
+        alert("Customer Order Created");
         $('#CustomerOrderForm')[0].reset();
         $("#searchpart").prop("disabled", false);
         //  $('#').val("");
@@ -349,7 +366,7 @@ function PostCustomerOder() {
 
 function PostDeliverySchedule() {
 
-    console.log("....PostDeliverySchedule....");
+    //console.log("....PostDeliverySchedule....");
     var formName = "DeliveryScheduleForm";
     if (editSalesOrder) {
         formName = "EditSOForm";
@@ -364,16 +381,16 @@ function PostDeliverySchedule() {
             LoadDeliverySchedules(cuoid);
         }
         else {
-            console.log("****DeliverySchedule****");
-            console.log(data);
-            console.log("****End-DeliverySchedule****");
+            //console.log("****DeliverySchedule****");
+            //console.log(data);
+            //console.log("****End-DeliverySchedule****");
             var cuoid = $('#SalesCustomerOrderId').val();
             var partId = $('#DSPartId').val();
             $('#RequiredQuantity').val("");
             $('#DSComment').val("");
             $('#RequiredByDate').val("");
             $('#ScheduleId').val("0");
-            console.log("/" + cuoid);
+            //console.log("/" + cuoid);
             LoadDeliverySchedules(cuoid);
         }
     }).catch((error) => {
@@ -384,7 +401,7 @@ function PostDeliverySchedule() {
 function PostPODelete() {
     //DeliveryScheduleForm
     //CustomerOrderForm
-    console.log("....PostPODelete....");
+    //console.log("....PostPODelete....");
     var formData = AppUtil.GetFormData("podeleteform");
     //  console.log(formData);
     var endpoint = "/businessaquisition/polog";
@@ -393,9 +410,9 @@ function PostPODelete() {
     }
 
     api.post(endpoint, formData).then((data) => {
-        console.log("****PostPODelete****");
-        console.log(data);
-        console.log("****End-PostPODelete****");
+        //console.log("****PostPODelete****");
+        //console.log(data);
+        //console.log("****End-PostPODelete****");
         LoadCustomerOrders();
         document.getElementById("btnpodeleteclose").click();
     }).catch((error) => {
@@ -406,13 +423,13 @@ function PostPODelete() {
 function PostPOHold() {
     //DeliveryScheduleForm
     //CustomerOrderForm
-    console.log("....PostPOHold....");
+    //console.log("....PostPOHold....");
     var formData = AppUtil.GetFormData("poholdform");
     //  console.log(formData);
     api.post("/businessaquisition/polog", formData).then((data) => {
-        console.log("****PostPOHold****");
-        console.log(data);
-        console.log("****End-PostPOHold****");
+        //console.log("****PostPOHold****");
+        //console.log(data);
+        //console.log("****End-PostPOHold****");
         document.getElementById("poholdform").reset();
         LoadCustomerOrders();
         document.getElementById("btnholdclose").click();
@@ -423,15 +440,15 @@ function PostPOHold() {
 function PostSOHold() {
     //DeliveryScheduleForm
     //CustomerOrderForm
-    console.log("....PostSOHold....");
+    //console.log("....PostSOHold....");
     var formData = AppUtil.GetFormData("poholdform");
     //  console.log(formData);
     api.post("/businessaquisition/solog", formData).then((data) => {
-        console.log("****PostSOHold****");
-        console.log(data);
-        console.log("****End-PostSOHold****");
+        //console.log("****PostSOHold****");
+        //console.log(data);
+        //console.log("****End-PostSOHold****");
         var customerOrderId = $('#AggregateCustomerOrderId').val();
-        console.log(customerOrderId);
+        //console.log(customerOrderId);
         LoadSalesOrders(customerOrderId);
         holdsalesorder = false;
         document.getElementById("btnholdclose").click();
@@ -442,13 +459,13 @@ function PostSOHold() {
 function PostPOResume() {
     //DeliveryScheduleForm
     //CustomerOrderForm
-    console.log("....PostPOResume....");
+    //console.log("....PostPOResume....");
     var formData = AppUtil.GetFormData("poholdform");
     //  console.log(formData);
     api.post("/businessaquisition/polog", formData).then((data) => {
-        console.log("****PostPOResume****");
-        console.log(data);
-        console.log("****End-PostPOResume****");
+        //console.log("****PostPOResume****");
+        //console.log(data);
+        //console.log("****End-PostPOResume****");
         LoadCustomerOrders();
         //document.getElementById("Btn").click();
     }).catch((error) => {
@@ -462,7 +479,7 @@ function SetScheduleEditVals(scheduleId,requiredByDate
     , requiredQuantity, customerOrderId, comment,dsPartId)
 {
     //$('#RequiredByDate').val(requiredByDate);
-    console.log("Comment: " + comment);
+    //console.log("Comment: " + comment);
     document.getElementById('RequiredByDate').value = requiredByDate.split("-").reverse().join("-");
     $('#RequiredQuantity').val(requiredQuantity);
     $('#DSComment').val(comment);
@@ -519,7 +536,7 @@ function GetMasterParts() {
 
 function LoadMasterParts() {
     GetMasterParts();
-    console.log(ba_masterparts);
+    //console.log(ba_masterparts);
     if (ba_masterparts.length > 0) {
         //AddParts();
     }
@@ -536,7 +553,7 @@ function GetPartNo(partId) {
 
 
 $(function () {
-    console.log("CustomerOrders Ready");
+    //console.log("CustomerOrders Ready");
     var tablebody = $("#CustomerOrders tbody");
     $("#CustomerId").select2();
     loadCustomers("CustomerId");
@@ -571,7 +588,7 @@ $(function () {
         }
     });*/
     $("#CustomerId").on('change', function () {
-        console.log($("#CustomerId option:selected").val());
+        //console.log($("#CustomerId option:selected").val());
         //CustomerName
         $('#CustomerName').val($("#CustomerId option:selected").text());
         // $('#SalesPartId').val($("#PartId option:selected").val());
@@ -596,9 +613,9 @@ $(function () {
         else {
             $('#PODSalesOrderId').val("0");
         }
-        console.log("POHold salesorderid " + salesorderid);
+        //console.log("POHold salesorderid " + salesorderid);
 
-        console.log("POHold " + salesorderid);
+        //console.log("POHold " + salesorderid);
         //PODCustomerOrderId
         $('#PODCustomerOrderId').val(customerorderid);
     });
@@ -633,9 +650,9 @@ $(function () {
         else {
             $('#POHSalesOrderId').val("0");
         }
-        console.log("POHold salesorderid " + salesorderid);
+        //console.log("POHold salesorderid " + salesorderid);
 
-        console.log("POHold "+salesorderid);
+        //console.log("POHold "+salesorderid);
         //POHCustomerOrderId
         $('#POHCustomerOrderId').val(customerorderid);
     });
@@ -665,17 +682,17 @@ $(function () {
         var comment = relatedTarget.data("comment");
         var partId = relatedTarget.data("partid");
         var salesorder = relatedTarget.data("salesorder");
-        var scheduleid = relatedTarget.data("scheduleid");
+        var scheduleid = relatedTarget.data("salesorderid");
         document.getElementById('EditSORequiredByDate').value = requiredbydatestr.split("-").reverse().join("-");
         $('#EditSORequiredQuantity').val(requiredquantity);
         $('#EditSOComment').val(comment);
         $('#EditSOPartId').val(partId);
         $('#EditSOScheduleId').val(scheduleid);
         $('#EditSOCustomerOrderId').val(customerOrderId);
-        console.log("EditSOScheduleId: " + scheduleid);
-        console.log("EditSOComment: " + comment);
-        console.log("EditSOCustomerOrderId: " + customerOrderId);
-        console.log("EditSOPartId: " + partId);
+        //console.log("EditSOScheduleId: " + scheduleid);
+        //console.log("EditSOComment: " + comment);
+        //console.log("EditSOCustomerOrderId: " + customerOrderId);
+        //console.log("EditSOPartId: " + partId);
         if (salesorder == "Y") {
             editSalesOrder = true;
         }
@@ -712,11 +729,11 @@ $(function () {
             $('#CustomerOrderId').val(customerorderid);
             $(LaunchDeliverySchedule).prop("disabled", false);
             $("#searchpart").prop("disabled", false);
-            console.log(customerorderid+"/"+customerId);
+            //console.log(customerorderid+"/"+customerId);
             //$("#CustomerId").select2();
             $('#CustomerId').val(customerId);
             $('#CustomerId').trigger('change');
-            console.log("comment: " + comment);
+            //console.log("comment: " + comment);
             $('#Comment').val(comment);
             if (ordertype == 1) {
                 $("#POEntry").prop('checked', true);
@@ -749,6 +766,8 @@ $(function () {
             document.getElementById("BtnAddScheduleClose").click();
             return;
         }
+
+       
         schedules = new Array();
         var dspartNo = $('#DSPartNo').val();
         
@@ -766,7 +785,7 @@ $(function () {
         //schedules = new Array();
         LoadTempForm();
         var customerOrderId = $('#AggregateCustomerOrderId').val();
-        console.log(customerOrderId);
+        //console.log(customerOrderId);
         LoadSalesOrders(customerOrderId);
         LoadPOLines(customerOrderId);
     });
@@ -779,6 +798,14 @@ $(function () {
 
     $("#BtnAddCustomerOrder").on("click", function () {
         // alert("Add CustomerOrder clicked");
+        const podate = $("#PODate").val();
+        const currentDate = new Date();
+        const userDate = new Date(podate);
+        if (userDate < currentDate) {
+            alert('Please Enter A Date Greater Than Or Equal To Today\'s Date');
+            $("#PODate").val('');
+            return;
+        }
        PostCustomerOder();
     });
 
@@ -810,7 +837,7 @@ $(function () {
         }
         PostAggregateObj();
         var customerOrderId = $('#AggregateCustomerOrderId').val();
-        console.log(customerOrderId);
+        //console.log(customerOrderId);
         LoadSalesOrders(customerOrderId);
     });
     $("#BtnAddSchedule").on("click", function () {
@@ -820,18 +847,18 @@ $(function () {
             return;
         }
         var partId = $("#DSPartId").val(); // assuming DSPartId is the input field for part number
-        $.ajax({
-            type: "GET",
-            url: "/BusinessAquisition/CheckPartNo",
-            data: { partId: partId },
-            success: function (response) {
-                if (!response) {
-                    alert("This part number already exists.");
-                    return;
-                }
+        //$.ajax({
+        //    type: "GET",
+        //    url: "/BusinessAquisition/CheckPartNo",
+        //    data: { partId: partId },
+        //    success: function (response) {
+        //        if (!response) {
+        //            alert("This part number already exists.");
+        //            return;
+        //        }
                 PostDeliverySchedule();
-            }
-        });
+        //    }
+        //});
     });
 
     $("#BtnEditSO").on("click", function () {

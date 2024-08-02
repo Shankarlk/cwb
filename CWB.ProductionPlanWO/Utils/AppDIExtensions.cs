@@ -21,6 +21,8 @@ namespace CWB.ProductionPlanWO.Utils
             services.AddTransient<IBOMListRepository, BOMListRepository>();
             services.AddTransient<IBOMTempRepository, BOMTempRepository>();
             services.AddTransient<IProductionPlan_WORepository, ProductionPlan_WORepository>();
+            services.AddTransient<IChildWoRelRepository, ChildWoRelRepository>();
+            services.AddTransient<IMcTimeListRepository, McTimeListRepository>();
             services.AddTransient<IWOService, WOService>();
         }
     }

@@ -100,7 +100,7 @@ function loadUOMs(UOMId)
     var div_data = "<option value=''></option>";
     compSelect.append(div_data);
     api.get("/masters/getuoms").then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             div_data = "<option value='" +
                 data[i].uomId + "'>" +
@@ -190,7 +190,7 @@ function loadSuppliersToTable(tableName,rowTemplate,selectedSupplierId) {
                 $(tablebody).append(AppUtil.ProcessTemplateDataNew(rowTemplate, data[i], i));
             }
         }
-        console.log($(tablebody).html());
+        //console.log($(tablebody).html());
     }).catch((error) => {
         //console.log(error);
     });
@@ -199,15 +199,15 @@ function loadSuppliersToTable(tableName,rowTemplate,selectedSupplierId) {
 function getMachineList() {
     //debugger;
     machinelist = {};
-    console.log("Get machine list..");
+    //console.log("Get machine list..");
     api.get("/machine/getmachines").then((data) => {
         //debugger;
-        console.log(data);
+        //console.log(data);
         machinelist = data;
         //return machinelist;
         //console.log($(tablebody).html());
     }).catch((error) => {
-        console.log(error);
+        //console.log(error);
     });
     return machinelist;
 }
@@ -217,7 +217,7 @@ function loadMachinesToTable(tableName, rowTemplate) {
     var tablebody = $("#" + tableName + " tbody");
     $(tablebody).html("");//empty tbody
     api.get("/machine/getmachines").then((data) => {
-        console.log(data);
+        //console.log(data);
         machinelist = data;
         for (i = 0; i < data.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateDataNew(rowTemplate, data[i], i));

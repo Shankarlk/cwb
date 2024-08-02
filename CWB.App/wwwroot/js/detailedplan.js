@@ -4,7 +4,7 @@ function loadWO() {
         data = data.filter(item => item.active !== 2);
         var tablebody = $("#detailedPlanWo tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             //data[i].strStatus = WoOrdStatus[data[i].status];
             $(tablebody).append(AppUtil.ProcessTemplateData("detailedPlanWoRow", data[i]));
@@ -13,11 +13,72 @@ function loadWO() {
     });
 }
 
+function landingPage() {
+    api.getbulk("/WorkOrder/AllWorkOrders").then((data) => {
+        const workOrdersWithStatus1 = data.filter((workOrder) => workOrder.status === 1);
+        const count = workOrdersWithStatus1.length;
+        $('#noOfWo').text(count);
+    }).catch((error) => {
+    });
+    api.getbulk("/WorkOrder/AllProductionWo").then((data) => {
+        const customerChildParts = data.filter((workOrder) => workOrder.partType === 1);
+        const count = customerChildParts.length;
+        $('#noOfChildPart').text(count);
+    }).catch((error) => {
+    });
+    api.getbulk("/WorkOrder/GetAllBomlist").then((data) => {
+        const count = data.length;
+        $('#noOfAssyBomExploded').text(count);
+        const manfParts = data.map((bom) => bom.child_Part_No_Type == "ManufacturedPart");
+        const bofparts = data.map((bom) => bom.child_Part_No_Type == "BOF");
+
+        // Get the unique manufacturer parts
+        const uniqueManfParts = [...new Set(manfParts)];
+        const uniqueBofParts = [...new Set(bofparts)];
+
+        // Get the common manufacturer parts (i.e., parts that appear more than once)
+        const commonManfParts = manfParts.filter((part, index, array) => array.indexOf(part) !== index);
+        const CommonBofParts = bofparts.filter((part, index, array) => array.indexOf(part) !== index);
+
+        // Get the count of common manufacturer parts
+        const commonManfPartsCount = commonManfParts.length;
+        const commonBofPartsCount = CommonBofParts.length;
+
+        // Get the count of unique manufacturer parts
+        const uniqueManfPartsCount = uniqueManfParts.length;
+        const uniqueBofCount = uniqueBofParts.length;
+
+        // Update the UI
+        $('#noOfCommonManfParts').text(commonManfPartsCount);
+        $('#totalNoOfUniqueManfParts').text(uniqueManfPartsCount);
+        $('#noOfCommonBOFParts').text(commonBofPartsCount);
+        $('#totalNoOfUniqueBOFParts').text(uniqueBofCount);
+    }).catch((error) => {
+    });
+    api.getbulk("/WorkOrder/GetAllProcPlan").then((data) => {
+        const count = data.map((raw) => raw.partType == "RawMaterial");
+        $('#noOfRMPart').text(count.length);
+        const rmparts = data.filter((raw) => raw.partType === "RawMaterial").map((raw) => raw.partNo);
+        const uniqueRMParts = [...new Set(rmparts)];
+
+        const commonRMParts = rmparts.filter((part, index, array) => array.indexOf(part) !== index);
+        const commonRMPartsCount = commonRMParts.length;
+        const uniqueRMPartsCount = uniqueRMParts.length;
+
+        // Get the count of unique manufacturer parts
+        //const uniqueRMPartsCount = uniqueRMParts.length;
+        $('#noOfCommonRMPart').text(commonRMPartsCount);
+        $('#totalNoOfUniqueRMPart').text(uniqueRMPartsCount);
+
+    }).catch((error) => {
+    });
+}
+
 function loadProcPlan() {
     api.getbulk("/WorkOrder/GetAllProcPlan").then((data) => {
         var tablebody = $("#ProcPlanGrid tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateData("ProcPlanRow", data[i]));
         }
@@ -29,9 +90,27 @@ function loadBomList() {
     api.getbulk("/WorkOrder/GetAllBomlist").then((data) => {
         var tablebody = $("#BomListGrid tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateData("BomListRow", data[i]));
+        }
+    }).catch((error) => {
+    });
+}
+
+function loadMcTimeListDetail() {
+    api.getbulk("/WorkOrder/GetAllMcTimeList").then((data) => {
+        var tablebody = $("#MachineTimeListDetail tbody");
+        $(tablebody).html("");//empty tbody
+        //console.log(data);
+        for (i = 0; i < data.length; i++) {
+            $(tablebody).append(AppUtil.ProcessTemplateData("MachineTimeListDetailRow", data[i]));
+        }
+        var tablebodysummary = $("#McTimeListSummary tbody");
+        $(tablebodysummary).html("");//empty tbody
+        //console.log(data);
+        for (i = 0; i < data.length; i++) {
+            $(tablebodysummary).append(AppUtil.ProcessTemplateData("McTimeListSummaryRow", data[i]));
         }
     }).catch((error) => {
     });
@@ -41,7 +120,7 @@ function reloadWO(reloadOption, partid) {
     api.getbulk("/WorkOrder/ReloadProductionWo?reloadoption=" + reloadOption + "&partid=" + partid).then((data) => {
         var tablebody = $("#Popup4Grid tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             //data[i].strStatus = WoOrdStatus[data[i].status];
             $(tablebody).append(AppUtil.ProcessTemplateData("Popup4GridRow", data[i]));
@@ -54,7 +133,7 @@ function p2reloadWO(reloadOption, partid) {
     api.getbulk("/WorkOrder/ReloadProductionWo?reloadoption=" + reloadOption + "&partid=" + partid).then((data) => {
         var tablebody = $("#MulitpleWOs tbody");
         $(tablebody).html("");//empty tbody
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             //data[i].strStatus = WoOrdStatus[data[i].status];
             $(tablebody).append(AppUtil.ProcessTemplateData("MultipleWoRow", data[i]));
@@ -67,6 +146,8 @@ $(document).ready(function () {
     loadWO();
     loadProcPlan();
     loadBomList();
+    landingPage();
+    loadMcTimeListDetail();
 
     $('#popup1').on('shown.bs.modal', function (event) {
         var soqty = $('#SoQty').val();
@@ -215,7 +296,7 @@ $(document).ready(function () {
                     loadWO();
                 }).catch((error) => {
                     AppUtil.HandleError("WOForm", error);
-                    console.log(error);
+                    //console.log(error);
                 });
             } else {
                 alert("Please Select atleast one!");
@@ -241,7 +322,7 @@ $(document).ready(function () {
         $('#equaldiv').hide();
         loadWO();
         noofWOCreation = [];
-        console.log(noofWOCreation);
+        //console.log(noofWOCreation);
         //}, 100);
     });
 
@@ -262,14 +343,15 @@ $(document).ready(function () {
         var formattedDate = WoComplDate.toISOString();
         var requestInProgress = false;
         let totalQuantity = 0;
+        
         var balsoqnty = $('#p2BalQty').val();
         var qntyOnhand = $('#p2QtyOnHand').val();
-        var balmanuf = balsoqnty - qntyOnhand;
+        var balmanuf = planwoqty - qntyOnhand;
         $('#p2BaltoManuf').val(balmanuf);
         var sonumber = "";
 
         api.get("/WorkOrder/GetSoNumber?soid=" + soid).then(async (data) => {
-            console.log(data);
+            //console.log(data);
             sonumber = await data.soNumber;
             $('#p2soNumber').text(sonumber);
         });
@@ -304,6 +386,8 @@ $(document).ready(function () {
                 $("#ManualpartType").val(parttype);
                 $("#ManualWoNumber").val(wonumber);
                 $("#ManualStatus").val(wostatus);
+                $('#ManualBalSoQty').val(balsoqnty);
+                $('#ManualQtyOnHand').val(qntyOnhand);
             } else {
                 $('#equaldiv').hide();
             }
@@ -339,7 +423,7 @@ $(document).ready(function () {
                     var completedDateIso = completedDate.toISOString();
                     var disoption = "Daily";
                     api.get("/WorkOrder/CalculateWOQuantity?dispatchStartDate=" + dispatchDateIso + "&soCompletionDate=" + completedDateIso + "&balanceToManufacture=" + planwoqty + "&dispatchOption=" + disoption).then((data) => {
-                        console.log(data);
+                        //console.log(data);
                         noofWOCreation.push(...data);
                     });
                 }
@@ -370,7 +454,7 @@ $(document).ready(function () {
                     var completedDateIso = completedDate.toISOString();
                     var disoption = "Weekly";
                     api.get("/WorkOrder/CalculateWOQuantity?dispatchStartDate=" + dispatchDateIso + "&soCompletionDate=" + completedDateIso + "&balanceToManufacture=" + planwoqty + "&dispatchOption=" + disoption).then((data) => {
-                        console.log(data);
+                        //console.log(data);
                         noofWOCreation.push(...data);
                     });
                 }
@@ -401,7 +485,7 @@ $(document).ready(function () {
                     var completedDateIso = completedDate.toISOString();
                     var disoption = "Monthly";
                     api.get("/WorkOrder/CalculateWOQuantity?dispatchStartDate=" + dispatchDateIso + "&soCompletionDate=" + completedDateIso + "&balanceToManufacture=" + planwoqty + "&dispatchOption=" + disoption).then((data) => {
-                        console.log(data);
+                        //console.log(data);
                         noofWOCreation.push(...data);
                     });
                 }
@@ -430,7 +514,7 @@ $(document).ready(function () {
                     data: JSON.stringify(noofWOCreation),
                     dataType: "json",
                     success: function (result) {
-                        console.log(result);
+                        //console.log(result);
                         tdata.push(...result);
                         var tablebody = $("#MulitpleWOs tbody");
                         $(tablebody).html("");//empty tbody
@@ -501,10 +585,18 @@ $(document).ready(function () {
         $("#singleWoNumber").val(woNumber);
         $("#p3ReloadOption").val(reloadopt);
         $("#singleWoComplDt").val(planCompletionDateStr.split("-").reverse().join("-"));
+        $("#singleBalSoQty").val(0);
+        $("#singleQtyOnHand").val(0);
+        $("#singleNoofWoReleased").val(0);
+        $("#singleSumWoQnty").val(0);
+        $("#singleBalWoQty").val(0);
 
+        var balmanufqnty = planWOQty - 0;
+
+        $("#singleBalToManuf").val(balmanufqnty);
         if (partType === 1) {
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
-                console.log(data);
+                //console.log(data);
                 const selectElement = $('#singleRouting');
                 selectElement.prop("disabled", false);
                 $.each(data, (index, item) => {
@@ -533,7 +625,7 @@ $(document).ready(function () {
         const routeId = $(e.target).val();
         // make an API call to get data for select2 based on the selected studentId
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
-            console.log(data);
+            //console.log(data);
             const selectElement = $('#singleStartOpNo');
             const selectEndOpNo = $('#singleEndOpNo');
             $.each(data, (index, item) => {
@@ -604,7 +696,7 @@ $(document).ready(function () {
         };
 
         api.post("/WorkOrder/ProductionPlanPost", rowData).then((data) => {
-            console.log(data);
+            //console.log(data);
             $('#popup3').modal('hide');
             p2reloadWO(reloadOption, partid);
         }).catch((error) => {
@@ -614,7 +706,14 @@ $(document).ready(function () {
 
 
     $('#popup3ManualMultiple').on('shown.bs.modal', function (event) {
-
+        var totalsoqnty = $('#ManualTotalSoQty').val();
+        var balSoqnty = $('#ManualBalSoQty').val();
+        var QntyOnhand = $('#ManualQtyOnHand').val();
+        var balmanuf = totalsoqnty - QntyOnhand;
+        $('#ManualBalToManuf').val(balmanuf);
+        $('#ManualNoofWoReleased').val(0);
+        $('#ManualSumWoQnty').val(0);
+        $('#ManualBalWoQty').val(0);
     });
 
     $('#popup3ManualMultiple').on('hidden.bs.modal', function (event) {
@@ -676,7 +775,7 @@ $(document).ready(function () {
         };
 
         api.post("/WorkOrder/ProductionPlanPost", rowData).then((data) => {
-            console.log(data);
+            //console.log(data);
             resultData.push(...data);
             $('#popup3ManualMultiple').modal('hide');
             var tablebody = $("#MulitpleWOs tbody");
@@ -773,7 +872,7 @@ $(document).ready(function () {
         };
 
         api.post("/WorkOrder/ProductionPlanPost", rowData).then((data) => {
-            console.log(data);
+            //console.log(data);
             resultData.push(...data);
             $('#popup3NewWo').modal('hide');
             var tablebody = $("#MulitpleWOs tbody");
@@ -788,12 +887,17 @@ $(document).ready(function () {
     });
 
     $('#popup3NewWo').on('shown.bs.modal', function (event) {
+        var totalsoqnty = $("#NewTotalSoQty").val();
         var balsoq = $("#NewBalSoQty").val();
         var qntonhand = $("#NewQtyOnHand").val();
-        var balmanuf = balsoq - qntonhand;
-        $("#NewBalToManuf").val(balmanuf);
+        var balmanuf = totalsoqnty - balsoq;
+        $('#NewBalToManuf').val(balmanuf);
+        $('#NewNoofWoReleased').val(0);
+        $('#NewSumWoQnty').val(0);
+        $('#NewBalWoQty').val(0);
 
     });
+
     $('#popup4').on('hidden.bs.modal', function (event) {
         var $modal = $(this);
         $modal.find('input[type=radio][name=popup4Radiobtn]').unbind('change');
@@ -807,6 +911,7 @@ $(document).ready(function () {
     $('#popup4').on('shown.bs.modal', function (event) {
         var showpopup5 = false;
         var planwoqty = $('#popup4CalcWoQnty').val();
+        var qntyOnhand = $('#popup4QntyOnHanf').val();
         var wonumber = $('#popup4WoNumber').text();
         var ppid = $('#popup4ppid').val();
         var woid = $('#popup4woid').val();
@@ -817,7 +922,10 @@ $(document).ready(function () {
         var WoComplDate = $('#popup4WoComplDt').val();
         //var Compldt = $('#p2PlanComplDate').text();
         var partNo = $('#popup4PartNo').text();
-        //var formattedDate = WoComplDate.toISOString();
+        //var formattedDate = WoComplDate.toISOString();  popup4BalQnty
+        var balmaf = planwoqty - qntyOnhand;
+        $('#popup4BalQnty').val(balmaf);
+        $('#popup4PlanWoQnty').val(balmaf);
         var splitwos = [];
         $('input[type=radio][name=popup4Radiobtn]').change(function () {
             if (this.value == "1") {
@@ -847,9 +955,12 @@ $(document).ready(function () {
                 $("#popup5WoNumberField").val(wonumber);
                 $("#popup5WoComplDt").val(WoComplDate);
                 $("#popup5Status").val(wostatus);
+                $("#popup5QntyOnHand").val(qntyOnhand);
+                $("#popup5BalQnty").val(balmaf);
+                $("#popup5PlanWoQnty").val(balmaf);
                 if (parttype === "1") {
                     api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partid).then((data) => {
-                        console.log(data);
+                        //console.log(data);
                         const selectElement = $('#popup5Routing');
                         selectElement.prop("disabled", false);
                         $.each(data, (index, item) => {
@@ -875,7 +986,7 @@ $(document).ready(function () {
                 var splitnumber = parseInt(document.getElementById("numbersplitwo").value);
                 var initialDt = WoComplDate.split("-").reverse().join("-")
                 api.get("/WorkOrder/SplitWo?woid=" + woid + "&initialDate=" + initialDt + "&numDays=" + splitnumber + "&quantity=" + qnty + "&salersorderId=" + soid + "&partId=" + partid + "&partType=" + parttype).then((data) => {
-                    console.log(data);
+                    //console.log(data);
                     splitwos.push(...data);
                     if (splitwos.length > 0) {
                         var formattedDt = new Date(Date.parse(WoComplDate.split("-").reverse().join("/")));
@@ -940,7 +1051,7 @@ $(document).ready(function () {
         const routeId = $(e.target).val();
         // make an API call to get data for select2 based on the selected studentId
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
-            console.log(data);
+            //console.log(data);
             const selectElement = $('#popup5StartingOp');
             const selectEndOpNo = $('#popup5EndingOp');
             $.each(data, (index, item) => {
@@ -955,6 +1066,14 @@ $(document).ready(function () {
         }).catch((error) => {
             console.error(error);
         });
+    });
+    $('#popup5').on('hidden.bs.modal', function (event) {
+
+        const selectElement = $('#popup5StartingOp');
+        const selectEndOpNo = $('#popup5EndingOp');
+        selectElement.html("");
+        selectEndOpNo.html('');
+
     });
 
     $("#popup5SaveWo").on("click", function () {
@@ -1018,7 +1137,7 @@ $(document).ready(function () {
         };
 
         api.post("/WorkOrder/ProductionPlanPost", rowData).then((data) => {
-            console.log(data);
+            //console.log(data);
             resultData.push(...data);
             $('#popup5').modal('hide');
             loadWO();
@@ -1062,10 +1181,16 @@ $(document).ready(function () {
         $("#popup5EditWoComplDt").val(planCompletionDateStr);
         $("#popup5EditStatus").val(wostatus);
         $("#popup5Reloadoption").val(reloadoption);
+        $("#popup5EditQntyOnHand").val(0);
+
+        var baltomanuf = planWOQty - 0;
+        $("#popup5EditBalQnty").val(baltomanuf);
+        $("#popup5EditPlanWoQnty").val(baltomanuf);
+
 
         if (partType === 1) {
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
-                console.log(data);
+                //console.log(data);
                 const selectElement = $('#popup5EditRouting');
                 selectElement.prop("disabled", false);
                 $.each(data, (index, item) => {
@@ -1092,7 +1217,7 @@ $(document).ready(function () {
         const routeId = $(e.target).val();
         // make an API call to get data for select2 based on the selected studentId
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
-            console.log(data);
+            //console.log(data);
             const selectElement = $('#popup5EditStartingOp');
             const selectEndOpNo = $('#popup5EditEndingOp');
             $.each(data, (index, item) => {
@@ -1105,7 +1230,7 @@ $(document).ready(function () {
                 selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
         }).catch((error) => {
-            console.error(error);
+            //console.error(error);
         });
     });
 
@@ -1164,7 +1289,7 @@ $(document).ready(function () {
         };
 
         api.post("/WorkOrder/ProductionPlanPost", rowData).then((data) => {
-            console.log(data);
+            //console.log(data);
             resultData.push(data);
             $('#popup5Edit').modal('hide');
             loadWO();
@@ -1252,7 +1377,7 @@ $(document).ready(function () {
 
 
 function EditWo(element) {
-    console.log("--Edit--");
+    //console.log("--Edit--");
     var relatedTarget = $(element);
     var workOrderId = relatedTarget.data("workorderid");
     if (workOrderId === 0) {
@@ -1275,7 +1400,7 @@ function EditWo(element) {
     if (workOrderId > 0) {
 
         api.getbulk("/WorkOrder/GetSoWo?workOrderId=" + workOrderId).then((data) => {
-            console.log(data);
+            //console.log(data);
             $.each(data, (index, item) => {
                 var rowdata = {
                     wosoId: parseInt(item.wosoId),
@@ -1295,7 +1420,7 @@ function EditWo(element) {
                 dataType: "json",
                 success: function (result) {
                     window.locationre = result.url;
-                    console.log(result);
+                    //console.log(result);
                     $.each(result, (index, item) => {
                         WOSoTable.push(item);
                     });
@@ -1326,7 +1451,7 @@ function EditWo(element) {
 
                         if (partType === 1) {
                             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
-                                console.log(data);
+                                //console.log(data);
                                 const selectElement = $('#routing');
                                 selectElement.prop("disabled", false);
                                 $.each(data, (index, item) => {
@@ -1359,6 +1484,7 @@ function EditWo(element) {
                         $('#p2PartId').val(partId);
                         $('#p2PartType').val(partType);
                         $('#p2Status').val(wostatus);
+                        $('#p2QtyOnHand').val(0);
                         $('#p2PlanComplDate').text(planCompletionDateStr.split("-").reverse().join("-"));
                         //popup2show = true;
                     }
@@ -1366,8 +1492,10 @@ function EditWo(element) {
                         $('#popup4').modal('show');
                         $('#popup4CalcWoQnty').val(planWOQty);
                         $('#popup4ppid').val(ppid);
+                        $('#popup4QntyOnHanf').val(0);
                         $('#popup4BalQnty').val(0);
                         $('#popup4WoNumber').text(woNumber);
+                        $('#popup4StWoNumber').text(woNumber);
                         $('#popup4PartNo').text(partNo);
                         $('#popup4woid').val(workOrderId);
                         $('#popup4soid').val(salesOrderId);

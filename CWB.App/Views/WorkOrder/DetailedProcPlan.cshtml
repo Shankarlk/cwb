@@ -25,17 +25,17 @@
                                             <tbody>
                                                 <tr>
                                                     <td>No of WO w/f detailed Planning </td>
-                                                    <td>xx</td>
+                                                    <td><span id="noOfWo"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                                 <tr>
-                                                    <td>No of Assy BOM exploded … </td>
-                                                    <td>xx</td>
+                                                    <td>No of Assy BOM exploded </td>
+                                                    <td><span id="noOfAssyBomExploded"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                                 <tr>
-                                                    <td>No of Customer Child Part … </td>
-                                                    <td>xx</td>
+                                                    <td>No of Customer Child Part </td>
+                                                    <td><span id="noOfChildPart"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                             </tbody>
@@ -147,12 +147,12 @@
                                             <tbody>
                                                 <tr>
                                                     <td>No of Common Manf Parts</td>
-                                                    <td>XXXX</td>
+                                                    <td><span id="noOfCommonManfParts"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                                 <tr>
                                                     <td>Total no unique Manf Parts</td>
-                                                    <td>XXXX</td>
+                                                    <td><span id="totalNoOfUniqueManfParts"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                             </tbody>
@@ -167,12 +167,12 @@
                                             <tbody>
                                                 <tr>
                                                     <td>No of Common BOF Parts</td>
-                                                    <td>XXXX</td>
+                                                    <td><span id="noOfCommonBOFParts"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                                 <tr>
                                                     <td>Total no unique BOF Parts </td>
-                                                    <td>XXXX</td>
+                                                    <td><span id="totalNoOfUniqueBOFParts"></span></td>
                                                 </tr>
                                                 <!-- ===========================  -->
                                             </tbody>
@@ -214,17 +214,17 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>No of RM Part No</td>
-                                                            <td>XXXX</td>
+                                                            <td><span id="noOfRMPart"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td>No of Common RM Parts</td>
-                                                            <td>XXXX</td>
+                                                            <td><span id="noOfCommonRMPart"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td>Total no unique RM Parts </td>
-                                                            <td>XXXX</td>
+                                                            <td><span id="totalNoOfUniqueRMPart"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                     </tbody>
@@ -613,41 +613,21 @@
                                                 <!-- ======================== -->
                                                 <div class="col-md-12">
                                                     <div class="table-responsive table-he-250">
-                                                        <table class="table table-sm table-bordered w-100 text-center">
+                                                        <table class="table table-sm table-bordered w-100 text-center" id="McTimeListSummary">
                                                             <thead class="  table-info th-sti">
                                                                 <tr class="table-border-bottom">
-                                                                    <th>Part No  / Desc</th>
-                                                                    <th>Part Type</th>
-                                                                    <th>WO  Ref</th>
                                                                     <th>Location</th>
-                                                                    <th>Opr No</th>
                                                                     <th>Machine Type</th>
                                                                     <th>Machine</th>
-                                                                    <th>Plan Qnty</th>
                                                                     <th>Start Date</th>
                                                                     <th>End Date</th>
                                                                     <th>Mc Hrs</th>
-                                                                    <th>Status</th>
-                                                                    <th>Critical Part</th>
+                                                                    <th></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <!-- -------------  -->
-                                                                <tr>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                </tr>
+                                                                
                                                                 <!-- -------------  -->
                                                             </tbody>
                                                         </table>
@@ -732,7 +712,7 @@
                                                 <!-- ======================== -->
                                                 <div class="col-md-12">
                                                     <div class="table-responsive table-he-250">
-                                                        <table class="table table-sm table-bordered w-100 text-center">
+                                                        <table class="table table-sm table-bordered w-100 text-center" id="MachineTimeListDetail">
                                                             <thead class="  table-info th-sti">
                                                                 <tr class="table-border-bottom">
                                                                     <th>Part No  / Desc</th>
@@ -752,21 +732,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <!-- -------------  -->
-                                                                <tr>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                </tr>
+                                                               
                                                                 <!-- -------------  -->
                                                             </tbody>
                                                         </table>
@@ -926,7 +892,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Detailed Production Plan Work Order Creation for <span id="p2soNumber"></span> for Part No <span id="p2PartNo"></span> to completed by <span id="p2PlanComplDate"></span>
+                    Detailed Production Plan Work Order Creation for <span id="p2soNumber"></span> for <span id="p2PartNo"></span> to completed by <span id="p2PlanComplDate"></span>
                 </h5>
                 <button type="button" id="btnPop2Close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1064,7 +1030,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for <span id="p3soNumber"></span> for Part No <span id="p3partNo"></span> to completed by <span id="woCompletedBy"></span>
+                   Detailed Production Plan Work Order Creation for <span id="p3soNumber"></span> for  <span id="p3partNo"></span> to completed by <span id="woCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1187,8 +1153,8 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for <span id="p3MsoNumber"></span> for Part No ./
-                    Desc <span id="ManualpartNo"></span> to completed by <span id="ManualwoCompletedBy"></span>
+                   Detailed Production Plan Work Order Creation for <span id="p3MsoNumber"></span> for
+                    <span id="ManualpartNo"></span> to completed by <span id="ManualwoCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1313,8 +1279,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for <span id="p2NsoNumber"></span> for Part No ./
-                    Desc <span id="NewpartNo"></span> to completed by <span id="NewwoCompletedBy"></span>
+                   Detailed Production Plan Work Order Creation for <span id="p2NsoNumber"></span> for  <span id="NewpartNo"></span> to completed by <span id="NewwoCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1435,7 +1400,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Ref <span id="popup4WoNumber"></span> for Part No ./ Desc <span id="popup4PartNo"></span>
+                    Work Order Ref <span id="popup4WoNumber"></span> for <span id="popup4PartNo"></span>
                     generated in Detailed Planning
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1508,7 +1473,7 @@
                     <hr class="mt-3">
                     <!-- ========================= -->
                     <div class="col-md-12 mb-2">
-                        <h5>List of split WO of WO-CMP-0101 </h5>
+                        <h5>List of split WO of <span id="popup4StWoNumber"></span> </h5>
                         <div class="table-responsive table-he-250">
                             <table class="table table-sm table-bordered w-100 text-center" id="Popup4Grid">
                                 <thead class="  table-info th-sti">
@@ -1723,7 +1688,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Updation WO Ref <span id="popup5WoNumber"> </span> for Part No ./ Desc
+                    Work Order Updation WO Ref <span id="popup5WoNumber"> </span> for 
                     <span id="pup5PatNo"> </span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1830,7 +1795,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Updation WO Ref <span id="popup5EditWoNumber"> </span> for Part No ./ Desc
+                    Work Order Updation WO Ref <span id="popup5EditWoNumber"> </span> 
                     <span id="popup5EditPatNo"> </span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -2039,10 +2004,10 @@
         <td>{partNo} / {partDesc}</td>
         <td>{child_Part_No_Type}</td>
         <td>{woNumber}</td>
-        <td>{plan_Qnty}</td>
-        <td>{plan_Compl_Dt_Str}</td>
         <td>{calc_Qnty}</td>
         <td>{calcReceiptDateStr}</td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td hidden>{plan_Compl_Dt}</td>
@@ -2168,6 +2133,39 @@
         </td>
     </tr>
 </template>
+
+
+<template id="MachineTimeListDetailRow">
+    <tr>
+        <td>{partNo} / {partDesc}</td>
+        <td>{partType}</td>
+        <td>{woNumber}</td>
+        <td>{location}</td>  
+        <td>{oprationNo}</td>
+        <td>{machineTypeName}</td>
+        <td>{machineName}</td>
+        <td>{planQnty}</td>
+        <td>{mcPlanStartTimeStr}</td>
+        <td>{mcPlanEndTimeStr}</td>
+        <td>{totalPlanTime}</td>
+        <td></td>
+        <td></td>
+    </tr>
+</template>
+
+<template id="McTimeListSummaryRow">
+    <tr>
+        <td>{location}</td>
+        <td>{machineTypeName}</td>
+        <td>{machineName}</td>
+        <td>{mcPlanStartTimeStr}</td>
+        <td>{mcPlanEndTimeStr}</td>
+        <td>{totalPlanTime}</td>
+        <td></td>
+    </tr>
+</template>
+
+
 
 
 @section Scripts {

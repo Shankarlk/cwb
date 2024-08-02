@@ -454,9 +454,9 @@ $(function () {
         addedValue = "";
     });
     if (modelObj["Edit"]) {
-        console.log("***************");
-        console.log(modelObj);
-        console.log("***************")
+        //console.log("***************");
+        //console.log(modelObj);
+        //console.log("***************")
         if (modelObj["rawMaterialMadeType"] == 1) {
             $("#RawMaterialMadeType").val("1").trigger('change');
             ToggleSupplierFields(0);

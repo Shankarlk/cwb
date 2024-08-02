@@ -37,7 +37,7 @@ namespace CWB.App.Services.BusinessProcesses
         Task<SOAggregateVM> GetSOAggregate(long customerOrderId);
 
         //Task<DeliveryScheduleVM> PostOrderStatus();
-
+        Task<BAStatusVM> GetBAStatus(long Id);
         Task<bool> CheckPartNo(long partId);
         Task<string> HelloWorld();
     }

@@ -4,7 +4,7 @@ function LoadDepartments() {
     var tablebody = $("#DeptTable tbody");
     $(tablebody).html("");//empty tbody
     api.get("/department/getdepartments").then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             if (data[i].prodDept) {
                 data[i].prodDept = "Y";
@@ -13,14 +13,14 @@ function LoadDepartments() {
                 data[i].prodDept = "";
             $(tablebody).append(AppUtil.ProcessTemplateDataNew("DeptRow", data[i], i));
         }
-        console.log($(tablebody).html());
+        //console.log($(tablebody).html());
     }).catch((error) => {
         //console.log(error);
     });
 };
 function LoadPlantsInMem() {
     api.get("/plant/getplants").then((data) => {
-        console.log(data);
+        //console.log(data);
         plants = data;
     }).catch((error) => {
         //console.log(error);
@@ -46,7 +46,7 @@ function DelDept(name, deptId) {
     let confirmval = confirm("Are your sure you want to delete this department? : "+name, "Yes", "No");
     if (confirmval) {
         api.get("/department/deldept?departmentId=" + deptId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadDepartments();
         }).catch((error) => {
             //console.log(error);
@@ -66,7 +66,7 @@ $(function () {
         if (IsAddOpCalled())
             return;
         var relatedTarget = $(event.relatedTarget);
-        console.log(relatedTarget);
+        //console.log(relatedTarget);
         var strval = relatedTarget.data("name");
         //alert(strval);
         $("#Name").val(strval);
@@ -97,7 +97,7 @@ $(function () {
         $("#Section").val(val);
         //alert(val);
         val = relatedTarget.data("proddept");
-        console.log(val);
+        //console.log(val);
         document.getElementById("ProdDept").checked = false;
         if (val == "Y") {
             document.getElementById("ProdDept").checked = true;
@@ -105,12 +105,12 @@ $(function () {
     });
     $("#SaveDept").on("click", function (event) {
         var formData = AppUtil.GetFormData("DepartmentForm");
-        console.log(formData);
+        //console.log(formData);
         var form = document.getElementById("DepartmentForm");
         if (form.checkValidity())
         {
             api.post("/department/postdepartment", formData).then((data) => {
-                console.log(data);
+                //console.log(data);
                 LoadDepartments();
                 document.getElementById("AddDeptClose").click();
             }).catch((error) => {

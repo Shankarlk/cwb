@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CWB.ProductionPlanWO.Repositories
 {
-    interface IWOStatusRepository : IRepository<WOStatus>
+    public interface IWOStatusRepository : IRepository<WOStatus>
     {
     }
 }

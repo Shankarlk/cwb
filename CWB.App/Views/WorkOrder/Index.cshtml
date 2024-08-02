@@ -85,31 +85,31 @@
                                                     <tbody>
                                                         <tr>
                                                             <td><a href="#">SO to WO- Pending</a></td>
-                                                            <td>XX </td>
+                                                            <td><span id="1stSoWoPending"></span> </td>
                                                             <td>XX INR</td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#">SO on Hold</a></td>
-                                                            <td>XX </td>
+                                                            <td><span id="noOfSoHold"></span> </td>
                                                             <td>XX INR</td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#">SO in WIP Past Due</a></td>
-                                                            <td>XX </td>
+                                                            <td><span id="SoInPastDue"></span> </td>
                                                             <td>XX INR</td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#">SO in WIP on Track</a></td>
-                                                            <td>XX </td>
+                                                            <td><span id="SoOntrack"></span> </td>
                                                             <td>XX INR</td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#" style="font-weight: bold;">SO Total</a></td>
-                                                            <td>XX </td>
+                                                            <td><span id="totalSO"></span> </td>
                                                             <td>XX INR</td>
                                                         </tr>
                                                         <!-- ===========================  -->
@@ -127,7 +127,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td><a href="#">SO to WO- Pending</a></td>
-                                                            <td>XX</td>
+                                                            <td><span id="SoWoPending"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
@@ -168,22 +168,22 @@
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#">WO on Hold</a></td>
-                                                            <td>XX</td>
+                                                            <td><span id="WoOnHold"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#">WO in WIP Past Due</a></td>
-                                                            <td>XX</td>
+                                                            <td><span id="WoInPastDue"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#">WO in WIP on Track</a></td>
-                                                            <td>XX</td>
+                                                            <td><span id="WoOnTrack"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                         <tr>
                                                             <td><a href="#" style="font-weight: bold;">WO Total</a></td>
-                                                            <td>XX</td>
+                                                            <td><span id="totalWO"></span></td>
                                                         </tr>
                                                         <!-- ===========================  -->
                                                     </tbody>
@@ -193,7 +193,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
-                                                <a href="Sales-Order-List.html">
+                                                <a asp-controller="WorkOrder" asp-action="SalesOrderList">
                                                     <h6>SO List View / Edit</h6>
                                                 </a>
                                             </div>
@@ -201,7 +201,7 @@
                                         <!-- ========================  -->
                                         <div class="col-md-4">
                                             <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
-                                                <a href="wo-list.html">
+                                                <a asp-controller="WorkOrder" asp-action="WorkOrderList">
                                                     <h6>WO List View / Edit</h6>
                                                 </a>
                                             </div>
@@ -312,3 +312,8 @@
 <!-- END wrapper -->
 <!-- ============================================================== -->
 <!-- End Page Content here -->
+
+
+@section Scripts {
+    <script src="~/js/ProcessPlan.js"></script>
+}

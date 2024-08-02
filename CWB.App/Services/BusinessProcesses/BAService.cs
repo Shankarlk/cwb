@@ -228,5 +228,12 @@ namespace CWB.App.Services.BusinessProcesses
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<bool>.GetAsync(uri, headers);
         }
+
+        public async Task<BAStatusVM> GetBAStatus(long Id)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbba/getbastatus/{Id}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<BAStatusVM>.GetAsync(uri, headers);
+        }
     }
 }

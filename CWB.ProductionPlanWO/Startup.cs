@@ -1,5 +1,6 @@
 using CWB.Extensions;
 using CWB.Extensions.Security;
+using CWB.ProductionPlanWO.Domain;
 using CWB.ProductionPlanWO.Extensions;
 using CWB.ProductionPlanWO.Infrastructure;
 using CWB.ProductionPlanWO.Utils;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using NLog;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CWB.ProductionPlanWO
@@ -46,6 +49,7 @@ namespace CWB.ProductionPlanWO
             services.AddAutoMapper(typeof(Startup));
             services.ConfigureSwagger("CWB.ProductionPlanWO API");
 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,11 +74,13 @@ namespace CWB.ProductionPlanWO
             app.ConfigureAppExceptionMiddleware();
 
             app.UseRouting();
+            
             // includes initial db creation
             wODbContext.Database.EnsureCreated();
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

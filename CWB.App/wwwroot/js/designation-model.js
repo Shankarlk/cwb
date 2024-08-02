@@ -24,11 +24,11 @@ function loadDesignation() {
     var tablebody = $("#tbl-Designations tbody");
     $(tablebody).html("");//empty tbody
     api.getbulk("/designation/designations").then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateDataNew("designation-template", data[i], i));
         }
-        console.log(tablebody);
+        //console.log(tablebody);
     }).catch((error) => { });
 }
 

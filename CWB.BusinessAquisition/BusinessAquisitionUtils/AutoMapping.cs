@@ -157,6 +157,15 @@ namespace CWB.BusinessAquisition.Utils
                .ForMember(m => m.WIP, m => m.MapFrom(src => src.WIP))
                .ForMember(m => m.RequiredQuantity, m => m.MapFrom(src => src.RequiredQuantity))
                .ForMember(m => m.RequiredByDate, m => m.MapFrom(src => src.RequiredByDate));
+
+
+            CreateMap<BAStatusVM, BAStatus>()
+              .ForMember(m => m.Id, m => m.MapFrom(src => src.StatusId))
+              .ForMember(m => m.Status, m => m.MapFrom(src => src.Status));
+
+            CreateMap<BAStatus, BAStatusVM>()
+               .ForMember(m => m.StatusId, m => m.MapFrom(src => src.Id))
+               .ForMember(m => m.Status, m => m.MapFrom(src => src.Status));
         }
     }
 }

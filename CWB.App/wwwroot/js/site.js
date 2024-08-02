@@ -165,7 +165,7 @@ var api = {
                 data: postData,
                 success: function (data) {
                     reslove(data);
-                    console.log(data);
+                    //console.log(data);
                    // logger.logIt("Saved...", "", null, null, true, "info", 'toast-top-center');
                     ShowSuccessNotifiers();
                 },

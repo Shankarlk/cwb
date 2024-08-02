@@ -8,7 +8,6 @@ namespace CWB.ProductionPlanWO.Domain
 {
     public class WOStatus : BaseEntity
     {
-        public int StatusId { get; set; }
         public string Status { get; set; }
     }
 }

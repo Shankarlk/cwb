@@ -6,14 +6,14 @@ function loadDocumentTypes() {
     //PlantRowTemplate
     //PlantTable
     api.getbulk("/documenttype/getdoctypes").then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             for (var key in data[i]) {
                 //        console.log(key);
                 //      console.log(data[i][key]);
                 //    console.log("*****");
             }
-            console.log("================");
+            //console.log("================");
             $(tablebody).append(AppUtil.ProcessTemplateDataNew("DocumentTypeTemplate", data[i], i));
         }
     }).catch((error) => {
@@ -27,7 +27,7 @@ function DelDocType(name, doctypeId) {
     let confirmval = confirm("Are your sure you want to delete this doctype? : " + name, "Yes", "No");
     if (confirmval) {
         api.get("/documenttype/deldoctype?docTypeId=" + doctypeId).then((data) => {
-            console.log(data);
+            //console.log(data);
             loadDocumentTypes();
         }).catch((error) => {
             //console.log(error);
@@ -71,7 +71,7 @@ $(function () {
         else { return; }
         
         api.post("/documenttype/doctype", formData).then((data) => {
-            console.log(data);
+            //console.log(data);
             document.getElementById("btn-doctypedetails-close").click();
             document.getElementById("DocTypeForm").reset();
             loadDocumentTypes();

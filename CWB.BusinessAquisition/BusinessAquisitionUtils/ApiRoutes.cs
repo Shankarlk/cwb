@@ -36,7 +36,7 @@
             public const string RemoveOrderStatus = Base + "/removeorderstatus/{tenantId}/{orderStatusId}";
             
             public const string CheckPartNo = Base + "/checkpartno/{partId}";
-
+            public const string GetBAStatus = Base + "/getbastatus/{Id}";
         }
     }
 }

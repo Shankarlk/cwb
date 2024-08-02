@@ -54,11 +54,11 @@ namespace CWB.App.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult WO()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult WO()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> WOpost(WorkOrdersVM workOrdersVM)
@@ -66,7 +66,7 @@ namespace CWB.App.Controllers
             ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)workOrdersVM.PartId);
             workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
             RoutingVM rout = new RoutingVM();
-            var resultList = await _routingService.Routings((int)workOrdersVM.PartId);
+            var resultList = await _routingService.Routings((int)manuf.ManufacturedPartNoDetailId);
             foreach (var item in resultList)
             {
                 if(item.PreferredRouting == 1)
@@ -142,6 +142,13 @@ namespace CWB.App.Controllers
                     TenantId = postWO.TenantId
                 };
                 bompost.Add(bomdata);
+                SalesOrderVM salesOrderVM = new SalesOrderVM() {
+                    SalesOrderId = postWO.SalesOrderId,
+                    WorkOrderId =postWO.WOID,
+                    WorkOrderNo = postWO.WONumber
+                };
+                var salesOrder = await _baService.PostSalesOrder(salesOrderVM);
+
             }
             var postbom = await _baService.BOMTempPOst(bompost);
             return Ok(postWO);
@@ -155,7 +162,7 @@ namespace CWB.App.Controllers
                 ManufacturedPartNoDetailVM manuf = await _masterService.GetManufPart((int)workOrdersVM.PartId);
                 workOrdersVM.PartType = (int)manuf.ManufacturedPartType;
                 RoutingVM rout = new RoutingVM();
-                var resultList = await _routingService.Routings((int)workOrdersVM.PartId);
+                var resultList = await _routingService.Routings((int)manuf.ManufacturedPartNoDetailId);
                 foreach (var item in resultList)
                 {
                     if (item.PreferredRouting == 1)
@@ -235,6 +242,13 @@ namespace CWB.App.Controllers
                         TenantId = item.TenantId
                     };
                     bompost.Add(bomdata);
+                    SalesOrderVM salesOrderVM = new SalesOrderVM()
+                    {
+                        SalesOrderId = item.SalesOrderId,
+                        WorkOrderId = item.WOID,
+                        WorkOrderNo =  item.WONumber
+                    };
+                    var salesOrder = await _baService.PostSalesOrder(salesOrderVM);
                 }
             }
             var postbom = await _baService.BOMTempPOst(bompost);
@@ -267,6 +281,7 @@ namespace CWB.App.Controllers
             return Ok(workOrders);
         }
 
+        [Route("~/C@S3t 2oP# ! ")]
         public IActionResult OrderEntry()
         {
             return View();
@@ -322,6 +337,8 @@ namespace CWB.App.Controllers
                 {
                     if(sovm.PartId == impvm.PartId)
                     {
+                        var bastatus = await _baService.GetBAStatus(sovm.Status);
+                        sovm.StrStatus = bastatus.Status;
                         sovm.PartNo = impvm.PartNo;
                     }
                 }
@@ -371,6 +388,7 @@ namespace CWB.App.Controllers
                     polineVM.Matl = sovm.Matl;
                     polineVM.WIP = sovm.WIP;
                     polineVM.NumSalesOrder = 1;
+                    polineVM.WONumber = sovm.WorkOrderNo;
                     pOLines.Add(polineVM);
                 }
                 else
@@ -399,6 +417,7 @@ namespace CWB.App.Controllers
                         polineVM.Matl = sovm.Matl;
                         polineVM.WIP = sovm.WIP;
                         polineVM.NumSalesOrder = 1;
+                        polineVM.WONumber = sovm.WorkOrderNo;
                         pOLines.Add(polineVM);
                     }
                 }

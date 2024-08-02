@@ -9,6 +9,7 @@ namespace CWB.ProductionPlanWO.Domain
     public class WorkOrders : BaseEntity
     {
         public long SalesOrderId { get; set; }
+        public long ParentWoId { get; set; }
         public string? WONumber { get; set; }
         public DateTime? WODate { get; set; }
         public long PartId { get; set; }

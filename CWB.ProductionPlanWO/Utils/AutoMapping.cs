@@ -25,6 +25,7 @@ namespace CWB.ProductionPlanWO.Utils
                .ForMember(m => m.For_Ref, m => m.MapFrom(src => src.For_Ref))
                .ForMember(m => m.ReloadOption, m => m.MapFrom(src => src.ReloadOption))
                .ForMember(m => m.Active, m => m.MapFrom(src => src.Active))
+               .ForMember(m => m.ParentWoId, m => m.MapFrom(src => src.ParentWoId))
                .ForMember(m => m.WODate, m => m.MapFrom(src => src.WODate));
 
             CreateMap<WorkOrdersVM, WorkOrders>()
@@ -45,6 +46,7 @@ namespace CWB.ProductionPlanWO.Utils
                .ForMember(m => m.For_Ref, m => m.MapFrom(src => src.For_Ref))
                .ForMember(m => m.ReloadOption, m => m.MapFrom(src => src.ReloadOption))
                .ForMember(m => m.Active, m => m.MapFrom(src => src.Active))
+               .ForMember(m => m.ParentWoId, m => m.MapFrom(src => src.ParentWoId))
                .ForMember(m => m.WODate, m => m.MapFrom(src => src.WODate));
 
             CreateMap<WOSOVM, WOSO>()
@@ -193,6 +195,65 @@ namespace CWB.ProductionPlanWO.Utils
                .ForMember(m => m.For_Ref, m => m.MapFrom(src => src.For_Ref))
                .ForMember(m => m.Active, m => m.MapFrom(src => src.Active))
                .ForMember(m => m.WODate, m => m.MapFrom(src => src.WODate));
+
+
+            CreateMap<WOStatusVM, WOStatus>()
+               .ForMember(m => m.Id, m => m.MapFrom(src => src.StatusId))
+               .ForMember(m => m.Status, m => m.MapFrom(src => src.Status));
+
+            CreateMap<WOStatus, WOStatusVM>()
+               .ForMember(m => m.StatusId, m => m.MapFrom(src => src.Id))
+               .ForMember(m => m.Status, m => m.MapFrom(src => src.Status));
+
+            CreateMap<ChildWoRelVM, ChildWoRel>()
+               .ForMember(m => m.Id, m => m.MapFrom(src => src.ChildWoRelId))
+               .ForMember(m => m.WoId, m => m.MapFrom(src => src.WoId))
+               .ForMember(m => m.PartId, m => m.MapFrom(src => src.PartId))
+               .ForMember(m => m.Qnty, m => m.MapFrom(src => src.Qnty))
+               .ForMember(m => m.CameFrom, m => m.MapFrom(src => src.CameFrom));
+
+            CreateMap<ChildWoRel, ChildWoRelVM>()
+                .ForMember(m => m.ChildWoRelId, m => m.MapFrom(src => src.Id))
+                .ForMember(m => m.WoId, m => m.MapFrom(src => src.WoId))
+                .ForMember(m => m.PartId, m => m.MapFrom(src => src.PartId))
+                .ForMember(m => m.Qnty, m => m.MapFrom(src => src.Qnty))
+                .ForMember(m => m.CameFrom, m => m.MapFrom(src => src.CameFrom));
+
+            CreateMap<McTimeListVM, McTimeList>()
+           .ForMember(m => m.Id, m => m.MapFrom(src => src.McTimeListId))
+           .ForMember(m => m.WoId, m => m.MapFrom(src => src.WoId))
+           .ForMember(m => m.Routing_StepId, m => m.MapFrom(src => src.Routing_StepId))
+           .ForMember(m => m.CompanyId, m => m.MapFrom(src => src.CompanyId))
+           .ForMember(m => m.MachineId, m => m.MapFrom(src => src.MachineId))
+           .ForMember(m => m.MachineTypeId, m => m.MapFrom(src => src.MachineTypeId))
+           .ForMember(m => m.PlanQnty, m => m.MapFrom(src => src.PlanQnty))
+           .ForMember(m => m.TotalPlanTime, m => m.MapFrom(src => src.TotalPlanTime))
+           .ForMember(m => m.McPlanStartTime, m => m.MapFrom(src => src.McPlanStartTime))
+           .ForMember(m => m.McPlanEndTime, m => m.MapFrom(src => src.McPlanEndTime))
+           .ForMember(m => m.McActStartTime, m => m.MapFrom(src => src.McActStartTime))
+           .ForMember(m => m.McActEndTime, m => m.MapFrom(src => src.McActEndTime))
+           .ForMember(m => m.ActQnty, m => m.MapFrom(src => src.ActQnty))
+           .ForMember(m => m.TotalActTime, m => m.MapFrom(src => src.TotalActTime))
+           .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+
+            CreateMap<McTimeList, McTimeListVM>()
+            .ForMember(m => m.McTimeListId, m => m.MapFrom(src => src.Id))
+           .ForMember(m => m.WoId, m => m.MapFrom(src => src.WoId))
+           .ForMember(m => m.Routing_StepId, m => m.MapFrom(src => src.Routing_StepId))
+           .ForMember(m => m.CompanyId, m => m.MapFrom(src => src.CompanyId))
+           .ForMember(m => m.MachineId, m => m.MapFrom(src => src.MachineId))
+           .ForMember(m => m.MachineTypeId, m => m.MapFrom(src => src.MachineTypeId))
+           .ForMember(m => m.PlanQnty, m => m.MapFrom(src => src.PlanQnty))
+           .ForMember(m => m.TotalPlanTime, m => m.MapFrom(src => src.TotalPlanTime))
+           .ForMember(m => m.McPlanStartTime, m => m.MapFrom(src => src.McPlanStartTime))
+           .ForMember(m => m.McPlanEndTime, m => m.MapFrom(src => src.McPlanEndTime))
+           .ForMember(m => m.McActStartTime, m => m.MapFrom(src => src.McActStartTime))
+           .ForMember(m => m.McActEndTime, m => m.MapFrom(src => src.McActEndTime))
+           .ForMember(m => m.ActQnty, m => m.MapFrom(src => src.ActQnty))
+           .ForMember(m => m.TotalActTime, m => m.MapFrom(src => src.TotalActTime))
+           .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+
+
         }
     }
 }

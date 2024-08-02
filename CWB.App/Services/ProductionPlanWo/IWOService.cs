@@ -1,4 +1,5 @@
 ﻿using CWB.App.Models.BusinessProcesses;
+using CWB.App.Models.WorkOrder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,11 @@ namespace CWB.App.Services.ProductionPlanWo
         Task<List<BOMListVM>> BomListPost(IEnumerable<BOMListVM> bomlist);
         Task<IEnumerable<ProcPlanVM>> GetAllProcPlan();
         Task<IEnumerable<BOMListVM>> GetAllBomlist();
+        Task<WOStatusVM> GetWOStatus(long Id);
+        Task<List<ChildWoRelVM>> PostChildWoRel(IEnumerable<ChildWoRelVM> childWoRels);
+        Task<List<McTimeListVM>> PostMcTimeList(IEnumerable<McTimeListVM> mcTimeListVMs);
+        Task<IEnumerable<McTimeListVM>> GetAllMcTimeList();
+        Task<IEnumerable<WorkOrdersVM>> AllParentChildWos(long parentWoId);
+
     }
 }

@@ -30,7 +30,8 @@ namespace CWB.BusinessAquisition.Services
         Task<IEnumerable<SOAggregateVM>> GetSOAggregates(long tenantId);
 
         bool CheckPartNo(long partId);
-
+        Task<BAStatusVM> GetBAStatus(long Id);
+        //Task<List<SalesOrderVM>> UpdateWoInSo(List<SalesOrderVM> sales);
         /*IEnumerable<CompanyTypeVM> GetCompanyTypes();
 
 

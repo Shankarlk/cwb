@@ -19,6 +19,10 @@ namespace CWB.ProductionPlanWO.Configurations
                .HasColumnName("SalesOrderId")
                .IsRequired();
             builder
+               .Property(t => t.ParentWoId)
+               .HasColumnName("ParentWoId")
+               .HasDefaultValue(0);
+            builder
                .Property(t => t.WONumber)
                .HasColumnName("WONumber")
                .IsRequired(); 

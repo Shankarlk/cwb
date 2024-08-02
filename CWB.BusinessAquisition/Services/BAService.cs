@@ -52,12 +52,14 @@ namespace CWB.BusinessAquisition.Services
         private readonly ISalesOrderRepository _salesOrderRepository;
         private readonly ISOAggregateRepository _sOAggregateRepository;
         private readonly IDeliveryScheduleRepository _deliveryScheduleRepository;
+        private readonly IBAStatusRepository _baStatusRepository;
 
         public BAService(ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork
             ,IPOLogRepository pOLogRepository
             ,ICustomerOrderRepository customerOderRepository
             ,ISalesOrderRepository salesOrderRepository
             ,ISOAggregateRepository sOAggregateRepository
+            ,IBAStatusRepository bAStatusRepository
             , IDeliveryScheduleRepository deliveryScheduleRepository)
         {
             _logger = logger;
@@ -67,6 +69,7 @@ namespace CWB.BusinessAquisition.Services
             _customerOrderRepository = customerOderRepository;
             _salesOrderRepository = salesOrderRepository;
             _sOAggregateRepository = sOAggregateRepository;
+            _baStatusRepository = bAStatusRepository;
             _deliveryScheduleRepository = deliveryScheduleRepository;
         }
 
@@ -580,6 +583,8 @@ namespace CWB.BusinessAquisition.Services
                 {
                     return salesOrderVm;
                 }
+                so.WorkOrderId = salesOrder.WorkOrderId;
+                so.WorkOrderNo = salesOrder.WorkOrderNo;
                 so.BalanceSOQty = salesOrder.BalanceSOQty;
                 salesOrder = await _salesOrderRepository.UpdateAsync(salesOrder.Id, so);
             }
@@ -630,6 +635,16 @@ namespace CWB.BusinessAquisition.Services
                 return false;
             }
             return true;
+        }
+
+        public async Task<BAStatusVM> GetBAStatus(long Id)
+        {
+            var bastatus = await _baStatusRepository.SingleOrDefaultAsync(d => d.Id == Id);
+            if (bastatus != null)
+            {
+                return _mapper.Map<BAStatusVM>(bastatus);
+            }
+            return new BAStatusVM { StatusId = -1 };
         }
 
     }

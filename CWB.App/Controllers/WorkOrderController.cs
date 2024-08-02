@@ -1,6 +1,7 @@
 ﻿using CWB.App.Models.BusinessProcesses;
 using CWB.App.Models.ItemMaster;
 using CWB.App.Models.Plants;
+using CWB.App.Models.WorkOrder;
 using CWB.App.Services.BusinessProcesses;
 using CWB.App.Services.CompanySettings;
 using CWB.App.Services.Masters;
@@ -26,7 +27,12 @@ namespace CWB.App.Controllers
         private readonly IRoutingService _routingService;
         private readonly IMastersServices _masterService;
         private readonly IPlantService _plantService;
-        public WorkOrderController(ILogger<WorkOrderController> logger, IWOService wOService, IBAService baService, IRoutingService routingService, IMastersServices masterServices, IPlantService plantService)
+        private readonly IMachineService _machineService;
+        private readonly IDepartmentService _departmentService;
+        private readonly IOperationService _operationService;
+        public WorkOrderController(ILogger<WorkOrderController> logger, IWOService wOService, 
+            IBAService baService, IRoutingService routingService, IMastersServices masterServices, IPlantService plantService
+            , IMachineService machineService, IDepartmentService departmentService, IOperationService operationService)
         {
             _logger = logger;
             _woService = wOService;
@@ -34,18 +40,34 @@ namespace CWB.App.Controllers
             _routingService = routingService;
             _masterService = masterServices;
             _plantService = plantService;
+            _machineService = machineService;
+            _departmentService = departmentService;
+            _operationService = operationService;
         }
         public IActionResult Index()
         {
             return View();
         }
 
+        [Route("~/C!O$N%1#23t! ")]
         public IActionResult SoToWo()
         {
             return View();
         }
 
+        [Route("~/D#1@122P I%5$3T ")]
         public IActionResult DetailedProcPlan()
+        {
+            return View();
+        }
+        [Route("~/S@A!E0#% T%1P W ")]
+        public IActionResult SalesOrderList()
+        {
+            return View();
+        }
+
+        [Route("~/W@A!E0#% U%1X#Q ")]
+        public IActionResult WorkOrderList()
         {
             return View();
         }
@@ -62,6 +84,8 @@ namespace CWB.App.Controllers
                 {
                     if (sovm.PartId == impvm.PartId)
                     {
+                        var bastatus = await _baService.GetBAStatus(sovm.Status);
+                        sovm.StrStatus = bastatus.Status;
                         sovm.PartNo = impvm.PartNo;
                         sovm.PartDesc = impvm.Description;
                     }
@@ -89,12 +113,21 @@ namespace CWB.App.Controllers
                 {
                     if (item.PartId == imp.PartId)
                     {
+                        var wostatus = await _woService.GetWOStatus(item.Status);
+                        item.StrStatus = wostatus.Status;
                         item.PartNo = imp.PartNo;
                         item.PartDesc = imp.Description;
                     }
                 }
             }
             return Ok(workOrders);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllParentChildWos(long parentWoId)
+        {
+            var allparentwos = await _woService.AllParentChildWos(parentWoId);
+            return Ok(allparentwos);
         }
 
         [HttpGet]
@@ -115,7 +148,8 @@ namespace CWB.App.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRoutings(int manufPartId)
         {
-            var resultList = await _routingService.Routings(manufPartId);
+            ManufacturedPartNoDetailVM mf = await _masterService.GetManufPart(manufPartId);
+            var resultList = await _routingService.Routings(mf.ManufacturedPartNoDetailId);
             return Ok(resultList);
         }
 
@@ -151,7 +185,7 @@ namespace CWB.App.Controllers
             return Ok(so);
         }
 
-        //[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> ProcPlan()
         {
             var workOrders = await _baService.AllWorkOrders();
@@ -187,6 +221,9 @@ namespace CWB.App.Controllers
             {
                 List<ProcPlanVM> listprocplan = new List<ProcPlanVM>();
                 List<BOMListVM> listbom = new List<BOMListVM>();
+                List<ProductionPlan_WoVM> childwos = new List<ProductionPlan_WoVM>();
+                List<ChildWoRelVM> childWoRels = new List<ChildWoRelVM>();
+                List<McTimeListVM> mcTimeListVMs = new List<McTimeListVM>();
                 int totalLeadTime = 0;
                 foreach (var item in procdutionpost)
                 {
@@ -196,6 +233,17 @@ namespace CWB.App.Controllers
                         if (mf.ManufacturedPartType == 1)
                         {
                             var mpmakefromlist = await _masterService.GetMPMakeFromListByPartId(mf.ManufacturedPartNoDetailId.ToString());
+                            foreach (var mpmakefrom in mpmakefromlist)
+                            {
+                                ChildWoRelVM cwo = new ChildWoRelVM()
+                                {
+                                    WoId = item.WoId,
+                                    PartId = mpmakefrom.MPPartId,
+                                    Qnty = Convert.ToInt32(mpmakefrom.QuantityPerInput),
+                                    CameFrom = "MakeFromPart"
+                                };
+                                childWoRels.Add(cwo);
+                            }
                             var groupedResults = mpmakefromlist.GroupBy(x => x.MPPartId)
                                    .Select(g => new
                                    {
@@ -225,12 +273,38 @@ namespace CWB.App.Controllers
                                         WorkOrderId = item.WoId
                                     };
                                     listprocplan.Add(ppdata);
+                                    BOMListVM bomdata = new BOMListVM
+                                    {
+                                        ParentWoId = item.WoId,
+                                        Child_Part_No_ID = grouped.PartId,
+                                        Child_Part_No_Type = ptype.MasterPartType.ToString(),
+                                        Calc_Qnty = (int)grouped.TotalQuantity * item.CalcWOQty,
+                                        Plan_Qnty = item.CalcWOQty,
+                                        //Plan_Start_Dt = planstartdt,
+                                        Plan_Compl_Dt = item.PlanCompletionDate.GetValueOrDefault(),
+                                        CalcReceiptDate = nextworkdingdate,
+                                        //Manf_Days_Avl = manfDays,
+                                        ProcPlanId = item.ProductionPlanId,
+                                        //SaNestLevel = Sa_Nest_level
+                                    };
+                                    listbom.Add(bomdata);
                                 }
                             }
                         }
                         else if (mf.ManufacturedPartType == 2)
                         {
                             var bomlst = await _masterService.BOMS(mf.ManufacturedPartNoDetailId.ToString());
+                            foreach (var bomVM in bomlst)
+                            {
+                                ChildWoRelVM cwo = new ChildWoRelVM()
+                                {
+                                    WoId = item.WoId,
+                                    PartId = bomVM.BOMPartId,
+                                    Qnty = Convert.ToInt32(bomVM.Quantity),
+                                    CameFrom = "BOM"
+                                };
+                                childWoRels.Add(cwo);
+                            }
                             var bomgroupedResults = bomlst.GroupBy(x => x.BOMPartId)
                                    .Select(g => new
                                    {
@@ -245,38 +319,37 @@ namespace CWB.App.Controllers
                                 var holidaylist = await _plantService.GetHolidays(13);
                                 string weekOff1 = workdetails.WeeklyOff1;
                                 string weekOff2 = workdetails.WeeklyOff2;
-
+                                var resultList = await _routingService.Routings(mf.ManufacturedPartNoDetailId);
+                                int minutes = 0;
+                                foreach (var rote in resultList)
+                                {
+                                    var result = await _routingService.RoutingSteps(rote.RoutingId);
+                                    foreach (var step in result)
+                                    {
+                                        var stepdetails = await _routingService.StepMachines((int)step.StepId);
+                                        var processingTimeSum = stepdetails
+                                                        .GroupBy(sd => sd.RoutingStepId)
+                                                        .Select(g => new
+                                                        {
+                                                            RoutingStepId = g.Key,
+                                                            TotalProcessingTime = g.Sum(sd => TimeSpan.Parse(sd.FirstPieceProcessingTime).TotalMinutes)
+                                                        });
+                                        foreach (var min in processingTimeSum)
+                                        {
+                                            minutes = (int)min.TotalProcessingTime;
+                                        }
+                                    }
+                                }
+                                int assyTime = (minutes * item.CalcWOQty) / workdetails.NoOfShifts;
+                                int assyTimeInDays = assyTime / 1440;
+                                DateTime planstartdt = item.PlanCompletionDate.Value.AddDays(-assyTimeInDays);
                                 switch (mp.MasterPartType)
                                 {
                                     case MasterPartType.ManufacturedPart:
-                                        var resultList = await _routingService.Routings(bomgrp.PartId);
-                                        int minutes = 0;
-                                        foreach (var rote in resultList)
-                                        {
-                                            var result = await _routingService.RoutingSteps(rote.RoutingId);
-                                            foreach (var step in result)
-                                            {
-                                                var stepdetails = await _routingService.StepMachines((int)step.StepId);
-                                                var processingTimeSum = stepdetails
-                                                                .GroupBy(sd => sd.RoutingStepId)
-                                                                .Select(g => new
-                                                                {
-                                                                    RoutingStepId = g.Key,
-                                                                    TotalProcessingTime = g.Sum(sd => TimeSpan.Parse(sd.FirstPieceProcessingTime).TotalMinutes)
-                                                                });
-                                                foreach (var min in processingTimeSum)
-                                                {
-                                                    minutes = (int)min.TotalProcessingTime;
-                                                }
-                                            }
-                                        }
-                                        int assyTime = (minutes * item.CalcWOQty) / workdetails.NoOfShifts;
-                                        int assyTimeInDays = assyTime / 1440;
-                                        DateTime planstartdt = item.PlanCompletionDate.Value.AddDays(-assyTimeInDays);
-
+                                        
                                         var manufchild = await _masterService.GetManufPart((int)bomgrp.PartId);
                                         var manfDays = 0;
-
+                                        int Sa_Nest_level = 0;
                                         while (!IsWorkDay(planstartdt, holidaylist, weekOff1, weekOff2))
                                         {
                                             planstartdt = planstartdt.AddDays(1);
@@ -286,6 +359,64 @@ namespace CWB.App.Controllers
                                             DateTime planstdt = planstartdt;
                                             DateTime plancpldt = item.PlanCompletionDate.GetValueOrDefault();
                                             manfDays = Math.Max(0, (plancpldt - planstdt).Days);
+                                            var mpmakefromlist = await _masterService.GetMPMakeFromListByPartId(manufchild.ManufacturedPartNoDetailId.ToString());
+                                            foreach (var mpmakefrom in mpmakefromlist)
+                                            {
+                                                ChildWoRelVM subcwo = new ChildWoRelVM()
+                                                {
+                                                    WoId = item.WoId,
+                                                    PartId = mpmakefrom.MPPartId,
+                                                    Qnty = Convert.ToInt32(mpmakefrom.QuantityPerInput),
+                                                    CameFrom = "BOM"
+                                                };
+                                                childWoRels.Add(subcwo);
+                                            }
+                                            var groupedResults = mpmakefromlist.GroupBy(x => x.MPPartId)
+                                                .Select(g => new
+                                                {
+                                                    PartId = g.Key,
+                                                    TotalQuantity = g.Sum(x =>
+                                                    {
+                                                        int quantity;
+                                                        return int.TryParse(x.QuantityPerInput, out quantity) ? quantity : 0;
+                                                    })
+                                                })
+                                                .ToList();
+                                            foreach (var grouped in groupedResults)
+                                            {
+                                                var submfpdList = await _masterService.PartPurchasesFor(grouped.PartId);
+                                                var subptype = await _masterService.GetRMPart(grouped.PartId);
+                                                totalLeadTime = submfpdList.Sum(x => x.LeadTimeInDays);
+                                                DateTime subnextworkdingdate = planstartdt;
+                                                subnextworkdingdate = subnextworkdingdate.AddDays(totalLeadTime);
+                                                if (groupedResults != null)
+                                                {
+                                                    ProcPlanVM subppdata = new ProcPlanVM
+                                                    {
+                                                        PartId = grouped.PartId,
+                                                        PartType = subptype.MasterPartType,
+                                                        Calc_Proc_Qnty = grouped.TotalQuantity * item.CalcWOQty,
+                                                        CalcReceiptDate = subnextworkdingdate,
+                                                        WorkOrderId = item.WoId
+                                                    };
+                                                    listprocplan.Add(subppdata);
+
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            var asyy = await _masterService.GetManufPart((int)bomgrp.PartId);
+                                            if (asyy.ManufacturedPartType == 2)
+                                            {
+                                                Sa_Nest_level = 1;
+
+                                            }
+                                            else
+                                            {
+                                                Sa_Nest_level = 2;
+                                            }
+
                                         }
                                         BOMListVM bomdata = new BOMListVM
                                         {
@@ -295,12 +426,33 @@ namespace CWB.App.Controllers
                                             Calc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
                                             Plan_Qnty = item.CalcWOQty,
                                             Plan_Start_Dt = planstartdt,
-                                            Plan_Compl_Dt = item.PlanCompletionDate.GetValueOrDefault(),
+                                            Plan_Compl_Dt = planstartdt,
                                             CalcReceiptDate = planstartdt,
                                             Manf_Days_Avl = manfDays,
-                                            ProcPlanId = item.ProductionPlanId
+                                            ProcPlanId = item.ProductionPlanId,
+                                            SaNestLevel = Sa_Nest_level
                                         };
                                         listbom.Add(bomdata);
+                                        ProductionPlan_WoVM cwo = new ProductionPlan_WoVM()
+                                        {
+                                            WoId = item.WoId,
+                                            ParentWoId = item.WoId,
+                                            SalesOrderId = item.SalesOrderId,
+                                            PartId = bomdata.Child_Part_No_ID,
+                                            PartType = (int)manufchild.ManufacturedPartType,
+                                            Parentlevel = item.Parentlevel,
+                                            BuildToStock = item.BuildToStock,
+                                            TestData = item.TestData,
+                                            CalcWOQty = bomdata.Calc_Qnty,
+                                            PlanCompletionDate = planstartdt,
+                                            RoutingId = item.RoutingId,
+                                            StartingOpNo = item.StartingOpNo,
+                                            EndingOpNo = item.EndingOpNo,
+                                            For_Ref = 'N',
+                                            ReloadOption = "",
+                                            TenantId = item.TenantId,
+                                        };
+                                        childwos.Add(cwo);
                                         break;
                                     //case MasterPartType.BOM:
 
@@ -309,7 +461,7 @@ namespace CWB.App.Controllers
                                         var bofpdList = await _masterService.PartPurchasesFor(bomgrp.PartId);
                                         var bofptype = await _masterService.GetRMPart(bomgrp.PartId);
                                         totalLeadTime = bofpdList.Sum(x => x.LeadTimeInDays);
-                                        DateTime bofnextworkdingdate = (DateTime)item.PlanCompletionDate;
+                                        DateTime bofnextworkdingdate = item.PlanCompletionDate.GetValueOrDefault();
                                         bofnextworkdingdate = bofnextworkdingdate.AddDays(totalLeadTime);
                                         BOMListVM bofbomdata = new BOMListVM
                                         {
@@ -318,11 +470,21 @@ namespace CWB.App.Controllers
                                             Child_Part_No_Type = mp.MasterPartType.ToString(),
                                             Calc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
                                             Plan_Qnty = item.CalcWOQty,
-                                            Plan_Compl_Dt = item.PlanCompletionDate.GetValueOrDefault(),
+                                            Plan_Compl_Dt = planstartdt,
                                             CalcReceiptDate = bofnextworkdingdate,
                                             ProcPlanId = item.ProductionPlanId
                                         };
                                         listbom.Add(bofbomdata);
+                                        ProcPlanVM ppdata = new ProcPlanVM
+                                        {
+                                            PartId = bomgrp.PartId,
+                                            PartType = mp.MasterPartType.ToString(),
+                                            Calc_Proc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
+                                            CalcReceiptDate = bofnextworkdingdate,
+                                            WorkOrderId = item.WoId
+                                        };
+                                        listprocplan.Add(ppdata);
+                                       
                                         break;
                                     case MasterPartType.RawMaterial:
                                         var mfpdList = await _masterService.PartPurchasesFor(bomgrp.PartId);
@@ -338,12 +500,12 @@ namespace CWB.App.Controllers
                                             Child_Part_No_Type = mp.MasterPartType.ToString(),
                                             Calc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
                                             Plan_Qnty = item.CalcWOQty,
-                                            Plan_Compl_Dt = item.PlanCompletionDate.GetValueOrDefault(),
+                                            Plan_Compl_Dt = planstartdt,
                                             CalcReceiptDate = nextworkdingdate,
                                             ProcPlanId = item.ProductionPlanId
                                         };
                                         listbom.Add(rmbomdata);
-
+                                        
                                         break;
                                     default:
                                         break;
@@ -353,18 +515,393 @@ namespace CWB.App.Controllers
                         }
 
                     }
+
+                    //McTimeList---
+                    var routingstep = await _routingService.RoutingSteps((int)item.RoutingId);
+                    var oneroutingstep = routingstep.FirstOrDefault();
+                    var stepmachine = await _routingService.StepMachines((int)oneroutingstep.StepId);
+                    var onestepmachine = stepmachine.FirstOrDefault();
+                    if (onestepmachine != null)
+                    {
+                        var machine = await _machineService.GetMachine((int)onestepmachine?.MachineId);
+                        // var result = await _departmentService.GetDepartments(1);
+                        //Total_Plan_time = Setup_time + (1st_Pc_Process_time+Cycle time  x (WO_Plan_Qnty-1))/No_of_parts_per_loading
+                        //TimeSpan.Parse(sd.FirstPieceProcessingTime).TotalMinutes
+
+                        var departments = await _departmentService.GetDepartments(1);
+                        var department = departments.FirstOrDefault(d => d.DepartmentId == machine.MachineDepartmentId);
+                        int Totalplantime = Convert.ToInt32(TimeSpan.Parse(onestepmachine.SetupTime).TotalMinutes) + ((Convert.ToInt32(TimeSpan.Parse(onestepmachine.FirstPieceProcessingTime).TotalMinutes) + department.NoOfShifts) * (item.CalcWOQty - 1)) / onestepmachine.NoOfPartsPerLoading;
+                        int TotalplantimeInHoursRounded = (int)Math.Round(Totalplantime / 60.0);
+                        McTimeListVM mcTimeList = new McTimeListVM()
+                        {
+                            WoId = item.WoId,
+                            Routing_StepId = oneroutingstep.StepId,
+                            CompanyId = Convert.ToInt64(oneroutingstep.StepLocation),
+                            MachineId = onestepmachine.MachineId,
+                            MachineTypeId = machine.MachineMachineTypeId,
+                            PlanQnty = item.CalcWOQty,
+                            TotalPlanTime = TotalplantimeInHoursRounded,
+                            McPlanStartTime = item.PlanStartDate,
+                            McPlanEndTime = (DateTime)item.PlanCompletionDate,
+                        };
+                        mcTimeListVMs.Add(mcTimeList);
+                    }
                 }
                 if (listprocplan.Any())
                 {
                     var result = await _woService.ProcPlanPost(listprocplan);
+
                 }
                 if (listbom.Any())
                 {
                     var bomresult = await _woService.BomListPost(listbom);
                 }
+                var childworels = await _woService.PostChildWoRel(childWoRels);
+                var machinetimepost = await _woService.PostMcTimeList(mcTimeListVMs);
+                var childproductionwopost = await _woService.ProductionPlanWoPost(childwos);
+                if (childproductionwopost.Any())
+                {
+                    List<ProcPlanVM> sublistprocplan = new List<ProcPlanVM>();
+                    List<BOMListVM> sublistbom = new List<BOMListVM>();
+                    List<ProductionPlan_WoVM> subchildwos = new List<ProductionPlan_WoVM>();
+                    List<ChildWoRelVM> subchildWoRels = new List<ChildWoRelVM>();
+                    List<McTimeListVM> submcTimeListVMs = new List<McTimeListVM>();
+                    int subtotalLeadTime = 0;
+                    foreach (var item in childproductionwopost)
+                    {
+                        if (item.TestData == 'Y')
+                        {
+                            ManufacturedPartNoDetailVM mf = await _masterService.GetManufPart((int)item.PartId);
+                            if (mf.ManufacturedPartType == 1)
+                            {
+                                var mpmakefromlist = await _masterService.GetMPMakeFromListByPartId(mf.ManufacturedPartNoDetailId.ToString());
+                                foreach (var mpmakefrom in mpmakefromlist)
+                                {
+                                    ChildWoRelVM cwo = new ChildWoRelVM()
+                                    {
+                                        WoId = item.WoId,
+                                        PartId = mpmakefrom.MPPartId,
+                                        Qnty = Convert.ToInt32(mpmakefrom.QuantityPerInput),
+                                        CameFrom = "MakeFromPart"
+                                    };
+                                    subchildWoRels.Add(cwo);
+                                }
+                                var groupedResults = mpmakefromlist.GroupBy(x => x.MPPartId)
+                                       .Select(g => new
+                                       {
+                                           PartId = g.Key,
+                                           TotalQuantity = g.Sum(x =>
+                                           {
+                                               int quantity;
+                                               return int.TryParse(x.QuantityPerInput, out quantity) ? quantity : 0;
+                                           })
+                                       })
+                                        .ToList();
+                                foreach (var grouped in groupedResults)
+                                {
+                                    var mfpdList = await _masterService.PartPurchasesFor(grouped.PartId);
+                                    var ptype = await _masterService.GetRMPart(grouped.PartId);
+                                    subtotalLeadTime = mfpdList.Sum(x => x.LeadTimeInDays);
+                                    DateTime nextworkdingdate = (DateTime)item.PlanCompletionDate;
+                                    nextworkdingdate = nextworkdingdate.AddDays(subtotalLeadTime);
+                                    if (groupedResults != null)
+                                    {
+                                        ProcPlanVM ppdata = new ProcPlanVM
+                                        {
+                                            PartId = grouped.PartId,
+                                            PartType = ptype.MasterPartType,
+                                            Calc_Proc_Qnty = grouped.TotalQuantity * item.CalcWOQty,
+                                            CalcReceiptDate = nextworkdingdate,
+                                            WorkOrderId = item.WoId
+                                        };
+                                        sublistprocplan.Add(ppdata);
+
+                                    }
+                                }
+                            }
+                            else if (mf.ManufacturedPartType == 2)
+                            {
+                                var bomlst = await _masterService.BOMS(mf.ManufacturedPartNoDetailId.ToString());
+                                foreach (var bomVM in bomlst)
+                                {
+                                    ChildWoRelVM cwo = new ChildWoRelVM()
+                                    {
+                                        WoId = item.WoId,
+                                        PartId = bomVM.BOMPartId,
+                                        Qnty = Convert.ToInt32(bomVM.Quantity),
+                                        CameFrom = "BOM"
+                                    };
+                                    subchildWoRels.Add(cwo);
+                                }
+                                var bomgroupedResults = bomlst.GroupBy(x => x.BOMPartId)
+                                       .Select(g => new
+                                       {
+                                           PartId = g.Key,
+                                           TotalQuantity = g.Sum(x => x.Quantity)
+                                       })
+                                        .ToList();
+                                foreach (var bomgrp in bomgroupedResults)
+                                {
+                                    var mp = await _masterService.ItemMasterPartById(bomgrp.PartId);
+                                    var workdetails = await _plantService.GetPlantWD(13);
+                                    var holidaylist = await _plantService.GetHolidays(13);
+                                    string weekOff1 = workdetails.WeeklyOff1;
+                                    string weekOff2 = workdetails.WeeklyOff2;
+                                    var resultList = await _routingService.Routings(mf.ManufacturedPartNoDetailId);
+                                    int minutes = 0;
+                                    foreach (var rote in resultList)
+                                    {
+                                        var result = await _routingService.RoutingSteps(rote.RoutingId);
+                                        foreach (var step in result)
+                                        {
+                                            var stepdetails = await _routingService.StepMachines((int)step.StepId);
+                                            var processingTimeSum = stepdetails
+                                                            .GroupBy(sd => sd.RoutingStepId)
+                                                            .Select(g => new
+                                                            {
+                                                                RoutingStepId = g.Key,
+                                                                TotalProcessingTime = g.Sum(sd => TimeSpan.Parse(sd.FirstPieceProcessingTime).TotalMinutes)
+                                                            });
+                                            foreach (var min in processingTimeSum)
+                                            {
+                                                minutes = (int)min.TotalProcessingTime;
+                                            }
+                                        }
+                                    }
+                                    int assyTime = (minutes * item.CalcWOQty) / workdetails.NoOfShifts;
+                                    int assyTimeInDays = assyTime / 1440;
+                                    DateTime planstartdt = item.PlanCompletionDate.Value.AddDays(-assyTimeInDays);
+                                    switch (mp.MasterPartType)
+                                    {
+                                        case MasterPartType.ManufacturedPart:
+                                            
+
+                                            var manufchild = await _masterService.GetManufPart((int)bomgrp.PartId);
+                                            var manfDays = 0;
+                                            int Sa_Nest_level = 0;
+                                            while (!IsWorkDay(planstartdt, holidaylist, weekOff1, weekOff2))
+                                            {
+                                                planstartdt = planstartdt.AddDays(1);
+                                            }
+                                            if (manufchild.ManufacturedPartType == 1)
+                                            {
+                                                DateTime planstdt = planstartdt;
+                                                DateTime plancpldt = item.PlanCompletionDate.GetValueOrDefault();
+                                                manfDays = Math.Max(0, (plancpldt - planstdt).Days);
+                                                //--changed RM 
+                                                var mpmakefromlist = await _masterService.GetMPMakeFromListByPartId(manufchild.ManufacturedPartNoDetailId.ToString());
+                                                foreach (var mpmakefrom in mpmakefromlist)
+                                                {
+                                                    ChildWoRelVM subcwo = new ChildWoRelVM()
+                                                    {
+                                                        WoId = item.WoId,
+                                                        PartId = mpmakefrom.MPPartId,
+                                                        Qnty = Convert.ToInt32(mpmakefrom.QuantityPerInput),
+                                                        CameFrom = "BOM"
+                                                    };
+                                                    subchildWoRels.Add(subcwo);
+                                                }
+                                                var groupedResults = mpmakefromlist.GroupBy(x => x.MPPartId)
+                                           .Select(g => new
+                                           {
+                                               PartId = g.Key,
+                                               TotalQuantity = g.Sum(x =>
+                                               {
+                                                   int quantity;
+                                                   return int.TryParse(x.QuantityPerInput, out quantity) ? quantity : 0;
+                                               })
+                                           })
+                                            .ToList();
+                                                foreach (var grouped in groupedResults)
+                                                {
+                                                    var submfpdList = await _masterService.PartPurchasesFor(grouped.PartId);
+                                                    var subptype = await _masterService.GetRMPart(grouped.PartId);
+                                                    subtotalLeadTime = submfpdList.Sum(x => x.LeadTimeInDays);
+                                                    DateTime subnextworkdingdate = (DateTime)item.PlanCompletionDate;
+                                                    subnextworkdingdate = subnextworkdingdate.AddDays(subtotalLeadTime);
+                                                    if (groupedResults != null)
+                                                    {
+                                                        ProcPlanVM subppdata = new ProcPlanVM
+                                                        {
+                                                            PartId = grouped.PartId,
+                                                            PartType = subptype.MasterPartType,
+                                                            Calc_Proc_Qnty = grouped.TotalQuantity * item.CalcWOQty,
+                                                            CalcReceiptDate = subnextworkdingdate,
+                                                            WorkOrderId = item.WoId
+                                                        };
+                                                        sublistprocplan.Add(subppdata);
+
+                                                    }
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                var asyy = await _masterService.GetManufPart((int)bomgrp.PartId);
+                                                if (asyy.ManufacturedPartType == 2)
+                                                {
+                                                    Sa_Nest_level = 1;
+                                                }
+                                                else
+                                                {
+                                                    Sa_Nest_level = 2;
+                                                }
+
+                                            }
+                                            BOMListVM bomdata = new BOMListVM
+                                            {
+                                                ParentWoId = item.WoId,
+                                                Child_Part_No_ID = bomgrp.PartId,
+                                                Child_Part_No_Type = mp.MasterPartType.ToString(),
+                                                Calc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
+                                                Plan_Qnty = item.CalcWOQty,
+                                                Plan_Start_Dt = planstartdt,
+                                                Plan_Compl_Dt = planstartdt,
+                                                CalcReceiptDate = planstartdt,
+                                                Manf_Days_Avl = manfDays,
+                                                ProcPlanId = item.ProductionPlanId,
+                                                SaNestLevel = Sa_Nest_level
+                                            };
+                                            sublistbom.Add(bomdata);
+                                            ProductionPlan_WoVM cwo = new ProductionPlan_WoVM()
+                                            {
+                                                WoId = item.WoId,
+                                                ParentWoId = item.WoId,
+                                                SalesOrderId = item.SalesOrderId,
+                                                PartId = bomdata.Child_Part_No_ID,
+                                                PartType = (int)manufchild.ManufacturedPartType,
+                                                Parentlevel = item.Parentlevel,
+                                                BuildToStock = item.BuildToStock,
+                                                TestData = item.TestData,
+                                                CalcWOQty = bomdata.Calc_Qnty,
+                                                PlanCompletionDate = planstartdt,
+                                                RoutingId = item.RoutingId,
+                                                StartingOpNo = item.StartingOpNo,
+                                                EndingOpNo = item.EndingOpNo,
+                                                For_Ref = 'N',
+                                                ReloadOption = "",
+                                                TenantId = item.TenantId,
+                                            };
+                                            subchildwos.Add(cwo);
+                                            break;
+                                        //case MasterPartType.BOM:
+
+                                        //    break;
+                                        case MasterPartType.BOF:
+                                            var bofpdList = await _masterService.PartPurchasesFor(bomgrp.PartId);
+                                            var bofptype = await _masterService.GetRMPart(bomgrp.PartId);
+                                            subtotalLeadTime = bofpdList.Sum(x => x.LeadTimeInDays);
+                                            DateTime bofnextworkdingdate = (DateTime)item.PlanCompletionDate;
+                                            bofnextworkdingdate = bofnextworkdingdate.AddDays(subtotalLeadTime);
+                                            BOMListVM bofbomdata = new BOMListVM
+                                            {
+                                                ParentWoId = item.WoId,
+                                                Child_Part_No_ID = bomgrp.PartId,
+                                                Child_Part_No_Type = mp.MasterPartType.ToString(),
+                                                Calc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
+                                                Plan_Qnty = item.CalcWOQty,
+                                                Plan_Compl_Dt = planstartdt,
+                                                CalcReceiptDate = bofnextworkdingdate,
+                                                ProcPlanId = item.ProductionPlanId
+                                            };
+                                            sublistbom.Add(bofbomdata);
+                                            ProcPlanVM ppdata = new ProcPlanVM
+                                            {
+                                                PartId = bomgrp.PartId,
+                                                PartType = mp.MasterPartType.ToString(),
+                                                Calc_Proc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
+                                                CalcReceiptDate = bofnextworkdingdate,
+                                                WorkOrderId = item.WoId
+                                            };
+                                            sublistprocplan.Add(ppdata);
+                                            
+                                            break;
+                                        case MasterPartType.RawMaterial:
+                                            var mfpdList = await _masterService.PartPurchasesFor(bomgrp.PartId);
+                                            var ptype = await _masterService.GetRMPart(bomgrp.PartId);
+                                            subtotalLeadTime = mfpdList.Sum(x => x.LeadTimeInDays);
+                                            DateTime nextworkdingdate = (DateTime)item.PlanCompletionDate;
+                                            nextworkdingdate = nextworkdingdate.AddDays(subtotalLeadTime);
+
+                                            BOMListVM rmbomdata = new BOMListVM
+                                            {
+                                                ParentWoId = item.WoId,
+                                                Child_Part_No_ID = bomgrp.PartId,
+                                                Child_Part_No_Type = mp.MasterPartType.ToString(),
+                                                Calc_Qnty = (int)bomgrp.TotalQuantity * item.CalcWOQty,
+                                                Plan_Qnty = item.CalcWOQty,
+                                                Plan_Compl_Dt = planstartdt,
+                                                CalcReceiptDate = nextworkdingdate,
+                                                ProcPlanId = item.ProductionPlanId
+                                            };
+                                            sublistbom.Add(rmbomdata);
+                                           
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                        //McTimeList---
+                        var routingstep = await _routingService.RoutingSteps((int)item.RoutingId);
+                        var oneroutingstep = routingstep.FirstOrDefault();
+                        var stepmachine = await _routingService.StepMachines((int)oneroutingstep.StepId);
+                        var onestepmachine = stepmachine.FirstOrDefault();
+                        if (onestepmachine != null)
+                        {
+                            var machine = await _machineService.GetMachine((int)onestepmachine?.MachineId);
+                           
+                            var departments = await _departmentService.GetDepartments(1);
+                            var department = departments.FirstOrDefault(d => d.DepartmentId == machine.MachineDepartmentId);
+                            int Totalplantime = Convert.ToInt32(TimeSpan.Parse(onestepmachine.SetupTime).TotalMinutes) + ((Convert.ToInt32(TimeSpan.Parse(onestepmachine.FirstPieceProcessingTime).TotalMinutes) + department.NoOfShifts) * (item.CalcWOQty - 1)) / onestepmachine.NoOfPartsPerLoading;
+                            int TotalplantimeInHoursRounded = (int)Math.Round(Totalplantime / 60.0);
+                            McTimeListVM mcTimeList = new McTimeListVM()
+                            {
+                                WoId = item.WoId,
+                                Routing_StepId = oneroutingstep.StepId,
+                                CompanyId = Convert.ToInt64(oneroutingstep.StepLocation),
+                                MachineId = onestepmachine.MachineId,
+                                MachineTypeId = machine.MachineMachineTypeId,
+                                PlanQnty = item.CalcWOQty,
+                                TotalPlanTime = TotalplantimeInHoursRounded,
+                                McPlanStartTime = item.PlanStartDate,
+                                McPlanEndTime = (DateTime)item.PlanCompletionDate,
+                            };
+                            submcTimeListVMs.Add(mcTimeList);
+                        }
+                    }
+                    if (sublistprocplan.Any())
+                    {
+                        var result = await _woService.ProcPlanPost(sublistprocplan);
+
+                    }
+                    if (sublistbom.Any())
+                    {
+                        var bomresult = await _woService.BomListPost(sublistbom);
+                    }
+                    var subchildworels = await _woService.PostChildWoRel(subchildWoRels);
+                    var submachinetimepost = await _woService.PostMcTimeList(submcTimeListVMs);
+                    var combinedSubchildren = subchildwos
+                                .Where(sc => sc.PartType == 1)
+                                .GroupBy(sc => sc.PartId)
+                                .Select(g => new ProductionPlan_WoVM
+                                {
+                                    PartId = g.Key,
+                                    CalcWOQty = g.Sum(sc => sc.CalcWOQty),
+                                    PlanCompletionDate = g.Min(sc => sc.PlanCompletionDate)
+                                })
+                                .ToList();
+                    var subchildproductionwopost = await _woService.ProductionPlanWoPost(subchildwos);
+                }
+
             }
 
-            return RedirectToAction("DetailedProcPlan");
+            //return RedirectToAction("DetailedProcPlan");
+            return Ok();
         }
 
         [HttpGet]
@@ -445,6 +982,60 @@ namespace CWB.App.Controllers
             return Ok(resultList);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllMcTimeList()
+        {
+            var mctimelist = await _woService.GetAllMcTimeList();
+            var productions = await _woService.AllProductionPlan_Wo();
+            var masterparts = await _masterService.ItemMasterParts();
+            foreach (var mctime in mctimelist)
+            {
+                var machine = await _machineService.GetMachine((int)mctime.MachineId);
+                var machineTypes = await _machineService.GetMachineTypes();
+                foreach (ProductionPlan_WoVM item in productions)
+                {
+                    if (item.WoId == mctime.WoId && item.ParentWoId ==0)
+                    {
+                        foreach (ItemMasterPartVM imp in masterparts)
+                        {
+                            if (item.PartId == imp.PartId)
+                            {
+                                mctime.PartNo = imp.PartNo;
+                                mctime.PartDesc = imp.Description;
+                                mctime.PartType = imp.MasterPartType;   
+                                mctime.WoNumber = item.WONumber;
+                            }
+                        }
+                    }
+                }
+                if (mctime.MachineId == machine.MachineMachineId)
+                {
+                    mctime.MachineName = machine.MachineMachineName;
+
+                    var departments = await _departmentService.GetDepartments(1);
+                    var department = departments.FirstOrDefault(d => d.DepartmentId == machine.MachineDepartmentId);
+                    mctime.Location = department.PlantName;
+                    var operation = await _operationService.Operation(machine.MachineOperationListId);
+                    mctime.OprationNo = operation.Operation;
+                    foreach (var machinetype in machineTypes)
+                    {
+                        if (mctime.MachineTypeId == machinetype.MachineTypeTypeId)
+                        {
+                            mctime.MachineTypeName = machinetype.MachineTypeName;
+                        }
+                    }
+                }
+            }
+            return Ok(mctimelist);
+        }
+
+        //[HttpGet]
+        //public async Task<IActionResult> McTimeListSummary()
+        //{
+
+        //    return Ok();
+        //}
+
         [HttpPost]
         public async Task<IActionResult> MultipleProductionWOPost([FromBody] IEnumerable<ProductionPlan_WoVM> ppwos)
         {
@@ -479,7 +1070,7 @@ namespace CWB.App.Controllers
                     PlanCompletionDate = currentDate,
                     PartId = partId,
                     PartType = partType,
-                    For_Ref = 'N',
+                    //For_Ref = 'N',
                     ReloadOption = "Split"
                 };
                 previousWorkdays.Add(dailywo);

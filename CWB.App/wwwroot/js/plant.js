@@ -3,7 +3,7 @@ function LoadHolidays(plantId) {
     var tablebody = $("#HolidaysTable tbody");
     $(tablebody).html("");//empty tbody
     api.get("/plant/getholidays?plantId=" + plantId).then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
            $(tablebody).append(AppUtil.ProcessTemplateDataNew("HolidayRow", data[i], i));
         }
@@ -19,7 +19,7 @@ function LoadHolidays(plantId) {
 */
 
 function EditHoliday(holidayId, name, holiDayDateStr, day) {
-    console.log("holidayId : "+holidayId);
+    //console.log("holidayId : "+holidayId);
     $("#HolidayId").val(holidayId);
     $("#HName").val(name);
     document.getElementById("HolidayDate").value = holiDayDateStr.split("-").reverse().join("-");;
@@ -29,7 +29,7 @@ function DeleteHoliday(holidayId,name,plantId) {
     var result = confirm("Are you sure you want to delete "+name+" from holiday list?");
     if (result) {
         api.get("/plant/delholiday?holidayId=" + holidayId).then((data) => {
-            console.log(data);
+            //console.log(data);
             var plantId = $("HolidayPlantId").val();
             LoadHolidays(plantId);
         }).catch((error) => {
@@ -50,7 +50,7 @@ function AddHolidayToList() {
 
 function GetPlantWD(plantId) {
     api.get("/plant/getplantwd?plantId=" + plantId).then((data) => {
-        console.log(data);
+        //console.log(data);
         $("#WDId").val(data.wdId);
         $("#WeeklyOff1").val(data.weeklyOff1);
         $("#WeeklyOff2").val(data.weeklyOff2);
@@ -69,7 +69,7 @@ function GetPlantWD(plantId) {
 function AddWorkingDetails() {
     var formData = AppUtil.GetFormData("WDForm");
     api.post("/plant/plantwd", formData).then((data) => {
-        console.log(data);
+        //console.log(data);
         $("#WDId").val(data.wdId);
         $("#WDPlantId").val(data.plantId);
         //document.getElementById("WDForm").reset();
@@ -84,7 +84,7 @@ function LoadPlants() {
     //PlantRowTemplate
     //PlantTable
     api.getbulk("/plant/getplants").then((data) => {
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
             for (var key in data[i]) {
                 //        console.log(key);
@@ -111,7 +111,7 @@ function DelPlant(name, plantId) {
     let confirmval = confirm("Are your sure you want to delete this plant? : " + name, "Yes", "No");
     if (confirmval) {
         api.get("/plant/delplant?plantId=" + plantId).then((data) => {
-            console.log(data);
+            //console.log(data);
             LoadPlants();
         }).catch((error) => {
             //console.log(error);
@@ -182,7 +182,7 @@ $(function () {
         var notes = relatedTarget.data("notes");
         $("#Notes").val(notes);
         var plantId = relatedTarget.data("plantid");
-        console.log("PlantId " + plantId);
+        //console.log("PlantId " + plantId);
         $("#PlantId").val(plantId);
         $("#WDPlantId").val(plantId);
         $("#HolidayPlantId").val(plantId);

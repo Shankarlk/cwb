@@ -256,12 +256,12 @@ namespace CWB.Masters.Services.ItemMaster
         {
             var co = await _companyRepository.SingleOrDefaultAsync(m => m.Name.ToLower().Equals("self"));
 
-            if(co!=null)
-            {
-                var rawmaterialdetails = _rawMaterialDetailRepository.GetRangeAsync(m => m.SupplierId == (co.Id) &&  m.TenantId == tenantId);
+            //if(co!=null)
+            //{
+                var rawmaterialdetails = _rawMaterialDetailRepository.GetRangeAsync(m => m.TenantId == tenantId); //m.SupplierId == (co.Id) &&
                 return _mapper.Map<IEnumerable<RawMaterialDetailVM>>(rawmaterialdetails);
-            }
-            return new List<RawMaterialDetailVM>();
+            //}
+            //return new List<RawMaterialDetailVM>();
         }
 
         public async Task<IEnumerable<RawMaterialDetailVM>> GetSupplierRMS(long supplierId)
@@ -270,11 +270,11 @@ namespace CWB.Masters.Services.ItemMaster
 
             try
             {
-                if (co != null)
-                {
-                    var rawmaterialdetails = _rawMaterialDetailRepository.GetRangeAsync(m => m.TenantId > -1 && (m.SupplierId != co.Id));
-                    return _mapper.Map<IEnumerable<RawMaterialDetailVM>>(rawmaterialdetails);
-                }
+                //if (co != null)
+                //{
+                    var rawmaterialdetails = _rawMaterialDetailRepository.GetRangeAsync(m => m.TenantId > -1 );  //&& (m.SupplierId != co.Id)
+                return _mapper.Map<IEnumerable<RawMaterialDetailVM>>(rawmaterialdetails);
+                //}
 
             } catch(Exception ex)
             {

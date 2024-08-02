@@ -12,6 +12,7 @@ namespace CWB.App.Models.BusinessProcesses
         DateTime? woDateStr = null;
         public long WOID { get; set; }
         public long SalesOrderId { get; set; }
+        public long ParentWoId { get; set; }
         public string? WONumber { get; set; }
         public DateTime? WODate { get
             {
@@ -80,6 +81,7 @@ namespace CWB.App.Models.BusinessProcesses
         //public bool Done { get; set; }
         public string? PartNo { get; set; } = string.Empty;
         public string? PartDesc { get; set; } = string.Empty;
+        public string? StrStatus { get; set; } = string.Empty;
         public string Comment { get; set; }
         public long TenantId { get; set; }
     }

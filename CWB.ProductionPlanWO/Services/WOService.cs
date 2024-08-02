@@ -22,12 +22,16 @@ namespace CWB.ProductionPlanWO.Services
         private readonly IProcPlanRepository _procPlanRepository;
         private readonly IBOMListRepository _bOMListRepository;
         private readonly IProductionPlan_WORepository _productionPlan_WORepository;
+        private readonly IWOStatusRepository _wOStatusrepository;
+        private readonly IChildWoRelRepository _childWoRelRepository;
+        private readonly IMcTimeListRepository _mcTimeListRepository;
 
         public WOService(
             ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork
             , IWorkOrderRepository workOrderRepository
             , IProcPlanRepository procPlanRepository, IWOSORepository woso, IBOMTempRepository bOMTempRepository, IBOMListRepository bOMListRepository,
-            IProductionPlan_WORepository productionPlan_WORepository)
+            IProductionPlan_WORepository productionPlan_WORepository, IWOStatusRepository wOStatus, IChildWoRelRepository childWoRelRepository
+            , IMcTimeListRepository mcTimeListRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -38,6 +42,9 @@ namespace CWB.ProductionPlanWO.Services
             _procPlanRepository = procPlanRepository;
             _bOMListRepository = bOMListRepository;
             _productionPlan_WORepository = productionPlan_WORepository;
+            _wOStatusrepository = wOStatus;
+            _childWoRelRepository = childWoRelRepository;
+            _mcTimeListRepository = mcTimeListRepository;
         }
 
         public string HelloWorld()
@@ -283,6 +290,12 @@ namespace CWB.ProductionPlanWO.Services
             return _mapper.Map<IEnumerable<WorkOrdersVM>>(allwo);
         }
 
+        public async Task<IEnumerable<WorkOrdersVM>> AllParentChildWo(long parentWoId, long tenantId)
+        {
+            var allwo = _workOrderRepository.GetRangeAsync(d => d.ParentWoId == parentWoId && d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<WorkOrdersVM>>(allwo);
+        }
+
         public async Task<WorkOrdersVM> GetSingleWO(long Id, long tenantId)
         {
             var singlewo =await _workOrderRepository.SingleOrDefaultAsync(d=>d.Id == Id);
@@ -385,6 +398,89 @@ namespace CWB.ProductionPlanWO.Services
         {
             var allpp = _productionPlan_WORepository.GetRangeAsync(d => d.TenantId == tenantId);
             return _mapper.Map<IEnumerable<ProductionPlan_WOVM>>(allpp);
+        }
+
+        public async Task<WOStatusVM> GetWOStatus(long Id)
+        {
+            var allpp =await _wOStatusrepository.SingleOrDefaultAsync(d => d.Id == Id);
+            if (allpp != null)
+            {
+                return _mapper.Map<WOStatusVM>(allpp);
+            }
+            return new WOStatusVM { StatusId = -1 };
+        }
+
+        public async Task<List<ChildWoRelVM>> PostChildWoRel(List<ChildWoRelVM> childWos)
+        {
+            foreach (ChildWoRelVM item in childWos)
+            {
+                var cwo = _mapper.Map<ChildWoRel>(item);
+                if (cwo.WoId > 0)
+                {
+                    if (cwo.Id == 0)
+                    {
+                        try
+                        {
+                            await _childWoRelRepository.AddAsync(cwo);
+                        }
+                        catch (Exception ex)
+                        {
+                            Exception exa = ex.InnerException;
+                            string msg = ex.Message;
+                        }
+                        try
+                        {
+                            await _unitOfWork.CommitAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            Exception exa = ex.InnerException;
+                            string msg = ex.Message;
+                        }
+                    }
+                }
+            }
+            return childWos;
+        }
+
+        public async Task<List<McTimeListVM>> PostMcTimeList(List<McTimeListVM> mcTimeLists)
+        {
+            foreach (McTimeListVM item in mcTimeLists)
+            {
+                var cwo = _mapper.Map<McTimeList>(item);
+                //if (cwo.WoId > 0)
+                //{
+                    if (cwo.Id == 0)
+                    {
+                        try
+                        {
+                            await _mcTimeListRepository.AddAsync(cwo);
+                        }
+                        catch (Exception ex)
+                        {
+                            Exception exa = ex.InnerException;
+                            string msg = ex.Message;
+                        }
+                        try
+                        {
+                            await _unitOfWork.CommitAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            Exception exa = ex.InnerException;
+                            string msg = ex.Message;
+                        }
+                    }
+                //}
+                item.McTimeListId = cwo.Id;
+            }
+            return mcTimeLists;
+        }
+
+        public async Task<IEnumerable<McTimeListVM>> GetAllMcTimeListVMs(long tenantId)
+        {
+            var allpp = _mcTimeListRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<McTimeListVM>>(allpp);
         }
     }
 }

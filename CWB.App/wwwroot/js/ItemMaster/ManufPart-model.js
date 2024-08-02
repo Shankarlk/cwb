@@ -99,9 +99,9 @@ var ManufPartFormUtil = {
     },
     ConfirmDialog: (id, message) => {
         var result = confirm(message);
-        console.log("result " + result);
+        //console.log("result " + result);
         if (result) {
-            console.log("clearing main tab ");
+            //console.log("clearing main tab ");
             ManufPartFormUtil.ClearMainTab();
             if (id == 1) {
                 MPBOMUtil.ClearBOMTab();
@@ -243,8 +243,14 @@ $(document).ready(function () {
         else {
             $('.nav-pills a[href="#tab-1"]').tab('show');
             CURRENT_TAB = "TabMPMain";
-            $("#TabHeadBOM").hide();
-            $("#TabHeadMakefrom").show();
+            const selectedValue = $('input[name="ManufacturedPartType"]:checked').val();
+            if (selectedValue === "1") {
+                $("#TabHeadBOM").hide();
+                $("#TabHeadMakefrom").show();
+            } else {
+                $("#TabHeadBOM").show();
+                $("#TabHeadMakefrom").hide();
+            }
             if (modelObj.Edit) {
                 //do nothing 
             }
@@ -359,7 +365,7 @@ $(document).ready(function () {
         //OPartNo
         //OPartDescription
         api.get("/masters/ownrms").then((data) => {
-            console.log(data);
+            //console.log(data);
             ownRM = data;
             var tablebody = $("#OwnRMTable tbody");
             $(tablebody).html("");//empty tbody
@@ -438,7 +444,7 @@ $(document).ready(function () {
                 console.log(key);
                 console.log(eData[key]);
             }*/
-            console.log("++++++++++++++++");
+            //console.log("++++++++++++++++");
             key = "bomPartNo";
             $("#DelBOMPartNo").val(eData[key]);
             key = "bomPartDesc";
@@ -524,7 +530,7 @@ $(document).ready(function () {
         var relatedTarget = $(event.relatedTarget);
         var makefromid = relatedTarget.data("makefromid");
         api.get("/masters/getmakefrom?Id=" + makefromid).then((eData) => {
-            console.log(eData);
+            //console.log(eData);
             key = "inputPartNo";
             $("#EditInputPartNo").val(eData[key]);
 
@@ -773,10 +779,10 @@ function copyBOFData() {
     let i = 0;
     var fndObj = false;
     for (i = 0; i < data.length; i++) {
-        console.log("************");
+        //console.log("************");
         if (i == selval) {
-            console.log(i);
-            console.log(data[i]);
+            //console.log(i);
+            //console.log(data[i]);
             $('#BOMPartId').val(data[i]['partId']);
             $('#BOMPartNo').val(data[i]['partNo']);
             $('#BOMPartDesc').val(data[i]['description']);
@@ -857,9 +863,9 @@ function EditBOM(event){
     var partId = $("#EditBOMManufPartId").val();
     api.post("/masters/mpbom", formData).then((data) => {
         //var partNo = data['bomPartNo'];
-        console.log("====1")
-        console.log(data);
-        console.log("====2")
+        //console.log("====1")
+        //console.log(data);
+        //console.log("====2")
         //modifyBOMListForEdit(data);
         reloadBOMs(partId);
         event.preventDefault();
@@ -873,9 +879,9 @@ function DeleteBOM(event){
     var formData = AppUtil.GetFormData("FormDeleteBOM");
     var partId = $("#DelBOMManufPartId").val();
     api.post("/masters/rembom", formData).then((data) => {
-        console.log("====3")
-        console.log(data);
-        console.log("====4")
+        //console.log("====3")
+        //console.log(data);
+        //console.log("====4")
         //modifyBOMListForDel(data);
         reloadBOMs(partId);
         event.preventDefault();
@@ -951,13 +957,13 @@ function modifyMakeFromList(newData) {
     if (foundObj) {
         if (idxToDel > -1) {
             makeFroms.splice(idxToDel, 1);
-            console.log("Spliced one element " + idxToDel)
+            //console.log("Spliced one element " + idxToDel)
         }
         if (modOpN == "Edit") {
             newObj = JSON.parse(JSON.stringify(newData));
             newObj['deleted'] = false;
-            console.log("Adding new Obj makefroms..");
-            console.log(newObj);
+            //console.log("Adding new Obj makefroms..");
+            //console.log(newObj);
             makeFroms.push(newObj);
         }
     }
@@ -986,13 +992,13 @@ function modifyBOMList(newData) {
     if (foundObj) {
         if (idxToDel > -1) {
             boms.splice(idxToDel, 1);
-            console.log("Spliced one element " + idxToDel)
+            //console.log("Spliced one element " + idxToDel)
         }
         if (modOpN == "Edit") {
             newObj = JSON.parse(JSON.stringify(newData));
             newObj['deleted'] = false;
-            console.log("Adding new Obj..");
-            console.log(newObj);
+            //console.log("Adding new Obj..");
+            //console.log(newObj);
             boms.push(newObj);
         }
     }

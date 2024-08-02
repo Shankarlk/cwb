@@ -85,6 +85,16 @@ namespace CWB.ProductionPlanWO.Controllers
         }
 
         [HttpGet]
+        [Route(ApiRoutes.WO.AllParentChildWos)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<WorkOrdersVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> AllParentWo(long parentWoId, long tenantId)
+        {
+            var allwo = await _woSerivce.AllParentChildWo(parentWoId, tenantId);
+            return Ok(allwo);
+        }
+
+        [HttpGet]
         [Route(ApiRoutes.WO.GetSingleWorkOrder)]
         [Produces(AppContentTypes.ContentType,Type=typeof(WorkOrdersVM))]
         [Authorize(Roles = Roles.ADMIN)]
@@ -163,6 +173,45 @@ namespace CWB.ProductionPlanWO.Controllers
         {
             var allprocplan = await _woSerivce.AllBomList(tenantId);
             return Ok(allprocplan);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.WO.GetWoStatus)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(WOStatusVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetWoStatus(long Id)
+        {
+            var allprocplan = await _woSerivce.GetWOStatus(Id);
+            return Ok(allprocplan);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostChildWoRel)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(ChildWoRelVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostChildWoRel([FromBody] List<ChildWoRelVM> childWoRels)
+        {
+            var woso = await _woSerivce.PostChildWoRel(childWoRels);
+            return Ok(woso);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostMcTimeList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<McTimeListVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostMcTimeList([FromBody] List<McTimeListVM> mcTimeListVMs)
+        {
+            var mctime = await _woSerivce.PostMcTimeList(mcTimeListVMs);
+            return Ok(mctime);
+        }
+        [HttpGet]
+        [Route(ApiRoutes.WO.GetAllMctimeList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<McTimeListVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetAllMcTimeList(long tenantId)
+        {
+            var mctime = await _woSerivce.GetAllMcTimeListVMs(tenantId);
+            return Ok(mctime);
         }
     }
 }

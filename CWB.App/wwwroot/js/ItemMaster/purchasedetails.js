@@ -60,20 +60,20 @@ $(function () {
             $("#DelPPDSupplierId").val(dData[key]);
             key = "pSupplier";
             $("#DelPSupplier").val(dData[key]);
-            console.log("Point 1");
+            //console.log("Point 1");
 
             key = "partPurchaseId";
             $("#DelPartPurchaseId").val(dData[key]);
             /*key = "masterPartNo";
             $("#DelMasterPartNo").val(dData[key]);
             masterPartNo = dData[key];*/
-            console.log("Point 2");
+            //console.log("Point 2");
             key = "pPartId";
             $("#DelMasterPartId").val(dData[key]);
 
             key = "shareOfBusiness";
             $("#DelShareOfBusiness").val(dData[key]);
-            console.log("Point 3");
+            //console.log("Point 3");
             key = "price";
             $("#DelPrice").val(dData[key]);
 
@@ -81,13 +81,13 @@ $(function () {
             $("#DelMinimumOrderQuantity").val(dData[key]);
             key = "pAdditionalInfo";
             $("#DelAdditionalInfo").val(dData[key]);
-            console.log("Point 4");
+            //console.log("Point 4");
 
             key = "leadTimeInDays";
             $("#DelLeadTimeInDays").val(dData[key]);
             key = "pSupplierPartNo";
             $("#DelSupplierPartNo").val(dData[key]);
-            console.log("Point 5");
+            //console.log("Point 5");
 
             key = "rmId";
             $("#DelRMId").val(eData[key]);
@@ -191,9 +191,9 @@ function modifyPPDList(newData) {
     let i = 0;
     let newObj = {};
     let idxToDel = -1;
-    console.log("----")
-    console.log(newData);
-    console.log("----")
+    //console.log("----")
+    //console.log(newData);
+    //console.log("----")
     for (i = 0; i < ppLlist.length; i++) {
         if (newData['partPurchaseId'] == ppLlist[i]['partPurchaseId']) {
             idxToDel = i;
@@ -204,13 +204,13 @@ function modifyPPDList(newData) {
     if (foundObj) {
         if (idxToDel > -1) {
             ppLlist.splice(idxToDel, 1);
-            console.log("Spliced one element " + idxToDel)
+            //console.log("Spliced one element " + idxToDel)
         }
         if (modOpN == "Edit") {
             newObj = JSON.parse(JSON.stringify(newData));
             newObj['deleted'] = false;
-            console.log("Adding new Obj makefroms..");
-            console.log(newObj);
+            //console.log("Adding new Obj makefroms..");
+            //console.log(newObj);
             ppLlist.push(newObj);
         }
     }
@@ -244,10 +244,10 @@ function UpdatePurchaseDetailsTable(dataObj) {
     var tablebody = $("#TablePurchaseDetails tbody");
     var templateElement = $("#PurchaseDetailTemplate").html();
     for (var key in dataObj) {
-        console.log(key + ":" + dataObj[key]);
+        //console.log(key + ":" + dataObj[key]);
         templateElement = templateElement.replaceAll("{" + key + "}", dataObj[key]);
     }
-    console.log(templateElement);
+    //console.log(templateElement);
     $(tablebody).append(templateElement);
 }
 

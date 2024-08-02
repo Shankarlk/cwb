@@ -11,6 +11,7 @@ namespace CWB.ProductionPlanWO.Services
     {
         Task<WorkOrdersVM> WorkOrder(WorkOrdersVM workOrdersVM);
         Task<IEnumerable<WorkOrdersVM>> AllWorkOrders(long tenantId);
+        Task<IEnumerable<WorkOrdersVM>> AllParentChildWo(long ParentWoId, long tenantId);
         Task<IEnumerable<WOSOVM>> GetSoWo(long workOrderId);
         Task<WorkOrdersVM> GetSingleWO(long Id, long tenantId);
         Task<List<WorkOrdersVM>> MultipleWorkOrder(List<WorkOrdersVM> workOrdersVM);
@@ -22,6 +23,10 @@ namespace CWB.ProductionPlanWO.Services
         Task<IEnumerable<BOMListVM>> AllBomList(long tenantId);
         Task<List<ProductionPlan_WOVM>> PostProductionPlan_Wo(List<ProductionPlan_WOVM> productions);
         Task<IEnumerable<ProductionPlan_WOVM>> AllProductionWo(long tenantId);
+        Task<WOStatusVM> GetWOStatus(long Id);
+        Task<List<ChildWoRelVM>> PostChildWoRel(List<ChildWoRelVM> childWos);
+        Task<List<McTimeListVM>> PostMcTimeList(List<McTimeListVM> mcTimeLists);
+        Task<IEnumerable<McTimeListVM>> GetAllMcTimeListVMs(long tenantId);
         string HelloWorld();
     }
 }

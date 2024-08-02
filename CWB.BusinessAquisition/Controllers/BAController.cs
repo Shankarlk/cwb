@@ -149,6 +149,16 @@ namespace BAapi.Controllers
             return pologs;
         }
 
+        //[HttpPost]
+        //[Route(ApiRoutes.Aquisition.UpdateWoInSo)]
+        //[Produces(AppContentTypes.ContentType, Type = typeof(List<SalesOrderVM>))]
+        //public async Task<List<SalesOrderVM>> UpdateWoInSo(List<SalesOrderVM> listSo)
+        //{
+        //    var so = await _baService.UpdateWoInSo(listSo);
+        //    return so;
+        //}
+
+
         [HttpPost]
         [Route(ApiRoutes.Aquisition.PostDeliverySchedule)]
         [Produces(AppContentTypes.ContentType, Type = typeof(DeliveryScheduleVM))]
@@ -255,6 +265,15 @@ namespace BAapi.Controllers
             bool exists = false;
             exists = _baService.CheckPartNo(partId);
             return Ok(exists);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.Aquisition.GetBAStatus)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(BAStatusVM))]
+        public async Task<IActionResult> GetBAStatus(long Id)
+        {
+            var bastatus = await _baService.GetBAStatus(Id);
+            return Ok(bastatus);
         }
 
     }
