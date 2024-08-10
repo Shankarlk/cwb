@@ -13,6 +13,7 @@ namespace CWB.App.Services.ProductionPlanWo
         Task<List<ProductionPlan_WoVM>> ProductionPlanWoPost(IEnumerable<ProductionPlan_WoVM> productions);
         Task<IEnumerable<ProductionPlan_WoVM>> AllProductionPlan_Wo();
         Task<List<ProcPlanVM>> ProcPlanPost(IEnumerable<ProcPlanVM> procPlans);
+        Task<List<WorkOrdersVM>> UpdateMultipleWorkOrder(IEnumerable<WorkOrdersVM> workOrders);
         Task<List<BOMListVM>> BomListPost(IEnumerable<BOMListVM> bomlist);
         Task<IEnumerable<ProcPlanVM>> GetAllProcPlan();
         Task<IEnumerable<BOMListVM>> GetAllBomlist();

@@ -54,6 +54,15 @@ namespace CWB.ProductionPlanWO.Controllers
         }
 
         [HttpPost]
+        [Route(ApiRoutes.WO.PostUpdateMultipleWorkOrder)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(WorkOrdersVM))]
+        public async Task<IActionResult> PostUpdateMultipleWorkOrder([FromBody] List<WorkOrdersVM> workOrdersVM)
+        {
+            var result = await _woSerivce.UpdateMultipleWorkOrder(workOrdersVM);
+            return Ok(result);
+        }
+
+        [HttpPost]
         [Route(ApiRoutes.WO.PostWOSORel)]
         [Produces(AppContentTypes.ContentType, Type = typeof(WOSOVM))]
         [Authorize(Roles = Roles.ADMIN)]

@@ -28,6 +28,7 @@ namespace CWB.ProductionPlanWO.ViewModels
         public int StartingOpNo { get; set; }
         public int EndingOpNo { get; set; }
         public string ReloadOption { get; set; }
+        public string PPStatus { get; set; }
         public int Active { get; set; }
         //public int CriticalPart { get; set; }
         //public int Urgent { get; set; }

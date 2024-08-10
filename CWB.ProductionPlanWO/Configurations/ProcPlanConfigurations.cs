@@ -38,6 +38,10 @@ namespace CWB.ProductionPlanWO.Configurations
                 .HasColumnName("PartType")
                 .HasDefaultValue(0);
             builder
+                .Property(p => p.UOMId)
+                .HasColumnName("UOMId")
+                .HasDefaultValue(0);
+            builder
                 .Property(p => p.PartType)
                 .HasColumnName("PartType")
                 .HasDefaultValue(0);

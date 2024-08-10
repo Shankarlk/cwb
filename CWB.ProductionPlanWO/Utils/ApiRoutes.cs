@@ -17,6 +17,7 @@ namespace CWB.ProductionPlanWO.Utils
         {
             public const string PostWorkOrder = Base + "/workorder";
             public const string PostMultipleWorkOrder = Base + "/multipleworkorder";
+            public const string PostUpdateMultipleWorkOrder = Base + "/updatemultipleworkorder";
             public const string HelloWorld = Base + "/helloworld";
             public const string AllWorkOrders = Base + "/allworkorders/{tenantId}";
             public const string AllParentChildWos = Base + "/allparentchildwos/{parentWoId}/{tenantId}";

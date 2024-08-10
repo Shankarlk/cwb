@@ -104,6 +104,7 @@ namespace CWB.ProductionPlanWO.Services
                     string msg = ex.Message;
                 }
                 workOrdersVM.WOID = wo.Id;
+                workOrdersVM.WONumber = wo.WONumber;
                 workOrdersVM.TestData = wo.TestData;
                 return workOrdersVM;
             }
@@ -134,10 +135,10 @@ namespace CWB.ProductionPlanWO.Services
                             string msg = ex.Message;
                         }
                     }
-                    //else
-                    //{
-                    //    wo = await _workOrderRepository.UpdateAsync(wo.Id, wo);
-                    //}
+                    else
+                    {
+                       
+                    }
                     try
                     {
                         await _unitOfWork.CommitAsync();
@@ -152,6 +153,54 @@ namespace CWB.ProductionPlanWO.Services
                 item.WONumber = wo.WONumber;
                 item.TestData = wo.TestData;
                 item.Status = wo.Status;
+            }
+            return workOrdersVM;
+        }
+
+        public async Task<List<WorkOrdersVM>> UpdateMultipleWorkOrder(List<WorkOrdersVM> workOrdersVM)
+        {
+            foreach (WorkOrdersVM item in workOrdersVM)
+            {
+                var wo = _mapper.Map<WorkOrders>(item);
+                if (wo.SalesOrderId > 0)
+                {
+                    if (wo.Id == 0)
+                    {
+                        //wo.WODate = DateTime.Now;
+                        //wo.WONumber = "WO_" + wo.WODate.Value.ToString("yyyyMMddHHmmssffff");
+                        //wo.Status = 1;
+                        //wo.TestData = 'Y';
+                        //try
+                        //{
+                        //    await _workOrderRepository.AddAsync(wo);
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    Exception exa = ex.InnerException;
+                        //    string msg = ex.Message;
+                        //}
+                    }
+                    else
+                    {
+                        var wkord = await _workOrderRepository.SingleOrDefaultAsync(x => x.Id == wo.Id);
+                        if (wkord == null)
+                        {
+                            return workOrdersVM;
+                        }
+                        wkord.PPStatus = "PP";
+                        wkord.Status = wo.Status;
+                        wo = await _workOrderRepository.UpdateAsync(wo.Id, wkord);
+                    }
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                }
             }
             return workOrdersVM;
         }
@@ -228,6 +277,7 @@ namespace CWB.ProductionPlanWO.Services
                     DateTime dt = DateTime.Now;
                     pp.Reference = "PP_" + dt.ToString("yyyyMMddHHmmssffff");
                     pp.TestData = 'Y';
+                    pp.Plan_Proc_Qnty = item.Calc_Proc_Qnty - item.OtyOnHand;
                     try
                     {
                         await _procPlanRepository.AddAsync(pp);
@@ -237,15 +287,25 @@ namespace CWB.ProductionPlanWO.Services
                         Exception exa = ex.InnerException;
                         string msg = ex.Message;
                     }
-                    try
+                   
+                }
+                else
+                {
+                    var wkord = await _procPlanRepository.SingleOrDefaultAsync(x => x.Id == pp.Id);
+                    if (wkord == null)
                     {
-                        await _unitOfWork.CommitAsync();
+                        return proc;
                     }
-                    catch (Exception ex)
-                    {
-                        Exception exa = ex.InnerException;
-                        string msg = ex.Message;
-                    }
+                    wkord.Plan_Proc_Qnty = pp.Plan_Proc_Qnty;
+                }
+                try
+                {
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    Exception exa = ex.InnerException;
+                    string msg = ex.Message;
                 }
                 item.ProcPlanId = pp.Id;
             }

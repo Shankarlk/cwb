@@ -15,6 +15,7 @@ namespace CWB.ProductionPlanWO.Services
         Task<IEnumerable<WOSOVM>> GetSoWo(long workOrderId);
         Task<WorkOrdersVM> GetSingleWO(long Id, long tenantId);
         Task<List<WorkOrdersVM>> MultipleWorkOrder(List<WorkOrdersVM> workOrdersVM);
+        Task<List<WorkOrdersVM>> UpdateMultipleWorkOrder(List<WorkOrdersVM> workOrdersVM);
         Task<List<WOSOVM>> PostWOSO(List<WOSOVM> woso);
         Task<List<ProcPlanVM>> PostProcPlan(List<ProcPlanVM> proc);
         Task<List<BOMListVM>> PostBomList(List<BOMListVM> bomlist);

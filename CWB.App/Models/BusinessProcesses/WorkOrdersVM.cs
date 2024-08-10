@@ -67,6 +67,7 @@ namespace CWB.App.Models.BusinessProcesses
         //public int Urgent { get; set; }
         public char For_Ref { get; set; }
         public string ReloadOption { get; set; }
+        public string PPStatus { get; set; }
         public int Active { get; set; }
         //public int ManufDaysAvailable { get; set; }
         //public int ManufDaysRequired { get; set; }

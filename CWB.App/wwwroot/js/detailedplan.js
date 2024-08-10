@@ -109,8 +109,20 @@ function loadMcTimeListDetail() {
         var tablebodysummary = $("#McTimeListSummary tbody");
         $(tablebodysummary).html("");//empty tbody
         //console.log(data);
-        for (i = 0; i < data.length; i++) {
-            $(tablebodysummary).append(AppUtil.ProcessTemplateData("McTimeListSummaryRow", data[i]));
+        var result = [];
+        const combinedData = {};
+       
+        data.forEach((item) => {
+            if (!combinedData[item.machineTypeName]) {
+                combinedData[item.machineTypeName] = { ...item }; // copy all properties from item
+            } else {
+                // Combine the data if machineTypeName is the same
+                combinedData[item.machineTypeName].totalPlanTime += item.totalPlanTime;
+            }
+        });
+        result = Object.values(combinedData);
+        for (i = 0; i < result.length; i++) {
+            $(tablebodysummary).append(AppUtil.ProcessTemplateData("McTimeListSummaryRow", result[i]));
         }
     }).catch((error) => {
     });
@@ -1299,6 +1311,81 @@ $(document).ready(function () {
 
     });
 
+    /*----proc update moq 
+    var checkboxes = $("#SalesOrders1 tbody input[type='checkbox']:checked");
+      checkboxes.each(function (index, checkbox) {
+            var row = checkbox.parentNode.parentNode;
+            var rowData = {
+                salesOrderId: parseInt($(row).find("td:eq(1)").text()),
+                wonumber: "",
+                partId: parseInt($(row).find("td:eq(3)").text()),
+                partType: 0,
+                partlevel: ' ',
+                calcWOQty: parseInt($(row).find("td:eq(8)").text()),
+                planCompletionDate: $(row).find("td:eq(12)").text()
+            };
+            var balanceSoQty = parseInt($(row).find("td:eq(9)").text())
+            if (balanceSoQty > 0) {
+                rowData.calcWOQty = balanceSoQty;
+            }
+            // Group by PartId
+            if (partIdMap[rowData.partId]) {
+                partIdMap[rowData.partId].calcWOQty += rowData.calcWOQty;
+                SalesorderId.push([rowData.partId, rowData.salesOrderId]);
+                let currentDate = new Date(rowData.planCompletionDate);
+                let storedDate = new Date(partIdMap[rowData.partId].planCompletionDate);
+                if (currentDate < storedDate) {
+                    partIdMap[rowData.partId].planCompletionDate = rowData.planCompletionDate;
+                    partIdMap[rowData.partId].salesOrderId = rowData.salesOrderId;
+                }
+            } else {
+                partIdMap[rowData.partId] = rowData;
+                SalesorderId.push([rowData.partId, rowData.salesOrderId]);
+            }
+        });
+*/
+
+    $("#UpdateMOQ").on("click", function () {
+        var selectedRowsData = {};
+        var temprowdata = {};
+        var checkboxes = $("#ProcPlanGrid tbody input[type='checkbox']:checked");
+        checkboxes.each(function (index, checkbox) {
+            var row = checkbox.parentNode.parentNode;
+                var rowData = {
+                    procPlanId: parseInt($(row).find("td:eq(1)").text()),
+                    partId: parseInt($(row).find("td:eq(3)").text()),
+                    partType: $(row).find("td:eq(5)").text(),
+                    calc_Proc_Qnty: parseInt($(row).find("td:eq(8)").text()),
+                    plan_Proc_Qnty: parseInt($(row).find("td:eq(11)").text()),
+                    moq: parseInt($(row).find("td:eq(12)").text()),
+                    uomid: 0,
+                    workOrderId: parseInt($(row).find("td:eq(2)").text())
+            };
+            if (rowData.plan_Proc_Qnty < rowData.moq) {
+                rowData.plan_Proc_Qnty = rowData.moq;
+            }
+            temprowdata[rowData.partId] = rowData;
+        });
+
+        selectedRowsData = Object.values(temprowdata);
+        if (selectedRowsData.length > 1) {
+        $.ajax({
+            type: "POST",
+            url: '/WorkOrder/PostProcPlan',
+            contentType: "application/json; charset=utf-8",
+            headers: { 'Content-Type': 'application/json' },
+            data: JSON.stringify(selectedRowsData),
+            dataType: "json",
+            success: function (result) {
+                loadProcPlan();
+            }
+        });
+        } else {
+            alert("Please select at least one material");
+        }
+    });
+
+
 
 
 
@@ -1327,6 +1414,10 @@ $(document).ready(function () {
 
     $("#searchWoPartType").on("change", function () {
         var selectedValue = $(this).val();
+        if (selectedValue == "0") {
+            $("#detailedPlanWo tbody tr").show();
+            return;
+        }
         $("#detailedPlanWo tbody tr").filter(function () {
             $(this).toggle($(this.children[14]).text().toLowerCase().indexOf(selectedValue) > -1)
         });// show only the filtered rows
@@ -1371,6 +1462,63 @@ $(document).ready(function () {
         var value = $(this).val().toLowerCase();
         $("#BomListGrid tbody tr").filter(function () {
             $(this).toggle($(this.children[4]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#searchMCSummaryLocation").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#McTimeListSummary tbody tr").filter(function () {
+            $(this).toggle($(this.children[0]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#searchMCSummarMCType").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#McTimeListSummary tbody tr").filter(function () {
+            $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    $("#searchMCSummaryMachine").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#McTimeListSummary tbody tr").filter(function () {
+            $(this).toggle($(this.children[2]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#searchMCDetailParttNo").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#MachineTimeListDetail tbody tr").filter(function () {
+            $(this).toggle($(this.children[0]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    $("#searchMCDetailPartDesc").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#MachineTimeListDetail tbody tr").filter(function () {
+            $(this).toggle($(this.children[0]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    $("#searchMCDetailWoRef").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#MachineTimeListDetail tbody tr").filter(function () {
+            $(this).toggle($(this.children[2]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    $("#searchMCDetailLocation").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#MachineTimeListDetail tbody tr").filter(function () {
+            $(this).toggle($(this.children[3]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    $("#searchMCDetailMCType").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#MachineTimeListDetail tbody tr").filter(function () {
+            $(this).toggle($(this.children[5]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    $("#searchMCDetailMachine").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#MachineTimeListDetail tbody tr").filter(function () {
+            $(this).toggle($(this.children[6]).text().toLowerCase().indexOf(value) > -1)
         });
     });
 });

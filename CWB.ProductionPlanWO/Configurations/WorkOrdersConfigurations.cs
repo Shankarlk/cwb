@@ -92,6 +92,9 @@ namespace CWB.ProductionPlanWO.Configurations
             builder
              .Property(t => t.ReloadOption)
              .HasColumnName("ReloadOption");
+            builder
+             .Property(t => t.PPStatus)
+             .HasColumnName("PPStatus");
             //.IsRequired();
             builder
              .Property(t => t.Active)

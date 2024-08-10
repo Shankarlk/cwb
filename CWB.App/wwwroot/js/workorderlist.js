@@ -28,7 +28,7 @@ $(document).ready(function () {
         $("#searchStatus").val('');
         $("#WoComplDtFrom").val('');
         $("#WoComplDtTo").val('');
-        loadWO();
+        $("#WorkOrderList tbody tr").show();
 
     });
 
@@ -77,10 +77,18 @@ $(document).ready(function () {
 
    
 
-    $("#WoComplDtFrom, #WoComplDtTo").on("change", function () {
+    $("#WoComplDtTo").on("change", function () {
         var fromDate = $("#WoComplDtFrom").val().split("/").reverse().join("-");
         var toDate = $("#WoComplDtTo").val().split("/").reverse().join("-");
+        var fromDateTimestamp = new Date(fromDate).getTime();
+        var toDateTimestamp = new Date(toDate).getTime();
 
+        if (fromDateTimestamp > toDateTimestamp) {
+            alert("Wo Compl Dt From Is Greater Than Wo Compl Dt To");
+            $("#WoComplDtFrom").val('');
+            $("#WoComplDtTo").val('');
+            return false;
+        }
         $("#WorkOrderList tbody tr").filter(function () {
             var dateText = $(this.children[8]).text(); // assuming the date is in the 3rd column
             var tableDate = dateText.split("-").reverse().join("-");

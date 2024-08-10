@@ -15,6 +15,7 @@ namespace CWB.ProductionPlanWO.ViewModels
         public long WorkOrderId { get; set; }
         public string PartType { get; set; }
         public int Calc_Proc_Qnty { get; set; }
+        public long UOMId { get; set; }
         public int OtyOnHand { get; set; }
         public int AddnOtyUser { get; set; }
         public int Plan_Proc_Qnty { get; set; }

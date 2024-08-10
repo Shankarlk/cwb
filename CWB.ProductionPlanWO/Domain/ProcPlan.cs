@@ -12,6 +12,7 @@ namespace CWB.ProductionPlanWO.Domain
         public long PartId { get; set; }
         public string PartType { get; set; }
         public int Calc_Proc_Qnty { get; set; }
+        public long UOMId { get; set; }
         public int QtyOnHand { get; set; }
         public int AddnOtyUser { get; set; }
         public int Plan_Proc_Qnty { get; set; }

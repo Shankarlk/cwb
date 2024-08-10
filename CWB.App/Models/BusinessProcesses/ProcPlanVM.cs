@@ -16,6 +16,7 @@ namespace CWB.App.Models.BusinessProcesses
         public long PartId { get; set; }
         public long WorkOrderId { get; set; }
         public string PartType { get; set; }
+        public long UOMId { get; set; }
         public int Calc_Proc_Qnty { get; set; }
         public int OtyOnHand { get; set; }
         public int AddnOtyUser { get; set; }
@@ -51,5 +52,6 @@ namespace CWB.App.Models.BusinessProcesses
         public string? LeadTimeInDays { get; set; } = string.Empty;
         public int Moq { get; set; }
         public string Supplier { get; set; } = string.Empty;
+        public string UomName { get; set; } = string.Empty;
     }
 }

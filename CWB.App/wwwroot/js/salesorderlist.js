@@ -84,8 +84,8 @@ $(document).ready(function () {
         $("#searchPoNo").val('');
         $("#SocomplDtFrom").val('');
         $("#SocomplDtTo").val('');
-        loadSO();
-
+        //loadSO();
+        $("#SalesOrderList tbody tr").show();
     });
     $("#searchSo").on("keyup", function () {
         var value = $(this).val().toLowerCase();
@@ -129,10 +129,18 @@ $(document).ready(function () {
         });
     });
 
-    $("#SocomplDtFrom, #SocomplDtTo").on("change", function () {
+    $("#SocomplDtTo").on("change", function () {
         var fromDate = $("#SocomplDtFrom").val().split("/").reverse().join("-");
         var toDate = $("#SocomplDtTo").val().split("/").reverse().join("-");
+        var fromDateTimestamp = new Date(fromDate).getTime();
+        var toDateTimestamp = new Date(toDate).getTime();
 
+        if (fromDateTimestamp > toDateTimestamp) {
+            alert("So Compl Dt From Is Greater Than So Compl Dt To");
+            $("#SocomplDtFrom").val('');
+            $("#SocomplDtTo").val('');
+            return false;
+        }
         $("#SalesOrderList tbody tr").filter(function () {
             var dateText = $(this.children[11]).text(); // assuming the date is in the 3rd column
             var tableDate = dateText.split("-").reverse().join("-");

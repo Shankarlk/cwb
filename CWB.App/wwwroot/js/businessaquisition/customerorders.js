@@ -126,27 +126,27 @@ function copyPartData() {
     document.getElementById("DeliveryScheduleForm").reset();
     document.getElementById("AggregateObjForm").reset();
     var partId = data[selval].partId;
-     $.ajax({
-            type: "GET",
-            url: "/BusinessAquisition/CheckPartNo",
-            data: { partId: partId },
-            success: function (response) {
-                if (!response) {
-                    alert("This part number already exists.");
-                    return;
-                }
-        //PostDeliverySchedule();
+     //$.ajax({
+     //       type: "GET",
+     //       url: "/BusinessAquisition/CheckPartNo",
+     //       data: { partId: partId },
+     //       success: function (response) {
+     //           if (!response) {
+     //               alert("This part number already exists.");
+     //               return;
+     //           }
+     //   //PostDeliverySchedule();
 
-                $('#PartId').val(data[selval].partId);
+     //          }
+     //});
+
+    $('#PartId').val(data[selval].partId);
                 $('#PartNo').val(data[selval].partNo);
                 $('#DSPartId').val(data[selval].partId);
                 $('#DSPartNo').val(data[selval].partNo);
                 document.getElementById("LaunchDeliverySchedule").disabled = false;
                 document.getElementById("btn-close-ba-ExistingParts").click();
-            }
-     });
-
-
+            
     $('#AggregateCustomerOrderId').val(customerorderid);
     $('#SalesCustomerOrderId').val(customerorderid);
     //console.log(data[selval].partId + "/" + data[selval].partNo);

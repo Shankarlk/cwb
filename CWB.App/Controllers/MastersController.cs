@@ -75,6 +75,7 @@ namespace CWB.App.Controllers
         {
             BoughtOutFinishDetailVM manuf = await _mastersService.GetBOFPart(partId);
             await CompaniesViewBagForBOF();
+            await SupplierViewBag();
             await StatusViewBagForBOF();
             return View(manuf);
         }
@@ -104,6 +105,7 @@ namespace CWB.App.Controllers
         {
             await CompaniesViewBagForBOF();
             await StatusViewBagForBOF();
+            await SupplierViewBag();
             ViewBag.BOFId = CWBAppUtils.DecodeString(Id);
             return View(new BoughtOutFinishDetailVM { BoughtOutFinishDetailId=0, PartId = 0});
         }

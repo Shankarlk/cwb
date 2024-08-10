@@ -61,6 +61,17 @@ namespace CWB.App.Services.ProductionPlanWo
             }
             return await RestHelper<List<ProcPlanVM>>.PostAsync(uri, procPlans, headers);
         }
+
+        public async Task<List<WorkOrdersVM>> UpdateMultipleWorkOrder(IEnumerable<WorkOrdersVM> workOrders)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/updatemultipleworkorder");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in workOrders)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<WorkOrdersVM>>.PostAsync(uri, workOrders, headers);
+        }
         public async Task<List<BOMListVM>> BomListPost(IEnumerable<BOMListVM> bomlist)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/bomlistwo");
