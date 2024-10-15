@@ -136,5 +136,25 @@ namespace CWB.App.Services.ProductionPlanWo
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<WorkOrdersVM>>.GetAsync(uri, headers);
         }
+        public async Task<List<PODetailsVM>> PODetails(IEnumerable<PODetailsVM> pODetails)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/multiplepodetails");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in pODetails)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<PODetailsVM>>.PostAsync(uri, pODetails, headers);
+        }
+        public async Task<List<POHeaderVM>> POHeader(IEnumerable<POHeaderVM> pOHeaderVMs)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbpwo/multiplepoheaders");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in pOHeaderVMs)
+            {
+                item.TenantId = tenantId;
+            }
+            return await RestHelper<List<POHeaderVM>>.PostAsync(uri, pOHeaderVMs, headers);
+        }
     }
 }

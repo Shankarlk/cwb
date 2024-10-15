@@ -2,6 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
+using CWB.Logging;
 using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Services;
@@ -25,14 +26,16 @@ namespace CWB.Identity
         private readonly IClientStore _clients;
         private readonly IResourceStore _resources;
         private readonly IEventService _events;
+        private readonly ILoggerManager _logger;
 
-        public GrantsController(IIdentityServerInteractionService interaction,
+        public GrantsController(IIdentityServerInteractionService interaction, ILoggerManager logger,
             IClientStore clients,
             IResourceStore resources,
             IEventService events)
         {
             _interaction = interaction;
             _clients = clients;
+            _logger = logger;
             _resources = resources;
             _events = events;
         }

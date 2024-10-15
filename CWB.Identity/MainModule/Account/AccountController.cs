@@ -10,6 +10,7 @@ using CWB.Identity.Domain;
 using CWB.Identity.IdentityUtils;
 using CWB.Identity.Services;
 using CWB.Identity.ViewModels;
+using CWB.Logging;
 using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
@@ -52,6 +53,7 @@ namespace CWB.Identity
 
         private readonly IMessageBroker _messageBroker;
         private readonly KafkaConfig _kafkaConfig;
+        private readonly ILoggerManager _logger;
 
         public AccountController(
             IIdentityServerInteractionService interaction,
@@ -64,10 +66,11 @@ namespace CWB.Identity
             IOptions<ApiUrls> apiUrlsOptions,
             UserService userService,
             IMessageBroker messageBroker,
-            IOptions<KafkaConfig> kafkaConfigOptions
+            IOptions<KafkaConfig> kafkaConfigOptions, ILoggerManager logger
             )
         {
 
+            _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;

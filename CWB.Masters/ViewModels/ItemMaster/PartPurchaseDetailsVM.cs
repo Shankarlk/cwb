@@ -15,6 +15,7 @@ namespace CWB.Masters.ViewModels.ItemMaster
         public string Price { get; set; }
         public string ShareOfBusiness { get; set; }
         public string PAdditionalInfo { get; set; }
+        public int PreferredSupplier { get; set; }
         public int BOFId { get; set; }
         public int RMId { get; set; }
         public string PMasterPartType { get; set; }

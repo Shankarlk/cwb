@@ -23,5 +23,8 @@ namespace CWB.App.Services.ProductionPlanWo
         Task<IEnumerable<McTimeListVM>> GetAllMcTimeList();
         Task<IEnumerable<WorkOrdersVM>> AllParentChildWos(long parentWoId);
 
+        Task<List<PODetailsVM>> PODetails(IEnumerable<PODetailsVM> pODetails);
+        Task<List<POHeaderVM>> POHeader(IEnumerable<POHeaderVM> pOHeaderVMs);
+
     }
 }

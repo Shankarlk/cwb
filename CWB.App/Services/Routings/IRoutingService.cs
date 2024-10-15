@@ -19,6 +19,7 @@ namespace CWB.App.Services.Routings
         Task<RoutingVM> PreferredRouting(RoutingVM routingVM);
         Task<SubConDetailsVM> PreferredSubCon(int subConDetailsId);
         Task<RoutingStepVM> RoutingStep(RoutingStepVM routingStepVM);
+        Task<IEnumerable<RoutingStepVM>> ChangeRoutingStepSequence(IEnumerable<RoutingStepVM> routingStepVMs);
         Task<bool> DeleteStep(int stepId);
         Task<bool> DeleteMachine(int stepId, int machineId);
         Task<bool> DeleteSupplier(int stepId, int supplierId);

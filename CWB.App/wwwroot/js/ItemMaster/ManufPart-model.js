@@ -223,17 +223,64 @@ var ManufPartFormUtil = {
         //return true;
     }
 };
+function DecodeManufPartId() {
+    var partid = $("#PartId").val();
+    $.ajax({
+        type: "POST",
+        url: "/masters/DecodePartId",
+        data: { partId: partid },
+        success: function (decodepartid) {
+            $("#PartId").val(decodepartid);
+        }
+    });
+}
+
+function viewFile(fileName) {
+    
+    $('#fileModal').modal('show');
+
+}
 
 $(document).ready(function () {
+    $('#fileModal').on('shown.bs.modal', function () {
+        $(this).find('.modal-content').css({
+            'width': '1000px',
+            'height': '750px'
+        });
+        var file = "kier-in-sight-archives-BSPG-wXR7zM-unsplash.jpg";
 
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/masters/ViewFile?fileName=' + file, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function (e) {
+            if (this.status == 200) {
+                var blob = new Blob([this.response], { type: "image/jpeg" });
+
+                const objectElement = document.getElementById('fileViewer');
+                const url = URL.createObjectURL(blob);
+                objectElement.src = url;
+                //objectElement.width = '1000px';
+                //objectElement.height = '1000px';
+                //objectElement.type = 'text/plain';
+                //var link = document.createElement('a');
+                //link.href = window.URL.createObjectURL(blob);
+                //link.download = "Report_" + new Date() + ".pdf";
+                //link.click();
+            }
+        };
+        xhr.send();
+    }).on('hidden.bs.modal', function () {
+       
+    });
+    DecodeManufPartId();
     if (!document.body) {
         return setTimeout(jquery.ready,1);
     };
     // Initialize select2
     $("#CompanyId").select2();
     // Read selected option
- //    loadCustomers("CompanyId");
-//    $("#CompanyId").trigger("change");
+    //loadCustomers("CompanyId");
+    //$("#CompanyId").trigger("change");
 
     $("#TabMPMain").on('click',function (event) {
         if ($('.nav-tabs .active').text().trim().indexOf("Basic") >= 0) {

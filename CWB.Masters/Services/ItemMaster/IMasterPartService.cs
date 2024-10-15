@@ -23,5 +23,11 @@ namespace CWB.Masters.Services.ItemMaster
 
         Task<ManufacturedPartNoDetailVM> MasterPart(ManufacturedPartNoDetailVM manufacturedPartNoDetailVM);
 
+        Task<IEnumerable<ItemMasterDocListVM>> GetAllItemMasterDocList(long tenantId);
+        Task<ItemMasterDocListVM> PostItemMasterDocList(ItemMasterDocListVM itemMasterDocList);
+
+
+        Task<IEnumerable<ItemMasterContentVM>> GetAllItemMasterContent();
+
     }
 }

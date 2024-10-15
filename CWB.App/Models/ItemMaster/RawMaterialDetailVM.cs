@@ -21,6 +21,7 @@ namespace CWB.App.Models.ItemMaster
         public long MaterialSpecId { get; set; }
         public string ReorderLevel { get; set; }
         public string ReorderQnty { get; set; }
+        public int TimetoDeliverReorderQnty { get; set; }
         //DbPart - End
 
 

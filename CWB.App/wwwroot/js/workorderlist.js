@@ -153,9 +153,9 @@ $(document).ready(function () {
         else {
             if (planwoqty > 0) {
                 var rowData = {
-                    woid: parseInt(woid),
+                    parentWoId: parseInt(woid),
                     salesOrderId: parseInt(soid),
-                    wonumber: wonumber,
+                    wonumber: " ",
                     partId: parseInt(partid),
                     partType: 0,
                     parentlevel: '',
@@ -168,59 +168,72 @@ $(document).ready(function () {
                 };
 
                 selectedData = rowData;
-
+                var resultData = [];
 
                 api.post("/businessaquisition/WOpost", selectedData).then((data) => {
-                    // Handle success if needed
-                    //if (planwoqty < soqty) {
-                    //    var balqty = soqty - planwoqty;
-                    //    //var soupdate = {
-                    //    //    salesOrderId: parseInt(soid),
-                    //    //    requiredByDate: reqdate,
-                    //    //    balanceSOQty: parseInt(balqty)
-                    //    //};
-                    //    var selectedRowsData = [];
-                    //    var checkboxes = $("#multipleSO tbody input[type='checkbox']:checked");
-                    //    checkboxes.each(function (index, checkbox) {
-                    //        var row = checkbox.parentNode.parentNode;
-                    //        var salesOrderId = parseInt($(row).find("td:eq(0)").text()); // get the text from the 3rd column (index 2)
-                    //        //var balanceSOQty = parseInt($(row).find("td:eq(4)").text()); // get the text from the 5th column (index 4)
-                    //        selectedRowsData.push({ salesOrderId });
-                    //    });
-                    //    //console.log(selectedRowsData);
-                    //    var norow = selectedRowsData.length;
-                    //    for (var i = 0; i < selectedRowsData.length; i++) {
-                    //        var edata = selectedRowsData[i];
-                    //        if (norow > 1) {
-                    //            var fBalqty = balqty / norow
-                    //            edata = {
-                    //                ...selectedRowsData[i], 
-                    //                balanceSOQty: fBalqty
-                    //            };
-                    //        }
-                    //        api.post("/businessaquisition/SalesOrder", edata)
-                    //            .then((data) => {
-                    //                //console.log("Data posted successfully!", data);
-                    //            })
-                    //            .catch((error) => {
-                    //                //console.error("Error posting data:", error);
-                    //            });
-                    //    }
+                    resultData.push(data);
+                    var wosorel = [];
+                    var wosomethod = {};
+                    resultData.forEach(function (a, i) {
+                        wosorel.push({
+                            workOrderId: a.woid,
+                            salesOrderId: a.salesOrderId,
+                            active: 0
+                        });
+                    });
+                    //requestInProgress = false;
+                    api.getbulk("/WorkOrder/GetSoWo?workOrderId=" + woid).then((data) => {
+                        var checkboxes = $('#multipleSO .rowMCheckbox:checked');
+                        var salesOrderIds = [];
+                        checkboxes.each(function () {
+                            var row = $(this).closest('tr');
+                            var salesOrderId = row.find('td:eq(0)').text(); // or row.find('td:eq(0)').text() if salesOrderId is in the first column
+                            salesOrderIds.push(parseInt(salesOrderId));
+                        });
+                        const filteredData = data.filter((item) => salesOrderIds.includes(item.salesOrderId));
+                        filteredData.forEach(function (a, i) {
+                            wosorel.push({
+                                wosoId: a.wosoId,
+                                workOrderId: a.workOrderId,
+                                salesOrderId: a.salesOrderId,
+                                active: 2
+                            });
+                        });
+                        wosomethod = Object.values(wosorel);
+                        $.ajax({
+                            type: "POST",
+                            url: '/BusinessAquisition/PostWoSoRel',
+                            contentType: "application/json; charset=utf-8",
+                            headers: { 'Content-Type': 'application/json' },
+                            data: JSON.stringify(wosomethod),
+                            dataType: "json",
+                            success: function (result) {
+                            }
+                        });
 
+                        var bal = $('#BalQty').val();
+                        var woinactive = {
+                            woid: parseInt(woid),
+                            salesOrderId: parseInt(soid),
+                            wonumber: wonumber,
+                            partId: parseInt(partid),
+                            partType: 0,
+                            parentlevel: '',
+                            calcWOQty: parseInt(bal),
+                            planCompletionDate: formattedDate,
+                            routingId: parseInt(routingid),
+                            startingOpNo: parseInt(startingOpNo),
+                            endingOpNo: parseInt(endingOpNo),
+                            status: parseInt(status),
+                            active: 2
+                        };
+                        api.post("/businessaquisition/WOpost", woinactive).then((data) => {
+                            loadWO();
+                        }).catch((error) => {
+                        });
+                    });
+                    //--
 
-
-                    //}
-                    //else {
-                    //    var balqty = soqty - planwoqty
-                    //    var soupdate = {
-                    //        salesOrderId: parseInt(soid),
-                    //        requiredByDate: reqdate,
-                    //        balanceSOQty: parseInt(balqty)
-                    //    }
-                    //    api.post("/businessaquisition/SalesOrder", soupdate).then((data) => {
-
-                    //    }).catch((error) => { });
-                    //}
                     $("#btnPop1Close").click();
                 }).catch((error) => {
                     AppUtil.HandleError("WOForm", error);
@@ -235,6 +248,16 @@ $(document).ready(function () {
 
     $('#woc-partno').on('hidden.bs.modal', function (event) {
         loadWO();
+        const selectElement = $('#StartingOpNo');
+        const selectEndOpNo = $('#EndingOpNo');
+        selectElement.html("");
+        selectEndOpNo.html('');
+        $('#routing').prop('readonly', false);
+        $('#routing').css('pointer-events', '');
+        $('#StartingOpNo').prop('readonly', false);
+        $('#StartingOpNo').css('pointer-events', '');
+        $('#EndingOpNo').prop('readonly', false);
+        $('#EndingOpNo').css('pointer-events', '');
     });
     // Event listener for when the modal is shown
     $('#woc-partno').on('shown.bs.modal', function (event) {
@@ -356,20 +379,34 @@ $(document).ready(function () {
                 rop = item.reloadOption;
             });
             if (parentchildwo.length > 1) {
-                $('input[name="equalwo"]').prop('disabled', true);
-                $('input[name="radioWO"]').prop('disabled', true);
-                $('input[type=radio][name="radioWO"]').eq(1).prop('checked', true);
-                $('#equaldiv').show();
-                $("#MultipleWo").prop('disabled', true);
-                $("#NewWoPopupBtn").prop('disabled', true);
-                $("#dispatchDate").prop('disabled', true);
-                $('#popup2Sum').val(planwoqty);
-                if (rop == "EQD_D") {
-                    $('input[type=radio][name="equalwo"]').eq(0).prop('checked', true);
-                } else if (rop == "EQD_W") {
-                    $('input[type=radio][name="equalwo"]').eq(1).prop('checked', true);
-                } else if (rop == "EQD_M") {
-                    $('input[type=radio][name="equalwo"]').eq(2).prop('checked', true);
+                if (rop == "Manual") {
+                    $('input[name="equalwo"]').prop('disabled', true);
+                    $('input[name="radioWO"]').prop('disabled', true);
+                    $('input[type=radio][name="radioWO"]').eq(2).prop('checked', true);
+                    $('#equaldiv').hide();
+                    $("#MultipleWo").prop('disabled', true);
+                    $("#NewWoPopupBtn").prop('disabled', true);
+                    $("#dispatchDate").prop('disabled', true);
+                    $('#popup2Sum').val(planwoqty);
+                }
+                else {
+
+                    $('input[name="equalwo"]').prop('disabled', true);
+                    $('input[name="radioWO"]').prop('disabled', true);
+                    $('input[type=radio][name="radioWO"]').eq(1).prop('checked', true);
+                    $('#equaldiv').show();
+                    $("#MultipleWo").prop('disabled', true);
+                    $("#NewWoPopupBtn").prop('disabled', true);
+                    $("#dispatchDate").prop('disabled', true);
+                    $('#popup2Sum').val(planwoqty);
+                    if (rop == "EQD_D") {
+                        $('input[type=radio][name="equalwo"]').eq(0).prop('checked', true);
+                    } else if (rop == "EQD_W") {
+                        $('input[type=radio][name="equalwo"]').eq(1).prop('checked', true);
+                    } else if (rop == "EQD_M") {
+                        $('input[type=radio][name="equalwo"]').eq(2).prop('checked', true);
+                    }
+
                 }
                 let totalQuantity = parentchildwo.reduce((acc, current) => acc + current.calcWOQty, 0);
                 $('#popup2Sum').val(totalQuantity);
@@ -804,21 +841,57 @@ $(document).ready(function () {
         $("#singleBalToManuf").val(balmanufqnty);
 
         if (partType === 1) {
-            api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
+            $("#popup3divRouting").show().addClass("row");
+            api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                 //console.log(data);
                 const selectElement = $('#singleRouting');
                 selectElement.prop("disabled", false);
-                $.each(data, (index, item) => {
-                    selectElement.html("");
+                selectElement.html("");
+                if (data.length === 1) {
+                    $('#singleRouting').prop('readonly', true);
+                    $('#singleRouting').css('pointer-events', 'none');
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                    var routeId = $('#singleRouting').val();
+                    $('#singleStartOpNo').prop('readonly', true);
+                    $('#singleStartOpNo').css('pointer-events', 'none');
+                    $('#singleEndOpNo').prop('readonly', true);
+                    $('#singleEndOpNo').css('pointer-events', 'none');
+                    api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
+                        //console.log(data);
+                        const selectstartElement = $('#singleStartOpNo');
+                        const selectEndOpNo = $('#singleEndOpNo');
+                        selectstartElement.html("");
+                        $.each(data, (index, item) => {
+                            selectstartElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                        const reversedData = data.slice().reverse();
+                        selectEndOpNo.html('');
+                        $.each(reversedData, (index, item) => {
+                            selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                } else {
+
                     selectElement.append(`<option value="0">--Select--</option>`);
-                    selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-                });
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                }
+
             }).catch((error) => {
             });
             $('#singleStartOpNo').prop("disabled", false);
             $('#singleEndOpNo').prop("disabled", false);
         }
         else {
+
+            $("#popup3divRouting").hide();
             const selectElement = $('#singleRouting');
             selectElement.html("");
             selectElement.prop("disabled", true);
@@ -835,28 +908,40 @@ $(document).ready(function () {
         const selectEndOpNo = $('#singleEndOpNo');
         selectElement.html("");
         selectEndOpNo.html('');
+        $('#singleRouting').prop('readonly', false);
+        $('#singleRouting').css('pointer-events', '');
+        $('#singleStartOpNo').prop('readonly', false);
+        $('#singleStartOpNo').css('pointer-events', '');
+        $('#singleEndOpNo').prop('readonly', false);
+        $('#singleEndOpNo').css('pointer-events', '');
 
     });
 
     $('#singleRouting').on('change', (e) => {
         const routeId = $(e.target).val();
         // make an API call to get data for select2 based on the selected studentId
+
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
             //console.log(data);
+            //const uniqueData = [...new Set(data.map(item => item.stepOperation))];
+            const uniqueData = data.filter((item, index, self) =>
+                self.findIndex((t) => t.stepOperation === item.stepOperation) === index
+            );
             const selectElement = $('#singleStartOpNo');
             const selectEndOpNo = $('#singleEndOpNo');
-            $.each(data, (index, item) => {
-                selectElement.html("");
+            selectElement.html("");
+            $.each(uniqueData, (index, item) => {
                 selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
-            const reversedData = data.slice().reverse();
+            const reversedData = uniqueData.slice().reverse();
             selectEndOpNo.html('');
             $.each(reversedData, (index, item) => {
                 selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
         }).catch((error) => {
-            //console.error(error);
+            console.error(error);
         });
+
     });
 
     $("#singleSaveWo").on("click", function () {
@@ -933,21 +1018,56 @@ $(document).ready(function () {
         $('#ManualSumWoQnty').val(0);
         $('#ManualBalWoQty').val(0);
         if (partType == "1") {
+            $("#popup3ManualdivRouting").show().addClass("row");
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                 //console.log(data);
                 const selectElement = $('#ManualRouting');
                 selectElement.prop("disabled", false);
-                $.each(data, (index, item) => {
-                    selectElement.html("");
+                selectElement.html("");
+                if (data.length === 1) {
+                    $('#ManualRouting').prop('readonly', true);
+                    $('#ManualRouting').css('pointer-events', 'none');
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                    var routeId = $('#ManualRouting').val();
+                    $('#ManualStartOpNo').prop('readonly', true);
+                    $('#ManualStartOpNo').css('pointer-events', 'none');
+                    $('#ManualEndOpNo').prop('readonly', true);
+                    $('#ManualEndOpNo').css('pointer-events', 'none');
+                    api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
+                        //console.log(data);
+                        const selectstartElement = $('#ManualStartOpNo');
+                        const selectEndOpNo = $('#ManualEndOpNo');
+                        selectstartElement.html("");
+                        $.each(data, (index, item) => {
+                            selectstartElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                        const reversedData = data.slice().reverse();
+                        selectEndOpNo.html('');
+                        $.each(reversedData, (index, item) => {
+                            selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                } else {
+
                     selectElement.append(`<option value="0">--Select--</option>`);
-                    selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-                });
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                }
+
             }).catch((error) => {
             });
             $('#ManualStartOpNo').prop("disabled", false);
             $('#ManualEndOpNo').prop("disabled", false);
         }
         else {
+            $("#popup3ManualdivRouting").hide()
             const selectElement = $('#routing');
             selectElement.html("");
             selectElement.prop("disabled", true);
@@ -961,25 +1081,39 @@ $(document).ready(function () {
         // make an API call to get data for select2 based on the selected studentId
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
             //console.log(data);
+            //const uniqueData = [...new Set(data.map(item => item.stepOperation))];
+            const uniqueData = data.filter((item, index, self) =>
+                self.findIndex((t) => t.stepOperation === item.stepOperation) === index
+            );
             const selectElement = $('#ManualStartOpNo');
             const selectEndOpNo = $('#ManualEndOpNo');
-            $.each(data, (index, item) => {
-                selectElement.html("");
+            selectElement.html("");
+            $.each(uniqueData, (index, item) => {
                 selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
-            const reversedData = data.slice().reverse();
+            const reversedData = uniqueData.slice().reverse();
             selectEndOpNo.html('');
             $.each(reversedData, (index, item) => {
                 selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
         }).catch((error) => {
-            console.error(error);
+            //console.error(error);
         });
     });
 
     $('#popup3ManualMultiple').on('hidden.bs.modal', function (event) {
         var $modal = $(this);
         //$modal.find('button[id=ManualSaveWo]').unbind('click');
+        $('#ManualRouting').prop('readonly', false);
+        $('#ManualRouting').css('pointer-events', '');
+        $('#ManualStartOpNo').prop('readonly', false);
+        $('#ManualStartOpNo').css('pointer-events', '');
+        $('#ManualEndOpNo').prop('readonly', false);
+        $('#ManualEndOpNo').css('pointer-events', '');
+        const selectElement = $('#ManualStartOpNo');
+        const selectEndOpNo = $('#ManualEndOpNo');
+        selectElement.html("");
+        selectEndOpNo.html('');
     });
 
     $("#ManualSaveWo").on("click", function () {
@@ -1018,9 +1152,9 @@ $(document).ready(function () {
         }
 
         var rowData = {
-            woid: parseInt(woid),
+            parentWoId: parseInt(woid),
             salesOrderId: parseInt(soid),
-            wonumber: wonumber,
+            wonumber: "",
             partId: parseInt(partid),
             partType: parseInt(parttype),
             parentlevel: '',
@@ -1037,15 +1171,65 @@ $(document).ready(function () {
             //console.log(data);
             resultData.push(data);
             $('#popup3ManualMultiple').modal('hide');
+            //$('#popup2Sum').val(planwoqty);
             var tablebody = $("#MulitpleWOs tbody");
             $(tablebody).html("");//empty tbody
 
             for (i = 0; i < resultData.length; i++) {
                 $(tablebody).append(AppUtil.ProcessTemplateData("MultipleWoRow", resultData[i]));
             }
+            $('input[name="equalwo"]').prop('disabled', true);
+            $('input[name="radioWO"]').prop('disabled', true);
+            $('input[type=radio][name="radioWO"]').eq(2).prop('checked', true);
+            $('#equaldiv').hide();
+            $("#MultipleWo").prop('disabled', true);
+            $("#NewWoPopupBtn").prop('disabled', true);
+            $("#dispatchDate").prop('disabled', true);
+            $('#popup2Sum').val(planwoqty);
+            var wosorel = [];
+            var wosomethod = {};
+            resultData.forEach(function (a, i) {
+                wosorel.push({
+                    workOrderId: a.woid,
+                    salesOrderId: a.salesOrderId
+                });
+            });
+            //requestInProgress = false;
+            wosomethod = Object.values(wosorel);
+            //--
+            $.ajax({
+                type: "POST",
+                url: '/BusinessAquisition/PostWoSoRel',
+                contentType: "application/json; charset=utf-8",
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify(wosomethod),
+                dataType: "json",
+                success: function (result) {
+                   
+                }
+            });
+            var woinactive = {
+                woid: parseInt(woid),
+                salesOrderId: parseInt(soid),
+                wonumber: wonumber,
+                partId: parseInt(partid),
+                partType: parseInt(parttype),
+                parentlevel: '',
+                calcWOQty: parseInt(planwoqty),
+                planCompletionDate: formattedDate,
+                routingId: parseInt(0),
+                startingOpNo: parseInt(0),
+                endingOpNo: parseInt(0),
+                status: parseInt(1),
+                active: 2
+            };
+            api.post("/businessaquisition/WOpost", woinactive).then((data) => {
+               
+                loadWO();
+            }).catch((error) => {
+            });
         }).catch((error) => {
         });
-
     });
 
     $("#NewWoPopupBtn").on("click", function () {
@@ -1151,25 +1335,42 @@ $(document).ready(function () {
 
     $('#NewRouting').on('change', (e) => {
         const routeId = $(e.target).val();
-        // make an API call to get data for select2 based on the selected studentId
+
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
             //console.log(data);
+            //const uniqueData = [...new Set(data.map(item => item.stepOperation))];
+            const uniqueData = data.filter((item, index, self) =>
+                self.findIndex((t) => t.stepOperation === item.stepOperation) === index
+            );
             const selectElement = $('#NewStartOpNo');
             const selectEndOpNo = $('#NewEndOpNo');
-            $.each(data, (index, item) => {
-                selectElement.html("");
+            selectElement.html("");
+            $.each(uniqueData, (index, item) => {
                 selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
-            const reversedData = data.slice().reverse();
+            const reversedData = uniqueData.slice().reverse();
             selectEndOpNo.html('');
             $.each(reversedData, (index, item) => {
                 selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
         }).catch((error) => {
-            console.error(error);
+            //console.error(error);
         });
     });
-
+    $('#popup3NewWo').on('hidden.bs.modal', function (event) {
+        var $modal = $(this);
+        //$modal.find('button[id=ManualSaveWo]').unbind('click');
+        $('#NewRouting').prop('readonly', false);
+        $('#NewRouting').css('pointer-events', '');
+        $('#NewStartOpNo').prop('readonly', false);
+        $('#NewStartOpNo').css('pointer-events', '');
+        $('#NewEndOpNo').prop('readonly', false);
+        $('#NewEndOpNo').css('pointer-events', '');
+        const selectElement = $('#NewStartOpNo');
+        const selectEndOpNo = $('#NewEndOpNo');
+        selectElement.html("");
+        selectEndOpNo.html('');
+    });
     $('#popup3NewWo').on('shown.bs.modal', function (event) {
         var totalsoqnty = $("#NewTotalSoQty").val();
         var balsoq = $("#NewBalSoQty").val();
@@ -1183,27 +1384,76 @@ $(document).ready(function () {
         var partId = $("#NewpartId").val();
 
         if (partType == "1") {
+            $("#popup3NewdivRouting").show().addClass("row");
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                 //console.log(data);
                 const selectElement = $('#NewRouting');
                 selectElement.prop("disabled", false);
-                $.each(data, (index, item) => {
-                    selectElement.html("");
+                selectElement.html("");
+                if (data.length === 1) {
+                    $('#NewRouting').prop('readonly', true);
+                    $('#NewRouting').css('pointer-events', 'none');
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                    var routeId = $('#NewRouting').val();
+                    $('#NewStartOpNo').prop('readonly', true);
+                    $('#NewStartOpNo').css('pointer-events', 'none');
+                    $('#NewEndOpNo').prop('readonly', true);
+                    $('#NewEndOpNo').css('pointer-events', 'none');
+                    api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
+                        //console.log(data);
+                        const selectstartElement = $('#NewStartOpNo');
+                        const selectEndOpNo = $('#NewEndOpNo');
+                        selectstartElement.html("");
+                        $.each(data, (index, item) => {
+                            selectstartElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                        const reversedData = data.slice().reverse();
+                        selectEndOpNo.html('');
+                        $.each(reversedData, (index, item) => {
+                            selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                } else {
+
                     selectElement.append(`<option value="0">--Select--</option>`);
-                    selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-                });
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                }
+
             }).catch((error) => {
             });
             $('#NewStartOpNo').prop("disabled", false);
             $('#NewEndOpNo').prop("disabled", false);
         }
         else {
+            $("#popup3NewdivRouting").hide();
             const selectElement = $('#routing');
             selectElement.html("");
             selectElement.prop("disabled", true);
             $('#ManualStartOpNo').html("").prop("disabled", true);
             $('#ManualEndOpNo').html("").prop("disabled", true);
         }
+    });
+    $('#popup7').on('hidden.bs.modal', function (event) {
+        var $modal = $(this);
+        //$modal.find('button[id=ManualSaveWo]').unbind('click');
+        $('#popup7Routing').prop('readonly', false);
+        $('#popup7Routing').css('pointer-events', '');
+        $('#popup7StartingOpNo').prop('readonly', false);
+        $('#popup7StartingOpNo').css('pointer-events', '');
+        $('#popup7EndingOpNo').prop('readonly', false);
+        $('#popup7EndingOpNo').css('pointer-events', '');
+        const selectElement = $('#popup7StartingOpNo');
+        const selectEndOpNo = $('#popup7EndingOpNo');
+        selectElement.html("");
+        selectEndOpNo.html('');
     });
     $('#popup7').on('shown.bs.modal', function (event) {
         var relatedTarget = $(event.relatedTarget);
@@ -1236,21 +1486,56 @@ $(document).ready(function () {
 
 
         if (partType === 1) {
-            api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
+            $("#popup7divRouting").show().addClass("row");
+            api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                 //console.log(data);
                 const selectElement = $('#popup7Routing');
                 selectElement.prop("disabled", false);
-                $.each(data, (index, item) => {
-                    selectElement.html("");
+                selectElement.html("");
+                if (data.length === 1) {
+                    $('#popup7Routing').prop('readonly', true);
+                    $('#popup7Routing').css('pointer-events', 'none');
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                    var routeId = $('#popup7Routing').val();
+                    $('#popup7StartingOpNo').prop('readonly', true);
+                    $('#popup7StartingOpNo').css('pointer-events', 'none');
+                    $('#popup7EndingOpNo').prop('readonly', true);
+                    $('#popup7EndingOpNo').css('pointer-events', 'none');
+                    api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
+                        //console.log(data);
+                        const selectstartElement = $('#popup7StartingOpNo');
+                        const selectEndOpNo = $('#popup7EndingOpNo');
+                        selectstartElement.html("");
+                        $.each(data, (index, item) => {
+                            selectstartElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                        const reversedData = data.slice().reverse();
+                        selectEndOpNo.html('');
+                        $.each(reversedData, (index, item) => {
+                            selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                        });
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                } else {
+
                     selectElement.append(`<option value="0">--Select--</option>`);
-                    selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-                });
+                    $.each(data, (index, item) => {
+                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                    });
+                }
+
             }).catch((error) => {
             });
             $('#popup7StartingOpNo').prop("disabled", false);
             $('#popup7EndingOpNo').prop("disabled", false);
         }
         else {
+            $("#popup7divRouting").hide();
             const selectElement = $('#popup7Routing');
             selectElement.html("");
             selectElement.prop("disabled", true);
@@ -1263,16 +1548,19 @@ $(document).ready(function () {
 
     $('#popup7Routing').on('change', (e) => {
         const routeId = $(e.target).val();
-        // make an API call to get data for select2 based on the selected studentId
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
             //console.log(data);
+            //const uniqueData = [...new Set(data.map(item => item.stepOperation))];
+            const uniqueData = data.filter((item, index, self) =>
+                self.findIndex((t) => t.stepOperation === item.stepOperation) === index
+            );
             const selectElement = $('#popup7StartingOpNo');
             const selectEndOpNo = $('#popup7EndingOpNo');
-            $.each(data, (index, item) => {
-                selectElement.html("");
+            selectElement.html("");
+            $.each(uniqueData, (index, item) => {
                 selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
             });
-            const reversedData = data.slice().reverse();
+            const reversedData = uniqueData.slice().reverse();
             selectEndOpNo.html('');
             $.each(reversedData, (index, item) => {
                 selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
@@ -1483,21 +1771,56 @@ function EditWo(element) {
 
 
                         if (partType === 1) {
-                            api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
+                            $("#popup1DivRouting").show().addClass("row");
+                            api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                                 //console.log(data);
                                 const selectElement = $('#routing');
                                 selectElement.prop("disabled", false);
-                                $.each(data, (index, item) => {
-                                    selectElement.html("");
+                                selectElement.html("");
+                                if (data.length === 1) {
+                                    $('#routing').prop('readonly', true);
+                                    $('#routing').css('pointer-events', 'none');
+                                    $.each(data, (index, item) => {
+                                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                                    });
+                                    var routeId = $('#routing').val();
+                                    $('#StartingOpNo').prop('readonly', true);
+                                    $('#StartingOpNo').css('pointer-events', 'none');
+                                    $('#EndingOpNo').prop('readonly', true);
+                                    $('#EndingOpNo').css('pointer-events', 'none');
+                                    api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
+                                        //console.log(data);
+                                        const selectstartElement = $('#StartingOpNo');
+                                        const selectEndOpNo = $('#EndingOpNo');
+                                        selectstartElement.html("");
+                                        $.each(data, (index, item) => {
+                                            selectstartElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                                        });
+                                        const reversedData = data.slice().reverse();
+                                        selectEndOpNo.html('');
+                                        $.each(reversedData, (index, item) => {
+                                            selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+                                        });
+                                    }).catch((error) => {
+                                        console.error(error);
+                                    });
+                                } else {
+
                                     selectElement.append(`<option value="0">--Select--</option>`);
-                                    selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-                                });
+                                    $.each(data, (index, item) => {
+                                        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
+
+                                    });
+                                }
+
                             }).catch((error) => {
                             });
                             $('#StartingOpNo').prop("disabled", false);
                             $('#EndingOpNo').prop("disabled", false);
                         }
                         else {
+                            $("#popup1DivRouting").hide();
                             const selectElement = $('#routing');
                             selectElement.html("");
                             selectElement.prop("disabled", true);

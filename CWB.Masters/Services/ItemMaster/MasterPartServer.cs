@@ -25,11 +25,14 @@ namespace CWB.Masters.Services.ItemMaster
         private readonly IBoughtOutFinishDetailService _boughtOutFinishDetailService;
         private readonly IManufacturedPartNoDetailService _manufacturedPartNoDetailService;
         private readonly IMasterPartRepository _masterPartRepository;
+        private readonly IItemMasterDocListRepository _itemMasterDocListRepository;
+        private readonly IItemMasterContentRepository _itemMasterContentRepository;
 
         public MasterPartService(ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork
             , IRawMaterialDetailService rawMaterialDetailService
             , IManufacturedPartNoDetailService manufacturedPartNoDetailService
-            , IBoughtOutFinishDetailService boughtOutFinishDetailService,IMasterPartRepository masterPartRepository)
+            , IBoughtOutFinishDetailService boughtOutFinishDetailService,IMasterPartRepository masterPartRepository
+            , IItemMasterDocListRepository itemMasterDocListRepository, IItemMasterContentRepository itemMasterContentRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -38,6 +41,8 @@ namespace CWB.Masters.Services.ItemMaster
             _manufacturedPartNoDetailService = manufacturedPartNoDetailService;
             _boughtOutFinishDetailService = boughtOutFinishDetailService;
             _masterPartRepository = masterPartRepository;
+            _itemMasterDocListRepository = itemMasterDocListRepository;
+            _itemMasterContentRepository = itemMasterContentRepository;
         }
 
         public IEnumerable<ItemMasterPartVM> GetMasterPartView()
@@ -181,6 +186,54 @@ namespace CWB.Masters.Services.ItemMaster
 
         }
 
+        public async Task<IEnumerable<ItemMasterDocListVM>> GetAllItemMasterDocList(long tenantId)
+        {
+            var allDocuType = _itemMasterDocListRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<ItemMasterDocListVM>>(allDocuType);
+        }
 
+        public async Task<ItemMasterDocListVM> PostItemMasterDocList(ItemMasterDocListVM itemMasterDocList)
+        {
+            var itemMaster = _mapper.Map<ItemMasterDocList>(itemMasterDocList);
+            if (itemMaster.Id == 0)
+            {
+                try
+                {
+                    await _itemMasterDocListRepository.AddAsync(itemMaster);
+                }
+                catch (Exception ex)
+                {
+                    Exception exa = ex.InnerException;
+                    string msg = ex.Message;
+                }
+            }
+            else
+            {
+                var itemMasterDoc = await _itemMasterDocListRepository.SingleOrDefaultAsync(x => x.Id == itemMaster.Id);
+                if (itemMasterDoc == null)
+                {
+                    return itemMasterDocList;
+                }
+                itemMaster = await _itemMasterDocListRepository.UpdateAsync(itemMasterDoc.Id, itemMaster);
+            }
+            try
+            {
+                await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                Exception exa = ex.InnerException;
+                string msg = ex.Message;
+            }
+            itemMasterDocList.DocumentTypeId = itemMaster.Id;
+            return itemMasterDocList;
+        }
+
+
+        public async Task<IEnumerable<ItemMasterContentVM>> GetAllItemMasterContent()
+        {
+            var itemMasterContents =await _itemMasterContentRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<ItemMasterContentVM>>(itemMasterContents);
+        }
     }
 }

@@ -73,6 +73,37 @@ namespace CWB.Masters.Controllers
             var companyTypes = _masterPartService.GetStatuses();
             return Ok(companyTypes);
         }
+
+
+        [HttpGet]
+        [Route(ApiRoutes.Masters.GetAllItemMasterDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(ItemMasterDocListVM))]
+        public async Task<IActionResult> GetDocumentType(long tenantId)
+        {
+            var result = await _masterPartService.GetAllItemMasterDocList(tenantId);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.Masters.PostItemMasterDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(ItemMasterDocListVM))]
+        public async Task<IActionResult> PostItemMasterDocList([FromBody] ItemMasterDocListVM documentType)
+        {
+            var result = await _masterPartService.PostItemMasterDocList(documentType);
+            return Ok(result);
+        }
+
+
+        [HttpGet]
+        [Route(ApiRoutes.Masters.GetAllItemMasterContent)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(ItemMasterContentVM))]
+        public async Task<IActionResult> GetAllItemMasterContent()
+        {
+            var result = await _masterPartService.GetAllItemMasterContent();
+            return Ok(result);
+        }
+
+
     }
 
 }

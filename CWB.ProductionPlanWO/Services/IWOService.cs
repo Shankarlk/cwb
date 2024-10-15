@@ -28,6 +28,9 @@ namespace CWB.ProductionPlanWO.Services
         Task<List<ChildWoRelVM>> PostChildWoRel(List<ChildWoRelVM> childWos);
         Task<List<McTimeListVM>> PostMcTimeList(List<McTimeListVM> mcTimeLists);
         Task<IEnumerable<McTimeListVM>> GetAllMcTimeListVMs(long tenantId);
+        Task<POStatusVM> GetPOStatus(long Id);
+        Task<List<PODetailsVM>> MultiplePODetails(List<PODetailsVM> pODetailsVM);
+        Task<List<POHeaderVM>> MultiplePOHeaders(List<POHeaderVM> pOHeaderVMs);
         string HelloWorld();
     }
 }

@@ -79,6 +79,16 @@ namespace CWB.App.Services.Routings
             return await RestHelper<RoutingVM>.PostAsync(uri, routingVM, headers);
         }
 
+        public async Task<IEnumerable<RoutingStepVM>> ChangeRoutingStepSequence(IEnumerable<RoutingStepVM> routingStepVMs)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/changeroutingstepsequence");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            foreach (var item in routingStepVMs)
+            {
+                item.TenantId = (int)tenantId;
+            }
+            return await RestHelper<IEnumerable<RoutingStepVM>>.PostAsync(uri, routingStepVMs, headers);
+        }
         public async Task<RoutingStepVM> RoutingStep(RoutingStepVM routingStepVM)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/routingstep");

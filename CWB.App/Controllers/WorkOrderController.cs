@@ -47,6 +47,7 @@ namespace CWB.App.Controllers
         }
         public IActionResult Index()
         {
+            _logger.LogTrace("WO--Index--Loading");
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace CWB.App.Controllers
             return View();
         }
 
-        [Route("~/D#1@122P I%5$3T ")]
+        [Route("~/D#1@122P I%5$3T I")]
         public IActionResult DetailedProcPlan()
         {
             return View();
@@ -175,7 +176,10 @@ namespace CWB.App.Controllers
             List<SalesOrderVM> setSO = new List<SalesOrderVM>();
             foreach (var item in saleOrderId)
             {
+                //if(item.Active != 2)
+                //{
                 setSO.Add(await _baService.GetOneSO(item.SalesOrderId));
+                //}
 
             }
             return Ok(setSO);
@@ -1223,56 +1227,90 @@ namespace CWB.App.Controllers
         public async Task<IActionResult> GetAllProcPlan()
         {
             var resultList = await _woService.GetAllProcPlan();
-            foreach (ProcPlanVM item in resultList)
-            {
-                var mp = await _masterService.ItemMasterPartById((int)item.PartId);
-                var mfpdList = await _masterService.PartPurchasesFor((int)item.PartId);
-                var uoms = await _masterService.GetUOMs();
-                foreach (var uom in uoms)
-                {
-                    if (item.UOMId == uom.UOMId)
-                    {
-                        item.UomName = uom.Name;
-                    }
-                }
+            var uoms = await _masterService.GetUOMs(); // Fetch UOMs once
 
-                foreach (var purs in mfpdList)
-                {
-                    if (item.PartId == purs.PPartId)
-                    {
-                        item.Supplier = purs.PSupplier;
-                        int subtotalLeadTime = mfpdList.Sum(x => x.LeadTimeInDays);
-                        item.LeadTimeInDays = subtotalLeadTime.ToString();
-                        int MOQ = mfpdList.Sum(x => x.MinimumOrderQuantity);
-                        item.Moq = MOQ;
-                    }
-                }
+            // Gather all distinct PartIds from the result list
+            var partIds = resultList.Select(item => (int)item.PartId).Distinct().ToList();
+
+            // Parallel fetching of all ItemMasterParts and PartPurchases
+            var masterPartsTasks = partIds.ToDictionary(partId => partId, partId => _masterService.ItemMasterPartById(partId));
+            var partPurchasesTasks = partIds.ToDictionary(partId => partId, partId => _masterService.PartPurchasesFor(partId));
+
+            await Task.WhenAll(masterPartsTasks.Values);
+            await Task.WhenAll(partPurchasesTasks.Values);
+
+            // Prepare UOM dictionary for quick lookup
+            var uomDict = uoms.ToDictionary(uom => uom.UOMId, uom => uom.Name);
+
+            foreach (var item in resultList)
+            {
+                // Get master part details
+                var mp = masterPartsTasks[(int)item.PartId].Result;
                 item.PartNo = mp.PartNo;
                 item.PartDesc = mp.PartDescription;
+
+                // Get UOM name if available
+                if (uomDict.TryGetValue(item.UOMId, out var uomName))
+                {
+                    item.UomName = uomName;
+                }
+
+                // Process purchase details
+                var mfpdList = partPurchasesTasks[(int)item.PartId].Result;
+                var relevantPurchases = mfpdList.Where(purs => item.PartId == purs.PPartId).ToList();
+
+                if (relevantPurchases.Any())
+                {
+                    item.Supplier = relevantPurchases.First().PSupplier;
+                    item.SupplierId = relevantPurchases.First().PSupplierId;
+                    item.LeadTimeInDays = relevantPurchases.Sum(x => x.LeadTimeInDays).ToString();
+                    item.Moq = relevantPurchases.Sum(x => x.MinimumOrderQuantity);
+                }
             }
+
             return Ok(resultList);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAllBomlist()
         {
-            var resultList = await _woService.GetAllBomlist();
-            var workOrders = await _baService.AllWorkOrders();
-            foreach (BOMListVM item in resultList)
+            // Fetch all BOM list and Work Orders in parallel
+            var resultListTask = _woService.GetAllBomlist();
+            var workOrdersTask = _baService.AllWorkOrders();
+
+            await Task.WhenAll(resultListTask, workOrdersTask);
+
+            var resultList = resultListTask.Result;
+            var workOrders = workOrdersTask.Result;
+
+            // Prepare a dictionary for fast lookup of Work Orders by ID
+            var workOrdersDict = workOrders.ToDictionary(wo => wo.WOID, wo => wo.WONumber);
+
+            // Get all unique Child_Part_No_IDs from the result list
+            var partIds = resultList.Select(item => (int)item.Child_Part_No_ID).Distinct().ToList();
+
+            // Fetch all necessary ItemMasterParts in parallel
+            var masterPartsTasks = partIds.ToDictionary(partId => partId, partId => _masterService.ItemMasterPartById(partId));
+            await Task.WhenAll(masterPartsTasks.Values);
+
+            foreach (var item in resultList)
             {
-                var mp = await _masterService.ItemMasterPartById((int)item.Child_Part_No_ID);
+                // Get master part details
+                var mp = masterPartsTasks[(int)item.Child_Part_No_ID].Result;
                 item.PartNo = mp.PartNo;
                 item.PartDesc = mp.PartDescription;
-                foreach (WorkOrdersVM wo in workOrders)
+
+                // Assign Work Order number if it exists in the dictionary
+                if (workOrdersDict.TryGetValue(item.ParentWoId, out var woNumber))
                 {
-                    if (item.ParentWoId == wo.WOID)
-                    {
-                        item.WoNumber = wo.WONumber;
-                    }
+                    item.WoNumber = woNumber;
                 }
             }
+
             return Ok(resultList);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAllMcTimeList()
@@ -1286,7 +1324,7 @@ namespace CWB.App.Controllers
                 var machineTypes = await _machineService.GetMachineTypes();
                 foreach (ProductionPlan_WoVM item in productions)
                 {
-                    if (item.WoId == mctime.WoId && item.ParentWoId ==0)
+                    if (item.WoId == mctime.WoId && item.ParentWoId == 0)
                     {
                         foreach (ItemMasterPartVM imp in masterparts)
                         {
@@ -1294,7 +1332,7 @@ namespace CWB.App.Controllers
                             {
                                 mctime.PartNo = imp.PartNo;
                                 mctime.PartDesc = imp.Description;
-                                mctime.PartType = imp.MasterPartType;   
+                                mctime.PartType = imp.MasterPartType;
                                 mctime.WoNumber = item.WONumber;
                             }
                         }
@@ -1321,12 +1359,44 @@ namespace CWB.App.Controllers
             return Ok(mctimelist);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> McTimeListSummary()
-        //{
 
-        //    return Ok();
-        //}
+        [HttpPost]
+        public async Task<IActionResult> MultipleProductionUpdateWOPost([FromBody] IEnumerable<ProductionPlan_WoVM> ppwos)
+        {
+            List<ProductionPlan_WoVM> listprod = new List<ProductionPlan_WoVM>();
+            var productions = await _woService.AllProductionPlan_Wo();
+            foreach (var item in productions)
+            {
+                var matchingPpwo = ppwos.FirstOrDefault(ppwo => ppwo.ProductionPlanId == item.ProductionPlanId);
+                if (matchingPpwo != null)
+                {
+                    item.Status = matchingPpwo.Status;
+                    listprod.Add(item);
+                }
+            }
+            var procdutionpost = await _woService.ProductionPlanWoPost(listprod);
+            return Ok(procdutionpost);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MulitplePOdetails([FromBody] IEnumerable<PODetailsVM> pODetails)
+        {
+            var postPODetails = await _woService.PODetails(pODetails);
+            if (postPODetails.Any())
+            {
+                var groupedData = postPODetails.GroupBy(x => x.CompanyId)
+                                .Select(grp => new POHeaderVM
+                                {
+                                    SupplierId = grp.Key,
+                                    PoHeaderId = 0,
+                                    PoDetailsId = grp.Select(x => x.PoDetailsId).FirstOrDefault(),
+                                    PartId = grp.Select(x => x.PartId).FirstOrDefault(),
+                                })
+                                .ToList();
+                var postPOHeader = await _woService.POHeader(groupedData);
+            }
+            return Ok(postPODetails);
+        }
 
         [HttpPost]
         public async Task<IActionResult> MultipleProductionWOPost([FromBody] IEnumerable<ProductionPlan_WoVM> ppwos)

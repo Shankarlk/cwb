@@ -88,5 +88,7 @@ namespace CWB.App.Services.Masters
 
         //Task<BaseRawMatrialVM> BaseRM(BaseRawMatrialVM rawMatrialVM);
         //Task<RawMaterialSpecVM> 
+
+        Task<bool> CheckPartNoInDocList(long partId);
     }
 }

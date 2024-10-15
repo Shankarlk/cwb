@@ -2,6 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
+using CWB.Logging;
 using Duende.IdentityServer.Configuration;
 using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Extensions;
@@ -27,17 +28,19 @@ namespace CWB.Identity
         private readonly IEventService _events;
         private readonly IOptions<IdentityServerOptions> _options;
         private readonly ILogger<DeviceController> _logger;
+        private readonly ILoggerManager _loggerManager;
 
         public DeviceController(
             IDeviceFlowInteractionService interaction,
             IEventService eventService,
             IOptions<IdentityServerOptions> options,
-            ILogger<DeviceController> logger)
+            ILogger<DeviceController> logger, ILoggerManager loggerManager)
         {
             _interaction = interaction;
             _events = eventService;
             _options = options;
             _logger = logger;
+            _loggerManager = loggerManager;
         }
 
         [HttpGet]

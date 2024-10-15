@@ -2,6 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
+using CWB.Logging;
 using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
@@ -27,15 +28,17 @@ namespace CWB.Identity
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IEventService _events;
         private readonly ILogger<ConsentController> _logger;
+        private readonly ILoggerManager _loggerManager;
 
         public ConsentController(
             IIdentityServerInteractionService interaction,
             IEventService events,
-            ILogger<ConsentController> logger)
+            ILogger<ConsentController> logger, ILoggerManager loggerManager)
         {
             _interaction = interaction;
             _events = events;
             _logger = logger;
+            _loggerManager = loggerManager;
         }
 
         /// <summary>

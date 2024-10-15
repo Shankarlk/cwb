@@ -1,10 +1,12 @@
 ﻿using CWB.Masters.Infrastructure;
 using CWB.Masters.Repositories.Company;
+using CWB.Masters.Repositories.DocumentManagement;
 using CWB.Masters.Repositories.ItemMaster;
 using CWB.Masters.Repositories.Machines;
 using CWB.Masters.Repositories.OperationList;
 using CWB.Masters.Repositories.Routings;
 using CWB.Masters.Services.Company;
+using CWB.Masters.Services.DocumentManagement;
 using CWB.Masters.Services.ItemMaster;
 using CWB.Masters.Services.Machines;
 using CWB.Masters.Services.OperationList;
@@ -52,6 +54,20 @@ namespace CWB.Masters.MastersUtils
             services.AddTransient<IRoutingStepPartRepository, RoutingStepPartRepository>();
             services.AddTransient<IRoutingStepMachineRepository, RoutingStepMachineRepository>();
             services.AddTransient<IRoutingStepSupplierRepository, RoutingStepSupplierRepository>();
+            services.AddTransient<IDocumentTypeRepository, DocumentTypeRepository>();
+            services.AddTransient<ICustRetnDataRepository, CustRetnDataRepository>();
+            services.AddTransient<IExtnInfoRepository, ExtnInfoRepository>();
+            services.AddTransient<IDocUploadRepository, DocUploadRepository>();
+            services.AddTransient<IDocViewRepository, DocViewRepository>();
+            services.AddTransient<IDocCategoryRepository, DocCategoryRepository>();
+            services.AddTransient<IDocListRepository, DocListRepository>();
+            services.AddTransient<IDocStatusRepository, DocStatusRepository>();
+            services.AddTransient<IUiListrepository, UiListrepository>();
+            services.AddTransient<IItemMasterDocListRepository, ItemMasterDocListRepository>();
+            services.AddTransient<IItemMasterContentRepository, ItemMasterContentRepository>();
+            services.AddTransient<IMcTypeDocListRepository, McTypeDocListRepository>();
+            services.AddTransient<IMcSlNoDocListRepository, McSlNoDocListRepository>();
+            services.AddTransient<IDocumentManagementService, DocumentManagementService>();
         }
     }
 }

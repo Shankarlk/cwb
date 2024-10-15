@@ -185,11 +185,22 @@ function ToggleSupplierFields(showhideflag) {
         $("#TabPurchaseDetails").hide();
     }
 };
-
+function DecodeRawPartId() {
+    var partid = $("#PartId").val();
+    $.ajax({
+        type: "POST",
+        url: "/masters/DecodePartId",
+        data: { partId: partid },
+        success: function (decodepartid) {
+            $("#PartId").val(decodepartid);
+        }
+    });
+}
 $(function () {
     //var RawMaterialMadeType = 0;
     //debugger;
     // Document is ready
+    DecodeRawPartId();
     $("#RawMaterialTypeId").select2();
   //  loadRMTypes("RawMaterialTypeId");
 
@@ -474,6 +485,8 @@ function AddRMType() {
     if ($("#TypeForm").valid()) {
         ////debugger;
         var formData = AppUtil.GetFormData("TypeForm");
+        formData.MultiplePartsMadeFrom1InputRM = $('#TypeMulitpleInputRM').prop('checked') ? 'Y' : 'N';
+        
         api.post("/masters/rmtype", formData).then((data) => {
             // RawMaterialDetailFormUtil.UpdateFormIDs(data);
             //  document.getElementById("RawMetform").reset();

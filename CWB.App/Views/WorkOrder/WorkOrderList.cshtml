@@ -215,36 +215,38 @@
                         </div>
                     </div>
                     <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Routing Selection</label>
-                        <select id="routing" class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top">
-                            <option value="">==========</option>
-                        </select>
+                    <div id="popup1DivRouting">
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Routing Selection</label>
+                            <select id="routing" class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">==========</option>
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Starting Opr No</label>
+                            <select id="StartingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">==========</option>
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Ending Opr No</label>
+                            <select id="EndingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">==========</option>
+                            </select>
+                        </div>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-12 text-end">
+                            <button class="btn btn-primary btn-sm" id="updateWO">Generate WO</button>
+                        </div>
+                        <!-- ===============  -->
                     </div>
-                    <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Starting Opr No</label>
-                        <select id="StartingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top">
-                            <option value="">==========</option>
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Ending Opr No</label>
-                        <select id="EndingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top">
-                            <option value="">==========</option>
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <div class="col-md-12 text-end">
-                        <button class="btn btn-primary btn-sm" id="updateWO">Generate WO</button>
-                    </div>
-                    <!-- ===============  -->
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -465,44 +467,46 @@
                     <!-- ========================= -->
                     <div class="col-md-6 mb-2"></div>
                     <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Routing</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleRouting" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
+                    <div id="popup3divRouting">
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Routing</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleRouting" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        <!-- ========================= -->
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Starting Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleStartOpNo" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        <!-- ========================= -->
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Ending Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleEndOpNo" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                      </div>
+                        <!-- ========================= -->
+                        <hr>
+                        <!-- ========================= -->
+                        <div class="col-md-12 mb-2 text-end">
+                            <input type="text" id="woid" hidden />
+                            <input type="text" id="soid" hidden />
+                            <input type="text" id="partId" hidden />
+                            <input type="text" id="partType" hidden />
+                            <input type="text" id="p3Status" hidden />
+                            <input type="text" id="p3ReloadOption" hidden />
+                            <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
+                        </div>
+                        <!-- ========================= -->
                     </div>
-                    <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Starting Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleStartOpNo" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
-                    </div>
-                    <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Ending Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleEndOpNo" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
-                    </div>
-                    <!-- ========================= -->
-                    <hr>
-                    <!-- ========================= -->
-                    <div class="col-md-12 mb-2 text-end">
-                        <input type="text" id="woid" hidden />
-                        <input type="text" id="soid" hidden />
-                        <input type="text" id="partId" hidden />
-                        <input type="text" id="partType" hidden />
-                        <input type="text" id="p3Status" hidden />
-                        <input type="text" id="p3ReloadOption" hidden />
-                        <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
-                    </div>
-                    <!-- ========================= -->
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -586,43 +590,45 @@
                     <!-- ========================= -->
                     <div class="col-md-6 mb-2"></div>
                     <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Routing</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualRouting" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
+                    <div id="popup3ManualdivRouting">
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Routing</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualRouting" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        <!-- ========================= -->
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Starting Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualStartOpNo" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        <!-- ========================= -->
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Ending Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualEndOpNo" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        </div>
+                        <!-- ========================= -->
+                        <hr>
+                        <!-- ========================= -->
+                        <div class="col-md-12 mb-2 text-end">
+                            <input type="text" id="Manualwoid" hidden />
+                            <input type="text" id="Manualsoid" hidden />
+                            <input type="text" id="ManualpartId" hidden />
+                            <input type="text" id="ManualpartType" hidden />
+                            <input type="text" id="ManualStatus" hidden />
+                            <button class="btn btn-primary btn-sm" id="ManualSaveWo">Generate WO</button>
+                        </div>
+                        <!-- ========================= -->
                     </div>
-                    <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Starting Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualStartOpNo" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
-                    </div>
-                    <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Ending Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualEndOpNo" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
-                    </div>
-                    <!-- ========================= -->
-                    <hr>
-                    <!-- ========================= -->
-                    <div class="col-md-12 mb-2 text-end">
-                        <input type="text" id="Manualwoid" hidden />
-                        <input type="text" id="Manualsoid" hidden />
-                        <input type="text" id="ManualpartId" hidden />
-                        <input type="text" id="ManualpartType" hidden />
-                        <input type="text" id="ManualStatus" hidden />
-                        <button class="btn btn-primary btn-sm" id="ManualSaveWo">Generate WO</button>
-                    </div>
-                    <!-- ========================= -->
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -707,44 +713,46 @@
                     <!-- ========================= -->
                     <div class="col-md-6 mb-2"></div>
                     <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Routing</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewRouting" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
+                    <div id="popup3NewdivRouting">
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Routing</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewRouting" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        <!-- ========================= -->
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Starting Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewStartOpNo" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        <!-- ========================= -->
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label"> Ending Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewEndOpNo" disabled>
+                                @*<option value="">==========</option>
+                    <option value="">==========</option>*@
+                            </select>
+                        </div>
+                        </div>
+                        <!-- ========================= -->
+                        <hr>
+                        <!-- ========================= -->
+                        <div class="col-md-12 mb-2 text-end">
+                            <input type="text" id="Newwoid" hidden />
+                            <input type="text" id="Newsoid" hidden />
+                            <input type="text" id="NewpartId" hidden />
+                            <input type="text" id="NewpartType" hidden />
+                            <input type="text" id="NewWoStatus" hidden />
+                            <input id="p3NReloadOption" type="text" hidden>
+                            <button class="btn btn-primary btn-sm" id="NewSaveWo">Generate WO</button>
+                        </div>
+                        <!-- ========================= -->
                     </div>
-                    <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Starting Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewStartOpNo" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
-                    </div>
-                    <!-- ========================= -->
-                    <div class="col-md-3 mb-2">
-                        <label class="form-label"> Ending Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewEndOpNo" disabled>
-                            @*<option value="">==========</option>
-                                <option value="">==========</option>*@
-                        </select>
-                    </div>
-                    <!-- ========================= -->
-                    <hr>
-                    <!-- ========================= -->
-                    <div class="col-md-12 mb-2 text-end">
-                        <input type="text" id="Newwoid" hidden />
-                        <input type="text" id="Newsoid" hidden />
-                        <input type="text" id="NewpartId" hidden />
-                        <input type="text" id="NewpartType" hidden />
-                        <input type="text" id="NewWoStatus" hidden />
-                        <input id="p3NReloadOption" type="text" hidden>
-                        <button class="btn btn-primary btn-sm" id="NewSaveWo">Generate WO</button>
-                    </div>
-                    <!-- ========================= -->
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -811,39 +819,42 @@
                     <!-- ========================= -->
                     <hr>
                     <!-- ========================= -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Routing Selection</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top" id="popup7Routing">
-                        </select>
+                    <div id="popup7divRouting">
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Routing Selection</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top" id="popup7Routing">
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Starting Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top" id="popup7StartingOpNo">
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Ending Opr No</label>
+                            <select class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top" id="popup7EndingOpNo">
+                            </select>
+                        </div>
+                       </div>
+
+                        <!-- ===============  -->
+                        <!-- ========================= -->
+                        <div class="col-md-12 mb-2 text-end">
+                            <input type="text" id="Popup7woid" hidden />
+                            <input type="text" id="Popup7soid" hidden />
+                            <input type="text" id="Popup7partId" hidden />
+                            <input type="text" id="Popup7partType" hidden />
+                            <input type="text" id="Popup7WoStatus" hidden />
+                            <button class="btn btn-primary btn-sm" id="popup7SaveWo">Update WO</button>
+                        </div>
+                        <!-- ========================= -->
                     </div>
-                    <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Starting Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top" id="popup7StartingOpNo">
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Ending Opr No</label>
-                        <select class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top" id="popup7EndingOpNo">
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <!-- ========================= -->
-                    <div class="col-md-12 mb-2 text-end">
-                        <input type="text" id="Popup7woid" hidden />
-                        <input type="text" id="Popup7soid" hidden />
-                        <input type="text" id="Popup7partId" hidden />
-                        <input type="text" id="Popup7partType" hidden />
-                        <input type="text" id="Popup7WoStatus" hidden />
-                        <button class="btn btn-primary btn-sm" id="popup7SaveWo">Update WO</button>
-                    </div>
-                    <!-- ========================= -->
                 </div>
-            </div>
         </div>
     </div>
 </div>

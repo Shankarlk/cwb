@@ -60,6 +60,10 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .HasColumnName("ReorderQnty")
                 .HasDefaultValue(0);
             builder
+                .Property(t => t.FinalPartNosoldtoCustomer)
+                .HasColumnName("FinalPartNosoldtoCustomer")
+                .HasDefaultValue(' ');
+            builder
                .Property(t => t.LeadTimeManf)
                .HasColumnName("LeadTimeManf")
                .HasDefaultValue(0);

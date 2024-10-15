@@ -106,7 +106,8 @@ function showSalesOrdersForPart(partId,partNo) {
     LoadSalesOrders(customerorderid);
     LoadDeliverySchedules($('#SalesCustomerOrderId').val());
     document.getElementById("LaunchDeliverySchedule").disabled = false;
-    document.getElementById("btnPONoDetails").click();
+    //document.getElementById("btnPONoDetails").click();
+    $("#PONoDetailsPopup").modal('show');
 }
 function copyPartData() {
 
@@ -126,32 +127,34 @@ function copyPartData() {
     document.getElementById("DeliveryScheduleForm").reset();
     document.getElementById("AggregateObjForm").reset();
     var partId = data[selval].partId;
-     //$.ajax({
-     //       type: "GET",
-     //       url: "/BusinessAquisition/CheckPartNo",
-     //       data: { partId: partId },
-     //       success: function (response) {
-     //           if (!response) {
-     //               alert("This part number already exists.");
-     //               return;
-     //           }
-     //   //PostDeliverySchedule();
+     $.ajax({
+            type: "GET",
+            url: "/masters/CheckPartNoInDocList",
+            data: { partId: partId },
+            success: function (response) {
+                if (!response) {
+                    alert("This Part Doesnot Have Required Document.");
+                    return;
+                }
+                else {
+                    $('#PartId').val(data[selval].partId);
+                    $('#PartNo').val(data[selval].partNo);
+                    $('#DSPartId').val(data[selval].partId);
+                    $('#DSPartNo').val(data[selval].partNo);
+                    document.getElementById("LaunchDeliverySchedule").disabled = false;
+                    document.getElementById("btn-close-ba-ExistingParts").click();
 
-     //          }
-     //});
+                    $('#AggregateCustomerOrderId').val(customerorderid);
+                    $('#SalesCustomerOrderId').val(customerorderid);
+                    //console.log(data[selval].partId + "/" + data[selval].partNo);
+                    LoadSalesOrders(customerorderid);
+                    LoadDeliverySchedules($('#SalesCustomerOrderId').val());
+                }
+        //PostDeliverySchedule();
 
-    $('#PartId').val(data[selval].partId);
-                $('#PartNo').val(data[selval].partNo);
-                $('#DSPartId').val(data[selval].partId);
-                $('#DSPartNo').val(data[selval].partNo);
-                document.getElementById("LaunchDeliverySchedule").disabled = false;
-                document.getElementById("btn-close-ba-ExistingParts").click();
-            
-    $('#AggregateCustomerOrderId').val(customerorderid);
-    $('#SalesCustomerOrderId').val(customerorderid);
-    //console.log(data[selval].partId + "/" + data[selval].partNo);
-    LoadSalesOrders(customerorderid);
-    LoadDeliverySchedules($('#SalesCustomerOrderId').val());
+               }
+     });
+
 
 
 }
@@ -356,6 +359,7 @@ function PostCustomerOder() {
         alert("Customer Order Created");
         $('#CustomerOrderForm')[0].reset();
         $("#searchpart").prop("disabled", false);
+        $("#PONoDetailsPopup").modal('show');
         //  $('#').val("");
         //$('#').val("");
         //document.getElementById("Btn").click();
@@ -594,8 +598,12 @@ $(function () {
         // $('#SalesPartId').val($("#PartId option:selected").val());
 
     });
+    $('#ba_existing-part').on('hidden.bs.modal', function (e) {
+        document.getElementById('PONoDetailsPopup').style.filter = 'none';
+    });
     $('#ba_existing-part').on('shown.bs.modal', function (event) {
         LoadPartsForSearching();
+        document.getElementById('PONoDetailsPopup').style.filter = 'blur(5px)';
     });
     
     $('#po-Delete').on('shown.bs.modal', function (event) {
@@ -671,8 +679,10 @@ $(function () {
     });
     $('#Edit-SalesOrder').on('hidden.bs.modal', function (event) {
         editSalesOrder = false;
+        document.getElementById('PONoDetailsPopup').style.filter = 'none';
     });
     $('#Edit-SalesOrder').on('shown.bs.modal', function (event) {
+        document.getElementById('PONoDetailsPopup').style.filter = 'blur(5px)';
         editSalesOrder = false;
         document.getElementById("EditSOForm").reset();
         var relatedTarget = $(event.relatedTarget);
@@ -760,6 +770,7 @@ $(function () {
     });
 
     $('#Delivery-Schedule').on('shown.bs.modal', function (e) {
+        document.getElementById('PONoDetailsPopup').style.filter = 'blur(5px)';
         var val = $('#DSPartId').val();
         if (val == "0" || val.trim()=="") {
             alert("Please select a part.");
@@ -782,6 +793,7 @@ $(function () {
         LoadDeliverySchedules($('#SalesCustomerOrderId').val());
     });
     $('#Delivery-Schedule').on('hidden.bs.modal', function (e) {
+        document.getElementById('PONoDetailsPopup').style.filter = 'none';
         //schedules = new Array();
         LoadTempForm();
         var customerOrderId = $('#AggregateCustomerOrderId').val();
@@ -901,6 +913,12 @@ $(function () {
     //Search-BA-PONumber
     //Search-BA-Customer
     
+    $('#PONoDetailsPopup').on('shown.bs.modal', () => {
+        document.getElementById('new-order-entry').style.filter = 'blur(5px)'; // adjust the blur value as needed
+    });
 
+    $('#PONoDetailsPopup').on('hidden.bs.modal', () => {
+        document.getElementById('new-order-entry').style.filter = 'none';
+    });
 
 });

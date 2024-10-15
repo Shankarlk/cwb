@@ -32,8 +32,8 @@ services:
     build:
       context: .
       dockerfile: CWB.ApiGateway/Dockerfile
-    depends_on:
-      - cwb.tenant
+    #depends_on:
+    #  - cwb.tenant
     networks:
       - cwb-network
     ports:

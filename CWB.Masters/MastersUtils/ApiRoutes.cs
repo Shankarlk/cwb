@@ -42,12 +42,21 @@
             public const string IsMachineExist = Base + "/machine-check";
             public const string GetMachineProcDocs = Base + "/machine-procs-docs/{Id}/{tenantId}";
             public const string PostMachineProcDoc = Base + "/machine-procs-doc";
+            public const string GetMcTypeDocList = Base + "/getmctypedoclist/{tenantId}";
+            public const string PostMcTypeDocList = Base + "/postmctypedoclist";
+            public const string DeleteMcTypDocList = Base + "/deletemctypdoclist/{mcTypeDocListId}/{tenantId}";
+            public const string GetMcSlNoDocList = Base + "/getmcslnodoclist/{tenantId}";
+            public const string PostMcSlNoDocList = Base + "/postmcslnodoclist";
+            public const string DeleteMcSlNoDocList = Base + "/deletemcslnodoclist/{mcSlNoDocListId}/{tenantId}";
         }
 
 
         public static class Masters
         {
             public const string GetStatuses = Base + "/statuses";
+            public const string GetAllItemMasterDocList = Base + "/getallitemmasterdoclist/{tenantId}";
+            public const string PostItemMasterDocList = Base + "/postitemmasterdoclist";
+            public const string GetAllItemMasterContent = Base + "/postitemmastercontent";
         }
 
         public static class Routings {
@@ -59,6 +68,7 @@
             public const string PostDeleteRouting = Base + "/deleterouting/{routingId}";
             public const string PreferredRouting = Base + "/preferredrouting";
             public const string PostRoutingStep = Base + "/routingstep";
+            public const string ChangeRoutingStepSequence = Base + "/changeroutingstepsequence";
             
             
             public const string PostRoutingStepPart = Base + "/routingsteppart";
@@ -92,6 +102,7 @@
         {
             public const string PostManufacturedPartNoDetail = Base + "/manufacturedpartnodetail";
             public const string PostMPMakeFrom = Base + "/mpmakefrom";
+            public const string PreferredMPMakeFrom = Base + "/preferredmpmakefrom";
             public const string PostMPBOM = Base + "/mpbom";
             // Added for Listing ManufacturedPartNoDetails
             public const string GetManufPart = Base + "/getmanufpart/{partId}/{tenantId}";
@@ -133,6 +144,7 @@
             public const string GetPartPurchases = Base + "/partpurchases/{tenantId}";
             //Add/Edit
             public const string PostPartPurchaseDetail = Base + "/partpurchase";
+            public const string PostPartPreferredSupplier = Base + "/preferredsupplierpartpurchase";
             //Get a single object
             public const string GetPartPurchase = Base + "/getpartpurchase/{partPurchaseId}/{tenantId}";
             //public const string RemovePartPurchase = Base + "/rempartpurchase/{partPurchaseId}";
@@ -161,6 +173,33 @@
             public const string PostBoughtOutFinishDetail = Base + "/boughtoutfinishdetail";
             // Added for Listing BoughtOutFinishDetails
             public const string GetBoughtOutFinishDetailList = Base + "/bofs/{tenantId}";
+        }
+
+        public static class DocumentManagement
+        {
+            public const string AllDocumentType = Base + "/alldocumenttype/{tenantId}";
+            public const string AllCustRetnData = Base + "/allcustretndata/{tenantId}";
+            public const string GetAllExtn = Base + "/getallextn/{tenantId}";
+            public const string GetAllDocUpload = Base + "/getalldocupload/{tenantId}";
+            public const string GetAllDocView = Base + "/getalldocview/{tenantId}";
+            public const string GetAllDocCategory = Base + "/getalldoccategory";
+            public const string GetAllDocList = Base + "/getalldoclist/{tenantId}";
+            public const string CheckPartNoInDocList = Base + "/checkpartnoindoclist/{partId}/{tenantId}";
+            public const string GetAllUiName = Base + "/getalluiname/{tenantId}";
+            public const string GetDocStatus = Base + "/getdocstatus/{statusid}";
+            public const string PostDocumentType = Base + "/postdocumenttype";
+            public const string PostCustRetnData = Base + "/postcustretndata";
+            public const string PostExtn = Base + "/postextn";
+            public const string PostDocUpload = Base + "/postdocupload";
+            public const string PostDocView = Base + "/postdocview";
+            public const string PostDocList = Base + "/postdocList";
+            public const string PostUiName = Base + "/postuiname";
+            public const string DeleteDocType = Base + "/deletedocumenttype/{doctypeId}/{tenantId}";
+            public const string DeleteCustRetdata = Base + "/deletecustretdata/{custRetId}/{tenantId}";
+            public const string DeleteExtndata = Base + "/deleteextndata/{extnId}/{tenantId}";
+            public const string DeleteDocListdata = Base + "/deletedoclistdata/{docListId}/{tenantId}";
+            public const string CheckDocTypeName = Base + "/checkdoctypename/{docTypeName}";
+            public const string CheckExtnName = Base + "/checkextnname/{extnName}";
         }
     }
 }

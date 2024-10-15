@@ -18,6 +18,7 @@ using System.IO;
 
 namespace CWB.Identity
 {
+    [System.Runtime.InteropServices.Guid("AA2E7983-3AD0-4BA5-A7A2-20A8EB865B8B")]
     public class Startup
     {
         public Startup(IConfiguration configuration)

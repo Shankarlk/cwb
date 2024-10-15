@@ -33,7 +33,8 @@ namespace CWB.App.Models.ItemMaster
         public string? StatusChangeReason { get; set; }
         public string RevNo { get; set; }
         public DateTime? RevDate { get; set; }
-        public string MasterPartType { get; set; } 
+        public string MasterPartType { get; set; }
+        public char FinalPartNosoldtoCustomer { get; set; }
         //MasterParts-
 
 

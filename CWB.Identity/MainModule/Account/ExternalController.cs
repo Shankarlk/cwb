@@ -2,6 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
+using CWB.Logging;
 using Duende.IdentityServer;
 using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Services;
@@ -30,12 +31,13 @@ namespace CWB.Identity
         private readonly IClientStore _clientStore;
         private readonly ILogger<ExternalController> _logger;
         private readonly IEventService _events;
+        private readonly ILoggerManager _loggerManager;
 
         public ExternalController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IEventService events,
-            ILogger<ExternalController> logger,
+            ILogger<ExternalController> logger, ILoggerManager loggerManager,
             TestUserStore users = null)
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
@@ -46,6 +48,7 @@ namespace CWB.Identity
             _clientStore = clientStore;
             _logger = logger;
             _events = events;
+            _loggerManager = loggerManager;
         }
 
         /// <summary>

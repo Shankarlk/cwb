@@ -16,6 +16,12 @@ namespace CWB.Masters.Services.Machines
         bool CheckMachineByName(string Name, long MachineId, long TenantId);
         bool CheckMachine(string Name, string SlNo, long MachineId, long TenantId);
         IEnumerable<MachineProcDocumentListVM> GetMachineProcDocuments(long MachineId, long TenantId);
+        IEnumerable<McTypeDocListVM> GetMcTypeDocList(long TenantId);
+        Task<McTypeDocListVM> PostMcTypeDocList(McTypeDocListVM mcTypeDocListVM);
+        Task<bool> DeleteMcTypDocList(long mcTypeDocListId, long tenantId);
+        IEnumerable<McSlNoDocListVM> GetMcSlNoDocList(long TenantId);
+        Task<McSlNoDocListVM> PostMcSlNoDocList(McSlNoDocListVM mcTypeDocListVM);
+        Task<bool> DeleteMcSlNoDocList(long mcSlNoDocListId, long tenantId);
         Task<MachineProcDocumentVM> MachineProcDoc(MachineProcDocumentVM machineProcDocumentVM);
         bool CheckMachineProcDoc(long MachineId, long MachineProcDocId, long TenantId, long DocumentTypeId);
     }

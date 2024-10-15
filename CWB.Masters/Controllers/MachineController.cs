@@ -213,5 +213,66 @@ namespace CWB.Masters.Controllers
             var result = await _machineService.MachineProcDoc(machineProcDocumentVM);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route(ApiRoutes.Machine.GetMcTypeDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<McTypeDocListVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public IActionResult GetMcTypeDocList(long tenantId)
+        {
+            var machineProcDocs = _machineService.GetMcTypeDocList(tenantId);
+            return Ok(machineProcDocs);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.Machine.PostMcTypeDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(McTypeDocListVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostMcTypeDocList([FromBody] McTypeDocListVM mcTypeDocListVM)
+        {
+            var machineTypeExist = await _machineService.PostMcTypeDocList(mcTypeDocListVM);
+            return Ok(machineTypeExist);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.Machine.DeleteMcTypDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> DeleteMcTypDocList(long mcTypeDocListId, long tenantId)
+        {
+            var result = await _machineService.DeleteMcTypDocList(mcTypeDocListId, tenantId);
+            return Ok(result);
+        }
+
+
+        [HttpGet]
+        [Route(ApiRoutes.Machine.GetMcSlNoDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<McSlNoDocListVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public IActionResult GetMcSlNoDocList(long tenantId)
+        {
+            var machineProcDocs = _machineService.GetMcSlNoDocList(tenantId);
+            return Ok(machineProcDocs);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.Machine.PostMcSlNoDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(McSlNoDocListVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostMcSlNoDocList([FromBody] McSlNoDocListVM mcTypeDocListVM)
+        {
+            var machineTypeExist = await _machineService.PostMcSlNoDocList(mcTypeDocListVM);
+            return Ok(machineTypeExist);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.Machine.DeleteMcSlNoDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> DeleteMcSlNoDocList(long mcSlNoDocListId, long tenantId)
+        {
+            var result = await _machineService.DeleteMcSlNoDocList(mcSlNoDocListId, tenantId);
+            return Ok(result);
+        }
     }
 }

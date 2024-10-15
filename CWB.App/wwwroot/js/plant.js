@@ -30,7 +30,7 @@ function DeleteHoliday(holidayId,name,plantId) {
     if (result) {
         api.get("/plant/delholiday?holidayId=" + holidayId).then((data) => {
             //console.log(data);
-            var plantId = $("HolidayPlantId").val();
+            var plantId = $("#HolidayPlantId").val();
             LoadHolidays(plantId);
         }).catch((error) => {
         });
@@ -43,6 +43,7 @@ function AddHolidayToList() {
         LoadHolidays(plantId);
         $("#HolidayId").val("0");
         $("#HName").val("");
+        $("#HolidayDate").val("");
     }).catch((error) => {
         AppUtil.HandleError("HolidayForm", error);
     });
@@ -210,11 +211,80 @@ $(function () {
     //SaveWorkDetails
     //AddHoliday
     $("#SaveWorkDetails").on('click', function (event) {
+        var noofshitfs = document.getElementById('NoOfShifts');
+        if (!noofshitfs.value) {
+            noofshitfs.style.border = '2px solid red';
+            alert(" No Of Shifts Field is Empty");
+            return false;
+        } else {
+            noofshitfs.style.border = '';
+        }
+        var FirstShiftStartTime = document.getElementById('FirstShiftStartTime');
+        if (!FirstShiftStartTime.value) {
+            FirstShiftStartTime.style.border = '2px solid red';
+            return false;
+        } else {
+            FirstShiftStartTime.style.border = '';
+        }
+        var SecondShiftStartTime = document.getElementById('SecondShiftStartTime');
+        if (!SecondShiftStartTime.value) {
+            SecondShiftStartTime.style.border = '2px solid red';
+            return false;
+        } else {
+            SecondShiftStartTime.style.border = '';
+        }
+        var ThirdShiftStartTime = document.getElementById('ThirdShiftStartTime');
+        if (!ThirdShiftStartTime.value) {
+            ThirdShiftStartTime.style.border = '2px solid red';
+            return false;
+        } else {
+            ThirdShiftStartTime.style.border = '';
+        }
+        var FirstShiftDuration = document.getElementById('FirstShiftDuration');
+        if (!FirstShiftDuration.value) {
+            FirstShiftDuration.style.border = '2px solid red';
+            return false;
+        } else {
+            FirstShiftDuration.style.border = '';
+        }
+        var SecondShiftDuration = document.getElementById('SecondShiftDuration');
+        if (!SecondShiftDuration.value) {
+            SecondShiftDuration.style.border = '2px solid red';
+            return false;
+        } else {
+            SecondShiftDuration.style.border = '';
+        }
+        var ThirdShiftDuration = document.getElementById('ThirdShiftDuration');
+        if (!ThirdShiftDuration.value) {
+            ThirdShiftDuration.style.border = '2px solid red';
+            return false;
+        } else {
+            ThirdShiftDuration.style.border = '';
+        }
+       
         AddWorkingDetails();
         $("#btn-shopdetails-close").prop('disabled', false);
     });
     $("#AddHoliday").on('click', function (event) {
+        var nameInput = document.getElementById('HName');
+        var dateInput = document.getElementById('HolidayDate');
+        
+
+        if (!nameInput.value) {
+            nameInput.style.border = '2px solid red';
+            return false;
+        } else {
+            nameInput.style.border = '';
+        }
+
+        if (!dateInput.value) {
+            dateInput.style.border = '2px solid red';
+            return false;
+        } else {
+            dateInput.style.border = '';
+        }
         AddHolidayToList();
+        
     });
 
     $("#btn-shopdetails-close").on('click', function (event) {

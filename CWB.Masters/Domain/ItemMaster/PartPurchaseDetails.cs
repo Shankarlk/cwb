@@ -14,6 +14,7 @@ namespace CWB.Masters.Domain.ItemMaster
         public string Price { get; set; }
         public string ShareOfBusiness { get; set; }
         public string AdditionalInfo { get; set; }
+        public int PreferredSupplier { get; set; }
         //....
         public int BOFId { get; set; }
         //OR

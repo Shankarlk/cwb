@@ -14,6 +14,7 @@ namespace CWB.Masters.Domain.Routings
         public long TenantId { get; set; }
         public int Deleted { get; set; }
         public string Status { get; set; }
+        public string StatusChangeReason { get; set; }
 
         //public ManufacturedPart ManufacturedPart { get; set; }
 

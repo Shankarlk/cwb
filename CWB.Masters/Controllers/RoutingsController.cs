@@ -222,6 +222,18 @@ namespace CWB.Masters.Controllers
             var result = await _routingService.RoutingStep(routingStepVM);
             return Ok(result);
         }
+        [HttpPost]
+        [Route(ApiRoutes.Routings.ChangeRoutingStepSequence)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(RoutingStepVM))]
+        public async Task<IActionResult> ChangeSequence([FromBody] IEnumerable<RoutingStepVM> routingStepVM)
+        {
+           /* var validator = new RawMaterialDetailVMValidator();
+            var validationResult = await validator.ValidateAsync(rawMaterialDetailVM);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);*/
+            var result = await _routingService.ChangeSequence(routingStepVM);
+            return Ok(result);
+        }
 
 
 

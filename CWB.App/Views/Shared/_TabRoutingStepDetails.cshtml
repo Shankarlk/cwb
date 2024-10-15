@@ -5,12 +5,12 @@
             <span class="d-none d-sm-inline-block">Step Info</span>
         </a>
     </li>
-    <li class="nav-item" id="tab-step-parts">
+    @*<li class="nav-item" id="tab-step-parts-old">
         <a href="#bom" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
             <span class="d-inline-block d-sm-none">Parts used in this Step</span>
             <span class="d-none d-sm-inline-block">Parts used in this Step</span>
         </a>
-    </li>
+    </li>*@
 </ul>
 <div class="tab-content p-2">
     <div class="tab-pane show active" id="step-info">
@@ -337,6 +337,7 @@
             <div class="col-md-6">
                 <button type="button" class="btn btn-warning btn-sm   display-none " data-bs-toggle="modal" data-bs-target="#add-document-2"><i class="fas fa-info"></i></button>
                 <button type="button" class="btn btn-purple btn-sm   display-none " data-bs-toggle="modal" data-bs-target="#task-rou">Task</button>
+                <button type="button" class="btn btn-primary btn-sm" id="tab-step-parts" data-bs-toggle="modal" data-bs-target="#task-rou">Associate BOM Parts Assembled / Used in this step</button>
             </div>
             <!-- ---------- -->
             <div class="col-md-6 text-end">
@@ -350,102 +351,7 @@
     </div>
 
     <div class="tab-pane" id="bom">
-        <!-- ======================================================================================== -->
-        <div class="row">
-            <div class="col-md-8">
-                <h5>Select parts for Assembly from BOM </h5>
-                <div class="table-responsive table-he-250 mt-2">
-                    <table id="StepPart-BOM-Table" class="table table-sm table-bordered w-100 mb-1 tableFixHead">
-                        <thead class="table-info th-sti text-center" title="Use this Tab to enter BOM Parts are used in this Routing Step. This Tab is enabled when the Operation is a joining, assembly ... type of operation" data-plugin="tippy" data-tippy-placement="top">
-                            <tr class="table-border-bottom">
-                                <th></th>
-                                <th>Part NO</th>
-                                <th>Part Description</th>
-                                <th>BOM Qnty</th>
-                                <th>Bal Qnty for Assembly</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-         </div>
-        <div class="row mt-3">
-            <!-- end col -->
-            <div class="col-md-9 text-end mt-n4">
-                <button id="BtnSelectBOMForRouting" class="btn btn-sm btn-purple" title="Use to select the chosen Part No for further data entry" data-plugin="tippy" data-tippy-placement="top"> Select</button>
-            </div>
-            <!-- end col -->
-        </div>
-        <!-- --- end row ------  -->
-        <form method="post" id="FormStepPart" role="form" onsubmit="return false;">
-        <div class="row mt-3">
-                
-            <label class="form-label col-md-1 mb-1"> Part No  </label>
-            <div class="col-md-2 mb-1">
-                <input type="text" hidden id="PartId" name="PartId" value="0"/>
-                <input type="text" id="BOMPartNo" name="PartNo" class="form-control form-control-sm" placeholder="" value="" required/>
-            </div>
-            <!-- ================= -->
-            <label class="form-label col-md-1 mb-2"> Part Desc</label>
-            <div class="col-md-3 mb-2">
-                <textarea id="BOMPartDescription" name="PartDescription" class="form-control form-control-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </textarea>
-            </div>
-                
-            <!-- ================= -->
-            <label class="form-label col-md-1 mb-2">Qnty for Assy </label>
-            <div class="col-md-2 mb-2">
-                <input id="QuantityAssembly" name="QuantityAssembly" type="text" oninput="return onlyNum();" class="form-control form-control-sm" title="Enter the quantity of selected Part No used in this Routing Step Operation. Note it should be equal or less than the Balance Qnty for Assembly" data-plugin="tippy" data-tippy-placement="top" />
-            </div>
-                
-            <!-- ========================== -->
-            <div class="col-md-2 mb-2">
-                <input type="text" hidden id="BOMId" name="BOMId" value="0" />
-                <input type="text" hidden id="BOMManufacturedPartId" name="ManufacturedPartId" value="0" />
-                <input type="text" hidden id="BOMRoutingStepId" name="RoutingStepId" value="0" />
-                <input type="text" hidden id="RoutingStepPartId" name="StepPartId" value="0" />
-                <input type="submit" id="BtnAddToStepList" class="btn btn-sm btn-primary" title="Use to add to the Part List for the Routing Step" data-plugin="tippy" data-tippy-placement="top" value="Add to List">
-            </div>
-            <!-- ========================== -->
-        </div>
-        </form>
-        
-        <!-- end row  -->
-        <div class="row">
-            <div class="col-md-8">
-                <h5 class="mb-2">List of parts Assembled in Current Assy Step</h5>
-                <div class="table-responsive table-he-180 mt-2">
-                    <table id="StepPart-BOMQTY-Table" class="table table-sm table-bordered w-100 mb-3 tableFixHead">
-                        <thead class="table-info th-sti text-center">
-                            <tr class="table-border-bottom">
-                                <th>Part NO</th>
-                                <th>Part Description</th>
-                                <th> Qnty used</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- end col -->
-        </div>
-        <!-- end row  -->
-        <hr class="hr-color-2">
-        <div class="row mt-2">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-warning btn-sm" title="Use to go to Previous Tab" data-plugin="tippy" data-tippy-placement="top"><i class="fas fa-arrow-left"></i></button>
-            </div>
-            <!-- ---------- -->
-            <div class="col-md-6 text-end">
-                <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#popup-4" title="Use to Exit " data-plugin="tippy" data-tippy-placement="top">Exit</button>
-                <button class="btn btn-sm btn-primary" title="Use to Save the entered data" data-plugin="tippy" data-tippy-placement="top">Save</button>
-                <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-arrow-right" title="Use to go to the next Tab" data-plugin="tippy" data-tippy-placement="top"></i></button>
-            </div>
-        </div>
-        <!-- end row  -->
+       
     </div>
    
 </div>
@@ -453,6 +359,119 @@
 <partial name="_Add-Machine" />
 <partial name="_Add-SubCon" />
 
+<div id="AssociateBOMParts" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="mySmallModalLabel">
+                    Parts Assembled in Oprn No <span id="BomStepNo"></span>  of Routing
+                    <span id="BomRouting"></span> for Part No / Desc  <span id="BomPartNo"></span> / <span id="BomPartDesc"></span>
+                    made from Part No / Desc - Company <span id="Bomcampany"></span>
+                </h4>
+                <button id="BtnBomPartsClose" type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- ======================================================================================== -->
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5>Select parts for Assembly from BOM </h5>
+                        <div class="table-responsive table-he-250 mt-2">
+                            <table id="StepPart-BOM-Table" class="table table-sm table-bordered w-100 mb-1 tableFixHead">
+                                <thead class="table-info th-sti text-center" title="Use this Tab to enter BOM Parts are used in this Routing Step. This Tab is enabled when the Operation is a joining, assembly ... type of operation" data-plugin="tippy" data-tippy-placement="top">
+                                    <tr class="table-border-bottom">
+                                        <th></th>
+                                        <th>Part NO</th>
+                                        <th>Part Description</th>
+                                        <th>BOM Qnty</th>
+                                        <th>Bal Qnty for Assembly</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <!-- end col -->
+                    <div class="col-md-9 text-end mt-n4">
+                        <button id="BtnSelectBOMForRouting" class="btn btn-sm btn-purple" title="Use to select the chosen Part No for further data entry" data-plugin="tippy" data-tippy-placement="top"> Select</button>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- --- end row ------  -->
+                <form method="post" id="FormStepPart" role="form" onsubmit="return false;">
+                    <div class="row mt-3">
+
+                        <label class="form-label col-md-1 mb-1"> Part No  </label>
+                        <div class="col-md-2 mb-1">
+                            <input type="text" hidden id="PartId" name="PartId" value="0" />
+                            <input type="text" id="BOMPartNo" name="PartNo" class="form-control form-control-sm" placeholder="" value="" required readonly />
+                        </div>
+                        <!-- ================= -->
+                        <label class="form-label col-md-1 mb-2"> Part Desc</label>
+                        <div class="col-md-3 mb-2">
+                            <textarea id="BOMPartDescription" name="PartDescription" class="form-control form-control-sm" readonly></textarea>
+                        </div>
+
+                        <!-- ================= -->
+                        <label class="form-label col-md-1 mb-2">Qnty for Assy </label>
+                        <div class="col-md-2 mb-2">
+                            <input id="QuantityAssembly" name="QuantityAssembly" type="text" oninput="return onlyNum();" class="form-control form-control-sm" title="Enter the quantity of selected Part No used in this Routing Step Operation. Note it should be equal or less than the Balance Qnty for Assembly" data-plugin="tippy" data-tippy-placement="top" required />
+                        </div>
+
+                        <!-- ========================== -->
+                        <div class="col-md-2 mb-2">
+                            <input type="text" hidden id="BOMId" name="BOMId" value="0" />
+                            <input type="text" hidden id="BOMManufacturedPartId" name="ManufacturedPartId" value="0" />
+                            <input type="text" hidden id="BOMRoutingStepId" name="RoutingStepId" value="0" />
+                            <input type="text" hidden id="RoutingStepPartId" name="StepPartId" value="0" />
+                            <input type="submit" id="BtnAddToStepList" class="btn btn-sm btn-primary" title="Use to add to the Part List for the Routing Step" data-plugin="tippy" data-tippy-placement="top" value="Add to List">
+                        </div>
+                        <!-- ========================== -->
+                    </div>
+                </form>
+
+                <!-- end row  -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5 class="mb-2">List of parts Assembled in Current Assy Step</h5>
+                        <div class="table-responsive table-he-180 mt-2">
+                            <table id="StepPart-BOMQTY-Table" class="table table-sm table-bordered w-100 mb-3 tableFixHead">
+                                <thead class="table-info th-sti text-center">
+                                    <tr class="table-border-bottom">
+                                        <th>Part NO</th>
+                                        <th>Part Description</th>
+                                        <th> Qnty used</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row  -->
+                <hr class="hr-color-2">
+            </div>
+            <!--<div class="row mt-2">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-warning btn-sm" title="Use to go to Previous Tab" data-plugin="tippy" data-tippy-placement="top"><i class="fas fa-arrow-left"></i></button>
+                </div>-->
+                <!-- ---------- -->
+                <!--<div class="col-md-6 text-end">
+                    <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#popup-4" title="Use to Exit " data-plugin="tippy" data-tippy-placement="top">Exit</button>
+                    <button class="btn btn-sm btn-primary" title="Use to Save the entered data" data-plugin="tippy" data-tippy-placement="top">Save</button>
+                    <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-arrow-right" title="Use to go to the next Tab" data-plugin="tippy" data-tippy-placement="top"></i></button>
+                </div>
+            </div>-->
+            <!-- end row  -->
+        </div>
+    </div>
+</div>
 
 <template id="RT_BOM-template">
     <tr sclass ="bg-grey">

@@ -19,6 +19,7 @@ namespace CWB.Masters.Domain.ItemMaster
         public long MaterialSpecId { get; set; }
         public string ReorderLevel { get; set; }
         public string ReorderQnty { get; set; }
+        public int TimetoDeliverReorderQnty { get; set; }
         //DbPart - End
 
         public long TenantId { get; set; }

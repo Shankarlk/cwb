@@ -52,11 +52,13 @@ namespace CWB.ProductionPlanWO.Utils
             CreateMap<WOSOVM, WOSO>()
                .ForMember(m => m.Id, m => m.MapFrom(src => src.WOSOId))
                .ForMember(m => m.SalesOrderId, m => m.MapFrom(src => src.SalesOrderId))
+               .ForMember(m => m.Active, m => m.MapFrom(src => src.Active))
                .ForMember(m => m.WorkOrderId, m => m.MapFrom(src => src.WorkOrderId));
 
             CreateMap<WOSO, WOSOVM>()
                .ForMember(m => m.WOSOId, m => m.MapFrom(src => src.Id))
                .ForMember(m => m.SalesOrderId, m => m.MapFrom(src => src.SalesOrderId))
+               .ForMember(m => m.Active, m => m.MapFrom(src => src.Active))
                .ForMember(m => m.WorkOrderId, m => m.MapFrom(src => src.WorkOrderId));
 
             CreateMap<BOMTempVM, BOMTemp>()
@@ -256,6 +258,59 @@ namespace CWB.ProductionPlanWO.Utils
            .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
 
 
+
+            CreateMap<POStatusVM, POStatus>()
+               .ForMember(m => m.Id, m => m.MapFrom(src => src.StatusId))
+               .ForMember(m => m.Status, m => m.MapFrom(src => src.Status));
+
+            CreateMap<POStatus, POStatusVM>()
+               .ForMember(m => m.StatusId, m => m.MapFrom(src => src.Id))
+               .ForMember(m => m.Status, m => m.MapFrom(src => src.Status));
+
+            CreateMap<PODetailsVM, PODetails>()
+          .ForMember(m => m.Id, m => m.MapFrom(src => src.PoDetailsId))
+          .ForMember(m => m.POReference, m => m.MapFrom(src => src.POReference))
+          .ForMember(m => m.ProcPlanId, m => m.MapFrom(src => src.ProcPlanId))
+          .ForMember(m => m.AddHocPO, m => m.MapFrom(src => src.AddHocPO))
+          .ForMember(m => m.PartId, m => m.MapFrom(src => src.PartId))
+          .ForMember(m => m.PoQnty, m => m.MapFrom(src => src.PoQnty))
+          .ForMember(m => m.PoDate, m => m.MapFrom(src => src.PoDate))
+          .ForMember(m => m.CompanyId, m => m.MapFrom(src => src.CompanyId))
+          .ForMember(m => m.PlanPoReceiptDate, m => m.MapFrom(src => src.PlanPoReceiptDate))
+          .ForMember(m => m.PoSent, m => m.MapFrom(src => src.PoSent))
+          .ForMember(m => m.PoQntyRecd, m => m.MapFrom(src => src.PoQntyRecd))
+          .ForMember(m => m.Status, m => m.MapFrom(src => src.Status))
+          .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+
+            CreateMap<PODetails, PODetailsVM>()
+            .ForMember(m => m.PoDetailsId, m => m.MapFrom(src => src.Id))
+          .ForMember(m => m.POReference, m => m.MapFrom(src => src.POReference))
+          .ForMember(m => m.ProcPlanId, m => m.MapFrom(src => src.ProcPlanId))
+          .ForMember(m => m.AddHocPO, m => m.MapFrom(src => src.AddHocPO))
+          .ForMember(m => m.PartId, m => m.MapFrom(src => src.PartId))
+          .ForMember(m => m.PoQnty, m => m.MapFrom(src => src.PoQnty))
+          .ForMember(m => m.PoDate, m => m.MapFrom(src => src.PoDate))
+          .ForMember(m => m.CompanyId, m => m.MapFrom(src => src.CompanyId))
+          .ForMember(m => m.PlanPoReceiptDate, m => m.MapFrom(src => src.PlanPoReceiptDate))
+          .ForMember(m => m.PoSent, m => m.MapFrom(src => src.PoSent))
+          .ForMember(m => m.PoQntyRecd, m => m.MapFrom(src => src.PoQntyRecd))
+          .ForMember(m => m.Status, m => m.MapFrom(src => src.Status))
+          .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+
+
+            CreateMap<POHeaderVM, POHeader>()
+          .ForMember(m => m.Id, m => m.MapFrom(src => src.PoHeaderId))
+          .ForMember(m => m.PoDetailsId, m => m.MapFrom(src => src.PoDetailsId))
+          .ForMember(m => m.SupplierId, m => m.MapFrom(src => src.SupplierId))
+          .ForMember(m => m.PartId, m => m.MapFrom(src => src.PartId))
+          .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+
+            CreateMap<POHeader, POHeaderVM>()
+          .ForMember(m => m.PoHeaderId, m => m.MapFrom(src => src.Id))
+          .ForMember(m => m.PoDetailsId, m => m.MapFrom(src => src.PoDetailsId))
+          .ForMember(m => m.SupplierId, m => m.MapFrom(src => src.SupplierId))
+          .ForMember(m => m.PartId, m => m.MapFrom(src => src.PartId))
+          .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
         }
     }
 }

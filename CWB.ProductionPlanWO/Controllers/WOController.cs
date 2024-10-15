@@ -222,5 +222,35 @@ namespace CWB.ProductionPlanWO.Controllers
             var mctime = await _woSerivce.GetAllMcTimeListVMs(tenantId);
             return Ok(mctime);
         }
+
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostMultiplePODetails)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(PODetailsVM))]
+        public async Task<IActionResult> PostMultiplePODetails([FromBody] List<PODetailsVM> pODetailsVMs)
+        {
+            var result = await _woSerivce.MultiplePODetails(pODetailsVMs);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.WO.PostMultiplePOHeaders)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(POHeaderVM))]
+        public async Task<IActionResult> PostMultiplePOHeaders([FromBody] List<POHeaderVM> poHeaders)
+        {
+            var result = await _woSerivce.MultiplePOHeaders(poHeaders);
+            return Ok(result);
+        }
+
+
+        [HttpGet]
+        [Route(ApiRoutes.WO.GetPoStatus)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(POStatusVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetPoStatus(long Id)
+        {
+            var pOStatus = await _woSerivce.GetPOStatus(Id);
+            return Ok(pOStatus);
+        }
     }
 }

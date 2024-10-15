@@ -21,6 +21,7 @@ namespace CWB.Masters.Services.Routings
         
         Task<RoutingVM> PreferredRouting(RoutingVM routingVM);
         Task<RoutingStepVM> RoutingStep(RoutingStepVM routingStepVM);
+        Task<IEnumerable<RoutingStepVM>> ChangeSequence(IEnumerable<RoutingStepVM> routingStepVM);
         Task<RoutingStepPartVM> RoutingStepPart(RoutingStepPartVM routingStepPartVM);
         IEnumerable<RoutingVM> GetRoutingsForManufId(int manufId);
         IEnumerable<RoutingStepVM> GetStepsForRoutingId(int routingId);

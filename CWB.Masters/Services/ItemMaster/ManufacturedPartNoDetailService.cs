@@ -167,6 +167,26 @@ namespace CWB.Masters.Services.ItemMaster
         }
 
 
+        public async Task<MPMakeFromVM> PreferredInputMatl(MPMakeFromVM mPMakeFromVM)
+        {
+            var mPMakeFrom = _mapper.Map<MPMakeFrom>(mPMakeFromVM);
+            if (mPMakeFrom.Id != 0)
+            {
+                List<MPMakeFromVM> lst = GetMPMakeFromList(mPMakeFrom.PartId.ToString(), (int)mPMakeFrom.TenantId).ToList();
+                foreach (MPMakeFromVM rv in lst)
+                {
+                    var lRouting = _mapper.Map<MPMakeFrom>(rv);
+                    lRouting.PreferedRawMaterial = false;
+                    await _mpMakeFromRepository.UpdateAsync(lRouting.Id, lRouting);
+                }
+                mPMakeFrom = await _mpMakeFromRepository.UpdateAsync(mPMakeFrom.Id, mPMakeFrom);
+            }
+            await _unitOfWork.CommitAsync();
+            mPMakeFromVM.MPMakeFromId = (int)mPMakeFrom.Id;
+            return mPMakeFromVM;
+        }
+
+
         public async Task<MPMakeFromVM> GetMPMakeFrom(long Id)
         {
             var mpmakefromlist = await _mpMakeFromRepository.SingleOrDefaultAsync(m => m.Id == Id);

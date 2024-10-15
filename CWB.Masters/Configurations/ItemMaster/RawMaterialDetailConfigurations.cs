@@ -78,6 +78,10 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .Property(t => t.ReorderQnty)
                 .HasColumnName("ReorderQnty")
                 .HasDefaultValue(0);
+            builder
+                .Property(t => t.TimetoDeliverReorderQnty)
+                .HasColumnName("TimetoDeliverReorderQnty")
+                .HasDefaultValue(0);
 
             /**
              * builder

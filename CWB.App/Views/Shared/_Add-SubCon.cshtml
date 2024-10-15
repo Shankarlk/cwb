@@ -38,7 +38,7 @@
                                                 <div class="row">
                                                     <label class="form-label col-md-3 mb-2">Sub Con Name</label>
                                                     <div class="col-md-9 mb-2">
-                                                        <input class="form-control form-control-sm" type="text" value="...">
+                                                        <input class="form-control form-control-sm" type="text" value="" id="SearchSubConName">
                                                     </div>
                                                     <!-- ---------------  -->
                                                     <div class="col-md-12">
@@ -94,7 +94,7 @@
                                                     <!-- ---------------  -->
                                                     <label class="col-md-4 form-label mb-2">Notes </label>
                                                     <div class="col-md-8 mb-2">
-                                                        <textarea id="Notes" name="Notes" class="form-control form-control-sm" required>Enter text here...</textarea>
+                                                        <textarea id="Notes" name="Notes" class="form-control form-control-sm" required></textarea>
                                                     </div>
                                                         
                                                         <input type="text" hidden id="SubConRoutingStepId" name="RoutingStepId" value="0" />
@@ -142,7 +142,7 @@
                                                             </label>
                                                                 
                                                             <div class="col-md-8 mb-2">
-                                                                    <input value="10:00:00" id="FloorToFloorTime" name="FloorToFloorTime" type="text" class="form-control form-control-sm"
+                                                                    <input value="10:00:00" id="SubConFloorToFloorTime" name="FloorToFloorTime" type="text" class="form-control form-control-sm"
                                                                        data-toggle="input-mask" data-mask-format="00:00:00"
                                                                        placeholder="10:00:00" required
                                                                        title="Enter the Floor to Floor Time which is the time interval between two Cycle Starts which would typically include Load / Unload and any other activity which is done serially ... Activities done in parallel to the Machine working (eg Inspection, Deburring ...) will not be a part of Floor To Floor Time"
@@ -155,7 +155,7 @@
                                                             </label>
                                                                 
                                                             <div class="col-md-8 mb-2">
-                                                                    <input value="10:00:00" id="SetupTime" name="SetupTime" type="text" class="form-control form-control-sm"
+                                                                    <input value="10:00:00" id="SubConSetupTime" name="SetupTime" type="text" class="form-control form-control-sm"
                                                                        data-toggle="input-mask" data-mask-format="00:00:00"
                                                                            placeholder="10:00:00" required
                                                                        title="Enter the Setup time for the Machine for the Routing Step ... Removal / Unload of Previous Setup Hardware, Assemble / Load Hardware for the current setup, Downloading / Entering of Programs ...."
@@ -167,7 +167,7 @@
                                                             </label>
                                                                 
                                                             <div class="col-md-8 mb-2">
-                                                                    <input id="NoOfPartsPerLoading" name="NoOfPartsPerLoading" type="number" class="form-control form-control-sm" value="1"
+                                                                    <input id="SubConNoOfPartsPerLoading" name="NoOfPartsPerLoading" type="number" class="form-control form-control-sm" value="1"
                                                                        required
                                                                        title="If multiple Parts are processed in the Machine ... enter the number. "
                                                                        data-plugin="tippy" data-tippy-placement="top">

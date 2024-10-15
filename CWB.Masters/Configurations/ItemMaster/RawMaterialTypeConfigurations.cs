@@ -19,6 +19,10 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .HasMaxLength(255)
                 .IsRequired();
             builder
+                .Property(b => b.MultiplePartsMadeFrom1InputRM)
+                .HasColumnName("MultiplePartsMadeFrom1InputRM")
+                .HasDefaultValue('N');
+            builder
                 .Property(b => b.TenantId)
                 .HasColumnName("TenantId")
                 .IsRequired();

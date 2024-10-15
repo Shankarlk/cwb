@@ -90,10 +90,22 @@
         return ManufacturedPartDetail;
     }
 };
+function DecodePartId() {
+    var partid = $("#PartId").val();
+    $.ajax({
+        type: "POST",
+        url: "/masters/DecodePartId",
+        data: { partId: partid },
+        success: function (decodepartid) {
+            $("#PartId").val(decodepartid);
+        }
+    });
+}
 $(function () {
     var manufacturedPartType = 0;
     ////debugger;
     // Document is ready
+    DecodePartId();
 
     CURRENT_TAB = "BOFMain";
     $('input[type=radio][name=BoughtOutFinishMade]').change(function () {

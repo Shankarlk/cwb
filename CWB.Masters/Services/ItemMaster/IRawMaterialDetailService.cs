@@ -15,6 +15,7 @@ namespace CWB.Masters.Services.ItemMaster
         IEnumerable<PartPurchaseDetailsVM> GetPartPurchases(long tenantId);
         IEnumerable<PartPurchaseDetailsVM> GetPartPurchasesForPartNo(int partId, long tenantId);
         Task<PartPurchaseDetailsVM> PartPurchaseDetail(PartPurchaseDetailsVM partPurchaseDetailVM);
+        Task<PartPurchaseDetailsVM> PreferredSupplier(PartPurchaseDetailsVM partPurchaseDetailVM);
         Task<PartPurchaseDetailsVM> RemPartPurchaseDetail(PartPurchaseDetailsVM partPurchaseDetailVM);
 
         Task<PartPurchaseDetailsVM> GetPartPurchase(int partPurchaseId,long tenantId);

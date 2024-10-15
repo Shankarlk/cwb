@@ -1,8 +1,10 @@
 using CWB.App.Models.Contacts;
+using CWB.App.Models.ItemMaster;
 using CWB.App.Models.Routing;
 using CWB.App.Models.Routings;
 using CWB.App.Services.Masters;
 using CWB.App.Services.Routings;
+using CWB.CommonUtils.Common;
 using CWB.Constants.UserIdentity;
 using CWB.Logging;
 using Microsoft.AspNetCore.Authorization;
@@ -99,12 +101,19 @@ namespace CWB.App.Controllers
             return Ok(result);
         }
 
-
-        public async Task<IActionResult> RoutingDetails(int manufPartId,string partType)
+        [HttpPost]
+        public string EncodeManufacturedPartId(long manufacturedPartId)
         {
+            return CWBAppUtils.EncodeLong(manufacturedPartId);
+        }
+
+        //[Route("~/Ro#)&!@237$&")]
+        public async Task<IActionResult> RoutingDetails(string manufPartId,string partType)
+        {
+            int decodedManufPartId =(int)CWBAppUtils.DecodeString(manufPartId.ToString());
             var result = await _routingService.GetRoutingListItems();
             var query = from litem in result
-                        where litem.ManufacturedPartId == manufPartId
+                        where litem.ManufacturedPartId == decodedManufPartId
                         select litem;
             RoutingListItemVM routingListItemVM = query.FirstOrDefault();
             if(routingListItemVM == null)
@@ -115,7 +124,17 @@ namespace CWB.App.Controllers
             }
             else
             {
-                var resultList = await _routingService.Routings(manufPartId);
+                var resultList = await _routingService.Routings(decodedManufPartId);
+                foreach (var item in resultList)
+                {
+                    var master = await _mastersServices.ItemMasterPartById((int)item.MKPartId);
+                    var oprnos = await _routingService.RoutingSteps(item.RoutingId);
+                    if (master != null)
+                    {
+                        item.MKPartName = master.PartNo;
+                    }
+                    item.NoOprns = oprnos.Count();
+                }
                 routingListItemVM.MasterPartType = partType;
                 routingListItemVM.RoutingVMs = resultList.ToList();
             }
@@ -170,7 +189,75 @@ namespace CWB.App.Controllers
         public async Task<IActionResult> RoutingSteps(int routingId)
         {
             var result = await _routingService.RoutingSteps(routingId);
+            foreach (var item in result)
+            {
+                if(item.StepLocation == "1")
+                {
+                    item.LocationName = "Inhouse";
+                }else if (item.StepLocation == "2")
+                {
+                    item.LocationName = "SubCon";
+                }
+                else
+                {
+                    item.LocationName = "Company";
+                }
+                var stepmc = await _routingService.StepMachines((int)item.StepId);
+                if(stepmc.Count() != 0)
+                {
+                    foreach (var mc in stepmc)
+                    {
+                        if (mc.PreferredMachine == 1)
+                        {
+                            TimeSpan time = TimeSpan.Parse(mc.FloorToFloorTime);
+                            int minutes = (int)time.TotalMinutes;
+                            TimeSpan Settime = TimeSpan.Parse(mc.SetupTime);
+                            int setminutes = (int)Settime.TotalMinutes;
+                            item.CycleTime = minutes.ToString();
+                            item.SetupTime = setminutes.ToString();
+                        }
+                    }
+                }
+                var stepsubcon =await _routingService.SubCons((int)item.StepId);
+                if(stepsubcon.Count() != 0)
+                {
+                    foreach (var sub in stepsubcon)
+                    {
+                        if (sub.PreferredSubcon == 1)
+                        {
+                            var subworkdetails = await _routingService.SubConWSS((int)item.StepId, sub.SubConDetailsId);
+                            if(subworkdetails.Count() !=0)
+                            {
+                                foreach (var mc in subworkdetails)
+                                {
+                                    TimeSpan time = TimeSpan.Parse(mc.FloorToFloorTime);
+                                    int minutes = (int)time.TotalMinutes;
+                                    TimeSpan Settime = TimeSpan.Parse(mc.SetupTime);
+                                    int setminutes = (int)Settime.TotalMinutes;
+                                    item.CycleTime = minutes.ToString();
+                                    item.SetupTime = setminutes.ToString();
+                                }
+                            }
+                        }
+                    }
+                }
+                if(item.SetupTime == null)
+                {
+                    item.SetupTime = "";
+                    item.CycleTime = "";
+                }
+            }
+            
             return Ok(result);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetMasterName(string ManufId)
+        {
+            int decodedManufPartId = (int)CWBAppUtils.DecodeString(ManufId);
+            var master = await _mastersServices.ItemMasterPartById(decodedManufPartId);
+            return Ok(master);
         }
 
         public async Task<IActionResult> StepParts(int stepId)
@@ -180,10 +267,11 @@ namespace CWB.App.Controllers
         }
 
 
-        public async Task<IActionResult> BOMs(int manufId, int stepId)
+        public async Task<IActionResult> BOMs(string manufId, int stepId)
         {
-            var boms = await _mastersServices.BOMS(""+manufId);
-            var manfsps = await _routingService.StepPartsByManufId(manufId);
+            int decodedManufPartId = (int)CWBAppUtils.DecodeString(manufId);
+            var boms = await _mastersServices.BOMS(""+ decodedManufPartId);
+            var manfsps = await _routingService.StepPartsByManufId(decodedManufPartId);
             var stepparts = await _routingService.StepParts(stepId);
 
             var query = from bom in boms
@@ -480,11 +568,59 @@ namespace CWB.App.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> RoutingPerformance(string manufPartId,int batchSize)
+        {
+            int decodedManufPartId = (int)CWBAppUtils.DecodeString(manufPartId.ToString());
+            var resultList = await _routingService.Routings(decodedManufPartId);
 
+            foreach (var item in resultList)
+            {
+                int inhousecount = 0;
+                int subconcount = 0;
+                var result = await RoutingSteps(item.RoutingId);
+                var oprnos = (List<RoutingStepVM>)((OkObjectResult)result).Value;
+                foreach (var op in oprnos)
+                {
+                    if (op.StepLocation == "1")
+                    {
+                        inhousecount++;
+                    }
+                    else if(op.StepLocation == "2")
+                    {
+                        subconcount++;
+                    }
+                }
+                var totalnoofmc = oprnos.Sum(op => op.NumberOfSimMachines);
+                var totalCycleTime = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime)).Sum(op => int.Parse(op.CycleTime));
+                var avgCycleTime = totalCycleTime / oprnos.Count;
+                var countAboveAvg = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime)).Count(op => int.Parse(op.CycleTime) > avgCycleTime);
+                var totalSetupTime = oprnos.Where(op => !string.IsNullOrEmpty(op.SetupTime)).Sum(op => int.Parse(op.SetupTime));
+                var maxSetupTime = oprnos.Where(op => !string.IsNullOrEmpty(op.SetupTime))
+    .Select(op => int.Parse(op.SetupTime))
+    .DefaultIfEmpty(0)
+    .Max(); 
+                var batchSizeManfTime = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime) && !string.IsNullOrEmpty(op.SetupTime))
+     .Select(op => (batchSize * (int.TryParse(op.CycleTime, out int cycleTime) ? cycleTime : 0)) / totalnoofmc + (int.TryParse(op.SetupTime, out int setupTime) ? setupTime : 0))
+     .Sum();
+                item.MaxSetupTime = maxSetupTime;
+                item.TotalSetupTime = totalSetupTime;
+                item.AvgCycleTime = avgCycleTime;
+                item.OprnGreaterAvgCycleTime = countAboveAvg;
+                item.InhouseNo = inhousecount;
+                item.SubconNo = subconcount;
+            }
+            return Ok(resultList);
+        }
 
-
-        //public const string DeleteSubConDetails = Base + "/deletesubcondetails/{stepId}/{subConDetailsId}";
-        //public const string DeleteSubWSConDetails = Base + "/deletesubconworkstepdetails/{stepId}/{subConWSDetailsId}";
+        [HttpPost]
+        public async Task<IActionResult> ChangeRoutingStepSequence([FromBody]IEnumerable<RoutingStepVM> routingStepVMs)
+        {
+            var result = await _routingService.ChangeRoutingStepSequence(routingStepVMs);
+            return Ok();
+        }
+            //public const string DeleteSubConDetails = Base + "/deletesubcondetails/{stepId}/{subConDetailsId}";
+            //public const string DeleteSubWSConDetails = Base + "/deletesubconworkstepdetails/{stepId}/{subConWSDetailsId}";
 
     }
 }

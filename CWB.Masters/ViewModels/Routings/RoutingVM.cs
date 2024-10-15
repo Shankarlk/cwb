@@ -10,6 +10,7 @@
         public long MKPartId { get; set; }
         public int Deleted { get; set; } = 0;
         public string Status { get; set; } = "Active";
+        public string StatusChangeReason { get; set; }
         public long TenantId { get; set; }
         public string? CreationDate { get; set; }
     }

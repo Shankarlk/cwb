@@ -25,13 +25,16 @@ namespace CWB.ProductionPlanWO.Services
         private readonly IWOStatusRepository _wOStatusrepository;
         private readonly IChildWoRelRepository _childWoRelRepository;
         private readonly IMcTimeListRepository _mcTimeListRepository;
+        private readonly IPODetailsRepository _poDetailsRepository;
+        private readonly IPOHeaderRepository _poHeaderRepository;
+        private readonly IPOStatusRepository _poStatusRepository;
 
         public WOService(
             ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork
             , IWorkOrderRepository workOrderRepository
             , IProcPlanRepository procPlanRepository, IWOSORepository woso, IBOMTempRepository bOMTempRepository, IBOMListRepository bOMListRepository,
             IProductionPlan_WORepository productionPlan_WORepository, IWOStatusRepository wOStatus, IChildWoRelRepository childWoRelRepository
-            , IMcTimeListRepository mcTimeListRepository)
+            , IMcTimeListRepository mcTimeListRepository, IPODetailsRepository pODetailsRepository,IPOHeaderRepository pOHeaderRepository,IPOStatusRepository pOStatusRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -45,6 +48,9 @@ namespace CWB.ProductionPlanWO.Services
             _wOStatusrepository = wOStatus;
             _childWoRelRepository = childWoRelRepository;
             _mcTimeListRepository = mcTimeListRepository;
+            _poDetailsRepository = pODetailsRepository;
+            _poHeaderRepository = pOHeaderRepository;
+            _poStatusRepository = pOStatusRepository;
         }
 
         public string HelloWorld()
@@ -223,15 +229,26 @@ namespace CWB.ProductionPlanWO.Services
                             Exception exa = ex.InnerException;
                             string msg = ex.Message;
                         }
-                        try
+                    }
+                    else
+                    {
+                        var wkord = await _wosoRepository.SingleOrDefaultAsync(x => x.Id == wosorel.Id);
+                        if (wkord == null)
                         {
-                            await _unitOfWork.CommitAsync();
+                            return woso;
                         }
-                        catch (Exception ex)
-                        {
-                            Exception exa = ex.InnerException;
-                            string msg = ex.Message;
-                        }
+                        wkord.Active = wosorel.Active;
+                        wosorel = await _wosoRepository.UpdateAsync(wosorel.Id, wkord);
+                    }
+
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
                     }
                 }
             }
@@ -541,6 +558,92 @@ namespace CWB.ProductionPlanWO.Services
         {
             var allpp = _mcTimeListRepository.GetRangeAsync(d => d.TenantId == tenantId);
             return _mapper.Map<IEnumerable<McTimeListVM>>(allpp);
+        }
+
+
+        public async Task<POStatusVM> GetPOStatus(long Id)
+        {
+            var allpp = await _poStatusRepository.SingleOrDefaultAsync(d => d.Id == Id);
+            if (allpp != null)
+            {
+                return _mapper.Map<POStatusVM>(allpp);
+            }
+            return new POStatusVM { StatusId = -1 };
+        }
+
+        public async Task<List<PODetailsVM>> MultiplePODetails(List<PODetailsVM> pODetailsVM)
+        {
+            foreach (PODetailsVM item in pODetailsVM)
+            {
+                var po = _mapper.Map<PODetails>(item);
+                    if (po.Id == 0)
+                    {
+                        po.PoDate = DateTime.Now;
+                        po.POReference = "PO_" + po.PoDate.ToString("yyyyMMddHHmmssffff");
+                        po.Status = 1;
+                        try
+                        {
+                            await _poDetailsRepository.AddAsync(po);
+                        }
+                        catch (Exception ex)
+                        {
+                            Exception exa = ex.InnerException;
+                            string msg = ex.Message;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                    try
+                    {
+                        await _unitOfWork.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                item.PoDetailsId = po.Id;
+                item.POReference = po.POReference;
+                item.Status = po.Status;
+            }
+            return pODetailsVM;
+        }
+
+        public async Task<List<POHeaderVM>> MultiplePOHeaders(List<POHeaderVM> pOHeaderVMs)
+        {
+            foreach (POHeaderVM item in pOHeaderVMs)
+            {
+                var po = _mapper.Map<POHeader>(item);
+                if (po.Id == 0)
+                {
+                    try
+                    {
+                        await _poHeaderRepository.AddAsync(po);
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception exa = ex.InnerException;
+                        string msg = ex.Message;
+                    }
+                }
+                else
+                {
+
+                }
+                try
+                {
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    Exception exa = ex.InnerException;
+                    string msg = ex.Message;
+                }
+                item.PoDetailsId = po.Id;
+            }
+            return pOHeaderVMs;
         }
     }
 }

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using NLog;
+using System;
 using System.Diagnostics.CodeAnalysis;
 
 namespace CWB.App
@@ -9,7 +11,14 @@ namespace CWB.App
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                LogManager.GetCurrentClassLogger().Error(ex, "CWB APP startup failed");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

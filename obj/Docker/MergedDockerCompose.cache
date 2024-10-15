@@ -4,10 +4,6 @@ services:
     build:
       context: D:\EvolutionSoftware\CWB-Latest\CWB
       dockerfile: CWB.ApiGateway/Dockerfile
-    depends_on:
-      cwb.tenant:
-        condition: service_started
-        required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:80
@@ -67,6 +63,16 @@ services:
         protocol: tcp
     restart: always
     volumes:
+      - type: bind
+        source: D:\EvolutionSoftware\CWB-Latest\CWB\filestorage\Active
+        target: /filestorage/Active
+        bind:
+          create_host_path: true
+      - type: bind
+        source: D:\EvolutionSoftware\CWB-Latest\CWB\filestorage\Archive
+        target: /filestorage/Archive
+        bind:
+          create_host_path: true
       - type: bind
         source: C:\Users\MicroApt\AppData\Roaming/Microsoft/UserSecrets
         target: /root/.microsoft/usersecrets

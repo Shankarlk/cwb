@@ -51,6 +51,7 @@ namespace CWB.App.Models.BusinessProcesses
         public string? PartDesc { get; set; } = string.Empty;
         public string? LeadTimeInDays { get; set; } = string.Empty;
         public int Moq { get; set; }
+        public long SupplierId { get; set; }
         public string Supplier { get; set; } = string.Empty;
         public string UomName { get; set; } = string.Empty;
     }

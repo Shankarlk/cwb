@@ -172,17 +172,17 @@
                             <div class="row">
                                 <label class=" col-md-2 form-label mb-2">1st Shift Start Time</label>
                                 <div class="col-md-2 mb-2">
-                                        <input class="form-control form-control-sm" type="time" name="FirstShiftStartTime" id="FirstShiftStartTime">
+                                        <input class="form-control form-control-sm" type="time" name="FirstShiftStartTime" id="FirstShiftStartTime" required>
                                 </div>
                                 <!-- ----------  -->
                                 <label class=" col-md-2 form-label mb-2">2nd Shift Start Time</label>
                                 <div class="col-md-2 mb-2">
-                                        <input class="form-control form-control-sm" type="time" name="SecondShiftStartTime" id="SecondShiftStartTime">
+                                        <input class="form-control form-control-sm" type="time" name="SecondShiftStartTime" id="SecondShiftStartTime" required>
                                 </div>
                                 <!-- ----------  -->
                                 <label class=" col-md-2 form-label mb-2">3rd Shift Start Time</label>
                                 <div class="col-md-2 mb-2">
-                                        <input class="form-control form-control-sm" type="time" name="ThirdShiftStartTime" id="ThirdShiftStartTime">
+                                        <input class="form-control form-control-sm" type="time" name="ThirdShiftStartTime" id="ThirdShiftStartTime" required>
                                 </div>
                                 <!-- ----------  -->
                             </div>
@@ -191,17 +191,17 @@
                             <div class="row">
                                 <label class=" col-md-2 form-label mb-2">1st Shift Duration</label>
                                 <div class="col-md-2 mb-2">
-                                        <input type="text" class="form-control form-control-sm" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="e.g HH:MM:SS" name="FirstShiftDuration" id="FirstShiftDuration">
+                                        <input type="text" class="form-control form-control-sm" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="e.g HH:MM:SS" name="FirstShiftDuration" id="FirstShiftDuration" required>
                                 </div>
                                 <!-- ----------  -->
                                 <label class=" col-md-2 form-label mb-2">2nd Shift Duration</label>
                                 <div class="col-md-2 mb-2">
-                                        <input type="text" class="form-control form-control-sm" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="e.g HH:MM:SS" name="SecondShiftDuration" id="SecondShiftDuration">
+                                        <input type="text" class="form-control form-control-sm" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="e.g HH:MM:SS" name="SecondShiftDuration" id="SecondShiftDuration" required>
                                 </div>
                                 <!-- ----------  -->
                                 <label class="col-md-2 form-label mb-2">3rd Shift Duration</label>
                                 <div class="col-md-2 mb-2">
-                                        <input class="form-control form-control-sm mb-2" type="text" name="ThirdShiftDuration" id="ThirdShiftDuration" value="calculated field">
+                                        <input class="form-control form-control-sm mb-2" type="text" name="ThirdShiftDuration" id="ThirdShiftDuration" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="e.g HH:MM:SS" required>
                                 </div>
                                 <!-- ----------  -->
                             </div>
@@ -222,12 +222,12 @@
                         <div class="row">
                             <label class=" col-md-2 form-label mb-2">Holiday Name</label>
                             <div class="col-md-3">
-                                <input class="form-control form-control-sm mb-2" type="text" name="Name" id="HName">
+                                <input class="form-control form-control-sm mb-2" type="text" name="Name" id="HName" required>
                             </div>
                             <!-- -------- -->
                             <label class=" col-md-1 form-label mb-2">Date</label>
                             <div class="col-md-3">
-                                <input class="form-control form-control-sm mb-2" type="date" name="HolidayDate" id="HolidayDate">
+                                <input class="form-control form-control-sm mb-2" type="date" name="HolidayDate" id="HolidayDate" required>
                             </div>
                                     <input type="text" id="HolidayPlantId" name="PlantId" value="0" hidden />
                                     <input type="text" id="HolidayId" name="HolidayId" value="0" hidden/>

@@ -151,6 +151,18 @@ namespace CWB.Masters.Controllers
             var result = await _manufacturedPartNoDetailService.MPMakeFrom(manufacturedPartNoDetailVM);
             return Ok(result);
         }
+        [HttpPost]
+        [Route(ApiRoutes.ManufacturedPartNoDetail.PreferredMPMakeFrom)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(MPMakeFromVM))]
+        public async Task<IActionResult> PreferredMPMakeFrom([FromBody] MPMakeFromVM manufacturedPartNoDetailVM)
+        {
+            /** var validator = new ManufacturedPartNoDetailVMValidator();
+             var validationResult = await validator.ValidateAsync(manufacturedPartNoDetailVM);
+             if (!validationResult.IsValid)
+                 return BadRequest(validationResult.Errors);*/
+            var result = await _manufacturedPartNoDetailService.PreferredInputMatl(manufacturedPartNoDetailVM);
+            return Ok(result);
+        }
         /// <summary>
         /// Get All Companies by tenant
         /// </summary>

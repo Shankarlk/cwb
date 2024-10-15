@@ -16,5 +16,8 @@
         public int NumberOfSimMachines { get; set; }
 
         public int TenantId {  get; set; }
+        public string LocationName { get; set; }
+        public string CycleTime { get; set; }
+        public string SetupTime { get; set; }
     }
 }

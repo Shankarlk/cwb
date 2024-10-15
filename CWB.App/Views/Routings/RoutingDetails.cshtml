@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-9">
                             <div class="table-responsive">
-                                <table class="table table-sm text-center vam">
+                                <table class="table table-sm text-center vam" id="headingPartsDetails">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -126,17 +126,21 @@
     </div>
 </div>
 <partial name="../Shared/_AltRoute" />
+<partial name="../Shared/_NewRoute" />
 <partial name="../Shared/_DeleteRoute" />
 <partial name="../Shared/_DeleteStep" />
 <partial name="../Shared/_EditRoutingName" />
 <partial name="../Shared/_PreferredRouting" />
+<partial name="../Shared/_ChangeMakeFrom" />
+<partial name="../Shared/_ChangeStatus" />
+
 @section scripts {
     <script src="~/js/ItemMaster/supplier.js"></script>
     <script src="~/js/routing/Routing-Model.js"></script>
     <script>
-        RoutingDetails = @Html.Raw(Json.Serialize(Model));
+        @*RoutingDetails = @Html.Raw(Json.Serialize(Model));
         console.log("***********");
         console.log(RoutingDetails);
-        console.log("***********");
+        console.log("***********");*@
     </script>
 }

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using NLog;
+using System;
 
 namespace CWB.ApiGateway
 {
@@ -8,7 +10,14 @@ namespace CWB.ApiGateway
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                LogManager.GetCurrentClassLogger().Error(ex, " ApiGateway startup failed");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

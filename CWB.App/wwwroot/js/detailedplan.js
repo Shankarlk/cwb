@@ -9,24 +9,138 @@ function loadWO() {
             //data[i].strStatus = WoOrdStatus[data[i].status];
             $(tablebody).append(AppUtil.ProcessTemplateData("detailedPlanWoRow", data[i]));
         }
+        const customerChildParts = data.filter((workOrder) => workOrder.partType === 1);
+        const count = customerChildParts.length;
+        $('#noOfChildPart').text(count);
+        const workOrdersWithStatus1 = data.filter((workOrder) => workOrder.status === 1);
+        const totalcount = workOrdersWithStatus1.length;
+        $('#noOfWo').text(totalcount);
     }).catch((error) => {
     });
 }
 
 function landingPage() {
-    api.getbulk("/WorkOrder/AllWorkOrders").then((data) => {
-        const workOrdersWithStatus1 = data.filter((workOrder) => workOrder.status === 1);
-        const count = workOrdersWithStatus1.length;
-        $('#noOfWo').text(count);
+    //api.getbulk("/WorkOrder/AllWorkOrders").then((data) => {
+    //    const workOrdersWithStatus1 = data.filter((workOrder) => workOrder.status === 1);
+    //    const count = workOrdersWithStatus1.length;
+    //    $('#noOfWo').text(count);
+    //}).catch((error) => {
+    //});
+    //api.getbulk("/WorkOrder/AllProductionWo").then((data) => {
+    //    const customerChildParts = data.filter((workOrder) => workOrder.partType === 1);
+    //    const count = customerChildParts.length;
+    //    $('#noOfChildPart').text(count);
+    //}).catch((error) => {
+    //});
+    //api.getbulk("/WorkOrder/GetAllBomlist").then((data) => {
+    //    const count = data.length;
+    //    $('#noOfAssyBomExploded').text(count);
+    //    const manfParts = data.map((bom) => bom.child_Part_No_Type == "ManufacturedPart");
+    //    const bofparts = data.map((bom) => bom.child_Part_No_Type == "BOF");
+
+    //    // Get the unique manufacturer parts
+    //    const uniqueManfParts = [...new Set(manfParts)];
+    //    const uniqueBofParts = [...new Set(bofparts)];
+
+    //    // Get the common manufacturer parts (i.e., parts that appear more than once)
+    //    const commonManfParts = manfParts.filter((part, index, array) => array.indexOf(part) !== index);
+    //    const CommonBofParts = bofparts.filter((part, index, array) => array.indexOf(part) !== index);
+
+    //    // Get the count of common manufacturer parts
+    //    const commonManfPartsCount = commonManfParts.length;
+    //    const commonBofPartsCount = CommonBofParts.length;
+
+    //    // Get the count of unique manufacturer parts
+    //    const uniqueManfPartsCount = uniqueManfParts.length;
+    //    const uniqueBofCount = uniqueBofParts.length;
+
+    //    // Update the UI
+    //    $('#noOfCommonManfParts').text(commonManfPartsCount);
+    //    $('#totalNoOfUniqueManfParts').text(uniqueManfPartsCount);
+    //    $('#noOfCommonBOFParts').text(commonBofPartsCount);
+    //    $('#totalNoOfUniqueBOFParts').text(uniqueBofCount);
+    //}).catch((error) => {
+    //});
+    //api.getbulk("/WorkOrder/GetAllProcPlan").then((data) => {
+    //    const count = data.map((raw) => raw.partType == "RawMaterial");
+    //    $('#noOfRMPart').text(count.length);
+    //    const rmparts = data.filter((raw) => raw.partType === "RawMaterial").map((raw) => raw.partNo);
+    //    const uniqueRMParts = [...new Set(rmparts)];
+
+    //    const commonRMParts = rmparts.filter((part, index, array) => array.indexOf(part) !== index);
+    //    const commonRMPartsCount = commonRMParts.length;
+    //    const uniqueRMPartsCount = uniqueRMParts.length;
+
+    //    // Get the count of unique manufacturer parts
+    //    //const uniqueRMPartsCount = uniqueRMParts.length;
+    //    $('#noOfCommonRMPart').text(commonRMPartsCount);
+    //    $('#totalNoOfUniqueRMPart').text(uniqueRMPartsCount);
+
+    //}).catch((error) => {
+    //});
+}
+
+function getWorkOrderStatus(productionWoData, workOrderId) {
+    for (var i = 0; i < productionWoData.length; i++) {
+        if (productionWoData[i].woId === workOrderId) {
+            return productionWoData[i].status;
+        }
+    }
+    return null;
+}
+
+function loadProcPlan() {
+    api.getbulk("/WorkOrder/GetAllProcPlan").then((data) => {
+        var tablebody = $("#ProcPlanGrid tbody");
+        $(tablebody).html("");//empty tbody
+        api.getbulk("/WorkOrder/AllProductionWo").then((productionWoData) => {
+            var tablebody = $("#ProcPlanGrid tbody");
+            $(tablebody).html("");//empty tbody
+            for (i = 0; i < data.length; i++) {
+                var rowData = data[i];
+                var workOrderStatus = getWorkOrderStatus(productionWoData, rowData.workOrderId);
+                if (workOrderStatus !== 3 && workOrderStatus !== 4) {
+                    rowData.checkboxDisabled = true;
+                } else {
+                    rowData.checkboxDisabled = false;
+                }
+               // $(tablebody).append(AppUtil.ProcessTemplateData("ProcPlanRow", rowData));
+                var rowHtml = AppUtil.ProcessTemplateData("ProcPlanRow", rowData);
+                $(tablebody).append(rowHtml);
+
+                // Apply the disabled attribute based on checkboxDisabled
+                //if (rowData.checkboxDisabled) {
+                //    $(tablebody).find('tr').last().find('input[type="checkbox"]').prop('disabled', true);
+                //} else {
+                //    $(tablebody).find('tr').last().find('input[type="checkbox"]').prop('disabled', false);
+                //}
+            }
+            const count = data.map((raw) => raw.partType == "RawMaterial");
+            $('#noOfRMPart').text(count.length);
+            const rmparts = data.filter((raw) => raw.partType === "RawMaterial").map((raw) => raw.partNo);
+            const uniqueRMParts = [...new Set(rmparts)];
+
+            const commonRMParts = rmparts.filter((part, index, array) => array.indexOf(part) !== index);
+            const commonRMPartsCount = commonRMParts.length;
+            const uniqueRMPartsCount = uniqueRMParts.length;
+
+            // Get the count of unique manufacturer parts
+            //const uniqueRMPartsCount = uniqueRMParts.length;
+            $('#noOfCommonRMPart').text(commonRMPartsCount);
+            $('#totalNoOfUniqueRMPart').text(uniqueRMPartsCount);
+        }).catch((error) => { });
     }).catch((error) => {
     });
-    api.getbulk("/WorkOrder/AllProductionWo").then((data) => {
-        const customerChildParts = data.filter((workOrder) => workOrder.partType === 1);
-        const count = customerChildParts.length;
-        $('#noOfChildPart').text(count);
-    }).catch((error) => {
-    });
+}
+
+function loadBomList() {
     api.getbulk("/WorkOrder/GetAllBomlist").then((data) => {
+        var tablebody = $("#BomListGrid tbody");
+        $(tablebody).html("");//empty tbody
+        //console.log(data);
+        for (i = 0; i < data.length; i++) {
+            $(tablebody).append(AppUtil.ProcessTemplateData("BomListRow", data[i]));
+        }
         const count = data.length;
         $('#noOfAssyBomExploded').text(count);
         const manfParts = data.map((bom) => bom.child_Part_No_Type == "ManufacturedPart");
@@ -53,47 +167,6 @@ function landingPage() {
         $('#totalNoOfUniqueManfParts').text(uniqueManfPartsCount);
         $('#noOfCommonBOFParts').text(commonBofPartsCount);
         $('#totalNoOfUniqueBOFParts').text(uniqueBofCount);
-    }).catch((error) => {
-    });
-    api.getbulk("/WorkOrder/GetAllProcPlan").then((data) => {
-        const count = data.map((raw) => raw.partType == "RawMaterial");
-        $('#noOfRMPart').text(count.length);
-        const rmparts = data.filter((raw) => raw.partType === "RawMaterial").map((raw) => raw.partNo);
-        const uniqueRMParts = [...new Set(rmparts)];
-
-        const commonRMParts = rmparts.filter((part, index, array) => array.indexOf(part) !== index);
-        const commonRMPartsCount = commonRMParts.length;
-        const uniqueRMPartsCount = uniqueRMParts.length;
-
-        // Get the count of unique manufacturer parts
-        //const uniqueRMPartsCount = uniqueRMParts.length;
-        $('#noOfCommonRMPart').text(commonRMPartsCount);
-        $('#totalNoOfUniqueRMPart').text(uniqueRMPartsCount);
-
-    }).catch((error) => {
-    });
-}
-
-function loadProcPlan() {
-    api.getbulk("/WorkOrder/GetAllProcPlan").then((data) => {
-        var tablebody = $("#ProcPlanGrid tbody");
-        $(tablebody).html("");//empty tbody
-        //console.log(data);
-        for (i = 0; i < data.length; i++) {
-            $(tablebody).append(AppUtil.ProcessTemplateData("ProcPlanRow", data[i]));
-        }
-    }).catch((error) => {
-    });
-}
-
-function loadBomList() {
-    api.getbulk("/WorkOrder/GetAllBomlist").then((data) => {
-        var tablebody = $("#BomListGrid tbody");
-        $(tablebody).html("");//empty tbody
-        //console.log(data);
-        for (i = 0; i < data.length; i++) {
-            $(tablebody).append(AppUtil.ProcessTemplateData("BomListRow", data[i]));
-        }
     }).catch((error) => {
     });
 }
@@ -153,13 +226,71 @@ function p2reloadWO(reloadOption, partid) {
     }).catch((error) => {
     });
 }
-
-$(document).ready(function () {
+$(window).on('load', function () {
     loadWO();
     loadProcPlan();
     loadBomList();
-    landingPage();
     loadMcTimeListDetail();
+});
+
+$(document).ready(function () {
+    //loadWO();
+    //loadProcPlan();
+    //loadBomList();
+    //landingPage();
+    //loadMcTimeListDetail();
+
+    $('#select-all-checkbox-in-wo').change(function () {
+        if ($(this).is(":checked")) {
+            $('#detailedPlanWo tbody').find('input[type="checkbox"]').prop('checked', true);
+            $('#ReleaseWo').prop('disabled', false);
+        } else {
+            $('#detailedPlanWo tbody').find('input[type="checkbox"]').prop('checked', false);
+            $('#ReleaseWo').prop('disabled', true);
+        }
+    });
+    function handleCheckboxChange() {
+        var checkboxes = $("#detailedPlanWo tbody input[type='checkbox']:checked");
+
+        if (checkboxes.length === 0) {
+            $('#ReleaseWo').prop('disabled', true);
+        } else {
+            $('#ReleaseWo').prop('disabled', false);
+        }
+    }
+    $('#detailedPlanWo tbody').on('change', 'input[type="checkbox"]', handleCheckboxChange);
+    handleCheckboxChange();
+
+
+    $('#select-all-checkbox-in-procplan').change(function () {
+        if ($(this).is(":checked")) {
+            $('#ProcPlanGrid tbody').find('input[type="checkbox"]').each(function () {
+                if (!$(this).prop('disabled')) {
+                    $(this).prop('checked', true);
+                }
+            });
+            $('#ReleasePo').prop('disabled', false);
+            $('#UpdateMOQ').prop('disabled', false);
+        } else {
+            $('#ProcPlanGrid tbody').find('input[type="checkbox"]').prop('checked', false);
+            $('#ReleasePo').prop('disabled', true);
+            $('#UpdateMOQ').prop('disabled', true);
+        }
+    });
+
+    function handleCheckboxChangePP() {
+        var checkboxes = $("#ProcPlanGrid tbody input[type='checkbox']:checked");
+
+        if (checkboxes.length === 0) {
+            $('#ReleasePo').prop('disabled', true);
+            $('#UpdateMOQ').prop('disabled', true);
+        } else {
+            $('#ReleasePo').prop('disabled', false);
+            $('#UpdateMOQ').prop('disabled', false);
+        }
+    }
+    $('#ProcPlanGrid tbody').on('change', 'input[type="checkbox"]', handleCheckboxChangePP);
+    handleCheckboxChangePP();
 
     $('#popup1').on('shown.bs.modal', function (event) {
         var soqty = $('#SoQty').val();
@@ -1368,7 +1499,7 @@ $(document).ready(function () {
         });
 
         selectedRowsData = Object.values(temprowdata);
-        if (selectedRowsData.length > 1) {
+        if (selectedRowsData.length > 0) {
         $.ajax({
             type: "POST",
             url: '/WorkOrder/PostProcPlan',
@@ -1385,8 +1516,107 @@ $(document).ready(function () {
         }
     });
 
+    $("#ReleaseWo").on("click", function () {
+       
+        //var checkboxes = $("#detailedPlanWo tbody input[type='checkbox']:checked"); // Select only checked checkboxes
+        //var selectedRowsData = {};
+        //var partIdMap = {};
+        //var SalesorderId = [];
+        //var WoSoRel = [];
+        //var WoSOMethod = {};
 
+        //checkboxes.each(function (index, checkbox) {
+        //    var row = checkbox.parentNode.parentNode;
+        //    var rowData = {
+        //        productionPlanId: parseInt($(row).find("td:eq(15)").text()),
+        //        salesOrderId: parseInt($(row).find("td:eq(2)").text()),
+        //        wonumber: "",
+        //        partId: parseInt($(row).find("td:eq(3)").text()),
+        //        partType: 0,
+        //        partlevel: ' ',
+        //        calcWOQty: parseInt($(row).find("td:eq(7)").text()),
+        //        planCompletionDate: $(row).find("td:eq(16)").text(),
+        //        status: 3,
+        //        reloadOption:""
+        //    };
+        //    var balanceSoQty = parseInt($(row).find("td:eq(9)").text())
+        //    if (balanceSoQty > 0) {
+        //        rowData.calcWOQty = balanceSoQty;
+        //    }
+        //    // Group by PartId
+        //    if (partIdMap[rowData.partId]) {
+        //        partIdMap[rowData.partId].calcWOQty += rowData.calcWOQty;
+        //        SalesorderId.push([rowData.partId, rowData.salesOrderId]);
+        //        let currentDate = new Date(rowData.planCompletionDate);
+        //        let storedDate = new Date(partIdMap[rowData.partId].planCompletionDate);
+        //        if (currentDate < storedDate) {
+        //            partIdMap[rowData.partId].planCompletionDate = rowData.planCompletionDate;
+        //            partIdMap[rowData.partId].salesOrderId = rowData.salesOrderId;
+        //        }
+        //    } else {
+        //        partIdMap[rowData.partId] = rowData;
+        //        SalesorderId.push([rowData.partId, rowData.salesOrderId]);
+        //    }
+        //});
 
+        //selectedRowsData = Object.values(partIdMap);
+       
+        //    $.ajax({
+        //        type: "POST",
+        //        url: '/WorkOrder/MultipleProductionUpdateWOPost',
+        //        contentType: "application/json; charset=utf-8",
+        //        headers: { 'Content-Type': 'application/json' },
+        //        data: JSON.stringify(selectedRowsData),
+        //        dataType: "json",
+        //        success: function (result) {
+        //            //alert(result);
+                   
+        //            console.log(result);
+                   
+        //            window.locationre = result.url;
+        //            loadWO();
+        //            loadProcPlan();
+        //        }
+        //    });
+        //}
+    });
+
+    $("#ReleasePo").on("click", function () {
+        //var selectedRowsData = {};
+        //var temprowdata = {};
+        //var checkboxes = $("#ProcPlanGrid tbody input[type='checkbox']:checked");
+        //checkboxes.each(function (index, checkbox) {
+        //    var row = checkbox.parentNode.parentNode;
+        //    var rowData = {
+        //        procPlanId: parseInt($(row).find("td:eq(1)").text()),
+        //        partId: parseInt($(row).find("td:eq(3)").text()),
+        //        poQnty: parseInt($(row).find("td:eq(8)").text()),
+        //        planPoReceiptDate: $(row).find("td:eq(16)").text(),
+        //        companyId: parseInt($(row).find("td:eq(17)").text()),
+        //    };
+        //    //if (rowData.plan_Proc_Qnty < rowData.moq) {
+        //    //    rowData.plan_Proc_Qnty = rowData.moq;
+        //    //}
+        //    temprowdata[rowData.partId] = rowData;
+        //});
+
+        //selectedRowsData = Object.values(temprowdata);
+        //if (selectedRowsData.length > 0) {
+        //    $.ajax({
+        //        type: "POST",
+        //        url: '/WorkOrder/MulitplePOdetails',
+        //        contentType: "application/json; charset=utf-8",
+        //        headers: { 'Content-Type': 'application/json' },
+        //        data: JSON.stringify(selectedRowsData),
+        //        dataType: "json",
+        //        success: function (result) {
+        //            loadProcPlan();
+        //        }
+        //    });
+        //} else {
+        //    alert("Please select at least one material");
+        //}
+    });
 
 
 
@@ -1396,6 +1626,18 @@ $(document).ready(function () {
         $("#detailedPlanWo tbody tr").filter(function () {
             $(this).toggle($(this.children[6]).text().toLowerCase().indexOf(value) > -1)
         });
+    });
+
+    $('#checkparentlevel').on('click', function () {
+        if ($(this).is(':checked')) {
+            // Show only rows where data-parentlevel="Y"
+            $("#detailedPlanWo tbody tr").filter(function () {
+                $(this).toggle($(this.children[17]).text().toLowerCase().indexOf(Y) > -1);
+            });
+        } else {
+            // Show all rows when the checkbox is unchecked
+            $("#detailedPlanWo tbody tr").show();
+        }
     });
 
     $("#searchWoPartDesc").on("keyup", function () {

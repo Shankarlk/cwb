@@ -14,6 +14,7 @@ namespace CWB.App.Models.ItemMaster
         public string Price { get; set; }
         public string ShareOfBusiness { get; set; }
         public string PAdditionalInfo { get; set; }
+        public int PreferredSupplier { get; set; }
         //....
         public int BOFId { get; set; }
         //OR

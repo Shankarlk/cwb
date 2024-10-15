@@ -8,6 +8,8 @@ using CWB.Masters.ViewModels.Machines;
 using CWB.Masters.ViewModels.OperationList;
 using CWB.Masters.ViewModels.Routings;
 using CWB.Masters.Domain.Routings;
+using CWB.Masters.ViewModels.DocumentManagement;
+using CWB.Masters.Domain.DocumentManagement;
 
 namespace CWB.Masters.MastersUtils
 {
@@ -152,6 +154,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                 .ForMember(s => s.LeadTimeManf, s => s.MapFrom(src => src.LeadTimeManf))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.FinalPartNosoldtoCustomer, s => s.MapFrom(src => src.FinalPartNosoldtoCustomer))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
             /**.ForMember(s => s.PartDescription, s => s.MapFrom(src => src.PartDescription))
             .ForMember(s => s.RevNo, s => s.MapFrom(src => src.RevNo))
@@ -168,6 +171,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                 .ForMember(s => s.LeadTimeManf, s => s.MapFrom(src => src.LeadTimeManf))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
+                .ForMember(s => s.FinalPartNosoldtoCustomer, s => s.MapFrom(src => src.FinalPartNosoldtoCustomer))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
             /** .ForMember(s => s.PartDescription, s => s.MapFrom(src => src.PartDescription))
@@ -179,10 +183,12 @@ namespace CWB.Masters.MastersUtils
 
             CreateMap<RawMaterialTypeVM, Domain.ItemMaster.RawMaterialType>()
                 .ForMember(s => s.Id, s => s.MapFrom(src => src.RawMaterialTypeId))
+                .ForMember(s => s.MultiplePartsMadeFrom1InputRM, s => s.MapFrom(src => src.MultiplePartsMadeFrom1InputRM))
                 .ForMember(s => s.Name, s => s.MapFrom(src => src.Name));
 
             CreateMap<Domain.ItemMaster.RawMaterialType, RawMaterialTypeVM>()
                 .ForMember(s => s.RawMaterialTypeId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.MultiplePartsMadeFrom1InputRM, s => s.MapFrom(src => src.MultiplePartsMadeFrom1InputRM))
                 .ForMember(s => s.Name, s => s.MapFrom(src => src.Name));
 
 
@@ -224,6 +230,7 @@ namespace CWB.Masters.MastersUtils
             .ForMember(s => s.BOFId, s => s.MapFrom(src => src.BOFId))
             .ForMember(s => s.RMId, s => s.MapFrom(src => src.RMId))
             .ForMember(s => s.PartId, s => s.MapFrom(src => src.PPartId))
+            .ForMember(s => s.PreferredSupplier, s => s.MapFrom(src => src.PreferredSupplier))
             .ForMember(s => s.MasterPartType, s => s.MapFrom(src => src.PMasterPartType));
 
             CreateMap<Domain.ItemMaster.PartPurchaseDetails, PartPurchaseDetailsVM>()
@@ -238,6 +245,7 @@ namespace CWB.Masters.MastersUtils
             .ForMember(s => s.PAdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo))
             .ForMember(s => s.BOFId, s => s.MapFrom(src => src.BOFId))
             .ForMember(s => s.RMId, s => s.MapFrom(src => src.RMId))
+            .ForMember(s => s.PreferredSupplier, s => s.MapFrom(src => src.PreferredSupplier))
             .ForMember(s => s.PPartId, s => s.MapFrom(src => src.PartId))
             .ForMember(s => s.PMasterPartType, s => s.MapFrom(src => src.MasterPartType));
 
@@ -256,6 +264,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Standard, s => s.MapFrom(src => src.Standard))
                 .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                 .ForMember(s => s.MaterialSpecId, s => s.MapFrom(src => src.MaterialSpecId))
+                .ForMember(s => s.TimetoDeliverReorderQnty, s => s.MapFrom(src => src.TimetoDeliverReorderQnty))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
@@ -276,6 +285,7 @@ namespace CWB.Masters.MastersUtils
                .ForMember(s => s.RawMaterialNotes, s => s.MapFrom(src => src.RawMaterialNotes))
                .ForMember(s => s.Standard, s => s.MapFrom(src => src.Standard))
                .ForMember(s => s.MaterialSpecId, s => s.MapFrom(src => src.MaterialSpecId))
+                .ForMember(s => s.TimetoDeliverReorderQnty, s => s.MapFrom(src => src.TimetoDeliverReorderQnty))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
@@ -287,6 +297,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                 .ForMember(s => s.SupplierPartNo, s => s.MapFrom(src => src.SupplierPartNo))
                 .ForMember(s => s.AdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo))
+                .ForMember(s => s.TimetoDeliverReorderQnty, s => s.MapFrom(src => src.TimetoDeliverReorderQnty))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
@@ -297,6 +308,7 @@ namespace CWB.Masters.MastersUtils
                .ForMember(s => s.UOMId, s => s.MapFrom(src => src.UOMId))
                .ForMember(s => s.SupplierPartNo, s => s.MapFrom(src => src.SupplierPartNo))
                .ForMember(s => s.AdditionalInfo, s => s.MapFrom(src => src.AdditionalInfo))
+                .ForMember(s => s.TimetoDeliverReorderQnty, s => s.MapFrom(src => src.TimetoDeliverReorderQnty))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
@@ -382,6 +394,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.RoutingName, s => s.MapFrom(src => src.RoutingName))
                 .ForMember(s => s.CreationDate, s => s.MapFrom(src => src.CreationDate))
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
+                .ForMember(s => s.StatusChangeReason, s => s.MapFrom(src => src.StatusChangeReason))
                 .ForMember(s => s.ManufacturedPartId, s => s.MapFrom(src => src.ManufacturedPartId))
                 .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
 
@@ -394,6 +407,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.RoutingName, s => s.MapFrom(src => src.RoutingName))
                  .ForMember(s => s.CreationDate, s => s.MapFrom(src => src.CreationDate))
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
+                .ForMember(s => s.StatusChangeReason, s => s.MapFrom(src => src.StatusChangeReason))
                 .ForMember(s => s.ManufacturedPartId, s => s.MapFrom(src => src.ManufacturedPartId))
                 .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
 
@@ -523,8 +537,189 @@ namespace CWB.Masters.MastersUtils
             .ForMember(s => s.FloorToFloorTime, s => s.MapFrom(src => src.FloorToFloorTime))
             .ForMember(s => s.NoOfPartsPerLoading, s => s.MapFrom(src => src.NoOfPartsPerLoading));
 
-            
+            CreateMap<DocumentType, DocumentTypeVM>()
+            .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.Id))
+            .ForMember(s => s.DocumentName, s => s.MapFrom(src => src.DocumentName))
+            .ForMember(s => s.ExtnId, s => s.MapFrom(src => src.ExtnId))
+            .ForMember(s => s.AllowDelete, s => s.MapFrom(src => src.AllowDelete))
+            .ForMember(s => s.DocuCategory, s => s.MapFrom(src => src.DocuCategory))
+            .ForMember(s => s.DataReqdByCust, s => s.MapFrom(src => src.DataReqdByCust))
+            .ForMember(s => s.DefaultRetPerMon, s => s.MapFrom(src => src.DefaultRetPerMon))
+            .ForMember(s => s.DefaultRetPerYear, s => s.MapFrom(src => src.DefaultRetPerYear))
+            .ForMember(s => s.DefaultRetPerYear, s => s.MapFrom(src => src.DefaultRetPerYear))
+            .ForMember(s => s.RetentionDays, s => s.MapFrom(src => src.RetentionDays));
 
+            CreateMap<DocumentTypeVM, DocumentType>()
+                        .ForMember(s => s.Id, s => s.MapFrom(src => src.DocumentTypeId))
+                        .ForMember(s => s.DocumentName, s => s.MapFrom(src => src.DocumentName))
+                        .ForMember(s => s.ExtnId, s => s.MapFrom(src => src.ExtnId))
+                        .ForMember(s => s.AllowDelete, s => s.MapFrom(src => src.AllowDelete))
+                        .ForMember(s => s.DocuCategory, s => s.MapFrom(src => src.DocuCategory))
+                        .ForMember(s => s.DataReqdByCust, s => s.MapFrom(src => src.DataReqdByCust))
+                        .ForMember(s => s.DefaultRetPerMon, s => s.MapFrom(src => src.DefaultRetPerMon))
+                        .ForMember(s => s.DefaultRetPerYear, s => s.MapFrom(src => src.DefaultRetPerYear))
+                        .ForMember(s => s.DefaultRetPerYear, s => s.MapFrom(src => src.DefaultRetPerYear))
+                        .ForMember(s => s.RetentionDays, s => s.MapFrom(src => src.RetentionDays));
+
+
+            CreateMap<CustRetnData, CustRetnDataVM>()
+            .ForMember(s => s.CustRetnDataId, s => s.MapFrom(src => src.Id))
+            .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+            .ForMember(s => s.ComapanyId, s => s.MapFrom(src => src.ComapanyId))
+            .ForMember(s => s.RetPerMon, s => s.MapFrom(src => src.RetPerMon))
+            .ForMember(s => s.RetPerYear, s => s.MapFrom(src => src.RetPerYear))
+            .ForMember(s => s.RetentionDays, s => s.MapFrom(src => src.RetentionDays));
+
+            CreateMap<CustRetnDataVM, CustRetnData>()
+           .ForMember(s => s.Id, s => s.MapFrom(src => src.CustRetnDataId))
+           .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+           .ForMember(s => s.ComapanyId, s => s.MapFrom(src => src.ComapanyId))
+           .ForMember(s => s.RetPerMon, s => s.MapFrom(src => src.RetPerMon))
+           .ForMember(s => s.RetPerYear, s => s.MapFrom(src => src.RetPerYear))
+           .ForMember(s => s.RetentionDays, s => s.MapFrom(src => src.RetentionDays));
+
+            CreateMap<ExtnInfo, ExtnInfoVM>()
+                .ForMember(s => s.ExtnId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.ExtnName, s => s.MapFrom(src => src.ExtnName));
+
+            CreateMap<ExtnInfoVM, ExtnInfo>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.ExtnId))
+                .ForMember(s => s.ExtnName, s => s.MapFrom(src => src.ExtnName));
+
+            CreateMap<DocUpload, DocUploadVM>()
+                .ForMember(s => s.DocUploadId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.DepartmentId, s => s.MapFrom(src => src.DepartmentId));
+
+            CreateMap<DocUploadVM, DocUpload>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.DocUploadId))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.DepartmentId, s => s.MapFrom(src => src.DepartmentId));
+
+            CreateMap<DocView, DocViewVM>()
+                .ForMember(s => s.DocViewId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.DepartmentId, s => s.MapFrom(src => src.DepartmentId));
+
+            CreateMap<DocViewVM, DocView>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.DocViewId))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.DepartmentId, s => s.MapFrom(src => src.DepartmentId));
+
+
+            CreateMap<DocCategory, DocCategoryVM>()
+                .ForMember(s => s.DocCategoryId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.DocCategoryDesc, s => s.MapFrom(src => src.DocCategoryDesc));
+
+            CreateMap<DocCategoryVM, DocCategory>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.DocCategoryId))
+                .ForMember(s => s.DocCategoryDesc, s => s.MapFrom(src => src.DocCategoryDesc));
+
+            CreateMap<DocList, DocListVM>()
+            .ForMember(s => s.DocListId, s => s.MapFrom(src => src.Id))
+            .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+            .ForMember(s => s.FileName, s => s.MapFrom(src => src.FileName))
+            .ForMember(s => s.StorageLocation, s => s.MapFrom(src => src.StorageLocation))
+            .ForMember(s => s.UploadUiId, s => s.MapFrom(src => src.UploadUiId))
+            .ForMember(s => s.WoId, s => s.MapFrom(src => src.WoId))
+            .ForMember(s => s.SoId, s => s.MapFrom(src => src.SoId))
+            .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
+            .ForMember(s => s.RoutingId, s => s.MapFrom(src => src.RoutingId))
+            .ForMember(s => s.OprNo, s => s.MapFrom(src => src.OprNo))
+            .ForMember(s => s.DeletionDate, s => s.MapFrom(src => src.DeletionDate))
+            .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
+
+
+            CreateMap<DocListVM, DocList>()
+            .ForMember(s => s.Id, s => s.MapFrom(src => src.DocListId))
+            .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+            .ForMember(s => s.FileName, s => s.MapFrom(src => src.FileName))
+            .ForMember(s => s.StorageLocation, s => s.MapFrom(src => src.StorageLocation))
+            .ForMember(s => s.UploadUiId, s => s.MapFrom(src => src.UploadUiId))
+            .ForMember(s => s.WoId, s => s.MapFrom(src => src.WoId))
+            .ForMember(s => s.SoId, s => s.MapFrom(src => src.SoId))
+            .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
+            .ForMember(s => s.RoutingId, s => s.MapFrom(src => src.RoutingId))
+            .ForMember(s => s.OprNo, s => s.MapFrom(src => src.OprNo))
+            .ForMember(s => s.DeletionDate, s => s.MapFrom(src => src.DeletionDate))
+            .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
+
+
+            CreateMap<UiList, UiListVM>()
+                .ForMember(s => s.UiListId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.UiName, s => s.MapFrom(src => src.UiName));
+
+            CreateMap<UiListVM, UiList>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.UiListId))
+                .ForMember(s => s.UiName, s => s.MapFrom(src => src.UiName));
+
+
+            CreateMap<DocStatus, DocStatusVM>()
+                .ForMember(s => s.DocStatusId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
+
+            CreateMap<DocStatusVM, DocStatus>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.DocStatusId))
+                .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
+
+
+
+            CreateMap<ItemMasterDocList, ItemMasterDocListVM>()
+            .ForMember(s => s.ItemMasterDocListId, s => s.MapFrom(src => src.Id))
+            .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+            .ForMember(s => s.ContentId, s => s.MapFrom(src => src.ContentId))
+            .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
+            .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
+            .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
+
+            CreateMap<ItemMasterDocListVM, ItemMasterDocList>()
+            .ForMember(s => s.Id, s => s.MapFrom(src => src.ItemMasterDocListId))
+            .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+            .ForMember(s => s.ContentId, s => s.MapFrom(src => src.ContentId))
+            .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
+            .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
+            .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
+
+
+            CreateMap<ItemMasterContent, ItemMasterContentVM>()
+                .ForMember(s => s.ItemMasterContentId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.ContentDesc, s => s.MapFrom(src => src.ContentDesc));
+
+            CreateMap<ItemMasterContentVM, ItemMasterContent>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.ItemMasterContentId))
+                .ForMember(s => s.ContentDesc, s => s.MapFrom(src => src.ContentDesc));
+
+            CreateMap<McTypeDocList, McTypeDocListVM>()
+                .ForMember(s => s.McTypeDocListId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.McTypeId, s => s.MapFrom(src => src.McTypeId))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
+                .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
+                .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
+
+            CreateMap<McTypeDocListVM, McTypeDocList>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.McTypeDocListId))
+                .ForMember(s => s.McTypeId, s => s.MapFrom(src => src.McTypeId))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
+                .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
+                .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
+
+            CreateMap<McSlNoDocList, McSlNoDocListVM>()
+                .ForMember(s => s.McSlNoDocListId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.McId, s => s.MapFrom(src => src.McId))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
+                .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
+                .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
+
+            CreateMap<McSlNoDocListVM, McSlNoDocList>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.McSlNoDocListId))
+                .ForMember(s => s.McId, s => s.MapFrom(src => src.McId))
+                .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+                .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
+                .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
+                .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
         }
     }
 }

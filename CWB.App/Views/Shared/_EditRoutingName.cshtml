@@ -2,20 +2,28 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content bxs-modal">
             <div class="modal-header">
-                <h4 class="modal-title" id="mySmallModalLabel">Edit Routing Name</h4>
+                <h4 class="modal-title" id="mySmallModalLabel">
+                    Rename Routing
+                </h4>
                 <button id="BtnEdRoutingNameClose" type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" id="FormEdRoutingName" onsubmit="return false;">
                     <div class="row">
-                        <label class="form-label col-md-5 mb-2">Routing name <span class="text-danger" id="RoutingToEdit"></span></label>
-                        <div class="col-md-7 mb-1">
-                            <input class="form-control form-control-sm" id="EdRoutingName" name="RoutingName" type="text" title="Enter the Routing Name ... It has to be Unique" data-plugin="tippy" data-tippy-placement="top">
+                        <label class="form-label col-md-6 mb-2">Current Routing name </label>
+                        <div class="col-md-6 mb-1">
+                            <input class="form-control form-control-sm" id="CuurentRoutingName"  type="text" title="Enter the Routing Name ... It has to be Unique" data-plugin="tippy" data-tippy-placement="top" readonly>
+                            
                             <input type="text" hidden id="EdManufacturedPartId" name="ManufacturedPartId" value="0" />
                             <input type="text" hidden id="EdOrigRoutingId" name="OrigRoutingId" value="0" />
                             <input type="text" hidden id="EdStatus" name="Status" value="Active" />
                             <input type="text" hidden id="EdPreferredRouting" name="PreferredRouting" value="0" />
                             <input type="text" hidden id="EdRoutingId" name="RoutingId" value="0" />
+                            <input type="text" hidden id="EdMKPartId" name="MKPartId" value="0" />
+                        </div>
+                        <label class="form-label col-md-6 mb-2">New Routing Name <span class="text-danger" id="RoutingToEdit"></span></label>
+                        <div class="col-md-6 mb-1">
+                            <input class="form-control form-control-sm" id="EdRoutingName" name="RoutingName" type="text" title="Enter the Routing Name ... It has to be Unique" data-plugin="tippy" data-tippy-placement="top">
                         </div>
                         <!-- =========  -->
                         <div class="col text-end mt-2">

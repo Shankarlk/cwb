@@ -373,6 +373,38 @@ namespace CWB.Masters.Services.Routings
             return routingVM;
         }
 
+        public async Task<IEnumerable<RoutingStepVM>> ChangeSequence(IEnumerable<RoutingStepVM> routingStepVM)
+        {
+            try
+            {   
+                foreach (var item in routingStepVM)
+                {
+
+                    var routingStep = _mapper.Map<RoutingStep>(item);
+                    if (routingStep.Id == 0)
+                    {
+                        //await _routingStepRepository.AddAsync(routingStep);
+                    }
+                    else
+                    {
+                        var routingStepDb = await _routingStepRepository.SingleOrDefaultAsync(x=>x.Id == routingStep.Id);
+                        if(routingStepDb != null)
+                        {
+                            routingStepDb.RoutingStepSequence = routingStep.RoutingStepSequence;
+                            routingStep = await _routingStepRepository.UpdateAsync(routingStep.Id, routingStepDb);
+                        }
+                    }
+                    await _unitOfWork.CommitAsync();
+                    item.StepId = (int)routingStep.Id;
+                }
+                return routingStepVM;
+            }catch(Exception ex)
+            {
+                string msg = ex.InnerException.Message;
+                string src = ex.InnerException.Source;
+            }
+            return routingStepVM;
+        }
         public async Task<RoutingStepVM> RoutingStep(RoutingStepVM routingStepVM)
         {
             try

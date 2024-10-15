@@ -35,6 +35,9 @@ namespace CWB.ProductionPlanWO.Utils
             public const string PostChildWoRel = Base + "/childworel";
             public const string PostMcTimeList = Base + "/postmctimelist";
             public const string GetAllMctimeList = Base + "/allmctimelist/{tenantId}";
+            public const string GetPoStatus = Base + "/getpostatus/{Id}";
+            public const string PostMultiplePODetails = Base + "/multiplepodetails";
+            public const string PostMultiplePOHeaders = Base + "/multiplepoheaders";
         }
     }
 }

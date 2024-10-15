@@ -19,6 +19,7 @@ namespace CWB.Masters.Domain.ItemMaster
         public string ReorderLevel { get; set; }
         public string ReorderQnty { get; set; }
         public int LeadTimeManf { get; set; }
+        public char FinalPartNosoldtoCustomer { get; set; }
         //DbPart --End
 
         //public string CompanyName { get; set; }

@@ -10,5 +10,6 @@ namespace CWB.App.Models.BusinessProcesses
         public int WOSOId { get; set; }
         public long WorkOrderId { get; set; }
         public long SalesOrderId { get; set; }
+        public int Active { get; set; }
     }
 }

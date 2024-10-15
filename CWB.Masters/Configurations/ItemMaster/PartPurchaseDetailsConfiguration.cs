@@ -58,6 +58,10 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .HasMaxLength(4000)
                 .HasColumnType("nvarchar(MAX)");
             builder
+               .Property(b => b.PreferredSupplier)
+               .HasColumnName("PreferredSupplier")
+               .HasDefaultValue(0);
+            builder
                .Property(b => b.BOFId)
                .HasColumnName("BOFId")
                .HasMaxLength(255)

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using NLog;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -50,7 +51,7 @@ namespace CWB.Tenant
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TenantDbContext tenantDbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TenantDbContext tenantDbContext,ILogger<Startup> logger)
         {
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
@@ -71,7 +72,7 @@ namespace CWB.Tenant
             }
             // Configure exception middleware
             app.ConfigureAppExceptionMiddleware();
-
+            logger.LogInformation("Tenant Api Started ");
             //app.UseHttpsRedirection();
 
             app.UseRouting();

@@ -1,4 +1,5 @@
 ﻿using CWB.Identity.Domain;
+using CWB.Logging;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using IdentityModel;
@@ -15,9 +16,12 @@ namespace CWB.Identity.Services
         private readonly UserManager<CwbUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserClaimsPrincipalFactory<CwbUser> _userClaimsPrincipalFactory;
+        private readonly ILoggerManager _logger;
 
-        public ProfileService(UserManager<CwbUser> userManager, RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<CwbUser> userClaimsPrincipalFactory)
+        public ProfileService(UserManager<CwbUser> userManager, RoleManager<IdentityRole> roleManager,
+            IUserClaimsPrincipalFactory<CwbUser> userClaimsPrincipalFactory, ILoggerManager logger)
         {
+            _logger = logger;
             _userManager = userManager;
             _roleManager = roleManager;
             _userClaimsPrincipalFactory = userClaimsPrincipalFactory;

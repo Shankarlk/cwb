@@ -20,6 +20,7 @@ namespace CWB.Masters.ViewModels.ItemMaster
         public string MasterPartType { get; set; }
         public string ReorderLevel { get; set; }
         public string ReorderQnty { get; set; }
+        public char FinalPartNosoldtoCustomer { get; set; }
 
         public int LeadTimeManf { get; set; }
         public long TenantId { get; set; }

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using NLog;
+using System;
 
 namespace CWB.CompanySettings
 {
@@ -7,7 +9,14 @@ namespace CWB.CompanySettings
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                LogManager.GetCurrentClassLogger().Error(ex, " CompanySettings Application startup failed");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -399,5 +399,12 @@ namespace CWB.App.Services.Masters
         }
 
 
+        public async Task<bool> CheckPartNoInDocList(long partId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/checkpartnoindoclist/{partId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
+        }
+
     }
 }

@@ -32,25 +32,25 @@ $(function () {
     var RawMaterialMadeType = 0;
     //////debugger;
     // Document is ready
-   /** $("#RawMaterialTypeId").select2();
-    loadRMTypes("RawMaterialTypeId");
-
-    $("#BaseRawMaterialId").select2();
-    loadBaseRMs("BaseRawMaterialId");
-
-    $("#Standard").select2();
-    loadRMStandards("Standard");
-
-    $("#MaterialSpecId").select2();
-    loadRMSpecs("MaterialSpecId");
-
-    $("#SupplierId").select2();
-    loadSuppliers("SupplierId");*/
+    /** $("#RawMaterialTypeId").select2();
+     loadRMTypes("RawMaterialTypeId");
+ 
+     $("#BaseRawMaterialId").select2();
+     loadBaseRMs("BaseRawMaterialId");
+ 
+     $("#Standard").select2();
+     loadRMStandards("Standard");
+ 
+     $("#MaterialSpecId").select2();
+     loadRMSpecs("MaterialSpecId");
+ 
+     $("#SupplierId").select2();
+     loadSuppliers("SupplierId");*/
     loadMPDList();
 
     $('input[type=radio][name=MasterPart]').change(function () {
         if (this.value == "1") {
-           // alert("one clicked");
+            // alert("one clicked");
             partType = "ManufacturedPart";
             loadMPDList();
         } else if (this.value == "2") {
@@ -58,13 +58,13 @@ $(function () {
             loadMPDList();
         }
         else if (this.value == "3") {
-          //  alert("three clicked");
-         //   loadBOFs();
+            //  alert("three clicked");
+            //   loadBOFs();
             partType = "BOF";
             loadMPDList();
         } else {
-          //  alert("four clicked");
-          //     loadSupplierRMS();
+            //  alert("four clicked");
+            //     loadSupplierRMS();
             partType = "RawMaterial";
             dataMPDList = "";
             loadMPDList();
@@ -78,11 +78,11 @@ function ProcessTemplateDataNew(templateId, dataObj) {
     var templateElement = $("#" + templateId).html();
     ////console.log(templateId);
     templateElement = templateElement.replaceAll("{partType}", partType)
-     for (var key in dataObj) {
+    for (var key in dataObj) {
         ////console.log(key + " " + dataObj[key]);
         templateElement = templateElement.replaceAll("{" + key + "}", dataObj[key])
     }
-   // console.log(templateElement);
+    // console.log(templateElement);
     return templateElement;
 }
 

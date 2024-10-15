@@ -11,8 +11,10 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using NLog;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
@@ -24,6 +26,7 @@ namespace CWB.App
         private bool _enableAuth = true;
         public Startup(IConfiguration configuration)
         {
+            //LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -108,7 +111,7 @@ namespace CWB.App
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
             if (env.IsDevelopment())
@@ -124,8 +127,9 @@ namespace CWB.App
             }
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
+            logger.LogInformation("Application started");
             //    app.UseRewriter(new RewriteOptions()
-            //.AddRewrite(@"^WorkOrder/SoToWo(.*)", "http://172.27.96.1:9005/WorkOrder/$1", skipRemainingRules: true));
+            //.AddRewrite(@"^WorkOrder/SoToWo(.*)", "http://10.70.30.75:9005/WorkOrder/$1", skipRemainingRules: true));
             //app.Use(async (context, next) => {
             //    var url = context.Request.Path.Value;
             //    if (url.Contains("/SOWO"))
@@ -135,9 +139,9 @@ namespace CWB.App
             //    }
             //    await next();
             //});
-  //          var rewrite = new RewriteOptions()
-  //.AddRewrite("WorkOrder/SoToWo", "HiddenFeature", true);
-  //          app.UseRewriter(rewrite);
+            //          var rewrite = new RewriteOptions()
+            //.AddRewrite("WorkOrder/SoToWo", "HiddenFeature", true);
+            //          app.UseRewriter(rewrite);
             app.UseRouting();
             
             if (_enableAuth)

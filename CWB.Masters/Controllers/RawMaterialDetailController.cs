@@ -371,6 +371,20 @@ namespace CWB.Masters.Controllers
             return Ok(result);
         }
 
+
+        [HttpPost]
+        [Route(ApiRoutes.RawMaterialDetail.PostPartPreferredSupplier)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(PartPurchaseDetailsVM))]
+        public async Task<IActionResult> PreferredSupplier([FromBody] PartPurchaseDetailsVM rawMaterialDetailVM)
+        {
+            var validator = new PartPurchaseDetailVMValidator();
+            var validationResult = await validator.ValidateAsync(rawMaterialDetailVM);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);
+            var result = await _rawMaterialDetailService.PreferredSupplier(rawMaterialDetailVM);
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route(ApiRoutes.RawMaterialDetail.RemPartPurchaseDetail)]
         [Produces(AppContentTypes.ContentType, Type = typeof(PartPurchaseDetailsVM))]

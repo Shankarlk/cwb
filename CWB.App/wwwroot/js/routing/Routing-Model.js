@@ -19,7 +19,19 @@ let maclist = {};
 //let editSubCon = false;
 
 
-
+function RoutingPerformance() {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let manufId = params.manufPartId;
+    var batch = 250;
+    api.getbulk("/routings/RoutingPerformance?manufPartId=" +manufId +"&batchSize=" + batch).then((data) => {
+        console.log(data);
+        //LoadSubConWSS();
+    }).catch((error) => {
+        AppUtil.HandleError("FormDelRoutingName", error);
+    });
+}
 
 
 //SubCon functions-start
@@ -33,9 +45,9 @@ function AssignWorkStepVals(workStepDesc, machineType, floorToFloorTime,
     $("#SubConWSSubConDetailsId").val(subConDetailsId);
     $("#SubConWSRoutingStepId").val(routingStepId);
     $("#SubConWSDetailsId").val(subConWSDetailsId);
-    $("#FloorToFloorTime").val(floorToFloorTime);
-    $("#SetupTime").val(setupTime);
-    $("#NoOfPartsPerLoading").val(noOfPartsPerLoading);
+    $("#SubConFloorToFloorTime").val(floorToFloorTime);
+    $("#SubConSetupTime").val(setupTime);
+    $("#SubConNoOfPartsPerLoading").val(noOfPartsPerLoading);
     $("#MachineType").val(machineType).trigger('change');
 }
 
@@ -229,7 +241,9 @@ function AddSubCon() {
         RoutingDetails["subConDetailsId"] = data.subConDetailsId;
         $("#SubConWSSubConDetailsId").val(data.subConDetailsId);
         $("#SubConWSRoutingStepId").val(RoutingDetails["stepId"]);
-        //document.getElementById("Btn").click();
+        $("#SaveSubCon").prop('disabled', true);
+
+        //document.getElementById("Btn").click();  SaveSubCon
     }).catch((error) => {
         AppUtil.HandleError("FormSubCon", error);
     });
@@ -497,6 +511,32 @@ function DoRoutingDetailsJob() {
     $("#DivRoutingName1").html("<h5>Routing Selected : " + RoutingDetails.routingName + "</h5>");
     $('#StepRoutingId').val(RoutingDetails.routingId);
     LoadRoutingSteps(RoutingDetails.routingId);
+
+   // DisplayBomMessage();
+}
+
+function DisplayBomMessage() {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let pvalue = params.manufPartId;
+    let manufId = pvalue;
+    let parttypeurl = params.partType;
+    if (parttypeurl == "Assembly") {
+        for (i = 0; i < routingSteps.length; i++) {
+
+            api.get("/routings/boms?manufId=" + manufId + "&stepId=" + routingSteps[i].stepId).then((rData) => {
+                if (rData.every(item => item.balanceQuantity === 0)) {
+                    //console.log("All Qnty Used");
+                    $("#BOMMessageDisplay").text('All BOM Part Nos & BOM Qnty are used in Assembly');
+                } else {
+                    $("#BOMMessageDisplay").text('All BOM Part Nos & BOM Qnty are not used in Assembly').css('color', 'red');
+                }
+            }).catch((error) => {
+                // Handle error
+            });
+        }
+    }
 }
 
 function loadStepMachinesForAdd() {
@@ -601,11 +641,13 @@ function LoadRoutingSteps(routingId) {
     let rData = {};
     let i = 0;
     api.get("/routings/routingsteps?routingId=" + routingId).then((rData) => {
+        rData.sort((a, b) => a.stepSequence - b.stepSequence);
         for (i = 0; i < rData.length; i++) {
             $(tablebody).append(AppUtil.ProcessTemplateData("RoutingStepTemplate", rData[i]));
         }
         routingSteps = rData;
         //console.log(rData);
+        DisplayBomMessage();
     }).catch((error) => {
     });
 }
@@ -616,7 +658,11 @@ function LoadBOMList(stepId) {
     tablebody.html("");
     let rData = {};
     let i = 0;
-    let manufId = RoutingDetails.manufacturedPartId;
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let pvalue = params.manufPartId;
+    let manufId = pvalue;
     api.get("/routings/boms?manufId=" + manufId + "&stepId=" + stepId).then((rData) => {
         //console.log(rData);
         for (i = 0; i < rData.length; i++) {
@@ -624,6 +670,11 @@ function LoadBOMList(stepId) {
                 $(tablebody).append(AppUtil.ProcessTemplateData("RT_BOM-template", rData[i]));
             }
         }
+        // Get the first radio button element
+        var firstRadioBtn = $('input[type="radio"][name="BOMChk"]:first');
+
+        // Check the first radio button
+        firstRadioBtn.prop('checked', true);
         LoadStepPartsFromData(rData);
     }).catch((error) => {
     });
@@ -675,9 +726,7 @@ function getAndShowStep(stepId, stepNumber) {
     }
     document.getElementById("FormRoutingStep").reset();
     $('a[href="#rsd"]').tab("show");
-    if (partType == "ManufacturedPart") {
-        $("#tab-step-parts").hide();
-    }
+   
     LoadOperations();
     LoadLocations();
     $("#Status").val(step.status);
@@ -696,6 +745,27 @@ function getAndShowStep(stepId, stepNumber) {
     id = step.stepLocation;
     //console.log("ssl " + step.stepLocation + "/" + id);
     $("#StepLocation").val(id).trigger('change');
+    if (stepId > 0) {
+        var selectStepLoc = document.getElementById('StepLocation');
+        selectStepLoc.style.pointerEvents = 'none';
+        $("#addSubCon").prop('disabled', false);
+        $("#addMachine").prop('disabled', false);
+    } else {
+        selectStepLoc.style.pointerEvents = 'auto';
+        $("#addSubCon").prop('disabled', true);
+        $("#addMachine").prop('disabled', true);
+    }
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let pvalue = params.partType; // "some_value"
+    const $tabStepParts = $('#tab-step-parts');
+    if (pvalue == "ManufacturedPart") {
+        $tabStepParts.hide();
+    }
+    else {
+        $tabStepParts.show();
+    }
     return false;
 }
 
@@ -759,9 +829,10 @@ function SetPreferredMachine(event, routingStepId, routingStepMachineId) {
     }).catch((error) => {
     });
 }
-function EditRoute(routingId,routingName) {
+function EditRoute(routingId,routingName,manufPartId) {
     //alert("Todo..");
     RoutingDetails["routingName"] = routingName;
+    RoutingDetails["manufacturedPartId"] = manufPartId;
     RoutingDetails["routingId"] = routingId;
     RoutingDetails["stepNumber"] = "";
     DoRoutingDetailsJob();
@@ -773,18 +844,95 @@ function ViewRoute() {
 }
 
 function EditRoutes(event, noOfRoutes, manufacturedPartId) {
-    if (noOfRoutes <= 0)
-        return;
+    if (noOfRoutes <= 0) {
+        $("#BtnCreateAlRouting").hide();
+    } else {
+        $("#BtnCreateNewRouting").hide();
+    }
+       // return;
     selectedManuPartId = manufacturedPartId;
-    window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId + "&partType=" + partType;
+    $.ajax({
+        type: "POST",
+        url: "/routings/EncodeManufacturedPartId",
+        data: { manufacturedPartId: manufacturedPartId },
+        success: function (encodedManufPartId) {
+            window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + partType;
+        }
+    });
+    //window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId + "&partType=" + partType;
+}
+
+
+function updateSequenceNumbers() {
+    $('#StepTable tbody tr').each(function (index) {
+        //$(this).find('td:eq(1)').text(index + 1);
+        $(this).find('td:eq(12)').text(index + 1); // update stepSequence
+    });
+}
+
+function updateSequenceInDB() {
+    var sequence = [];
+    $('#StepTable tbody tr').each(function (index) {
+        sequence.push({
+            stepId: parseInt($(this).find('td:eq(10)').text()),
+            routingId: parseInt($(this).find('td:eq(11)').text()),
+            stepSequence: parseInt($(this).find('td:eq(12)').text())
+        });
+    });
+    $.ajax({
+        type: "POST",
+        url: '/routings/ChangeRoutingStepSequence',
+        contentType: "application/json; charset=utf-8",
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify(sequence),
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            if (result) {
+                //loadDocList();
+            }
+        }
+    });
 }
 
 
 
-
-
 $(function () {
+    $('#StepTable').on('click', '.move-ups', function () {
+        var row = $(this).closest('td').parent('tr');
+        console.log('Row Up:', row);
+        var prevRow = row.prev('tr');
+        console.log('Prev Row:', prevRow);
+        if (prevRow.length) {
+            row.insertBefore(prevRow);
+            updateSequenceNumbers();
+            updateSequenceInDB();
+        }
+    });
+
+    $('#StepTable').on('click', '.move-downs', function () {
+        var row = $(this).closest('td').parent('tr');
+        console.log('Row Down:', row);
+        var nextRow = row.next('tr');
+        console.log('Next Row:', nextRow);
+        if (nextRow.length) {
+            row.insertAfter(nextRow);
+            updateSequenceNumbers();
+            updateSequenceInDB();
+        }
+    });
+
    // console.log("Ready");
+    const table = document.querySelector('#RoutingGrid');
+    if (table != null) {
+        const rows = table.tBodies[0].rows;
+        if (rows.length <= 0) {
+            $("#BtnCreateAlRouting").hide();
+        } else {
+            $("#BtnCreateNewRouting").hide();
+        }
+        RoutingPerformance();
+    }
     if (RoutingDetails) {
         partType = RoutingDetails['masterPartType'];
         if (partType == undefined) {
@@ -840,6 +988,7 @@ $(function () {
     $('#add-subcon').on('hide.bs.modal', function (event) {
         //editSubCon = false;
         LoadSubCons();
+        $("#SaveSubCon").prop('disabled', false);
     });
     $('#add-subcon').on('shown.bs.modal', function (event) {
         ShowAddSubConJob(event);
@@ -993,6 +1142,9 @@ $(function () {
         hideMachinesSuppliersTable();*/
     });
 
+    $("#BtnBomPartsClose").click(function (event) {
+        $('#AssociateBOMParts').modal('hide');
+    });
     $("#tab-step-parts").click(function (event) {
 
         if ($("#StepId").val() == "0") {
@@ -1001,12 +1153,20 @@ $(function () {
             return;
         }
         else {
+            $('#AssociateBOMParts').modal('show');
             LoadBOMList($("#StepId").val());
         }
     });
     
     
     
+    $("#SearchSubConName").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#SubConNamesTable tbody tr").filter(function () {
+            $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
     $("#master_partno").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $("#PartsRoutingsTable tbody tr").filter(function () {
@@ -1039,6 +1199,7 @@ $(function () {
             $("#MakefromDiv").show();
         } else {
             partType = "Assembly";
+            spartType = "Assembly";
             DowlonadPartsRoutings();
             $("#MakefromDiv").hide();
         }
@@ -1060,20 +1221,32 @@ $(function () {
     });
     
 
-    $('#preferred-rout').on('show.bs.modal', function (event) {
+    $('#preferred-rout').on('show.bs.modal', function (event) {   // Propdsdosd
         var relatedTarget = $(event.relatedTarget);
         var routingid = relatedTarget.data("routingid");
         var origroutingid = relatedTarget.data("origroutingid");
         var manufacturedPartId = relatedTarget.data("manufid");
         var routingName = relatedTarget.data("routingname");
+        var preferredrouting = relatedTarget.data("preferredrouting");
+        var mkpartid = relatedTarget.data("mkpartid");
         selectedManuPartId = manufacturedPartId;
         $("#PManufacturedPartId").val(manufacturedPartId);
         $("#PRoutingName").val(routingName);
+        $("#RoutingNameText").text(routingName);
         $("#PRoutingId").val(routingid);
         $("#POrigRoutingId").val(origroutingid);
+        $("#PMKPartId").val(mkpartid);
+        var checkbox = $("#CheckPPreferredRouting");
+        if (preferredrouting === 1) {
+            checkbox.prop("checked", true);
+        }
+        else {
+            checkbox.prop("checked", false);
+        }
     });
     $('#preferred-rout').on('hide.bs.modal', function (event) {
-        window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        //window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        location.reload();
     });
 
     //
@@ -1116,7 +1289,16 @@ $(function () {
     $('#delete-rout').on('hide.bs.modal', function (event) {
         if (!routdeleted)
             return;
-        window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        //window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        location.reload();
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/routings/EncodeManufacturedPartId",
+        //    data: { manufacturedPartId: selectedManuPartId },
+        //    success: function (encodedManufPartId) {
+        //        window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + partType;
+        //    }
+        //});
     });
     let routdeleted = false;
     $("#BtnDelRoutingSave").on("click",function (event) {
@@ -1151,7 +1333,9 @@ $(function () {
         if (!stepdeleted)
             return;
         selectedManuPartId = RoutingDetails.manufacturedPartId;
-        window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        //window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        location.reload();
+
     });
 
     let stepdeleted = false;
@@ -1178,26 +1362,41 @@ $(function () {
         var routingid = relatedTarget.data("routingid");
         var preferredrouting = relatedTarget.data("preferredrouting");
         var status = relatedTarget.data("status");
+        var mkpartid = relatedTarget.data("mkpartid");
         var elm = document.getElementById("RoutingToEdit");
-        elm.innerText = routingName;
+        elm.innerText = "*";
         var manufid = relatedTarget.data("manufid");
         selectedManuPartId = manufid;
-        $("#EdRoutingName").val(routingName);
+        $("#CuurentRoutingName").val(routingName);
         $("#EdManufacturedPartId").val(manufid);
         $("#EdOrigRoutingId").val(origroutingid);
 
         $("#EdStatus").val(status);
+        $("#EdMKPartId").val(mkpartid);
         $("#EdPreferredRouting").val(preferredrouting);
         $("#EdRoutingId").val(routingid);
     });
     $('#edit-routingname').on('hide.bs.modal', function (event) {
         if (!routeEdited)
             return;
-        window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        //window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+        location.reload();
     });
     let routeEdited = false;
     $("#BtnEdRoutingNameSave").click(function (event) {
         //routings/addnewrouting
+        var currentName = $("#CuurentRoutingName").val();
+        var newName = $("#EdRoutingName").val();
+        if (newName.length === 0) {
+            var newNamevalidate = document.getElementById('EdRoutingName');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        }
+        if (currentName === newName) {
+            var newNamevalidate = document.getElementById('EdRoutingName');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        }
         var formData = AppUtil.GetFormData("FormEdRoutingName");
         api.post("/routings/addnewrouting", formData).then((data) => {
            // console.log(data);
@@ -1219,6 +1418,43 @@ $(function () {
         selectedManuPartId = manufacturedPartId;
         $("#AltManufacturedPartId").val(manufacturedPartId);
         $("#AltOrigRoutingId").val(routingid);
+        if (routingid <= 0 || isNaN(routingid)) {
+            var checkboxes = $("#RoutingGrid tbody input[type='checkbox']:checked");
+            checkboxes.each(function (index, checkbox) {
+                var row = checkbox.parentNode.parentNode;
+                var rowData = {
+                    selectroutingid: parseInt($(row).find("td:eq(0)").text()),
+                    selectmanufid: parseInt($(row).find("td:eq(1)").text())
+                };
+                $("#AltManufacturedPartId").val(rowData.selectmanufid);
+                $("#AltOrigRoutingId").val(rowData.selectroutingid);
+            });
+
+        }
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        spartType = params.partType;
+        //makefrom --
+        if (spartType === "ManufacturedPart") {
+            var altmanufpartid = $("#AltManufacturedPartId").val();
+            api.get("/masters/SortedMPMakeFromList?partId=" + altmanufpartid).then((data) => {
+                var sortedMPF = data;
+                //console.log(sortedMPF);
+                const uniqueMPF = [...new Set(sortedMPF.map(mpm => mpm.mpPartId))].map(mpPartId => {
+                    return sortedMPF.find(mpm => mpm.mpPartId === mpPartId);
+                });
+                $("#AltMKPartId").empty();
+                uniqueMPF.forEach(function (mpm) {
+                    $("#AltMKPartId").append("<option value='" + mpm.mpPartId + "'  name='MKPartId'>" + mpm.inputPartNo + " / " + mpm.mfDescription + "</option>");
+                });
+            }).catch((error) => {
+                AppUtil.HandleError("", error);
+            });
+        }
+        else {
+            $("#AltMakefromDiv").hide();
+        }
     });
     //$('#alt-rout').on('hide.bs.modal', function (event) {
     //    window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
@@ -1228,13 +1464,127 @@ $(function () {
     //    document.getElementById("BtnNewRoutingClose").click();
     //});
 
-    
+    $('#changeMakeFromPopup').on('show.bs.modal', function (event) {   // Propdsdosd
+        var relatedTarget = $(event.relatedTarget);
+        var routingid = relatedTarget.data("routingid");
+        var origroutingid = relatedTarget.data("origroutingid");
+        var manufacturedPartId = relatedTarget.data("manufid");
+        var routingName = relatedTarget.data("routingname");
+        var preferredrouting = relatedTarget.data("preferredrouting");
+        var mkpartid = relatedTarget.data("mkpartid");
+        var mkpartname = relatedTarget.data("mkpartname");
+        selectedManuPartId = manufacturedPartId;
+        $("#CManufacturedPartId").val(manufacturedPartId);
+        $("#CRoutingName").val(routingName);
+        $("#CoutingNameText").text(routingName);
+        $("#CRoutingId").val(routingid);
+        $("#COrigRoutingId").val(origroutingid);
+        $("#CMakefromName").val(mkpartname);
+        $("#CPreferredRouting").val(preferredrouting);
+        //var checkbox = $("#CheckPPreferredRouting");
+        if (spartType === "ManufacturedPart") {
+            api.get("/masters/SortedMPMakeFromList?partId=" + selectedManuPartId).then((data) => {
+                var sortedMPF = data;
+                //console.log(sortedMPF);
+                const uniqueMPF = [...new Set(sortedMPF.map(mpm => mpm.mpPartId))].map(mpPartId => {
+                    return sortedMPF.find(mpm => mpm.mpPartId === mpPartId);
+                });
+                $("#CMKPartId").empty();
+                uniqueMPF.forEach(function (mpm) {
+                    $("#CMKPartId").append("<option value='" + mpm.mpPartId + "'  name='MKPartId'>" + mpm.inputPartNo + " / " + mpm.mfDescription + "</option>");
+                });
+            }).catch((error) => {
+                AppUtil.HandleError("", error);
+            });
+        }
+    });
+
+    $("#BtnCRoutingSave").click(function (event) {
+        
+        //routings/addnewrouting
+        var formData = AppUtil.GetFormData("FormChangeMakeFrom");
+        //PreferredRouting  preferred-rout
+        api.post("/routings/addnewrouting", formData).then((data) => {
+            //console.log(data);
+            location.reload();
+            //document.getElementById("BtnPreferredRoutingClose").click();
+        }).catch((error) => {
+            AppUtil.HandleError("FormPreferredRouting", error);
+        });
+    });
+
+
+
+    $('#StatusChangePopup').on('show.bs.modal', function (event) {   // Propdsdosd
+        var relatedTarget = $(event.relatedTarget);
+        var routingid = relatedTarget.data("routingid");
+        var origroutingid = relatedTarget.data("origroutingid");
+        var manufacturedPartId = relatedTarget.data("manufid");
+        var routingName = relatedTarget.data("routingname");
+        var preferredrouting = relatedTarget.data("preferredrouting");
+        var mkpartid = relatedTarget.data("mkpartid");
+        var mkpartname = relatedTarget.data("mkpartname");
+        var status = relatedTarget.data("status");
+        selectedManuPartId = manufacturedPartId;
+        $("#SManufacturedPartId").val(manufacturedPartId);
+        $("#SRoutingName").val(routingName);
+        //$("#CoutingNameText").text(routingName);
+        $("#SRoutingId").val(routingid);
+        $("#SOrigRoutingId").val(origroutingid);
+        $("#SMKPartId").val(mkpartid);
+        $("#SPreferredRouting").val(preferredrouting);
+        $("#SViewStatus").val(status);
+        //var checkbox = $("#CheckPPreferredRouting");
+        //if (spartType === "ManufacturedPart") {
+        //    api.get("/masters/SortedMPMakeFromList?partId=" + selectedManuPartId).then((data) => {
+        //        var sortedMPF = data;
+        //        //console.log(sortedMPF);
+        //        const uniqueMPF = [...new Set(sortedMPF.map(mpm => mpm.mpPartId))].map(mpPartId => {
+        //            return sortedMPF.find(mpm => mpm.mpPartId === mpPartId);
+        //        });
+        //        $("#CMKPartId").empty();
+        //        uniqueMPF.forEach(function (mpm) {
+        //            $("#CMKPartId").append("<option value='" + mpm.mpPartId + "'  name='MKPartId'>" + mpm.inputPartNo + " / " + mpm.mfDescription + "</option>");
+        //        });
+        //    }).catch((error) => {
+        //        AppUtil.HandleError("", error);
+        //    });
+        //}
+    });
+
+    $("#BtnSRoutingSave").click(function (event) {
+        var selectedValue = $('#SStatus').val();
+        if (selectedValue === "InActive") {
+            var reason = $('#SStatusChangeReason').val();
+            if (reason.length === 0) {
+                var newNamevalidate = document.getElementById('SStatusChangeReason');
+                newNamevalidate.style.border = '2px solid red';
+                return false;
+            }
+
+        }
+        //routings/addnewrouting
+        var formData = AppUtil.GetFormData("FormStatusChange");
+        //PreferredRouting  preferred-rout
+        api.post("/routings/addnewrouting", formData).then((data) => {
+            //console.log(data);
+            location.reload();
+            //document.getElementById("BtnPreferredRoutingClose").click();
+        }).catch((error) => {
+            AppUtil.HandleError("FormStatusChange", error);
+        });
+    });
+
 
     $('#routing-new').on('show.bs.modal', function (event) {
         var relatedTarget = $(event.relatedTarget);
         var manufacturedPartId = relatedTarget.data("manufacturedpartid");
         $("#ManufacturedPartId").val(manufacturedPartId);
         selectedManuPartId = manufacturedPartId;
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        spartType = params.partType;
         //makefrom --
         if (spartType === "ManufacturedPart") {
             api.get("/masters/SortedMPMakeFromList?partId=" + selectedManuPartId).then((data) => {
@@ -1250,6 +1600,9 @@ $(function () {
             }).catch((error) => {
                 AppUtil.HandleError("", error);
             });
+        }
+        else {
+            $("#MakefromDiv").hide();
         }
      /* var partNo = relatedTarget.data("partno");
         var coName = relatedTarget.data("companyname");
@@ -1270,16 +1623,35 @@ $(function () {
         var formData = AppUtil.GetFormData("FormNewRoutingName");
         api.post("/routings/addnewrouting", formData).then((data) => {
             //console.log(data);
-            window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
+            $.ajax({
+                type: "POST",
+                url: "/routings/EncodeManufacturedPartId",
+                data: { manufacturedPartId: selectedManuPartId },
+                success: function (encodedManufPartId) {
+                    //window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + partType;
+                    //$('a[href="#rsd"]').tab("show");
+                    $("#BtnNewRoutingClose").trigger("click");
+                    $("#BtnAddNextStep").trigger("click");
+                    $('#StepRoutingId').val(data.routingId);
+                }
+            });
+            //window.location.href = "/routings/routingdetails?manufPartId=" + selectedManuPartId;
         }).catch((error) => {
             AppUtil.HandleError("FormNewRoutingName", error);
         });
     });
     
     $("#BtnPRoutingSave").click(function (event) {
+        var checkbox = $("#CheckPPreferredRouting");
+
+        if (checkbox.prop("checked")) {
+            $("#PPreferredRouting").val(1);
+        } else {
+            $("#PPreferredRouting").val(0);
+        }
         //routings/addnewrouting
         var formData = AppUtil.GetFormData("FormPreferredRouting");
-        //PreferredRouting
+        //PreferredRouting  preferred-rout
         api.post("/routings/preferredrouting", formData).then((data) => {
             //console.log(data);
             document.getElementById("BtnPreferredRoutingClose").click();
@@ -1288,12 +1660,35 @@ $(function () {
         });
     });
 
+    function handleCheckboxChange() {
+        var checkboxes = $("#RoutingGrid tbody input[type='checkbox']:checked"); // Select checked checkboxes
+        
+        if (checkboxes.length === 1) {
+            $('#BtnCreateAlRouting').prop('disabled', false);
+        }
+        else {
+            $('#BtnCreateAlRouting').prop('disabled', true); // Disable the button
+        }
+    }
+
+     //Attach the handleCheckboxChange function to the change event of the checkboxes using event delegation
+    $('#RoutingGrid tbody').on('change', 'input[type="checkbox"]', handleCheckboxChange);
+
+    // Optionally, trigger the event handler once to set the initial state of the button
+    handleCheckboxChange();
+
     $("#BtnAltRoutingSave").click(function (event) {
         //routings/addnewrouting
         var formData = AppUtil.GetFormData("FormAltRoutingName");
         api.post("/routings/altrouting", formData).then((data) => {
             //console.log(data);
             document.getElementById("BtnAltRoutingClose").click();
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            var encodedManufPartId = params.manufPartId;
+            var parttypeurl = params.partType;
+            window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + parttypeurl;
         }).catch((error) => {
             AppUtil.HandleError("FormAltRoutingName", error);
         });
@@ -1354,6 +1749,10 @@ $(function () {
     //Routing Step Details Filter/Search
     $("#MAC_Plants").change(function () {
         var value = $(this).find("option:selected").text().toLowerCase();
+        if (value == "--select--") {
+            $("#AddMachineListTable tbody").show();
+            return;
+        }
         $("#AddMachineListTable tbody tr").filter(function () {
             $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)
         });
@@ -1482,6 +1881,42 @@ $(function () {
     });
     $("#SaveSubCon").on("click", function (event) {
         //alert("Add SubCons");
+        var WorkDone = document.getElementById('WorkDone');
+        if (!WorkDone.value) {
+            // Add red border directly using inline style
+            WorkDone.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            WorkDone.style.border = '';
+        }
+        var TransportTime = document.getElementById('TransportTime');
+        if (!TransportTime.value) {
+            // Add red border directly using inline style
+            TransportTime.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            TransportTime.style.border = '';
+        }
+        var CostPerPart = document.getElementById('CostPerPart');
+        if (!CostPerPart.value) {
+            // Add red border directly using inline style
+            CostPerPart.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            CostPerPart.style.border = '';
+        }
+        var Notes = document.getElementById('Notes');
+        if (!Notes.value) {
+            // Add red border directly using inline style
+            Notes.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            Notes.style.border = '';
+        }
         AddSubCon();
     });
     $("#SaveSubConWS").on("click", function (event) {
@@ -1491,6 +1926,51 @@ $(function () {
         if (wsid == "0" || stepid == "0") {
             alert("Please save subcon before entering the work step details.");
             return;
+        }
+        var WorkStepDesc = document.getElementById('WorkStepDesc');
+        if (!WorkStepDesc.value) {
+            // Add red border directly using inline style
+            WorkStepDesc.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            WorkStepDesc.style.border = '';
+        }
+        var MachineType = document.getElementById('MachineType');
+        if (!MachineType.value) {
+            // Add red border directly using inline style
+            MachineType.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            MachineType.style.border = '';
+        }
+        var FloorToFloorTime = document.getElementById('FloorToFloorTime');
+        if (!FloorToFloorTime.value) {
+            // Add red border directly using inline style
+            FloorToFloorTime.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            FloorToFloorTime.style.border = '';
+        }
+        var SetupTime = document.getElementById('SetupTime');
+        if (!SetupTime.value) {
+            // Add red border directly using inline style
+            SetupTime.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            SetupTime.style.border = '';
+        }
+        var NoOfPartsPerLoading = document.getElementById('NoOfPartsPerLoading');
+        if (!NoOfPartsPerLoading.value) {
+            // Add red border directly using inline style
+            NoOfPartsPerLoading.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            NoOfPartsPerLoading.style.border = '';
         }
         AddSubConWS();
     });
@@ -1523,6 +2003,30 @@ $(function () {
 
 
 
+    $("#RoutingAvailable").click(function (event) {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        var encodedManufPartId = params.manufPartId;
+        var urlpartype = params.partType;
+        window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + urlpartype;
+    });
+    //$("#RoutingDetails").click(function (event) {
+    //    EditRoute();
+    //    //const params = new Proxy(new URLSearchParams(window.location.search), {
+    //    //    get: (searchParams, prop) => searchParams.get(prop),
+    //    //});
+    //    //var encodedManufPartId = params.manufPartId;
+    //    //window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + partType;
+    //});
+    $("#Add-SubCon-Close").click(function (event) {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        var encodedManufPartId = params.manufPartId;
+        var parttypeurl = params.partType;
+        window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + parttypeurl;
+    });
     $("#SaveRouteMachine").click(function (event) {
         alert("Save route Machine");
         var chkdelm = $('input[name=stepmachineselect]:checked');
@@ -1535,6 +2039,13 @@ $(function () {
             //console.log(data);
             loadStepMachines();
             document.getElementById("Add-Machine-Close").click();
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            var encodedManufPartId = params.manufPartId;
+            var parttypeurl = params.partType;
+            window.location.href = "/routings/routingdetails?manufPartId=" + encodedManufPartId + "&partType=" + parttypeurl;
+            //EditRoute();
         }).catch((error) => {
             AppUtil.HandleError("FormRoutingMachine", error);
         });
@@ -1545,6 +2056,43 @@ $(function () {
 
     $("#BtnSaveStep").click(function (event) {
         //routings/addnewrouting
+
+        var StepNumber = document.getElementById('StepNumber');
+        if (!StepNumber.value) {
+            // Add red border directly using inline style
+            StepNumber.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            StepNumber.style.border = '';
+        }
+        var StepDescription = document.getElementById('StepDescription');
+        if (!StepDescription.value) {
+            // Add red border directly using inline style
+            StepDescription.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            StepDescription.style.border = '';
+        }
+        var StepOperation = document.getElementById('StepOperation');
+        if (!StepOperation.value) {
+            // Add red border directly using inline style
+            StepOperation.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            StepOperation.style.border = '';
+        }
+        var StepLocation = document.getElementById('StepLocation');
+        if (!StepLocation.value) {
+            // Add red border directly using inline style
+            StepLocation.style.border = '1px solid red';
+            return false;
+        } else {
+            // Remove the red border if the input is valid
+            StepLocation.style.border = '';
+        }
         var formData = AppUtil.GetFormData("FormRoutingStep");
         api.post("/routings/savestep", formData).then((data) => {
             stepModel = data;
@@ -1557,25 +2105,78 @@ $(function () {
             $("#BOMRoutingStepId").val(data.stepId);
             document.getElementById('addMachine').removeAttribute('disabled');
             document.getElementById('addSubCon').removeAttribute('disabled');
+            var StepNumber = document.getElementById('StepNumber');
+            StepNumber.style.border = '';
+            var StepDescription = document.getElementById('StepDescription');
+            StepDescription.style.border = '';
+            var StepOperation = document.getElementById('StepOperation');
+            StepOperation.style.border = '1px solid red';
+            StepOperation.style.border = '';
+            var StepLocation = document.getElementById('StepLocation');
+            StepLocation.style.border = '';
+
         }).catch((error) => {
             AppUtil.HandleError("FormRoutingStep", error);
         });
         event.preventDefault();
     });
 
+    $('#AssociateBOMParts').on('show.bs.modal', function (event) {
+        var StepNumber = $("#StepNumber").val();
+
+        $("#BomStepNo").text(StepNumber);
+        $("#BomRouting").text(RoutingDetails.routingName);
+        var QuantityAssembly = document.getElementById('QuantityAssembly');
+        QuantityAssembly.style.border = '';
+        // Get the part number
+        var table = $('#headingPartsDetails');
+
+        // Get the last two td elements
+        var partNoTd = table.find('tr td:nth-last-child(2)');
+        var partDescriptionTd = table.find('tr td:last-child');
+
+        // Get the text content after the span element
+        var partNoText = partNoTd.contents().filter(function () {
+            return this.nodeType == 3; // Node type 3 is a text node
+        }).text().trim();
+        var partDescriptionText = partDescriptionTd.contents().filter(function () {
+            return this.nodeType == 3; // Node type 3 is a text node
+        }).text().trim();
+
+        $("#BomPartNo").text(partNoText);
+        $("#BomPartDesc").text(partDescriptionText);
+
+        //const params = new Proxy(new URLSearchParams(window.location.search), {
+        //    get: (searchParams, prop) => searchParams.get(prop),
+        //});
+        //let pvalue = params.manufPartId;
+        //let manufId = pvalue;
+        //api.get("/routings/GetMasterName?ManufId=" + manufId).then((data) => {
+        //    $("#BomPartNo").text(data.partNo);
+        //    $("#BomPartDesc").text(data.partDescription);
+        //});
+    });
+
     $("#BtnAddToStepList").on('click',function (event) {
         var qtyEntered = parseInt($("#QuantityAssembly").val());
+        if ($("#QuantityAssembly").val() == "") {
+            var QuantityAssembly = document.getElementById('QuantityAssembly');
+            QuantityAssembly.style.border = '1px solid red';
+            return false;
+        }
         if (qtyEntered > qtyAvailable) {
-            alert("Quantity not available.-2");
-            return;
+            alert("Quantity not available.");
+            return false;
         }
         if (qtyEntered <= 0) {
             alert("Quantity not available.");
-            return;
+            return false;
         }
         var formData = AppUtil.GetFormData("FormStepPart");
         api.post("/routings/addBomtoassembly", formData).then((data) => {
             //console.log(data);
+            var QuantityAssembly = document.getElementById('QuantityAssembly');
+            QuantityAssembly.style.border = '';
             LoadBOMList(data.routingStepId);
             //LoadStepParts(data.manufacturedPartId,data.routingStepId);
             document.getElementById("FormStepPart").reset();
@@ -1595,9 +2196,21 @@ $(function () {
         //getRoutingInfoFromTable();
         $('#StepRoutingId').val(RoutingDetails.routingId);
         $('a[href="#rsd"]').tab("show");
+        var select = document.getElementById('StepLocation');
+        select.style.pointerEvents = 'auto';
+        var tablebody = $("#SubConsTable tbody");
+        $(tablebody).html("");
+        var Machinetablebody = $("#RouteMachinesTable tbody");
+        $(Machinetablebody).html("");
         //"#rou-det"
-        if (partType == "ManufacturedPart") {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+        });
+        nspartType = params.partType;
+        if (nspartType == "ManufacturedPart") {
             $("#tab-step-parts").hide();
+        } else {
+            $("#tab-step-parts").show();
         }
     });
 

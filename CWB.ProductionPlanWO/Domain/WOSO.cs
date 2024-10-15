@@ -10,5 +10,6 @@ namespace CWB.ProductionPlanWO.Domain
     {
         public long WorkOrderId { get; set; }
         public long SalesOrderId { get; set; }
+        public int Active { get; set; }
     }
 }

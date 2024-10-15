@@ -3,12 +3,14 @@ using CWB.App.Models.ItemMaster;
 using CWB.App.Services.Masters;
 using CWB.CommonUtils.Common;
 using CWB.Logging;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -21,16 +23,116 @@ namespace CWB.App.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMastersServices _mastersService;
         private readonly IMachineService _machineService;
-        public MastersController(ILoggerManager logger, IMachineService machineService, IMastersServices mastersService)
+        IHostingEnvironment _hostingEnvironment = null;
+        public MastersController(ILoggerManager logger, IMachineService machineService, IMastersServices mastersService,
+            IHostingEnvironment hostingEnvironment)
         {
             _logger = logger;
             _mastersService = mastersService;
             _machineService = machineService;
+            _hostingEnvironment = hostingEnvironment;
         }
         public IActionResult Index()
         {
             indexViewBag();
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFileToFtp(IFormFile uploadedFile)//, [FromServices] IHostingEnvironment hostingEnvironment
+        {
+            string ftpUrl = "/filestorage/Active/";
+            string ftpFullPath = ftpUrl + uploadedFile.FileName;
+
+            // Write the byte array to the file
+            using (var stream = new FileStream(ftpFullPath, FileMode.Create))
+            {
+                await uploadedFile.CopyToAsync(stream);
+                //string fileName = $"{hostingEnvironment.WebRootPath}\\files\\{uploadedFile.FileName}";
+                //using (FileStream fileStream = System.IO.File.Create(fileName))
+                //{
+                //    uploadedFile.CopyTo(fileStream);
+                //    fileStream.Flush();
+                //}
+            }
+            return Ok("Uploaded Sucess");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ViewFile(string fileName)
+        {
+            // Check if the file name is null or empty
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return BadRequest("File name is required");
+            }
+
+            // Get the file path
+            var filePath = Path.Combine("/filestorage/Active", fileName);
+
+            // Check if the file exists
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound("File not found");
+            }
+
+            // Read the file contents
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            var stream = new FileStream(filePath, FileMode.Open);
+            // Return the file contents as a response
+            return File(fileBytes, GetContentType(filePath), fileName);
+            //return File(stream, "application/octet-stream", fileName);
+        }
+
+        // Helper method to get the content type of a file
+        private string GetContentType(string filePath)
+        {
+            var fileExtension = Path.GetExtension(filePath);
+            var contentType = "application/octet-stream";
+
+            switch (fileExtension.ToLower())
+            {
+                case ".txt":
+                    contentType = "text/plain";
+                    break;
+                case ".pdf":
+                    contentType = "application/pdf";
+                    break;
+                case ".jpg":
+                case ".jpeg":
+                    contentType = "image/jpeg";
+                    break;
+                case ".png":
+                    contentType = "image/png";
+                    break;
+                case ".gif":
+                    contentType = "image/gif";
+                    break;
+                case ".bmp":
+                    contentType = "image/bmp";
+                    break;
+                case ".doc":
+                case ".docx":
+                    contentType = "application/msword";
+                    break;
+                case ".xls":
+                case ".xlsx":
+                    contentType = "application/vnd.ms-excel";
+                    break;
+                case ".ppt":
+                case ".pptx":
+                    contentType = "application/vnd.ms-powerpoint";
+                    break;
+            }
+
+            return contentType;
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> CheckPartNoInDocList(long partId)
+        {
+            var result = await _mastersService.CheckPartNoInDocList(partId);
+            return Json(result);
         }
 
         public async Task<IActionResult> MasterDetails()
@@ -39,23 +141,26 @@ namespace CWB.App.Controllers
             return View();
         }
 
-        public IActionResult EditPart(int partId, string partType)
+        public IActionResult EditPart(long partId, string partType)
         {
-            if(partType.Equals("BOF"))
+            string encodepartid = CWBAppUtils.EncodeLong(partId);
+
+            if (partType.Equals("BOF"))
             {
-                return RedirectToAction("EditBOF", new { partId = partId});
+                return RedirectToAction("EditBOF", new { partId = encodepartid });
             }
             else if (partType.Equals("RawMaterial"))
             {
-                return RedirectToAction("EditRawMaterial", new { partId = partId });
+                return RedirectToAction("EditRawMaterial", new { partId = encodepartid });
             }
-            return RedirectToAction("EditManufPart", new { partId = partId });
+            return RedirectToAction("EditManufPart", new { partId = encodepartid });
         }
 
         //editmanufpart
-        public async Task<IActionResult> EditManufPart(int partId)
+        public async Task<IActionResult> EditManufPart(string partId)
         {
-            ManufacturedPartNoDetailVM manuf = await _mastersService.GetManufPart(partId);
+            int decodedManufPartId = (int)CWBAppUtils.DecodeString(partId.ToString());
+            ManufacturedPartNoDetailVM manuf = await _mastersService.GetManufPart(decodedManufPartId);
             await CustomerViewBag();
             await CompaniesViewBagForManuF(manuf);
             await StatusViewBagForManuf(manuf);
@@ -71,18 +176,31 @@ namespace CWB.App.Controllers
             return View(new ManufacturedPartNoDetailVM {MasterPartType="0", PartId=0, ManufacturedPartNoDetailId=0, ManufacturedPartType=1});
         }
 
-        public async Task<IActionResult> EditBOF(int partId)
+        public async Task<IActionResult> EditBOF(string partId)
         {
-            BoughtOutFinishDetailVM manuf = await _mastersService.GetBOFPart(partId);
+            int decodedPartId = (int)CWBAppUtils.DecodeString(partId);
+            BoughtOutFinishDetailVM manuf = await _mastersService.GetBOFPart(decodedPartId);
             await CompaniesViewBagForBOF();
             await SupplierViewBag();
             await StatusViewBagForBOF();
             return View(manuf);
         }
 
-        public async Task<IActionResult> EditRawMaterial(int partId)
+        [HttpPost]
+        public long DecodePartId(string partId)
         {
-            RawMaterialDetailVM manuf = await _mastersService.GetRMPart(partId);
+            long decodepartID = 0;
+            if (partId != null && partId != "0")
+            {
+             decodepartID=  CWBAppUtils.DecodeString(partId);
+            }
+            return decodepartID;
+        }
+
+        public async Task<IActionResult> EditRawMaterial(string partId)
+        {
+            int decodedPartId = (int)CWBAppUtils.DecodeString(partId);
+            RawMaterialDetailVM manuf = await _mastersService.GetRMPart(decodedPartId);
             await SupplierViewBag();
             await CompaniesViewBagForRawMaterial(manuf);
             await StatusViewBagForRawMaterial(manuf);

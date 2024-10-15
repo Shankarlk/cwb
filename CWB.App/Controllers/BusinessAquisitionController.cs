@@ -51,6 +51,7 @@ namespace CWB.App.Controllers
         }
         public IActionResult Index()
         {
+            _logger.LogTrace("BA--Index--Loading");
             return View();
         }
 

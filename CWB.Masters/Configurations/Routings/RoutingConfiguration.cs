@@ -40,6 +40,11 @@ namespace CWB.Masters.Configurations
               .HasColumnName("Status")
               .IsRequired();
             builder
+              .Property(m => m.StatusChangeReason)
+              .HasColumnName("StatusChangeReason")
+                .HasMaxLength(300)
+              .HasDefaultValue("");
+            builder
               .Property(m => m.Deleted)
               .HasColumnName("Deleted")
               .IsRequired();

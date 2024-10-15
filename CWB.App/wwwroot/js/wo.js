@@ -322,22 +322,26 @@ $(document).ready(function () {
     $('#routing').on('change', (e) => {
                 const routeId = $(e.target).val();
                 // make an API call to get data for select2 based on the selected studentId
-                api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
-                    //console.log(data);
-                    const selectElement = $('#StartingOpNo');
-                    const selectEndOpNo = $('#EndingOpNo');
-                    $.each(data, (index, item) => {
-                        selectElement.html("");
-                        selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
-                    });
-                    const reversedData = data.slice().reverse();
-                    selectEndOpNo.html('');
-                    $.each(reversedData, (index, item) => {
-                        selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
-                    });
-                }).catch((error) => {
-                    console.error(error);
-                });
+        api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
+            //console.log(data);
+            //const uniqueData = [...new Set(data.map(item => item.stepOperation))];
+            const uniqueData = data.filter((item, index, self) =>
+                self.findIndex((t) => t.stepOperation === item.stepOperation) === index
+            );
+            const selectElement = $('#singleStartOpNo');
+            const selectEndOpNo = $('#singleEndOpNo');
+            selectElement.html("");
+            $.each(uniqueData, (index, item) => {
+                selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+            });
+            const reversedData = uniqueData.slice().reverse();
+            selectEndOpNo.html('');
+            $.each(reversedData, (index, item) => {
+                selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
+            });
+        }).catch((error) => {
+            console.error(error);
+        });
     });       
 
     //---Filtering---
@@ -391,20 +395,14 @@ $(document).ready(function () {
             $(this).toggle(tableDate >= fromDate && tableDate <= toDate);
         });
     });
+
     $("#SearchPartNo").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $("#SalesOrders1 tbody tr").filter(function () {
             $(this).toggle($(this.children[7]).text().toLowerCase().indexOf(value) > -1)
         });
     });
-    //$("#btnSearchPartNo").on("click", function () {
-    //    var value = $("#SearchPartNo").val().toLowerCase();
-    //    $("#SalesOrders1 tbody tr").filter(function () {
-    //        $(this).toggle($(this.children[7]).text().toLowerCase().indexOf(value) > -1)
-    //    });
-    //});
-
-    //gwo-
+    
     $("#updateWO").on("click", function () {
         var planwoqty = $('#PlanWoQty').val();
         var wonumber = $('#woNumber').text();
@@ -438,9 +436,9 @@ $(document).ready(function () {
         else {
             if (planwoqty > 0) {
                 var rowData = {
-                    woid: parseInt(woid),
+                    parentWoId: parseInt(woid),
                     salesOrderId: parseInt(soid),
-                    wonumber: wonumber,
+                    wonumber: " ",
                     partId: parseInt(partid),
                     partType: 0,
                     parentlevel: '',
@@ -453,59 +451,72 @@ $(document).ready(function () {
                 };
 
                 selectedData = rowData;
-
+                var resultData = [];
                 
                 api.post("/businessaquisition/WOpost", selectedData).then((data) => {
-                    // Handle success if needed
-                    //if (planwoqty < soqty) {
-                    //    var balqty = soqty - planwoqty;
-                    //    //var soupdate = {
-                    //    //    salesOrderId: parseInt(soid),
-                    //    //    requiredByDate: reqdate,
-                    //    //    balanceSOQty: parseInt(balqty)
-                    //    //};
-                    //    var selectedRowsData = [];
-                    //    var checkboxes = $("#multipleSO tbody input[type='checkbox']:checked");
-                    //    checkboxes.each(function (index, checkbox) {
-                    //        var row = checkbox.parentNode.parentNode;
-                    //        var salesOrderId = parseInt($(row).find("td:eq(0)").text()); // get the text from the 3rd column (index 2)
-                    //        //var balanceSOQty = parseInt($(row).find("td:eq(4)").text()); // get the text from the 5th column (index 4)
-                    //        selectedRowsData.push({ salesOrderId });
-                    //    });
-                    //    //console.log(selectedRowsData);
-                    //    var norow = selectedRowsData.length;
-                    //    for (var i = 0; i < selectedRowsData.length; i++) {
-                    //        var edata = selectedRowsData[i];
-                    //        if (norow > 1) {
-                    //            var fBalqty = balqty / norow
-                    //            edata = {
-                    //                ...selectedRowsData[i], 
-                    //                balanceSOQty: fBalqty
-                    //            };
-                    //        }
-                    //        api.post("/businessaquisition/SalesOrder", edata)
-                    //            .then((data) => {
-                    //                //console.log("Data posted successfully!", data);
-                    //            })
-                    //            .catch((error) => {
-                    //                //console.error("Error posting data:", error);
-                    //            });
-                    //    }
-                        
+                    resultData.push(data);
+                    var wosorel = [];
+                    var wosomethod = {};
+                    resultData.forEach(function (a, i) {
+                        wosorel.push({
+                            workOrderId: a.woid,
+                            salesOrderId: a.salesOrderId,
+                            active : 0
+                        });
+                    });
+                    //requestInProgress = false;
+                    api.getbulk("/WorkOrder/GetSoWo?workOrderId=" + woid).then((data) => {
+                        var checkboxes = $('#multipleSO .rowMCheckbox:checked');
+                        var salesOrderIds = [];
+                        checkboxes.each(function () {
+                            var row = $(this).closest('tr');
+                            var salesOrderId = row.find('td:eq(0)').text(); // or row.find('td:eq(0)').text() if salesOrderId is in the first column
+                            salesOrderIds.push(parseInt(salesOrderId));
+                        });
+                        const filteredData = data.filter((item) => salesOrderIds.includes(item.salesOrderId));
+                        filteredData.forEach(function (a, i) {
+                            wosorel.push({
+                                wosoId: a.wosoId,
+                                workOrderId: a.workOrderId,
+                                salesOrderId: a.salesOrderId,
+                                active: 2
+                            });
+                        });
+                        wosomethod = Object.values(wosorel);
+                        $.ajax({
+                            type: "POST",
+                            url: '/BusinessAquisition/PostWoSoRel',
+                            contentType: "application/json; charset=utf-8",
+                            headers: { 'Content-Type': 'application/json' },
+                            data: JSON.stringify(wosomethod),
+                            dataType: "json",
+                            success: function (result) {
+                            }
+                        });
 
-                        
-                    //}
-                    //else {
-                    //    var balqty = soqty - planwoqty
-                    //    var soupdate = {
-                    //        salesOrderId: parseInt(soid),
-                    //        requiredByDate: reqdate,
-                    //        balanceSOQty: parseInt(balqty)
-                    //    }
-                    //    api.post("/businessaquisition/SalesOrder", soupdate).then((data) => {
-
-                    //    }).catch((error) => { });
-                    //}
+                        var bal = $('#BalQty').val();
+                        var woinactive = {
+                            woid: parseInt(woid),
+                            salesOrderId: parseInt(soid),
+                            wonumber: wonumber,
+                            partId: parseInt(partid),
+                            partType: 0,
+                            parentlevel: '',
+                            calcWOQty: parseInt(bal),
+                            planCompletionDate: formattedDate,
+                            routingId: parseInt(routingid),
+                            startingOpNo: parseInt(startingOpNo),
+                            endingOpNo: parseInt(endingOpNo),
+                            status: parseInt(status),
+                            active: 2
+                        };
+                        api.post("/businessaquisition/WOpost", woinactive).then((data) => {
+                            loadWO();
+                        }).catch((error) => {
+                        });
+                    });
+                    //--
+                   
                     $("#btnPop1Close").click();
                 }).catch((error) => {
                     AppUtil.HandleError("WOForm", error);
@@ -517,10 +528,21 @@ $(document).ready(function () {
         }
        
     });
+
     $('#woc-partno').on('hidden.bs.modal', function (event) {
         loadWO();
+        const selectElement = $('#StartingOpNo');
+        const selectEndOpNo = $('#EndingOpNo');
+        selectElement.html("");
+        selectEndOpNo.html('');
+        $('#routing').prop('readonly', false);
+        $('#routing').css('pointer-events', '');
+        $('#StartingOpNo').prop('readonly', false);
+        $('#StartingOpNo').css('pointer-events', '');
+        $('#EndingOpNo').prop('readonly', false);
+        $('#EndingOpNo').css('pointer-events', '');
     });
-    // Event listener for when the modal is shown
+
     $('#woc-partno').on('shown.bs.modal', function (event) {
         // Select all checkboxes in the table with the class 'rowMCheckbox'
         var soqty = $('#SoQty').val();
@@ -1104,19 +1126,6 @@ $(document).ready(function () {
 
         if (partType === 1) {
             $("#popup3divRouting").show().addClass("row");
-            //api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
-            //    //console.log(data);
-            //    const selectElement = $('#singleRouting');
-            //    selectElement.prop("disabled", false);
-            //    $.each(data, (index, item) => {
-            //        selectElement.html("");
-            //        selectElement.append(`<option value="0">--Select--</option>`);
-            //        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-            //    });
-            //}).catch((error) => {
-            //});
-            //$('#singleStartOpNo').prop("disabled", false);
-            //$('#singleEndOpNo').prop("disabled", false);
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                 //console.log(data);
                 const selectElement = $('#singleRouting');
@@ -1130,8 +1139,8 @@ $(document).ready(function () {
 
                     });
                     var routeId = $('#singleRouting').val();
-                    $('#ManualStartOpNo').prop('readonly', true);
-                    $('#ManualStartOpNo').css('pointer-events', 'none');
+                    $('#singleEndOpNo').prop('readonly', true);
+                    $('#singleEndOpNo').css('pointer-events', 'none');
                     $('#singleStartOpNo').prop('readonly', true);
                     $('#singleStartOpNo').css('pointer-events', 'none');
                     api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
@@ -1161,7 +1170,7 @@ $(document).ready(function () {
 
             }).catch((error) => {
             });
-            $('#ManualStartOpNo').prop("disabled", false);
+            $('#singleStartOpNo').prop("disabled", false);
             $('#singleEndOpNo').prop("disabled", false);
         }
         else {
@@ -1636,24 +1645,6 @@ $(document).ready(function () {
 
     $('#NewRouting').on('change', (e) => {
         const routeId = $(e.target).val();
-        // make an API call to get data for select2 based on the selected studentId
-        //api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
-        //    //console.log(data);
-        //    const selectElement = $('#NewStartOpNo');
-        //    const selectEndOpNo = $('#NewEndOpNo');
-        //    $.each(data, (index, item) => {
-        //        selectElement.html("");
-        //        selectElement.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
-        //    });
-        //    const reversedData = data.slice().reverse();
-        //    selectEndOpNo.html('');
-        //    $.each(reversedData, (index, item) => {
-        //        selectEndOpNo.append(`<option value="${item.stepOperation}">${item.stepOperation}</option>`);
-        //    });
-        //}).catch((error) => {
-        //    console.error(error);
-        //});
-
         api.getbulk("/WorkOrder/RoutingSteps?routingId=" + routeId).then((data) => {
             //console.log(data);
             //const uniqueData = [...new Set(data.map(item => item.stepOperation))];
@@ -1819,19 +1810,7 @@ $(document).ready(function () {
 
 
         if (partType === 1) {
-            //api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
-            //    //console.log(data);
-            //    const selectElement = $('#popup7Routing');
-            //    selectElement.prop("disabled", false);
-            //    $.each(data, (index, item) => {
-            //        selectElement.html("");
-            //        selectElement.append(`<option value="0">--Select--</option>`);
-            //        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-            //    });
-            //}).catch((error) => {
-            //});
-            //$('#popup7StartingOpNo').prop("disabled", false);
-            //$('#popup7EndingOpNo').prop("disabled", false);
+            $("#popup7divRouting").show().addClass("row");
             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                 //console.log(data);
                 const selectElement = $('#popup7Routing');
@@ -1881,6 +1860,7 @@ $(document).ready(function () {
 
         }
         else {
+            $("#popup7divRouting").hide();
             const selectElement = $('#popup7Routing');
             selectElement.html("");
             selectElement.prop("disabled", true);
@@ -2025,6 +2005,7 @@ function EditWo(element) {
                     wosoId: parseInt(item.wosoId),
                     workOrderId: parseInt(item.workOrderId),
                     salesOrderId: parseInt(item.salesOrderId),
+                    active: parseInt(item.active)
 
                 };
                 temp.push(rowdata);
@@ -2047,8 +2028,12 @@ function EditWo(element) {
 
                     //CheckNumberOfSo(WOSoTable);     
                     if (WOSoTable.length >= 2) {
+                        const salesOrderIdsToRemove = temp.filter((item) => item.active === 2).map((item) => item.salesOrderId);
+
+                        WOSoTable = WOSoTable.filter((item) => !salesOrderIdsToRemove.includes(item.salesOrderId));
                         $('#woc-partno').modal('show');
                         $('#popup2').modal('hide');
+                                               
                         var tablebody = $("#multipleSO tbody");
                         $(tablebody).html("");//empty tbody
 
@@ -2058,19 +2043,7 @@ function EditWo(element) {
 
 
                         if (partType === 1) {
-                            //api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + partId).then((data) => {
-                            //    //console.log(data);
-                            //    const selectElement = $('#routing');
-                            //    selectElement.prop("disabled", false);
-                            //    $.each(data, (index, item) => {
-                            //        selectElement.html("");
-                            //        selectElement.append(`<option value="0">--Select--</option>`);
-                            //        selectElement.append(`<option value="${item.routingId}">${item.routingName}</option>`);
-                            //    });
-                            //}).catch((error) => {
-                            //});
-                            //$('#StartingOpNo').prop("disabled", false);
-                            //$('#EndingOpNo').prop("disabled", false);
+                           
                             $("#popup1DivRouting").show().addClass("row");
                             api.getbulk("/WorkOrder/GetRoutings?manufPartId=" + parseInt(partId)).then((data) => {
                                 //console.log(data);

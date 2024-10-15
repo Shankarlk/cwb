@@ -24,6 +24,10 @@ namespace CWB.ProductionPlanWO.Configurations
                .Property(t => t.SalesOrderId)
                .HasColumnName("SalesOrderId")
                .IsRequired();
+            builder
+               .Property(t => t.Active)
+               .HasColumnName("Active")
+               .IsRequired();
 
         }
 

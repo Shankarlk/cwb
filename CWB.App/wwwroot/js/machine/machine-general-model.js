@@ -104,6 +104,14 @@ $(function () {
             $(this).toggle($(this.children[4]).text().toLowerCase().indexOf(value) > -1)
         });
     });
+    $("#clearMachineBtn").click(function () {
+        $("#search-machine-plant").val('');
+        $("#search-machine-shop").val('');
+        $("#machineName").val('');
+        $("#manufacturer").val('');
+        $("#tbl-machine-list tbody tr").show();
+    });
+
 
     $("#btnMachineGeneralSave").click(function () {
         if ($("#frmMachineGeneral").valid()) {

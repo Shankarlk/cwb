@@ -336,7 +336,7 @@
                                         <!-- ======================== -->
                                         <div class="col-md-6 mb-2">
                                             <label class="form-label">Parent Level</label>
-                                            <input id="select-all-checkbox" class="form-check-input"
+                                            <input id="checkparentlevel" class="form-check-input"
                                                    type="checkbox" title="Select" data-plugin="tippy"
                                                    data-tippy-placement="top">
                                         </div>
@@ -351,7 +351,7 @@
                                                 <thead class="  table-info th-sti">
                                                     <tr class="table-border-bottom">
                                                         <th>
-                                                            <input id="select-all-checkbox"
+                                                            <input id="select-all-checkbox-in-wo"
                                                                    class="form-check-input" type="checkbox"
                                                                    title="Select all" data-plugin="tippy"
                                                                    data-tippy-placement="top">
@@ -378,9 +378,7 @@
                                         </div>
                                         <div class="col-md-10 mt-3 text-end">
                                             <!-- =============================  -->
-                                            <button class="btn btn-sm btn-purple" title=""
-                                                    data-plugin="tippy" data-tippy-placement="top"
-                                                    data-bs-toggle="modal" data-bs-target="#">
+                                            <button class="btn btn-sm btn-purple" title="" id="ReleaseWo">
                                                 Release Work
                                                 Order
                                             </button>
@@ -451,7 +449,7 @@
                                                             <thead class="  table-info th-sti">
                                                                 <tr class="table-border-bottom">
                                                                     <th>
-                                                                        <input id="select-all-checkbox"
+                                                                        <input id="select-all-checkbox-in-procplan"
                                                                                class="form-check-input"
                                                                                type="checkbox"
                                                                                title="Select all"
@@ -489,7 +487,7 @@
                                                 </div>
                                                 <!-- -----------------  -->
                                                 <div class="col-md-4 mt-2 text-end">
-                                                    <button class="btn btn-sm btn-purple">
+                                                    <button class="btn btn-sm btn-purple" id="ReleasePo">
                                                         Release Purchase
                                                         Order
                                                     </button>
@@ -1919,9 +1917,7 @@
 <template id="detailedPlanWoRow">
     <tr>
         <td>
-            <input class="form-check-input" type="checkbox"
-                   title="Select" data-plugin="tippy"
-                   data-tippy-placement="top">
+            <input type="checkbox"/>
         </td>
         <td hidden>{woId}</td>
         <td hidden>{salesOrderId}</td>
@@ -1937,6 +1933,9 @@
         <td></td>
         <td>{planCompletionDateStr}</td>
         <td hidden>{partType}</td>
+        <td hidden>{productionPlanId}</td>
+        <td hidden>{planCompletionDate}</td>
+        <td hidden>{parentlevel}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#"
@@ -1975,10 +1974,7 @@
 <template id="ProcPlanRow">
     <tr>
         <td>
-            <input class="form-check-input"
-                   type="checkbox" title="Select"
-                   data-plugin="tippy"
-                   data-tippy-placement="top">
+            <input class="form-check-input" type="checkbox">
         </td>
         <td hidden>{procPlanId}</td>
         <td hidden>{workOrderId}</td>
@@ -1996,6 +1992,7 @@
         <td>{leadTimeInDays}</td>
         <td>{calcReceiptDateStr}</td>
         <td hidden>{calcReceiptDate}</td>
+        <td hidden>{supplierId}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#"

@@ -191,6 +191,25 @@ namespace CWB.Masters.Services.ItemMaster
             return partPurchaseDetailVM;
         }
 
+        public async Task<PartPurchaseDetailsVM> PreferredSupplier(PartPurchaseDetailsVM partPurchaseDetailVM)
+        {
+            var partPurchase = _mapper.Map<PartPurchaseDetails>(partPurchaseDetailVM);
+            if (partPurchase.Id != 0)
+            {
+                List<PartPurchaseDetailsVM> lst = GetPartPurchasesForPartNo((int)partPurchase.PartId,(int)partPurchase.TenantId).ToList();
+                foreach (PartPurchaseDetailsVM rv in lst)
+                {
+                    var lRouting = _mapper.Map<PartPurchaseDetails>(rv);
+                    lRouting.PreferredSupplier = 0;
+                    await _partPurchaseRepository.UpdateAsync(lRouting.Id, lRouting);
+                }
+                partPurchase = await _partPurchaseRepository.UpdateAsync(partPurchase.Id, partPurchase);
+            }
+            await _unitOfWork.CommitAsync();
+            partPurchaseDetailVM.PartPurchaseId = (int)partPurchase.Id;
+            return partPurchaseDetailVM;
+        }
+
         public IEnumerable<PartPurchaseDetailsVM> GetParchasesByMasterPartNo(string partNo)
         {
             var partPurchaseDetails = _partPurchaseRepository.GetRangeAsync(m => m.PartId.Equals(partNo));
