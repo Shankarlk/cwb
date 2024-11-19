@@ -46,7 +46,7 @@
                             <th width="10%"></th>
                             <th width="50%">Company Name</th>
                             <th width="20%">Division / Branch</th>
-                            <th width="15%">Location</th>
+                            <th width="15%">City / Country</th>
                             <th width="5%"></th>
                         </tr>
                     </thead>
@@ -57,7 +57,7 @@
                                 <td data-key="CompanyType">@contact.CompanyType</td>
                                 <td data-key="CompanyName">@contact.CompanyName</td>
                                 <td data-key="DivisionName">@contact.DivisionName</td>
-                                <td data-key="Location">@contact.Location</td>
+                                <td data-key="Location">@contact.City / @contact.Country</td>
                                 <td>
                                     <div class="dropdown float-center">
                                         <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
@@ -67,11 +67,16 @@
                                                data-id="@contact.CompanyId" data-companyname="@contact.CompanyName"
                                                data-divisionid="@contact.DivisionId" data-companytype="@contact.CompanyType"
                                                data-divisionname="@contact.DivisionName"
-                                               data-notes="@contact.Notes"
+                                               data-plantname="@contact.PlantName"
+                                               data-city="@contact.City"
+                                               data-pin="@contact.Pincode"
+                                               data-country="@contact.Country"
                                                data-location="@contact.Location"
-                                               class="dropdown-item">Company Details</a>
+                                               data-gst="@contact.GstNo"
+                                               data-pan="@contact.PanNo"
+                                               class="dropdown-item">Edit</a>
                                             <!-- item-->
-                                            <a href="javascript:void(0);" onclick="DeleteCompany(@contact.CompanyId);" data-bs-toggle="modal" data-bs-target="#dialog-company" data-id="@contact.CompanyId" data-divisionid="@contact.DivisionId" class="dropdown-item">Delete Company</a>
+                                            @*<a href="javascript:void(0);" onclick="DeleteCompany(@contact.CompanyId);" data-bs-toggle="modal" data-bs-target="#dialog-company" data-id="@contact.CompanyId" data-divisionid="@contact.DivisionId" class="dropdown-item">Delete Company</a>*@
                                             <!-- item-->
                                         </div>
                                     </div>
@@ -118,7 +123,7 @@
         <td data-key="CompanyType">{companyType}</td>
         <td data-key="CompanyName">{companyName}</td>
         <td data-key="DivisionName">{divisionName}</td>
-        <td data-key="Location">{location}</td>
+        <td data-key="Location">{city} / {country}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
@@ -128,12 +133,17 @@
                        data-id="{companyId}" data-companyname="{companyName}"
                        data-divisionid="{divisionId}" data-companytype="{companyType}"
                        data-divisionname="{divisionName}"
-                       data-notes="{notes}"
+                       data-plantname="{plantName}"
                        data-location="{location}"
-                       class="dropdown-item">Company Details</a>
+                                               data-city="{city}"
+                                               data-pin="{pincode}"
+                                               data-country="{country}"
+                                               data-gst="{gstNo}"
+                                               data-pan="{panNo}"
+                       class="dropdown-item">Edit</a>
                     <!-- item-->
-                    <a href="javascript:void(0);" 
-                       onclick="DeleteCompany({companyId});" class="dropdown-item">Delete Company</a>
+                    @*<a href="javascript:void(0);" 
+                       onclick="DeleteCompany({companyId});" class="dropdown-item">Delete Company</a>*@
                     <!-- item-->
                 </div>
             </div>

@@ -101,11 +101,17 @@ namespace CWB.App.Services.Masters
             return operationDocumentTypeVM;
         }
 
-        private async Task<IEnumerable<OperationalDocumentListVM>> GetOperationalDocTypesByOptId(long Id)
+        public async Task<IEnumerable<OperationalDocumentListVM>> GetOperationalDocTypesByOptId(long Id)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/operation-list-doctypes/{Id}/{tenantId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<OperationalDocumentListVM>>.GetAsync(uri, headers);
+        }
+        public async Task<bool> DeletOperationDoc(long opDocId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/deleteopdoclist/{opDocId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
         }
     }
 }

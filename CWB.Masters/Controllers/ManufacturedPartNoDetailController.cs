@@ -115,6 +115,15 @@ namespace CWB.Masters.Controllers
             var result = await _manufacturedPartNoDetailService.UOM(uomvm);
             return Ok(result);
         }
+        [HttpGet]
+        [Route(ApiRoutes.ManufacturedPartNoDetail.CheckUOM)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckUOM(string uomName)
+        {
+            bool exists = false;
+            exists = await _manufacturedPartNoDetailService.CheckUOM(uomName);
+            return Ok(exists);
+        }
 
 
 
@@ -162,6 +171,15 @@ namespace CWB.Masters.Controllers
                  return BadRequest(validationResult.Errors);*/
             var result = await _manufacturedPartNoDetailService.PreferredInputMatl(manufacturedPartNoDetailVM);
             return Ok(result);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.ManufacturedPartNoDetail.GetPartStatus)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<PartStatusChangeLogVM>))]
+        public async Task<IActionResult> GetPartStatus(long tenantId)
+        {
+            var companyTypes = await _manufacturedPartNoDetailService.GetPartStatusChangelog(tenantId);
+            return Ok(companyTypes);
         }
         /// <summary>
         /// Get All Companies by tenant

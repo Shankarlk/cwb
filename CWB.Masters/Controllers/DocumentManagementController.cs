@@ -124,6 +124,14 @@ namespace CWB.Masters.Controllers
 
 
         [HttpGet]
+        [Route(ApiRoutes.DocumentManagement.GetOneDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(DocListVM))]
+        public async Task<IActionResult> GetOneDocList(long doclistId, long tenantId)
+        {
+            var documentTypeVM = await _documentManagementService.GetOneDocList(doclistId,tenantId);
+            return Ok(documentTypeVM);
+        }
+        [HttpGet]
         [Route(ApiRoutes.DocumentManagement.GetAllDocList)]
         [Produces(AppContentTypes.ContentType, Type = typeof(DocListVM))]
         public async Task<IActionResult> GetAllDocList(long tenantId)
@@ -167,6 +175,40 @@ namespace CWB.Masters.Controllers
             return Ok(documentTypeVM);
         }
 
+
+        [HttpGet]
+        [Route(ApiRoutes.DocumentManagement.GetAllRefDoc)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(RefDocLogVM))]
+        public async Task<IActionResult> GetAllRefDoc(long tenantId)
+        {
+            var documentTypeVM = await _documentManagementService.GetAllRefDoc(tenantId);
+            return Ok(documentTypeVM);
+        }
+        [HttpPost]
+        [Route(ApiRoutes.DocumentManagement.PostDocLog)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(RefDocLogVM))]
+        public async Task<IActionResult> PostDocLog([FromBody] RefDocLogVM uiList)
+        {
+            var documentTypeVM = await _documentManagementService.PostDocLog(uiList);
+            return Ok(documentTypeVM);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.DocumentManagement.GetReasonList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(RefDocReasonListVM))]
+        public async Task<IActionResult> GetReasonList(long tenantId)
+        {
+            var documentTypeVM = await _documentManagementService.GetReasonList(tenantId);
+            return Ok(documentTypeVM);
+        }
+        [HttpPost]
+        [Route(ApiRoutes.DocumentManagement.PostDocReason)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(RefDocReasonListVM))]
+        public async Task<IActionResult> PostDocReason([FromBody] RefDocReasonListVM uiList)
+        {
+            var documentTypeVM = await _documentManagementService.PostDocReason(uiList);
+            return Ok(documentTypeVM);
+        }
 
         [HttpGet]
         [Route(ApiRoutes.DocumentManagement.GetDocStatus)]
@@ -216,6 +258,15 @@ namespace CWB.Masters.Controllers
         {
             bool exists = false;
             exists = await _documentManagementService.CheckDocTypeName(docTypeName);
+            return Ok(exists);
+        }
+        [HttpGet]
+        [Route(ApiRoutes.DocumentManagement.DocumentTypeInDoclist)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> DocumentTypeInDoclist(long docTypeid, long tenantId)
+        {
+            bool exists = false;
+            exists = await _documentManagementService.DocumentTypeInDoclist(docTypeid,tenantId);
             return Ok(exists);
         }
         [HttpGet]

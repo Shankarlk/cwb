@@ -258,4 +258,27 @@ $(function () {
         var name = $(this).attr('name');
         $("input[name='" + name+"']").val(val);
     });
+
+    let idleTime = 0;
+    const maxIdleTime = 59; // Set the idle time limit in minutes
+
+    // Check idle time every minute
+    const idleInterval = setInterval(() => {
+        idleTime++;
+        if (idleTime >= maxIdleTime) {
+            window.location.href = '/Home/Logout'; // Redirect to the logout URL
+        }
+    }, 60000); // 1 minute interval
+
+    // Reset idle time on any user activity
+    const resetIdleTime = () => {
+        //console.log(idleTime);
+        idleTime = 0;
+    };
+
+    // Listen to events that indicate user activity
+    document.onmousemove = resetIdleTime;
+    document.onkeypress = resetIdleTime;
+    document.onscroll = resetIdleTime;
+    document.onclick = resetIdleTime;
 });

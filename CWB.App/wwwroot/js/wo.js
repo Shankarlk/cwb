@@ -1962,7 +1962,7 @@ function showLoadingScreen() {
         success: function (data) {
             document.getElementById('preloader').style.display = 'none';
             document.getElementById('status').style.display = 'none';
-            window.location.href = '/D%231@122P%20I%255$3T%20';
+            window.location.href = '/D%231@122P%20I%255$3T%20I';
         }
     });
 }

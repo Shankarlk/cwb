@@ -27,6 +27,7 @@ namespace CWB.Masters.Services.Routings
         private readonly IUnitOfWork _unitOfWork;
         
         private readonly IRoutingRepository _routingRepository;
+        private readonly IRoutingStatusLogRepository _routingStatusLogRepository;
         private readonly IRoutingStepRepository _routingStepRepository;
         private readonly IRoutingStepPartRepository _routingStepPartRepository;
         private readonly IRoutingStepMachineRepository _routingStepMachineRepository;
@@ -41,7 +42,8 @@ namespace CWB.Masters.Services.Routings
             ,IRoutingStepMachineRepository routingStepMachineRepository
             , IRoutingStepSupplierRepository routingStepSupplierRepository
             , ISubConDetailsRepository subConDetailsRepository
-            , ISubConWorkStepDetailsRepository subConWorkStepDetailsRepository)
+            , ISubConWorkStepDetailsRepository subConWorkStepDetailsRepository,
+            IRoutingStatusLogRepository routingStatusLogRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -53,6 +55,7 @@ namespace CWB.Masters.Services.Routings
             _routingStepSupplierRepository = routingStepSupplierRepository;
             _subConDetailsRepository = subConDetailsRepository;
             _subConWorkStepDetailsRepository = subConWorkStepDetailsRepository;
+            _routingStatusLogRepository = routingStatusLogRepository;
         }
 
         public IEnumerable<RoutingVM> GetRoutingsForManufId(int manufId)
@@ -321,6 +324,19 @@ namespace CWB.Masters.Services.Routings
             }
             else
             {
+                var frouting = await _routingRepository.SingleOrDefaultAsync(m=>m.Id==routing.Id);
+                if(frouting.Status != routing.Status)
+                {
+                    RoutingStatusLog routingStatusLog = new RoutingStatusLog();
+                    routingStatusLog.UpdatedBy = frouting.TenantId;
+                    routingStatusLog.RoutingId = frouting.Id;
+                    routingStatusLog.TenantId = frouting.TenantId;
+                    routingStatusLog.PrevStatus = frouting.Status;
+                    routingStatusLog.ChangedStatus = routing.Status;
+                    routingStatusLog.UpdatedDate = DateTime.Now;
+                    routingStatusLog.Reason = routing.StatusChangeReason;
+                    await _routingStatusLogRepository.AddAsync(routingStatusLog);
+                }
                 routing = await _routingRepository.UpdateAsync(routing.Id, routing);
             }
             await _unitOfWork.CommitAsync();
@@ -404,6 +420,44 @@ namespace CWB.Masters.Services.Routings
                 string src = ex.InnerException.Source;
             }
             return routingStepVM;
+        }
+        public async Task<RoutingStatusLogVM> PostRoutingStatusLog(RoutingStatusLogVM routingStatusLogVM)
+        {
+            try
+            {
+                var routingStep = _mapper.Map<RoutingStatusLog>(routingStatusLogVM);
+                if (routingStep.Id == 0)
+                {
+                    await _routingStatusLogRepository.AddAsync(routingStep);
+                }
+                else
+                {
+                    routingStep = await _routingStatusLogRepository.UpdateAsync(routingStep.Id, routingStep);
+                }
+                await _unitOfWork.CommitAsync();
+                routingStatusLogVM.RoutingStatusLogId = (int)routingStep.Id;
+                return routingStatusLogVM;
+            }catch(Exception ex)
+            {
+                string msg = ex.InnerException.Message;
+                string src = ex.InnerException.Source;
+            }
+            return routingStatusLogVM;
+        }
+        public IEnumerable<RoutingStatusLogVM> GetRoutingStatusLog(long routingId,long tenantId)
+        {
+            try
+            {
+                var stepParts = _routingStatusLogRepository.GetRangeAsync(m => m.TenantId == tenantId && m.RoutingId == routingId);
+                return _mapper.Map<IEnumerable<RoutingStatusLogVM>>(stepParts);
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.InnerException.Message;
+                string src = ex.InnerException.Source;
+                return new List<RoutingStatusLogVM>();
+            }
+
         }
         public async Task<RoutingStepVM> RoutingStep(RoutingStepVM routingStepVM)
         {

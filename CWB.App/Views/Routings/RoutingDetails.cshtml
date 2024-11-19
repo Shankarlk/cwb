@@ -9,59 +9,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-9">
-                            <div class="table-responsive">
-                                <table class="table table-sm text-center vam" id="headingPartsDetails">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                <h4>Routing</h4>
-                                            </th>
-                                            <td>
-                                                <span class="h6">Company :</span> @Html.DisplayFor(model => model.CompanyName)
-                                            </td>
-                                            <td>
-                                                <span class="h6">Part No:</span>  @Html.DisplayFor(model => model.PartNo)
-                                            </td>
-                                            <td>
-                                                <span class="h6">Part Description:</span> @Html.DisplayFor(model => model.PartDescription)
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="table-responsive   display-none ">
-                                <table class="table table-sm text-end">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <button class="btn btn-sm btn-dark" title="Close & Return to Previous Screen / Menu Item" data-plugin="tippy" data-tippy-placement="top"><span class="fon-we-700">Target Date :</span> 12/08/2022</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="table-responsive">
-                                <table class="w-100 text-end ">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a asp-action="Index" asp-controller="Routings">
-                                                    <button type="button" class="btn-close"></button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                         <!-- ================================ -->
                         <!-- ================================ -->
-                        <div class="col-md-12 mt-n2">
+                        <div class="col-md-12 mt-n2" hidden>
                             <ul class="nav nav-tabs nav-pills nav-justified navtab-bg font-12">
                                 <li class="nav-item" id="RoutingAvailable">
                                     <a href="#rs2" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
@@ -133,6 +83,7 @@
 <partial name="../Shared/_PreferredRouting" />
 <partial name="../Shared/_ChangeMakeFrom" />
 <partial name="../Shared/_ChangeStatus" />
+<partial name="../Shared/_ChangeStatusLog" />
 
 @section scripts {
     <script src="~/js/ItemMaster/supplier.js"></script>

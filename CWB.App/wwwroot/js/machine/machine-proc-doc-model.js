@@ -1,6 +1,9 @@
 ﻿var MachineProcDocUtil = {
     LoadMachineProcDocList: (machineId) => {
-        api.get("/Machine/GetMachineProcDocs/" + machineId).then((data) => {
+        var newNamevalidate = document.getElementById('ProcDocTypeId');
+        newNamevalidate.style.border = '';
+        $("#ProcMcId").val(machineId);
+        api.get("/Machine/GetMcProcDocList?mcId=" + machineId).then((data) => {
             var tablebody = $("#tbl-machine-proc-doc-list tbody");
             $(tablebody).html("");//empty tbody
             for (i = 0; i < data.length; i++) {
@@ -11,12 +14,12 @@
         });
     },
     LoadMachineDocType: (machineId) => {
-        api.get("/Machine/GetDocTypes/" + machineId).then((data) => {
-            var docTypeSelect = $("#MachineProcDocumentTypeId");
+        api.get("/masters/DocTypes/" + machineId).then((data) => {
+            var docTypeSelect = $("#ProcDocTypeId");
             $(docTypeSelect).html("");
-            $(docTypeSelect).append('<option value="">--Select Document Type--</option>');
+            $(docTypeSelect).append('<option value="' + 0 + '">--Select Document Type--</option>');
             for (i = 0; i < data.length; i++) {
-                $(docTypeSelect).append('<option value="' + data[i].documentTypeId + '">' + data[i].name + '</option>');
+                $(docTypeSelect).append('<option value="' + data[i].documentTypeId + '">' + data[i].documentName + '</option>');
             }
         }).catch((error) => {
 
@@ -40,31 +43,97 @@
 
 $(function () {
     $("#btnMachineProDocSubmit").click(function () {
-        if ($("#frmMachineProcsDoc").valid()) {
-            var formData = AppUtil.GetFormData("frmMachineProcsDoc");
-            api.post("/Machine/MachineProcDoc", formData).then((data) => {
-                MachineProcDocUtil.ResetMachineProcDocForm();
-                MachineProcDocUtil.LoadMachineDocType(data.machineProcDocumentMachineId);
-                MachineProcDocUtil.LoadMachineProcDocList(data.machineProcDocumentMachineId);
-
-            }).catch((error) => {
-                AppUtil.HandleError("frmMachineProcsDoc", error);
-            });
+        var mctypeid = parseInt($("#MachineMachineId").val());
+        if (mctypeid == 0) {
+            alert("Please Save the Machine Type.");
+            return false;
+        } else {
         }
+        var docTypeid = parseInt($("#ProcDocTypeId").val());
+        if (docTypeid == 0) {
+            var newNamevalidate = document.getElementById('ProcDocTypeId');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        } else {
+            var newNamevalidate = document.getElementById('ProcDocTypeId');
+            newNamevalidate.style.border = '';
+        }
+        var checkbox = $("#ProcManChK");
+
+        if (checkbox.prop("checked")) {
+            $("#ProcMan").val('Y');
+        } else {
+            $("#ProcMan").val('N');
+        }
+        var mandatory = $("#ProcMan").val();
+        var today = new Date();
+        var deletionDate = today.toISOString().split('T')[0];
+        var mcTypeDocId = parseInt($("#ProcSlNoDocId").val());
+        if (isNaN(mcTypeDocId)) {
+            mcTypeDocId = 0;
+        }
+        var rowData = {
+            mcSlNoDocListId: mcTypeDocId,
+            mcId: mctypeid,
+            documentTypeId: docTypeid,
+            mandatory: mandatory,
+            updatedBy: 0,
+            updatedOn: deletionDate
+        };
+        api.post("/Machine/PostMcProcDoc", rowData).then((data) => {
+            // console.log(data);
+            MachineProcDocUtil.LoadMachineProcDocList(mctypeid);
+            $("#ProcManChK").prop("checked", false);
+            $("#ProcDocTypeId").val(0);
+            $("#ProcSlNoDocId").val(0);
+        }).catch((error) => {
+        });
     });
     $("#tbl-machine-proc-doc-list").on("click", "button.edit", function () {
         var docid = $(this).data("id");
         var doctype = $(this).data("doctype");
         var doctypeId = $(this).data("doctypeid");
         var docMandatory = $(this).data("mandatory");
-        var docTypeSelect = $("#MachineProcDocumentTypeId");
-        var docTypeoption = $(docTypeSelect).find("option[value='" + doctypeId + "'");
-        if (docTypeoption.length === 0) {
-            $(docTypeSelect).append('<option value="' + doctypeId + '">' + doctype + '</option>');
-        }
+        var docTypeSelect = $("#ProcDocTypeId");
+        //var docTypeoption = $(docTypeSelect).find("option[value='" + doctypeId + "'");
+        //if (docTypeoption.length === 0) {
+        //    $(docTypeSelect).append('<option value="' + doctypeId + '">' + doctype + '</option>');
+        //}
         $(docTypeSelect).val(doctypeId);
-        $("#IsMachineProcDocumentMandatory").prop('checked', docMandatory).change();
-        $("#MachineProcDocumentId").val(docid);
+        if (docMandatory == "Y") {
+            $("#ProcManChK").prop("checked", true);
+        } else {
+            $("#ProcManChK").prop("checked", false);
+        }
+        $("#ProcSlNoDocId").val(docid);
     });
-    
-})
+
+});
+function DeleteMcProcDoc(element) {
+
+    var relatedTarget = $(element);
+    var doclistid = relatedTarget.data("id");
+    var doctypeId = relatedTarget.data("doctypeid");
+    api.get("/masters/CheckDocTypeInDocList?docTypeid=" + doctypeId).then((data) => {
+        if (data) {
+            if (doclistid != 0) {
+                var confrimval = confirm("Do You Want This Document Type.");
+                if (confrimval) {
+                    api.get("/Machine/DeleteMcProcDoc?mcSlNoDocListId=" + doclistid).then((data) => {
+                        //console.log(data);
+                        var mctypeid = parseInt($("#MachineMachineId").val());
+                        MachineProcDocUtil.LoadMachineProcDocList(mctypeid);
+                    }).catch((error) => {
+                        //console.log(error);
+                    });
+                }
+            } else {
+                alert("This Document Type Do Not Have Document.");
+            }
+        } else {
+            alert("Deletion of This can be done after files with the Extn are deleted from the System");
+        }
+    }).catch((error) => {
+
+    });
+}

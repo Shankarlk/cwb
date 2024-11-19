@@ -31,6 +31,7 @@ namespace CWB.Masters.MastersUtils
             services.AddTransient<IMachineProcessDocumentRepository, MachineProcessDocumentRepository>();
             services.AddTransient<IMachineService, MachineService>();
             services.AddTransient<IManufacturedPartNoDetailRepository, ManufacturedPartNoDetailRepository>();
+            services.AddTransient<IPartStatusChangeLogRepository, PartStatusChangeLogRepository>();
             services.AddTransient<IManufacturedPartNoDetailService, ManufacturedPartNoDetailService>();
             services.AddTransient<IRawMaterialDetailRepository, RawMaterialDetailRepository>();
             services.AddTransient<IRawMaterialTypeRepository, RawMaterialTypeRespository>();
@@ -67,6 +68,9 @@ namespace CWB.Masters.MastersUtils
             services.AddTransient<IItemMasterContentRepository, ItemMasterContentRepository>();
             services.AddTransient<IMcTypeDocListRepository, McTypeDocListRepository>();
             services.AddTransient<IMcSlNoDocListRepository, McSlNoDocListRepository>();
+            services.AddTransient<IRefDocReasonListRepository, RefDocReasonListRepository>();
+            services.AddTransient<IRefDocLogRepository, RefDocLogRepository>();
+            services.AddTransient<IRoutingStatusLogRepository, RoutingStatusLogRepository>();
             services.AddTransient<IDocumentManagementService, DocumentManagementService>();
         }
     }

@@ -70,10 +70,34 @@ namespace CWB.Masters.Services.Company
             division.CompanyId = company.Id;
             if (division.Id == 0)
             {
+                if (division.PanNo == null)
+                {
+                    division.PanNo = string.Empty;
+                }
+                if (division.Pincode == null)
+                {
+                    division.Pincode = string.Empty;
+                }
+                if (division.GstNo == null)
+                {
+                    division.GstNo = string.Empty;
+                }
                 await _divisionRepository.AddAsync(division);
             }
             else
             {
+                if (division.PanNo == null)
+                {
+                    division.PanNo = string.Empty;
+                }
+                if (division.Pincode == null)
+                {
+                    division.Pincode = string.Empty;
+                }
+                if (division.GstNo == null)
+                {
+                    division.GstNo = string.Empty;
+                }
                 division = await _divisionRepository.UpdateAsync(division.Id, division);
             }
             await _unitOfWork.CommitAsync();

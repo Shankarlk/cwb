@@ -18,7 +18,11 @@ namespace CWB.Masters.ViewModels.DocumentManagement
         public long RoutingId { get; set; }
         public long OprNo { get; set; }
         public DateTime DeletionDate { get; set; }
+        public string Comments { get; set; }
         public long Status { get; set; }
+        public DateTime CreationDt { get; set; }
+        public long McTypeId { get; set; }
+        public long McId { get; set; }
         public long TenantId { get; set; }
     }
 }

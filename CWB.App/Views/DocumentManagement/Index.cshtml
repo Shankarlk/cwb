@@ -2,6 +2,7 @@
     ViewData["Title"] = "Document Management";
 }
 
+<input value="M-D" type="hidden" id="hdn-nav-menu" />
 <div class="content">
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
@@ -42,9 +43,9 @@
                         <div class="col-md-2 mb-2">
                             <label class="form-label mb-1">Uploading Dept.</label>
                             @*<select class="form-select form-select-sm" aria-label="form-select-sm" data-plugin="tippy" id="SearchDepartment"
-                    data-tippy-placement="top" data-tippy="" data-original-title="Select the Department">
-                <option value="">Department</option>
-            </select>*@
+                                        data-tippy-placement="top" data-tippy="" data-original-title="Select the Department">
+                                    <option value="">Department</option>
+                                </select>*@
                             <input type="text" id="SeacrchUploaddept" class="form-control form-control-sm" placeholder="Enter Here"
                                    title="" data-plugin="tippy" data-tippy-placement="top">
                         </div>
@@ -115,6 +116,11 @@
                                         Add Customer Data
                                         Retention Period
                                     </button>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#RefReasonPop"
+                                            title="" data-plugin="tippy" data-tippy-placement="top">
+                                        Add / Edit Reference Document
+                                        Replacement Reason
+                                    </button>
                                 </div>
                                 <div class="col-md-2 mt-3 text-end">
                                     @*<a href="viewmanagedoc.html">*@
@@ -182,15 +188,15 @@
                                         <input class="form-control form-control-sm" type="number" id="DTDRetYear"
                                                title="" data-plugin="tippy" data-tippy-placement="top" value="0">
                                         @*<select class="form-select form-select-sm" aria-label="form-select-sm" id="DTDRetYear"
-                title="" data-plugin="tippy" data-tippy-placement="top">
-            <option value="">Year</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>*@
+                                                    title="" data-plugin="tippy" data-tippy-placement="top">
+                                                <option value="">Year</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                            </select>*@
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <label class="form-label mb-1">Month *</label>
@@ -243,7 +249,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -293,7 +298,7 @@
                     </div>
                     <!-- ========================= -->
                 </div>
-               
+
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -334,7 +339,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                             </tbody>
                         </table>
                     </div>
@@ -434,15 +438,15 @@
                         <input class="form-control form-control-sm" type="number" id="CDRPRetPerYear"
                                title="" data-plugin="tippy" data-tippy-placement="top" value="0">
                         @*<select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="CDRPRetPerYear"
-                data-plugin="tippy" data-tippy-placement="top">
-            <option value="">Year</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>*@
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">Year</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>*@
                     </div>
                     <div class="col-md-3 mb-2">
                         <label class="form-label mb-1">Month *</label>
@@ -479,6 +483,51 @@
     <!-- /.modal-dialog -->
 </div>
 <!------------------Ends CustomerRetention Popup------------------->
+<!------------------Add Ref Reason Popup------------------->
+<div class="modal fade" id="RefReasonPop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="fullWidthModalLabel">Reference / Master File Replacement Reason</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <label class="form-label col-md-5 mb-2">Replacement Reason <span class="text-danger">*</span> </label>
+                    <div class="col-md-7 mb-2">
+                        <input class="form-control form-control-sm" type="text" id="DocReason" placeholder="enter here">
+                        <span id="DocReason-error" style="color:red;display:block;margin-top:4px;"></span>
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12 text-end">
+                        <input type="text" id="DocReasonId" hidden="">
+                        <button class="btn btn-sm btn-primary" id="RefReasonSave">Save</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+                <!-- end row -->
+                <!-- end row -->
+                <div class="row mt-4">
+                    <div class="table-responsive table-he-150">
+                        <table class="table table-sm table-bordered w-100 mb-3 tableFixHead" id="RefDocGrid">
+                            <thead class="  table-info th-sti text-center">
+                                <tr class="table-border-bottom">
+                                    <th></th>
+                                    <th width="5%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------Ends CustomerRetention Popup------------------->
 
 
 
@@ -512,9 +561,9 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
                        data-doctypeid="{documentTypeId}" data-doccatid="{docuCategory}" data-doctypename="{documentName}" data-docdatareqdcust="{dataReqdByCust}"
-                       data-retperyear="{defaultRetPerYear}" data-retpermon="{defaultRetPerMon}" data-fileextnid="{extnId}" >Edit</a>
+                       data-retperyear="{defaultRetPerYear}" data-retpermon="{defaultRetPerMon}" data-fileextnid="{extnId}">Edit</a>
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item" onclick="DeleteDocType({documentTypeId})" >Delete</a>
+                    <a href="javascript:void(0);" class="dropdown-item" onclick="DeleteDocType({documentTypeId})">Delete</a>
                 </div>
             </div>
         </td>
@@ -575,7 +624,19 @@
         <td>{extnName}</td>
         <td>
             <a href="javascript:void(0);" data-fileextnid="{extnId}"
-                       data-fileextnname="{extnName}" onclick="EditFileExtnsion(this)"><i class="fas fa-pencil-alt btn btn-sm"></i>
+               data-fileextnname="{extnName}" onclick="EditFileExtnsion(this)">
+                <i class="fas fa-pencil-alt btn btn-sm"></i>
+            </a>
+        </td>
+    </tr>
+</template>
+<template id="RefDocGridRow">
+    <tr>
+        <td>{docReason}</td>
+        <td>
+            <a href="javascript:void(0);" data-refdocid="{refDocReasonListId}"
+               data-docreason="{docReason}" onclick="EditRefDoc(this)">
+                <i class="fas fa-pencil-alt btn btn-sm"></i>
             </a>
         </td>
     </tr>

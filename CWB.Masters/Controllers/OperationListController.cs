@@ -116,11 +116,21 @@ namespace CWB.Masters.Controllers
         [Produces(AppContentTypes.ContentType, Type = typeof(OperationalDocumentListVM))]
         public async Task<IActionResult> PostOperationalDocumentTypes([FromBody] OperationalDocumentListVM operationalDocumentListVM)
         {
-            var validator = new OperationalDocumentListVMValidator();
-            var validationResult = await validator.ValidateAsync(operationalDocumentListVM);
-            if (!validationResult.IsValid)
-                return BadRequest(validationResult.Errors);
+            //var validator = new OperationalDocumentListVMValidator();
+            //var validationResult = await validator.ValidateAsync(operationalDocumentListVM);
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult.Errors);
             var result = await _operationListService.OperationDocumentTypes(operationalDocumentListVM);
+            return Ok(result);
+        }
+
+
+        [HttpGet]
+        [Route(ApiRoutes.OperationList.DeleteOperationDoc)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> DeleteOperationDoc(long opDocId, long tenantId)
+        {
+            var result = await _operationListService.DeleteOperationDoc(opDocId, tenantId);
             return Ok(result);
         }
     }

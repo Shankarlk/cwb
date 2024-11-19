@@ -156,6 +156,8 @@ $(function () {
             $("#WDId").val("0");
             var tablebody = $("#HolidaysTable tbody");
             $(tablebody).html("");
+            loadCity();
+            loadCountrys();
             return;
         }
         $("#GEN").show();
@@ -180,8 +182,42 @@ $(function () {
 
         var name = relatedTarget.data("name");
         $("#Name").val(name);
-        var notes = relatedTarget.data("notes");
-        $("#Notes").val(notes);
+        var city = relatedTarget.data("city");
+        $("#City").val(city);
+        var pin = relatedTarget.data("pin");
+        $("#Pincode").val(pin);
+        var gst = relatedTarget.data("gst");
+        $("#GstNo").val(gst);
+        var pan = relatedTarget.data("pan");
+        $("#PanNo").val(pan);
+        var country = relatedTarget.data("country");
+        $("#Country").val(country);
+        var CitySelect = $('#CitySelect');
+        CitySelect.html('');
+        api.getbulk("/Plant/GetCitys").then((data) => {
+            var sv = "";
+            div_data = "<option value='" + sv + "'>" + "--Select--" + "</option>";
+            CitySelect.append(div_data);
+            for (i = 0; i < data.length; i++) {
+                div_data = "<option value='" + data[i].name + "'>" + data[i].name + "</option>";
+                CitySelect.append(div_data);
+            }
+            var city = relatedTarget.data("city");
+            var CitySe = $("#CitySelect");
+            CitySe.find("option[value='" + city + "']").prop('selected', true);
+        });
+        var selElem = $('#CountrySelect');
+        selElem.html('');
+        api.getbulk("/Plant/GetCountrys").then((data) => {
+
+            for (i = 0; i < data.length; i++) {
+                div_data = "<option value='" + data[i].name + "'>" + data[i].name + "</option>";
+                selElem.append(div_data);
+            }
+            var country = relatedTarget.data("country");
+            var CountrSe = $("#CountrySelect");
+            CountrSe.find("option[value='" + country + "']").prop('selected', true);
+        });
         var plantId = relatedTarget.data("plantid");
         //console.log("PlantId " + plantId);
         $("#PlantId").val(plantId);
@@ -290,8 +326,168 @@ $(function () {
     $("#btn-shopdetails-close").on('click', function (event) {
              LoadPlants();
     });
-    
-    $("#BtnSavePlant").on('click',function (event) {
+
+    $("#EditCityPop").click(function (event) {
+        var selectedValue = $("#CitySelect").val();  // Get the value of the selected option
+        var selectedText = $("#CitySelect").find("option:selected").text();
+        if (selectedText == "--Select--") {
+            $("#CityPop").modal("hide");
+            return false;
+        }
+        document.forms["frmAddCity"]["Name"].value = selectedText;
+        api.getbulk("/Plant/GetCitys").then((data) => {
+            data = data.filter(item => item.name == selectedText);
+            var cid = data[0].cityId;
+            document.forms["frmAddCity"]["CityId"].value = cid;
+        });
+    });
+    $("#EditCountryPop").click(function (event) {
+        var selectedValue = $("#CountrySelect").val();  // Get the value of the selected option
+        var selectedText = $("#CountrySelect").find("option:selected").text();
+        document.forms["frmAddCountry"]["Name"].value = selectedText;
+        api.getbulk("/Plant/GetCountrys").then((data) => {
+            data = data.filter(item => item.name == selectedText);
+            var cid = data[0].countryId;
+            document.forms["frmAddCountry"]["CountryId"].value = cid;
+        });
+    });
+    $("#CitySelect").select2({
+        dropdownParent: $("#shop-details")
+    });
+    $("#CountrySelect").select2({
+        dropdownParent: $("#shop-details")
+    });
+    $('#CityPop').on('hidden.bs.modal', function (event) {
+        document.getElementById('shop-details').style.filter = 'none';
+        $("#CName").val("");
+        $("#PCityId").val("");
+    });
+    $('#CountryPop').on('hidden.bs.modal', function (event) {
+        document.getElementById('shop-details').style.filter = 'none';
+        $("#CoName").val("");
+        $("#PCountryId").val("");
+    });
+    $('#CityPop').on('show.bs.modal', function (event) {
+        document.getElementById('shop-details').style.filter = 'blur(5px)';
+    });
+    $('#CountryPop').on('show.bs.modal', function (event) {
+        document.getElementById('shop-details').style.filter = 'blur(5px)';
+    });
+
+    $("#SaveCity").on('click', function () {
+        var name = $("#CName").val();
+        if (name.length == 0) {
+            var newNamevalidate = document.getElementById('CName');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        } else {
+            var newNamevalidate = document.getElementById('CName');
+            newNamevalidate.style.border = '';
+        }
+        var formData = AppUtil.GetFormData("frmAddCity");
+        // if (valid) {
+
+        api.getbulk("/plant/CheckCity?city=" + name).then((data) => {
+            if (!data) {
+                api.post("/plant/PostCity", formData).then((data) => {
+                    var newopt = {
+                        id: data.cityId,
+                        text: data.name
+                    };
+                    loadCity();
+                    $("#CityPop").modal("hide");
+                }).catch((error) => {
+                });
+            } else {
+                var newNamevalidate = document.getElementById('CName');
+                newNamevalidate.style.border = '2px solid red';
+            }
+        }).catch((error) => {
+        });
+        // }
+    });
+    $("#SaveCountry").on('click', function () {
+        var name = $("#CoName").val();
+        if (name.length == 0) {
+            var newNamevalidate = document.getElementById('CoName');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        } else {
+            var newNamevalidate = document.getElementById('CoName');
+            newNamevalidate.style.border = '';
+        }
+        var formData = AppUtil.GetFormData("frmAddCountry");
+        // if (valid) {
+
+        api.getbulk("/plant/CheckCountry?city=" + name).then((data) => {
+            if (!data) {
+                api.post("/plant/PostCountry", formData).then((data) => {
+                    var newopt = {
+                        id: data.cityId,
+                        text: data.name
+                    };
+                    loadCountrys();
+                    $("#CountryPop").modal("hide");
+                }).catch((error) => {
+                });
+            } else {
+                var newNamevalidate = document.getElementById('CoName');
+                newNamevalidate.style.border = '2px solid red';
+            }
+        }).catch((error) => {
+        });
+        // }
+    });
+    $("#BtnSavePlant").on('click', function (event) {
+        var Name = document.getElementById('Name');
+        if (!Name.value) {
+            Name.style.border = '2px solid red';
+            return false;
+        } else {
+            Name.style.border = '';
+        }
+        var Address = document.getElementById('Address');
+        if (!Address.value) {
+            $("#Address").val("");
+        } else {
+            Address.style.border = '';
+        }
+        var City = document.getElementById('CitySelect');
+        if (!City.value) {
+            var newNamevalidate = $('#CitySelect').next('.select2-container');
+            newNamevalidate.css('border', '2px solid red');
+            return false;
+        } else {
+            var newNamevalidate = $('#CitySelect').next('.select2-container');
+            newNamevalidate.css('border', '');
+        }
+        var Pincode = document.getElementById('Pincode');
+        if (!Pincode.value) {
+            $("#Pincode").val("");
+        } else {
+            Pincode.style.border = '';
+        }
+        var Country = document.getElementById('CountrySelect');
+        if (!Country.value) {
+            var newNamevalidate = $('#CountrySelect').next('.select2-container');
+            newNamevalidate.css('border', '2px solid red');
+            return false;
+        } else {
+            var newNamevalidate = $('#CountrySelect').next('.select2-container');
+            newNamevalidate.css('border', '');
+        }
+        var GstNo = document.getElementById('GstNo');
+        if (!GstNo.value) {
+            $("#GstNo").val("");
+        } else {
+            GstNo.style.border = '';
+        }
+        var PanNo = document.getElementById('PanNo');
+        if (!PanNo.value) {
+            $("#PanNo").val("");
+        } else {
+            PanNo.style.border = '';
+        }
         var formData = AppUtil.GetFormData("PlantForm");
         api.post("/plant/plant", formData).then((data) => {
            // console.log(data);
@@ -316,3 +512,30 @@ $(function () {
    
     LoadPlants();
 });
+
+function loadCity() {
+    var selElem = $('#CitySelect');
+    selElem.html('');
+    api.getbulk("/Plant/GetCitys").then((data) => {
+        var sv = "";
+        div_data = "<option value='" + sv + "'>" + "--Select--" + "</option>";
+        selElem.append(div_data);
+        for (i = 0; i < data.length; i++) {
+            div_data = "<option value='" + data[i].name + "'>" + data[i].name + "</option>";
+            selElem.append(div_data);
+        }
+    });
+
+}
+function loadCountrys() {
+    var selElem = $('#CountrySelect');
+    selElem.html('');
+    api.getbulk("/Plant/GetCountrys").then((data) => {
+
+        for (i = 0; i < data.length; i++) {
+            div_data = "<option value='" + data[i].name + "'>" + data[i].name + "</option>";
+            selElem.append(div_data);
+        }
+    });
+
+}

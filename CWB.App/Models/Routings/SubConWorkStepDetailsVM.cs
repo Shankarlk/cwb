@@ -18,6 +18,7 @@
         public string NRPartDescription { get; set; }
         public string BGColor { get; set; }
         public string StrPreferredRouting { get; set; } = string.Empty;
+        public string MachineNameStr { get; set; } = string.Empty;
         public int TenantId { get; set; }
     }
 }

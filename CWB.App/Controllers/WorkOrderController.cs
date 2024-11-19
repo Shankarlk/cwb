@@ -326,8 +326,8 @@ namespace CWB.App.Controllers
                             foreach (var bomgrp in bomgroupedResults)
                             {
                                 var mp = await _masterService.ItemMasterPartById(bomgrp.PartId);
-                                var workdetails = await _plantService.GetPlantWD(13);
-                                var holidaylist = await _plantService.GetHolidays(13);
+                                var workdetails = await _plantService.GetPlantWD(1);
+                                var holidaylist = await _plantService.GetHolidays(1);
                                 string weekOff1 = workdetails.WeeklyOff1;
                                 string weekOff2 = workdetails.WeeklyOff2;
                                 var resultList = await _routingService.Routings(mf.ManufacturedPartNoDetailId);
@@ -548,8 +548,8 @@ namespace CWB.App.Controllers
 
                     //McTimeList---
                     ManufacturedPartNoDetailVM mcmf = await _masterService.GetManufPart((int)item.PartId);
-                    var mcworkdetails = await _plantService.GetPlantWD(13);
-                    var mcholidaylist = await _plantService.GetHolidays(13);
+                    var mcworkdetails = await _plantService.GetPlantWD(1);
+                    var mcholidaylist = await _plantService.GetHolidays(1);
                     string mcweekOff1 = mcworkdetails.WeeklyOff1;
                     string mcweekOff2 = mcworkdetails.WeeklyOff2;
                     var mcresultList = await _routingService.Routings(mcmf.ManufacturedPartNoDetailId);
@@ -723,8 +723,8 @@ namespace CWB.App.Controllers
                                 foreach (var bomgrp in bomgroupedResults)
                                 {
                                     var mp = await _masterService.ItemMasterPartById(bomgrp.PartId);
-                                    var workdetails = await _plantService.GetPlantWD(13);
-                                    var holidaylist = await _plantService.GetHolidays(13);
+                                    var workdetails = await _plantService.GetPlantWD(1);
+                                    var holidaylist = await _plantService.GetHolidays(1);
                                     string weekOff1 = workdetails.WeeklyOff1;
                                     string weekOff2 = workdetails.WeeklyOff2;
                                     var resultList = await _routingService.Routings(mf.ManufacturedPartNoDetailId);
@@ -946,8 +946,8 @@ namespace CWB.App.Controllers
 
                         //McTimeList---
                         ManufacturedPartNoDetailVM mcmf = await _masterService.GetManufPart((int)item.PartId);
-                        var mcworkdetails = await _plantService.GetPlantWD(13);
-                        var mcholidaylist = await _plantService.GetHolidays(13);
+                        var mcworkdetails = await _plantService.GetPlantWD(1);
+                        var mcholidaylist = await _plantService.GetHolidays(1);
                         string mcweekOff1 = mcworkdetails.WeeklyOff1;
                         string mcweekOff2 = mcworkdetails.WeeklyOff2;
                         var mcresultList = await _routingService.Routings(mcmf.ManufacturedPartNoDetailId);
@@ -1411,8 +1411,8 @@ namespace CWB.App.Controllers
             var inltialDt = DateTime.Parse(initialDate);
             List<ProductionPlan_WoVM> previousWorkdays = new List<ProductionPlan_WoVM>();
             DateTime currentDate = inltialDt;
-            var workdetails = await _plantService.GetPlantWD(13);
-            var holidaylist = await _plantService.GetHolidays(13);
+            var workdetails = await _plantService.GetPlantWD(1);
+            var holidaylist = await _plantService.GetHolidays(1);
             string weekOff1 = workdetails.WeeklyOff1;
             string weekOff2 = workdetails.WeeklyOff2;
             int quantityPerDay = quantity / numDays;
@@ -1484,8 +1484,8 @@ namespace CWB.App.Controllers
             var dispatchStartDt = DateTime.Parse(dispatchStartDate);
             var soCompletionDt = DateTime.Parse(soCompletionDate);
 
-            var workdetails = await _plantService.GetPlantWD(13);
-            var holidaylist = await _plantService.GetHolidays(13);
+            var workdetails = await _plantService.GetPlantWD(1);
+            var holidaylist = await _plantService.GetHolidays(1);
             string weekOff1 = workdetails.WeeklyOff1;
             string weekOff2 = workdetails.WeeklyOff2;
 

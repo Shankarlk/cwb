@@ -8,6 +8,8 @@ let dataWritten = false;
 let makeFroms = new Array();
 let boms = new Array();
 
+let archive = 0;
+
 var ContactsConstants = {
     MPMakeFromId: 0,
     DivisionId: 0
@@ -165,7 +167,38 @@ var ManufPartFormUtil = {
         }
        
         if (ManufacturedPartDetail == false && Mode == 1) {
-            alert("Field(s) cannot be left blank.");
+            alert("Please Fill The Basic Information.");
+            //alert(Message);
+        }
+        if (ManufacturedPartDetail == false && Mode == 2) {
+            if ($("#PartNo").val().length == "") {
+                ManufacturedPartDetail = false;
+                var newNamevalidate = document.getElementById('PartNo');
+                newNamevalidate.style.border = '2px solid red';
+            }
+
+            if ($("#PartDescription").val().length == "") {
+                ManufacturedPartDetail = false;
+                var newNamevalidate = document.getElementById('PartDescription');
+                newNamevalidate.style.border = '2px solid red';
+            }
+            if ($("#FinishedWeight").val().length == "") {
+                ManufacturedPartDetail = false;
+                var newNamevalidate = document.getElementById('FinishedWeight');
+                newNamevalidate.style.border = '2px solid red';
+            }
+
+            if ($("#FinalPartNosoldtoCustomer").prop("checked")) {
+
+                var newNamevalidate = document.getElementById('PriceSettledwithCustomer_INR');
+                newNamevalidate.style.border = '2px solid red';
+            } else {
+                // Optionally reset the border if unchecked
+                var newNamevalidate = document.getElementById('PriceSettledwithCustomer_INR');
+                newNamevalidate.style.border = '';
+            }
+
+            //alert("Please Fill The Basic Information.");
             //alert(Message);
         }
         return ManufacturedPartDetail;
@@ -174,28 +207,53 @@ var ManufPartFormUtil = {
     ValidateMPMakeFrom: () => {
         var Message = "";
          var RawMeterial = true;
-         if ($("#InputPartNo").val().length == "") {
-             RawMeterial = false;
-             Message += "Input PartNo\n"
+        if ($("#MFDescription").val().length == "") {
+            RawMeterial = false;
+            var newNamevalidate = document.getElementById('MFDescription');
+            newNamevalidate.style.border = '2px solid red';
+        }
+        else {
+            var newNamevalidate = document.getElementById('MFDescription');
+            newNamevalidate.style.border = '';
         }
          if ($("#InputWeight").val().length == "") {
              RawMeterial = false;
-             Message += "Input Weight\n"
-        }
+             var newNamevalidate = document.getElementById('InputWeight');
+             newNamevalidate.style.border = '2px solid red';
+         }
+         else {
+             var newNamevalidate = document.getElementById('InputWeight');
+             newNamevalidate.style.border = '';
+         }
         if ($("#ScrapGenerated").val().length == "") {
-             RawMeterial = false;
-             Message += "Scrap Generated\n"
+            RawMeterial = false;
+            var newNamevalidate = document.getElementById('ScrapGenerated');
+            newNamevalidate.style.border = '2px solid red';
+        }
+        else {
+            var newNamevalidate = document.getElementById('ScrapGenerated');
+            newNamevalidate.style.border = '';
         }
         if ($("#QuantityPerInput").val().length == "") {
-             RawMeterial = false;
-            Message += "Part Desc\n"
+            RawMeterial = false;
+            var newNamevalidate = document.getElementById('QuantityPerInput');
+            newNamevalidate.style.border = '2px solid red';
+        }
+        else {
+            var newNamevalidate = document.getElementById('QuantityPerInput');
+            newNamevalidate.style.border = '';
         }
         if ($("#YieldNotes").val().length == "") {
-             RawMeterial = false;
-             Message += "Yield Notes\n"
+            RawMeterial = false;
+            var newNamevalidate = document.getElementById('YieldNotes');
+            newNamevalidate.style.border = '2px solid red';
          }
+        else {
+            var newNamevalidate = document.getElementById('YieldNotes');
+            newNamevalidate.style.border = '';
+        }
          if (RawMeterial == false) {
-            alert("Field(s) cannot be left blank.");
+            //alert("Field(s) cannot be left blank.");
         }
         return RawMeterial;
         //return true;
@@ -203,22 +261,38 @@ var ManufPartFormUtil = {
     ValidateBOM: () => {
         var Message = "";
         var Bom = true;
+
         if ($("#BOMPartNo").val().length == "") {
             Bom = false;
-            Message += "Part No\n"
+            var newNamevalidate = document.getElementById('BOMPartNo');
+            newNamevalidate.style.border = '2px solid red';
+        }
+        else {
+            var newNamevalidate = document.getElementById('BOMPartNo');
+            newNamevalidate.style.border = '';
         }
         if ($("#BOMPartDesc").val().length == "") {
             Bom = false;
-            Message += "Part Description\n"
+            var newNamevalidate = document.getElementById('BOMPartDesc');
+            newNamevalidate.style.border = '2px solid red';
         }
-        if ($("#Quantity").val().length == "") {
+        else {
+            var newNamevalidate = document.getElementById('BOMPartDesc');
+            newNamevalidate.style.border = '';
+        }
+        if ($("#Quantity").val().length == "" || $("#Quantity").val() == "0") {
             Bom = false;
-            Message += "BOMQty\n"
+            var newNamevalidate = document.getElementById('Quantity');
+            newNamevalidate.style.border = '2px solid red';
+        }
+        else {
+            var newNamevalidate = document.getElementById('Quantity');
+            newNamevalidate.style.border = '';
         }
         
-        if (Bom == false) {
-            alert("Field(s) cannot be left blank.");
-        }
+        //if (Bom == false) {
+        //    alert("Field(s) cannot be left blank.");
+        //}
         return Bom;
         //return true;
     }
@@ -231,17 +305,162 @@ function DecodeManufPartId() {
         data: { partId: partid },
         success: function (decodepartid) {
             $("#PartId").val(decodepartid);
+            var closeatag = document.getElementById("closeatag");
+            if (decodepartid != 0) {
+                $("#headingN").text("Edit");
+                closeatag.href = "/Masters/MasterDetails";
+            } else {
+                $("#headingN").text("New");
+                closeatag.href = "/Masters/Index";
+            }
         }
     });
 }
 
-function viewFile(fileName) {
+//function viewFile(fileName) {
     
-    $('#fileModal').modal('show');
+//    $('#fileModal').modal('show');
 
+//}
+function loadReasonDropDown() {
+    var selElem = $('#DocReasonName');
+    selElem.html('');
+    api.getbulk("/DocumentManagement/GetAllRefReson").then((data) => {
+
+        var rdiv_data = "<option value='" + 0 + "'>" + "--Select--" + "</option>";
+        selElem.append(rdiv_data);
+        for (i = 0; i < data.length; i++) {
+            rdiv_data = "<option value='" + data[i].refDocReasonListId + "'>" + data[i].docReason + "</option>";
+            selElem.append(rdiv_data);
+        }
+    });
+
+}
+function displayFileName() {
+    var docid = parseInt($("#doclistidFile").val());
+    if (docid != 0) {
+        var doctypeid = parseInt($("#docTypeIdFile").val());
+        api.get("/DocumentManagement/GetAllDocumentType").then((data) => {
+            const fdoc = data.find(item => item.documentTypeId === doctypeid);
+            if (fdoc.docuCategory == 2) {
+                var confrimval = confirm("Do You Want Move the Exsisting File To Archive.");
+                if (confrimval) {
+                    var fileInput = document.getElementById('fileUploadInput');
+                    var fileName = fileInput.files[0].name; // Get the uploaded file name
+                    document.getElementById('fileNameDisplay').value = fileName; // Display the file name in the text input
+                    var docid = parseInt($("#doclistidFile").val());
+                    archive = 1;
+                    $("#Resonbtn").click();
+                } else {
+                    var fileInput = document.getElementById("fileUploadInput");
+                    fileInput.value = "";
+                }
+            } else {
+                var fileInput = document.getElementById('fileUploadInput');
+                var fileName = fileInput.files[0].name; // Get the uploaded file name
+                document.getElementById('fileNameDisplay').value = fileName;
+            }
+        }).catch((error) => {
+        });
+    } else {
+        var fileInput = document.getElementById('fileUploadInput');
+        var fileName = fileInput.files[0].name; // Get the uploaded file name
+        document.getElementById('fileNameDisplay').value = fileName; 
+    }
 }
 
 $(document).ready(function () {
+    loadDocUploadList();
+    $("#ManufacturedPartType").change(function () {
+        loadDocUploadList();
+    });
+    $('#RefLogPopup').on('shown.bs.modal', function (event) {
+
+        var relatedTarget = $(event.relatedTarget);
+        var doclistid = relatedTarget.data("doclistid");
+        var doctypename = relatedTarget.data("doctypename");
+        var documenttypeid = relatedTarget.data("documenttypeid");
+        var partnos = $("#PartNo").val();
+        api.get("/DocumentManagement/GetAllDocumentType").then((data) => {
+            const fdoc = data.find(item => item.documentTypeId === documenttypeid);
+            if (fdoc.docuCategory == 2) {
+                $("#SpanDocType").text(doctypename);
+                $("#SpanDocPart").text(partnos);
+                api.getbulk("/masters/GetRefDocLogOfDoclistId?doclistid=" + doclistid).then((data) => {
+                    //data = data.filter(item => item.status == 1 || item.status==0);\
+                    var tablebody = $("#RefLogGrid tbody");
+                    $(tablebody).html("");//empty tbody
+                    for (i = 0; i < data.length; i++) {
+                        $(tablebody).append(AppUtil.ProcessTemplateDataNew("RefLogGridRow", data[i], i));
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                $("#RefLogPopup").modal("hide");
+            }
+        }).catch((error) => {
+        });
+    });
+    $('#RefDocReason').on('shown.bs.modal', function (event) {
+        loadReasonDropDown();
+    });
+
+    $("#RefDocSave").on("click", function () {
+        var PartIds = parseInt($("#PartId").val());
+        var RefDocId = parseInt($("#RefDocId").val());
+        var DocReasonName = parseInt($("#DocReasonName").val());
+        var doclistidFile = parseInt($("#doclistidFile").val());
+        var comments = $("#RefDoc").val();
+        var today = new Date();
+        var deletionDate = today.toISOString().split('T')[0];
+        if (isNaN(DocReasonName) || DocReasonName === 0) {
+            var newNamevalidate = document.getElementById('DocReasonName');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        } else {
+            var newNamevalidate = document.getElementById('DocReasonName');
+            newNamevalidate.style.border = '';
+        }
+
+        var rowData = {
+            refDocLogId: 0,
+            partId: PartIds,
+            docListId: doclistidFile,
+            docReasonId: DocReasonName,
+            comments: comments,
+            uploadedOn: deletionDate,
+            action: "Replacement"
+        };
+        $.ajax({
+            type: "POST",
+            url: '/Masters/PostRefDocLog',
+            contentType: "application/json; charset=utf-8",
+            headers: { 'Content-Type': 'application/json' },
+            data: JSON.stringify(rowData),
+            dataType: "json",
+            success: function (result) {
+                var DocReasonName = document.getElementById('DocReasonName');
+                var RefDoc = document.getElementById('RefDoc');
+                DocReasonName.style.border = '';
+                RefDoc.style.border = '';
+                $('#RefDocReason').modal('hide');
+            }
+        });
+
+    });
+
+
+    $('#doc-item').on('shown.bs.modal', function (event) {
+        var relatedTarget = $(event.relatedTarget);
+        var doctypeid = relatedTarget.data("doctypeid");
+        var doctypename = relatedTarget.data("doctypename");
+        var docdatareqdcust = relatedTarget.data("docdatareqdcust");
+        var doccatid = relatedTarget.data("doccatid");
+        var fileextnid = relatedTarget.data("fileextnid");
+        var retperyear = relatedTarget.data("retperyear");
+        var retpermon = relatedTarget.data("retpermon");
+    });
     $('#fileModal').on('shown.bs.modal', function () {
         $(this).find('.modal-content').css({
             'width': '1000px',
@@ -290,7 +509,7 @@ $(document).ready(function () {
         else {
             $('.nav-pills a[href="#tab-1"]').tab('show');
             CURRENT_TAB = "TabMPMain";
-            const selectedValue = $('input[name="ManufacturedPartType"]:checked').val();
+            const selectedValue = $("#ManufacturedPartType").val();
             if (selectedValue === "1") {
                 $("#TabHeadBOM").hide();
                 $("#TabHeadMakefrom").show();
@@ -507,7 +726,7 @@ $(document).ready(function () {
 
     $('#dialog-DeleteMakeFrom').on('show.bs.modal', function (event) {
         var relatedTarget = $(event.relatedTarget);
-        var makefromid = relatedTarget.data("makefromid");
+        var makefromid = relatedTarget.data("makefromsid");
         api.get("/masters/getmakefrom?Id=" + makefromid).then((eData) => {
          /*   for (var key in eData) {
                 console.log(key);
@@ -618,11 +837,289 @@ $(document).ready(function () {
      //   alert(makefromid);
     });
 
-
-    const radioButtons = document.querySelectorAll('input[name="MPPartMadeFrom"]');
-    radioButtons.forEach(radio => {
-        radio.addEventListener('click', handleRadioClick);
+    $("#checkboxFinalPart").change(function () {
+        if ($("#checkboxFinalPart").prop("checked")) {
+            $("#FinalPartNosoldtoCustomer").val('1');
+        } else {
+            $("#FinalPartNosoldtoCustomer").val('0');
+        }
+        checkboxFinalPart();
     });
+    checkboxFinalPart();
+    //TCheckBoc();
+    $("#UomEdit").click(function (event) {
+        var selectedValue = $("#UOMId").val();  // Get the value of the selected option
+        var selectedText = $("#UOMId").find("option:selected").text();
+        document.forms["frmAddUOM"]["Name"].value = selectedText;
+        document.forms["frmAddUOM"]["UOMId"].value = selectedValue;
+
+    });
+    $('#uom').on('hidden.bs.modal', function (event) {
+        $("#frmAddUOM")[0].reset();  // Clears all input fields
+    });
+
+    $('#doc-item').on('hidden.bs.modal', function (event) {
+        var InfoComments = document.getElementById('InfoComments');
+        InfoComments.style.border = '';
+        var newNamevalidate = document.getElementById('fileNameDisplay');
+        newNamevalidate.style.border = '';
+        $("#doclistidFile").val(0);
+        $("#fileNameDisplay").val('');
+        $("#InfoComments").val('');
+        $("#DocTypeName").val('');
+        $("#FileExtnName").val('');
+        $("#docTypeIdFile").val(0);
+        var fileInput = document.getElementById("fileUploadInput");
+        fileInput.value = "";
+
+    });
+    $('#doc-item').on('show.bs.modal', function (event) {
+        var relatedTarget = $(event.relatedTarget);
+        var filename = relatedTarget.data("filename");
+        var doctypename = relatedTarget.data("doctypename");
+        var comments = relatedTarget.data("comments");
+        var doclistid = relatedTarget.data("doclistid");
+        var documenttypeid = relatedTarget.data("documenttypeid");
+        var upload = relatedTarget.data("upload");
+        var fileextnname = relatedTarget.data("fileextnname");
+        var deletiondate = relatedTarget.data("deletiondate");
+        if (doclistid == 0 && upload == 1) {
+            $("#doclistidFile").val(0);
+            $("#fileNameDisplay").val('');
+            $("#InfoComments").val(comments);
+            $("#DocTypeName").val(doctypename);
+            $("#FileExtnName").val(fileextnname);
+            $("#docTypeIdFile").val(documenttypeid);
+            var dateOnly = deletiondate.split('T')[0];
+
+            // Set the value of the input field with the formatted date
+            $("#deletiondate").val(dateOnly);
+        } else if (doclistid > 0 && upload == 2) {
+            $("#doclistidFile").val(doclistid);
+            $("#fileNameDisplay").val(filename);
+            $("#InfoComments").val(comments);
+            $("#DocTypeName").val(doctypename);
+            $("#FileExtnName").val(fileextnname);
+            $("#docTypeIdFile").val(documenttypeid);
+            var dateOnly = deletiondate.split('T')[0];
+
+            // Set the value of the input field with the formatted date
+            $("#deletiondate").val(dateOnly);
+        }
+        else {
+            $("#DocTypeName").val("Others");
+            $("#docTypeIdFile").val(3);
+            $("#doclistidFile").val(0);
+            $("#FileExtnName").val("Any Extn");
+            var today = new Date();
+            today.setDate(today.getDate() + 10);  
+            var deletionDate = today.toISOString().split('T')[0];
+            $("#deletiondate").val(deletionDate);
+
+        }
+
+    });
+
+    document.getElementById("UploadFileSave").addEventListener("click", function (event) {
+        event.preventDefault();  // Prevent the default form submission
+        var partids = parseInt($("#PartId").val());
+        if (partids <= 0) {
+            alert("Please Save Basic Information.");
+            return false;
+        }
+        var com = document.getElementById("InfoComments").value;
+        if (com.trim() === "" || com.length === 1) {
+            var newNamevalidate = document.getElementById('InfoComments');
+            newNamevalidate.style.border = '2px solid red'; // Set border to red for invalid input
+            return false; // Prevent form submission or further processing
+        } else {
+            var newNamevalidate = document.getElementById('InfoComments');
+            newNamevalidate.style.border = ''; // Clear the border for valid input
+        }
+        // Create a FormData object to hold file and form data
+        var formData = new FormData();
+
+        // Add the file to the FormData object
+        var fileInput = document.getElementById("fileUploadInput");
+        var file = fileInput.files[0];
+        var allowedExtensions = $("#FileExtnName").val().split(',').map(function (ext) {
+            return ext.trim().toLowerCase(); // Create an array of allowed extensions (e.g., ['.pdf'])
+        });
+        if (!isNaN(file) || file) {
+            var fileName = file.name;
+            var fileExtension = '.' + fileName.split('.').pop().toLowerCase(); // Get the file extension and add a dot (e.g., '.pdf')
+
+            // Validate that the file's extension is in the allowedExtensions array
+            if (allowedExtensions.includes(fileExtension) || allowedExtensions.includes("any extn")) {
+                formData.append("uploadedFile", file);
+            } else {
+                var newNamevalidate = document.getElementById('fileNameDisplay');
+                newNamevalidate.style.border = '2px solid red';
+                $("#fileNameDisplay").val("Invalid file type. Please upload a valid file."); // Show error message for invalid file type
+                return false;
+            }
+        } else {
+            var newNamevalidate = document.getElementById('fileNameDisplay');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        }
+
+        // Add the other form inputs to the FormData object
+        formData.append("DocumentTypeName", document.getElementById("DocTypeName").value);
+        formData.append("FileExtnName", document.getElementById("FileExtnName").value);
+        formData.append("FileName", document.getElementById("fileNameDisplay").value);
+        formData.append("StorageLocation", "/Active");
+        formData.append("Comments", document.getElementById("InfoComments").value);
+        formData.append("DocListId", parseInt(document.getElementById("doclistidFile").value));
+        formData.append("DocumentTypeId", parseInt(document.getElementById("docTypeIdFile").value));
+        formData.append("PartId", parseInt(document.getElementById("PartId").value));
+        formData.append("UploadUiId", parseInt(1));
+        //var today = new Date();
+        //today.setDate(today.getDate() + 10);  // Add 10 days to the current date
+
+        //// Format the date as YYYY-MM-DD (you can modify this to your required format)
+        //var deletionDate = today.toISOString().split('T')[0];
+
+        // Append the DeletionDate to the FormData
+        var deletionDateValue = document.getElementById("deletiondate").value;
+        var deletionDate = new Date(deletionDateValue);
+
+        var formattedDate = deletionDate.toISOString().split('T')[0];
+
+        formData.append("DeletionDate", formattedDate);
+        // Post the form data to the server
+        if (archive == 0) {
+            $.ajax({
+                type: "POST",
+                url: "/masters/PostDocList",
+                data: formData,
+                contentType: false,  // Important: Let the browser set the Content-Type header automatically
+                processData: false,  // Important: Don't process the form data, let it be as FormData
+                success: function (response) {
+                    // Handle the success response here
+                    //alert("File uploaded and data saved successfully!");
+                    $("#doc-item").modal("hide");
+                    loadDocUploadList();
+                    archive = 0;
+                },
+                error: function (xhr, status, error) {
+                    // Handle any errors here
+                    console.error("An error occurred:", error);
+                    alert("There was an error saving the file and data.");
+                }
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/masters/MoveFileToArchive",
+                data: formData,
+                contentType: false,  // Important: Let the browser set the Content-Type header automatically
+                processData: false,  // Important: Don't process the form data, let it be as FormData
+                success: function (response) {
+                    // Handle the success response here
+                    //alert("File uploaded and data saved successfully!");
+                    $("#doc-item").modal("hide");
+                    loadDocUploadList();
+                    archive = 0;
+                },
+                error: function (xhr, status, error) {
+                    // Handle any errors here
+                    console.error("An error occurred:", error);
+                    alert("There was an error saving the file and data.");
+                }
+            });
+        }
+    });
+
+    $('#status-info').on('show.bs.modal', function (event) {
+        var currentStatus = $("#Status").val();
+        var currentrReason = $("#StatusChangeReason").val();
+        $("#CurrentStatus").val(currentStatus);
+        $("#statusResasonopup").val(currentrReason);
+    });
+    $("#BtnstatusSave").click(function (event) {
+        var streason = $("#statusResasonopup").val();
+        var statusPopup = $("#statusPopup").val();
+        $("#StatusChangeReason").val(streason);
+        $("#Status").val(statusPopup);
+        if (statusPopup == "Inactive") {
+            if (streason.length == 0) {
+                var newNamevalidate = document.getElementById('statusResasonopup');
+                newNamevalidate.style.border = '2px solid red';
+                //return false;
+            } else {
+                var newNamevalidate = document.getElementById('statusResasonopup');
+                newNamevalidate.style.border = '';
+                $("#status-info").modal("hide");
+            }
+        } else {
+            $("#status-info").modal("hide");
+        }
+    });
+    $('#setPreferredPopUp').on('show.bs.modal', function (event) {
+        var relatedTarget = $(event.relatedTarget);
+        var makefromid = relatedTarget.data("makefromid");
+        var inputpartdesc = relatedTarget.data("inputpartdesc");
+        var partNumber = $("#lblPartNumber").text();
+        var lblPartDescription = $("#lblPartDescription").text();
+        $("#SetPreferedMKId").val(makefromid);
+        $("#InputDesc").text(inputpartdesc);
+        $("#MainPartSpan").text(partNumber);
+        $("#MainDescSpan").text(lblPartDescription);
+
+    });
+    $('#setPreferredPopUp').on('hidden.bs.modal', function (event) {
+        $("#SetPreferedMKId").val(0);
+        $("#SetPreferedChkBox").prop("checked", false);
+    });
+    $("#btnSetPreferedSave").click(function (event) {
+        var mkID = parseInt($("#SetPreferedMKId").val());
+        var prefred = false;
+        if ($("#SetPreferedChkBox").prop("checked") == true) {
+            prefred = true;
+        }
+        var rowData = {
+            mpMakeFromId: mkID,
+            preferedRawMaterial: prefred
+        };
+        api.post("/masters/MPPreferredMK", rowData).then((data) => {
+            var partId = data.manufPartId;
+            reloadMakeFroms(partId);
+            event.preventDefault();
+            //$("#TabHeadMakefrom").click();
+            document.getElementById("btnPreferredInputClose").click();
+        }).catch((error) => {
+            AppUtil.HandleError("FormEditMakeFrom", error);
+        });
+    });
+    //$("#inputpartCloseBtn").click(function (event) {
+    //    var modalElement = document.getElementById("inputpart");
+    //    var modal = bootstrap.Modal.getInstance(modalElement);
+    //    modal.hide();
+    //});
+    document.addEventListener("DOMContentLoaded", function () {
+    var myModal = new bootstrap.Modal(document.getElementById('inputpart'));
+    document.getElementById("inputpartCloseBtn").addEventListener("click", function () {
+        myModal.hide();
+    });
+});
+
+    $("#AddInputPart").click(function (event) {
+        const selectedValue = document.getElementById('MPPartMadeFrom').value;
+        //event.preventDefault();
+        if (selectedValue === '0') { // value 1
+            var newNamevalidate = document.getElementById('MPPartMadeFrom');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        }
+            var newNamevalidate = document.getElementById('MPPartMadeFrom');
+            newNamevalidate.style.border = '';
+            var myModal = new bootstrap.Modal(document.getElementById('inputpart'));
+            myModal.show();
+            $("#MPMKMadefrom").val(newNamevalidate.value);
+    });
+    const selectElement = document.querySelector('select[name="MPPartMadeFrom"]');
+    selectElement.addEventListener('change', handleRadioClick);
     //debugger;
     var manufacturedPartType = modelObj.manufacturedPartType;
     $("#TabHeadBalloon").hide();
@@ -644,7 +1141,7 @@ $(document).ready(function () {
     
     //$("#btnAddMPMakeFrom").hide();
     // Document is ready
-    $('input[type=radio][name=ManufacturedPartType]').change(function () {
+    $('#ManufacturedPartType').change(function () {
         var ShowMessage = "Please Save The Detail(s) or All The Data Will Erase";
        // $("#ManufacturedPartType").val(this.value);
 
@@ -689,6 +1186,12 @@ $(document).ready(function () {
         }
     });
 
+   
+    document.getElementById('addUomPopup').addEventListener('click', function () {
+        var myModal = new bootstrap.Modal(document.getElementById('dialog-AddUOM'));
+        myModal.show();
+    });
+
     $("#PartDescriptionbak").change(function () {
         if ($("#ManufacturedPartType").val() == 1) {
             $("#MFDescription").val($(this).val());
@@ -724,7 +1227,7 @@ $(document).ready(function () {
                 return;
             }
         }
-        if (ManufPartFormUtil.ValidateManufPartDetails(1)) {
+        if (ManufPartFormUtil.ValidateManufPartDetails(2)) {
             if ($("#ManufPartForm").valid()) {
                 //////debugger;
                 var formData = AppUtil.GetFormData("ManufPartForm");
@@ -738,6 +1241,51 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
+    $("#AddDeptClose").click(function (event) {
+        window.location.reload();
+    });
+    $("#btnAddMPMakeFrom").click(function (event) {
+        if (ManufPartFormUtil.ValidateMPMakeFrom()) {
+            if ($("#MPRawMaterial").valid()) {
+
+                var keyval = AppUtil.GetFormDataNew("MPRawMaterial");
+                var formData = AppUtil.GetFormData("MPRawMaterial");
+                var tablebody = $("#tbl-MakeFromRM tbody");
+                var inputwieght = parseInt($("#InputWeight").val());
+                var FinishedWeight = $("#FinishedWeight").val();
+                var QuantityPerInput = $("#QuantityPerInput").val();
+                totalinputweight = FinishedWeight * QuantityPerInput;
+                if (totalinputweight <= inputwieght) {
+                    $("#Scrap-Error").text("Check Scrap Weight ...");
+                    return false;
+                }
+                api.post("/masters/mpmakefrom", formData).then((data) => {
+                    //   //debugger;
+                    data['deleted'] = false;
+                    makeFroms.push(data);
+                    MPRawMaterialUtil.UpdateFormIDs(data);
+                    $(tablebody).append(AppUtil.ProcessTemplateData("MakeFrom-template", data));
+                    //MPRawMaterialUtil.UpdateMakeFromTableNew(keyval);
+                    var coName = $("#CompanyName").val();
+                    var partDesc = $("#MFDescription").val();
+                    var partNo = $("#InputPartNo").val();
+                    var manufPartId = $("#ManufPartId").val();
+                    var mpPartId = $("#MPPartId").val();
+                    MPRawMaterialUtil.ClearMakefromTab();
+                    //document.getElementById("MPRawMaterial").reset();
+                    $("#InputPartNo").val(partNo);
+                    $("#MFDescription").val(partDesc);
+                    $("#lblPartDescription").text(partDesc);
+                    $("#ManufPartId").val(manufPartId);
+                    $("#MPPartId").val(mpPartId);
+                    window.location.reload();
+                    $("#Scrap-Error").text("");
+                }).catch((error) => {
+                    AppUtil.HandleError("MPRawMaterial", error);
+                });
+            }
+        }
+    });
     $("#btnAddRawMeterial").click(function (event) {
             if ($("#PartNumber").val() != "") {
                 $("#InputWeight").val(null);
@@ -868,6 +1416,25 @@ function AddToBOM() {
         }
     }
 }
+//document.addEventListener("DOMContentLoaded", function () {
+//    // Check if the FinalPartNosoldtoCustomer hidden field has a value of "true"
+//    var isFinalPartChecked = document.getElementById("FinalPartNosoldtoCustomer").value === "true";
+//    document.getElementById("checkboxFinalPart").checked = isFinalPartChecked;
+//});
+function checkboxFinalPart() {
+    var getv = $("#FinalPartNosoldtoCustomer").val();
+    if ($("#checkboxFinalPart").prop("checked") || getv == "1") {
+        $("#checkboxFinalPart").prop("checked", true);
+        $("#FinalPartNosoldtoCustomer").val('1');
+        $("#ReorderFields").show(); // Hide the price div if checkbox is checked
+        $("#priceDiv").show(); // Hide the price div if checkbox is checked
+    } else {
+        $("#FinalPartNosoldtoCustomer").val('0');
+        $("#ReorderFields").hide(); // Show the price div if checkbox is unchecked
+        $("#priceDiv").hide(); // Show the price div if checkbox is unchecked
+    }
+
+}
 
 function EditMakeFrom(event) {
     var formData = AppUtil.GetFormData("FormEditMakeFrom");
@@ -946,7 +1513,12 @@ function reloadMakeFroms(partId) {
     dataWritten = false;
     api.get("/masters/mpmakefromlist?partId=" + partId).then((rData) => {
         for (i = 0; i < rData.length; i++) {
+            let rowData = rData[i];
+            rowData.checked = rowData.preferedRawMaterial ? 'checked' : '';
             $(tablebody).append(AppUtil.ProcessTemplateData("MakeFrom-template", rData[i]));
+            //let rowTemplate = $('#MakeFrom-template').html()
+            //    .replace('{checked}', isChecked);
+
             dataWritten = true;
         }
     }).catch((error) => {
@@ -1052,54 +1624,7 @@ function modifyBOMList(newData) {
 }
 
 function AddAnotherRM() {
-    if (ManufPartFormUtil.ValidateMPMakeFrom()) {
-        if ($("#MPRawMaterial").valid()) {
-            
-            var keyval = AppUtil.GetFormDataNew("MPRawMaterial");
-            var formData = AppUtil.GetFormData("MPRawMaterial");
-            var tablebody = $("#tbl-MakeFromRM tbody");
-            enableOtherCustRadios();
-       //     debugger;
-            api.post("/masters/mpmakefrom", formData).then((data) => {
-             //   //debugger;
-                data['deleted'] = false;
-                makeFroms.push(data);
-                MPRawMaterialUtil.UpdateFormIDs(data);
-                $(tablebody).append(AppUtil.ProcessTemplateData("MakeFrom-template", data));
-                //MPRawMaterialUtil.UpdateMakeFromTableNew(keyval);
-                var coName = $("#CompanyName").val();
-                var partDesc = $("#MFDescription").val();
-                var partNo = $("#InputPartNo").val();
-                var manufPartId = $("#ManufPartId").val();
-                var mpPartId = $("#MPPartId").val();
-                MPRawMaterialUtil.ClearMakefromTab();
-                //document.getElementById("MPRawMaterial").reset();
-                $("#InputPartNo").val(partNo);
-                $("#MFDescription").val(partDesc);
-                $("#lblPartDescription").text(partDesc);
-                $("#ManufPartId").val(manufPartId);
-                $("#MPPartId").val(mpPartId);
-                if (ownRMSelected) {
-                    tableHasOwnRMParts = true;
-                    disableOtherCustRadios();
-                }
-                if (document.getElementById('csrm').checked) {
-                    document.getElementById("otmp").disabled = true;
-                    document.getElementById("owrm").disabled = true;
-                }
-                if (document.getElementById('owrm').checked) {
-                    document.getElementById("otmp").disabled = true;
-                    document.getElementById("csrm").disabled = true;
-                }
-                if (document.getElementById('otmp').checked) {
-                    document.getElementById("owrm").disabled = true;
-                    document.getElementById("csrm").disabled = true;
-                }
-            }).catch((error) => {
-                AppUtil.HandleError("MPRawMaterial", error);
-            });
-        }
-    }
+   
 }
 
 //const box = document.getElementById('box');
@@ -1108,22 +1633,24 @@ function handleRadioClick() {
     const searchbtn = $("#searchbtn");
     searchbtn.empty();
 
-    if (document.getElementById('csrm').checked) {
+    const selectedValue = document.getElementById('MPPartMadeFrom').value;
+
+    if (selectedValue === '1') { // value 1
         var templateElement = $("#csrmsearch").html();
         searchbtn.append(templateElement);
     }
-    if (document.getElementById('owrm').checked) { 
+    if (selectedValue === '2') { // value 2
         var templateElement = $("#owrmsearch").html();
         searchbtn.append(templateElement);
     }
-    if (document.getElementById('otmp').checked) { 
+    if (selectedValue === '3') { // value 3
         var templateElement = $("#otmpsearch").html();
         searchbtn.append(templateElement);
     }
 }
 
 function downloadNLoadExistingParts() {
-    var ManufPartType = $("input[name='ManufacturedPartType']:checked").val();
+    var ManufPartType = $("#ManufacturedPartType").val();
     var coName = $('#CompanyName').val();
     var coId = $("#CompanyId option:selected").val();
 
@@ -1209,8 +1736,15 @@ function copyCustData() {
     var selval = radiochkd.val();
 
     $('#InputPartNo').val(data[selval].partNo);
-    $('#MFDescription').val(data[selval].partDescription);
+    $('#MFDescription').val(data[selval].partNo+" / "+data[selval].partDescription);
     $('#MPPartId').val(data[selval].partId);
+    if (data[selval].multiplePartsMadeFrom1InputRM == 'N') {
+        $("#InputWeight").val(data[selval].rawMaterialWeight);
+        $("#InputWeight").prop('readonly', true);
+    } else {
+        $("#InputWeight").val(data[selval].rawMaterialWeight);
+        $("#InputWeight").prop('readonly', false);
+    }
     document.getElementById("btn-close-CustRM").click();
     ownRMSelected = false;
 }
@@ -1221,6 +1755,13 @@ function copyOwnData() {
     $('#InputPartNo').val(data[selval].partNo);
     $('#MFDescription').val(data[selval].partDescription);
     $('#MPPartId').val(data[selval].partId);
+    if (data[selval].multiplePartsMadeFrom1InputRM == 'N') {
+        $("#InputWeight").val(data[selval].rawMaterialWeight);
+        $("#InputWeight").prop('readonly', true);
+    } else {
+        $("#InputWeight").val(data[selval].rawMaterialWeight);
+        $("#InputWeight").prop('readonly', false);
+    }
     document.getElementById("btn-close-RMSelect").click();
     ownRMSelected = true;
 }
@@ -1283,18 +1824,36 @@ $(document).on('click', '#btnEditUOMClose', function () {
 
 $(document).on('click', '#SaveUOM', function () {
     var valid = $("#frmAddUOM").valid();
+    var name = $("#Name").val();
+    if (name.length == 0) {
+        var newNamevalidate = document.getElementById('Name');
+        newNamevalidate.style.border = '2px solid red';
+        return false;
+    } else {
+        var newNamevalidate = document.getElementById('Name');
+        newNamevalidate.style.border = '';
+    }
     var formData = AppUtil.GetFormData("frmAddUOM");
     if (valid) {
-        api.post("/masters/adduom", formData).then((data) => {
-            var newopt = {
-                id: data.uomId,
-                text: data.name
-            };
-            var newOption = new Option(newopt.text, newopt.id, true, true);
-            $('#UOMId').append(newOption).trigger('change');
-          //  $('#UOMId').val(newCo);
-            //loadUOMs("UOMId");
-            document.getElementById("btn_adduom_close").click();
+
+        api.getbulk("/masters/CheckUOM?uomName=" + name).then((data) => {
+            if (!data) {
+                api.post("/masters/adduom", formData).then((data) => {
+                    var newopt = {
+                        id: data.uomId,
+                        text: data.name
+                    };
+                    var newOption = new Option(newopt.text, newopt.id, true, true);
+                    $('#UOMId').append(newOption).trigger('change');
+                    //  $('#UOMId').val(newCo);
+                    //loadUOMs("UOMId");
+                    document.getElementById("btn_adduom_close").click();
+                }).catch((error) => {
+                });
+            } else {
+                var newNamevalidate = document.getElementById('Name');
+                newNamevalidate.style.border = '2px solid red';
+            }
         }).catch((error) => {
         });
     }
@@ -1335,4 +1894,176 @@ function setCo() {
     }*/
 }
 
+function DeleteDocList(element) {
+    var relatedTarget = $(element);
+    var doclistid = relatedTarget.data("doclistid");
+    if (doclistid != 0) {
+        var confrimval = confirm("Do You Want This Document.");
+        if (confrimval) {
+            api.get("/masters/DeleteDocListAndFile?doclistid=" + doclistid).then((data) => {
+                //console.log(data);
+                loadDocUploadList();
+            }).catch((error) => {
+                //console.log(error);
+            });
+        }
+    } else {
+        alert("This Document Type Do Not Have Document.");
+    }
+}
+function viewFile(element) {
+    var relatedTarget = $(element);
+    var file = relatedTarget.data("filename");
+    var doctypename = relatedTarget.data("doctypename");
+    var customername = relatedTarget.data("customername");
+    var partno = relatedTarget.data("partno");
+    var partdesc = relatedTarget.data("partdesc");
+    var routingname = relatedTarget.data("routingname");
+    var oprno = relatedTarget.data("oprno");
+    var retdate = relatedTarget.data("retdate");
+    if (file == null) {
+        $('#viewDoc').modal('hide');
+        return false;
+    }
+    if (doctypename == "Other") {
+        $('#viewDoc').modal('hide');
+        return false;
+    } else {
+        $('#viewDoc').modal('show');
+        $("#DocTypenameText").text(doctypename);
+        $("#PartNoText").text(partno);
+        $("#PartDescText").text(partdesc);
+        $("#CustomerText").text(customername);
+        $("#RetentionDateText").text(retdate);
+        $("#RoutingNameText").text(routingname);
+        $("#OprNoText").text(oprno);
 
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/masters/ViewFile?fileName=' + file, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function (e) {
+            if (this.status == 200) {
+                var blob = new Blob([this.response], { type: "application/pdf" });
+
+                const objectElement = document.getElementById('fileViewer');
+                const url = URL.createObjectURL(blob);
+                objectElement.src = url;
+                //objectElement.width = '1000px';
+                //objectElement.height = '1000px';
+                //objectElement.type = 'text/plain';
+                //var link = document.createElement('a');
+                //link.href = window.URL.createObjectURL(blob);
+                //link.download = "Report_" + new Date() + ".pdf";
+                //link.click();
+            }
+        };
+        xhr.send();
+    }
+}
+
+function downloadFile(element) {
+    var relatedTarget = $(element);
+    var file = relatedTarget.data("filename");
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/masters/ViewFile?fileName=' + file, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function (e) {
+        if (this.status == 200) {
+            var blob = new Blob([this.response], { type: "application/pdf" });
+
+            //const objectElement = document.getElementById('fileViewer');
+            //const url = URL.createObjectURL(blob);
+            //objectElement.src = url;
+            //objectElement.width = '1000px';
+            //objectElement.height = '1000px';
+            //objectElement.type = 'text/plain';
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = file;
+            link.click();
+        }
+    };
+    xhr.send();
+}
+function loadDocUploadList() {
+
+    var content = parseInt($("#ManufacturedPartType").val());
+    var partid = $("#PartId").val();
+    if (isNaN(partid)) {
+        $.ajax({
+            type: "POST",
+            url: "/masters/DecodePartId",
+            data: { partId: partid },
+            success: function (decodepartid) {
+                $("#PartId").val(decodepartid);
+
+                var pid = decodepartid;
+
+                api.getbulk("/masters/BOFDoclist?contentid=" + content + "&partid=" + pid).then((data) => {
+                    //data = data.filter(item => item.status == 1 || item.status==0);
+                    var tablebody = $("#ManufPartDocgrid tbody");
+                    $(tablebody).html("");//empty tbody
+                    //console.log(data);
+                    for (i = 0; i < data.length; i++) {
+                        var rowHtml = AppUtil.ProcessTemplateData("maufDocUploadRow", data[i]);
+
+                        // Check if mandatory is 'Y', if so, hide the Delete option
+                        if (data[i].docListId === 0) {
+                            // Simplified regex to match the Upload link
+                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Edit *<\/a>/i, '');
+                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                        }
+                        if (data[i].docListId != 0) {
+                            // Remove the Edit link from the generated row
+                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Upload *<\/a>/i, '');
+                        }
+
+                        if (data[i].mandatory === 'Y') {
+                            // Remove the Delete link from the generated row
+                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                        }
+
+                        // Append the processed row to the table body
+                        $(tablebody).append(rowHtml);
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                });
+            }
+        });
+    } else {
+        api.getbulk("/masters/BOFDoclist?contentid=" + content + "&partid=" + partid).then((data) => {
+            //data = data.filter(item => item.status == 1 || item.status == 0);
+            var tablebody = $("#ManufPartDocgrid tbody");
+            $(tablebody).html("");//empty tbody
+            //console.log(data);
+            for (i = 0; i < data.length; i++) {
+                var rowHtml = AppUtil.ProcessTemplateData("maufDocUploadRow", data[i]);
+
+                // Check if mandatory is 'Y', if so, hide the Delete option
+                if (data[i].docListId === 0) {
+                    // Simplified regex to match the Upload link
+                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Edit *<\/a>/i, '');
+                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                }
+                if (data[i].docListId != 0) {
+                    // Remove the Edit link from the generated row
+                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Upload *<\/a>/i, '');
+                }
+
+                if (data[i].mandatory === 'Y') {
+                    // Remove the Delete link from the generated row
+                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                }
+
+                // Append the processed row to the table body
+                $(tablebody).append(rowHtml);
+            }
+        }).catch((error) => {
+            console.log(error);
+        });
+
+    }
+}

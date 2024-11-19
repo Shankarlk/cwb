@@ -21,16 +21,19 @@ namespace CWB.Masters.Services.ItemMaster
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBoughtOutFinishDetailRepository _boughtOutFinishDetailRepository;
         private readonly IMasterPartRepository  _masterPartRepository;
+        private readonly IPartStatusChangeLogRepository _partStatusChangeLogRepository;
 
 
         public BoughtOutFinishDetailService(ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork,
-            IBoughtOutFinishDetailRepository boughtOutFinishDetailRepository, IMasterPartRepository masterPartRepository)
+            IBoughtOutFinishDetailRepository boughtOutFinishDetailRepository,
+            IMasterPartRepository masterPartRepository, IPartStatusChangeLogRepository partStatusChangeLogRepository)
         {
             _logger = logger;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _boughtOutFinishDetailRepository = boughtOutFinishDetailRepository;
-            _masterPartRepository = masterPartRepository;   
+            _masterPartRepository = masterPartRepository;
+            _partStatusChangeLogRepository = partStatusChangeLogRepository;
         }
         public IEnumerable<BoughtOutFinishDetailVM> GetBoughtOutFinishDetailsByTenant(long tenantID)
         {
@@ -64,12 +67,28 @@ namespace CWB.Masters.Services.ItemMaster
                     await _unitOfWork.CommitAsync();
                     boughtoutfinishdetail.PartId = (int)masterPart.Id;
                     boughtOutFinishDetailVM.PartId = (int)masterPart.Id;
+                    PartStatusChangeLog partStatus = new PartStatusChangeLog()
+                    {
+                        MasterPartId = masterPart.Id,
+                        Status = masterPart.Status,
+                        ChangeReason = masterPart.StatusChangeReason,
+                        TenantId = masterPart.TenantId
+                    };
+                    await _partStatusChangeLogRepository.AddAsync(partStatus);
 
                 }
                 else
                 {
                     if (id == boughtoutfinishdetail.PartId)
                     {
+                        PartStatusChangeLog partStatus = new PartStatusChangeLog()
+                        {
+                            MasterPartId = masterPart.Id,
+                            Status = masterPart.Status,
+                            ChangeReason = masterPart.StatusChangeReason,
+                            TenantId = masterPart.TenantId
+                        };
+                        await _partStatusChangeLogRepository.AddAsync(partStatus);
                         masterPart = await _masterPartRepository.UpdateAsync(masterPart.Id, masterPart);
                         await _unitOfWork.CommitAsync();
                     }

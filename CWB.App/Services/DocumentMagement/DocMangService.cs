@@ -63,6 +63,12 @@ namespace CWB.App.Services.DocumentMagement
             extnInfoVM.TenantId = tenantId;
             return await RestHelper<ExtnInfoVM>.PostAsync(uri, extnInfoVM, headers);
         }
+        public async Task<IEnumerable<RefDocLogVM>> GetRefDocLogOfDoclistId()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getallrefdoc/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<RefDocLogVM>>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<CustRetnDataVM>> GetAllCustRet()
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/allcustretndata/{tenantId}");
@@ -71,6 +77,13 @@ namespace CWB.App.Services.DocumentMagement
         }
 
 
+        public async Task<RefDocReasonListVM> PostDocReason(RefDocReasonListVM custRetnDataVM)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/postdocreason");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            custRetnDataVM.TenantId = tenantId;
+            return await RestHelper<RefDocReasonListVM>.PostAsync(uri, custRetnDataVM, headers);
+        }
         public async Task<CustRetnDataVM> PostCustRetndata(CustRetnDataVM custRetnDataVM)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/postcustretndata");
@@ -79,6 +92,12 @@ namespace CWB.App.Services.DocumentMagement
             return await RestHelper<CustRetnDataVM>.PostAsync(uri, custRetnDataVM, headers);
         }
 
+        public async Task<IEnumerable<RefDocReasonListVM>> Getallreasonlist()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getallreasonlist/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<RefDocReasonListVM>>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<DocUploadVM>> GetAllDocUpload()
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getalldocupload/{tenantId}");
@@ -120,11 +139,24 @@ namespace CWB.App.Services.DocumentMagement
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<DocViewVM>>.GetAsync(uri, headers);
         }
+        public async Task<DocListVM> GetOneDoclist(long doclistId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getonedoclist/{doclistId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<DocListVM>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<DocListVM>> GetAllDocList()
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getalldoclist/{tenantId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<DocListVM>>.GetAsync(uri, headers);
+        }
+        public async Task<RefDocLogVM> PostRefDocReason(RefDocLogVM refDocLogVM)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/postrefdoc");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            refDocLogVM.TenantId = tenantId;
+            return await RestHelper<RefDocLogVM>.PostAsync(uri, refDocLogVM, headers);
         }
         public async Task<DocListVM> PostDocList(DocListVM docListVM)
         {

@@ -377,10 +377,10 @@ namespace CWB.Masters.Controllers
         [Produces(AppContentTypes.ContentType, Type = typeof(PartPurchaseDetailsVM))]
         public async Task<IActionResult> PreferredSupplier([FromBody] PartPurchaseDetailsVM rawMaterialDetailVM)
         {
-            var validator = new PartPurchaseDetailVMValidator();
-            var validationResult = await validator.ValidateAsync(rawMaterialDetailVM);
-            if (!validationResult.IsValid)
-                return BadRequest(validationResult.Errors);
+            //var validator = new PartPurchaseDetailVMValidator();
+            //var validationResult = await validator.ValidateAsync(rawMaterialDetailVM);
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult.Errors);
             var result = await _rawMaterialDetailService.PreferredSupplier(rawMaterialDetailVM);
             return Ok(result);
         }
@@ -398,9 +398,18 @@ namespace CWB.Masters.Controllers
             return Ok(result);
         }
 
-        
 
-       
+
+
+        [HttpGet]
+        [Route(ApiRoutes.RawMaterialDetail.CheckBaseRm)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckBaseRm(string rmName)
+        {
+            bool exists = false;
+            exists = await _rawMaterialDetailService.CheckBaseRm(rmName);
+            return Ok(exists);
+        }
 
         [HttpPost]
         [Route(ApiRoutes.RawMaterialDetail.BaseRM)]
@@ -420,6 +429,15 @@ namespace CWB.Masters.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route(ApiRoutes.RawMaterialDetail.CheckRMType)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckRmType(string rmTypeName)
+        {
+            bool exists = false;
+            exists = await _rawMaterialDetailService.CheckRmType(rmTypeName);
+            return Ok(exists);
+        }
         [HttpPost]
         [Route(ApiRoutes.RawMaterialDetail.RMSpec)]
         [Produces(AppContentTypes.ContentType, Type = typeof(RawMaterialSepcVM))]
@@ -429,6 +447,15 @@ namespace CWB.Masters.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route(ApiRoutes.RawMaterialDetail.CheckRMSpec)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckRMSpec(string rmSpecName)
+        {
+            bool exists = false;
+            exists = await _rawMaterialDetailService.CheckRmSpec(rmSpecName);
+            return Ok(exists);
+        }
         [HttpPost]
         [Route(ApiRoutes.RawMaterialDetail.RMStandard)]
         [Produces(AppContentTypes.ContentType, Type = typeof(RawMaterialStandardVM))]
@@ -436,6 +463,16 @@ namespace CWB.Masters.Controllers
         {
             var result = await _rawMaterialDetailService.RMStandard(rMStandardVm);
             return Ok(result);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.RawMaterialDetail.CheckRMStandard)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckRMStandard(string rmStName)
+        {
+            bool exists = false;
+            exists = await _rawMaterialDetailService.CheckRmStandard(rmStName);
+            return Ok(exists);
         }
 
         [HttpGet]
@@ -560,33 +597,35 @@ namespace CWB.Masters.Controllers
                                 TenantId = manuf.TenantId
                             };
                 tempList = query.ToList();
-                
-                var newquery = from manuf in tempList
-                        join co in cos on manuf.CompanyId equals co.CompanyId
-                        select new ItemMasterPartVM
-                        {
-                            PartId = manuf.PartId,
-                            MasterPartType = manuf.MasterPartType,
-                            CompanyId = manuf.CompanyId,
-                            Company = co.CompanyName,
-                            PartNo = manuf.PartNo,
-                            Description = manuf.Description,
-                            BoughtOutFinishMadeType = -1,
-                            RawMaterialMadeSubType = -1,
-                            RawMaterialTypeId = -1,
-                            BaseRawMaterialId = -1,
-                            BOFSupplierPartNo = "",
-                            RMSupplier = "",
-                            Supplier = "",
-                            SupplierPartNo = "",
-                            Status = manuf.Status,
-                            Notes = manuf.Description,
-                            Type = 0,
-                            TenantId = manuf.TenantId
-                        };
+                var newquery = (from manuf in tempList
+                                join co in cos on manuf.CompanyId equals co.CompanyId
+                                select new ItemMasterPartVM
+                                {
+                                    PartId = manuf.PartId,
+                                    MasterPartType = manuf.MasterPartType,
+                                    CompanyId = manuf.CompanyId,
+                                    Company = co.CompanyName,
+                                    PartNo = manuf.PartNo,
+                                    Description = manuf.Description,
+                                    BoughtOutFinishMadeType = -1,
+                                    RawMaterialMadeSubType = -1,
+                                    RawMaterialTypeId = -1,
+                                    BaseRawMaterialId = -1,
+                                    BOFSupplierPartNo = "",
+                                    RMSupplier = "",
+                                    Supplier = "",
+                                    SupplierPartNo = "",
+                                    Status = manuf.Status,
+                                    Notes = manuf.Description,
+                                    Type = 0,
+                                    TenantId = manuf.TenantId
+                                })
+                .GroupBy(x => x.PartId)
+                .Select(g => g.First()); // Select the first unique entry in each group
                 list = newquery.ToList();
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string msg = ex.InnerException.Message;
                 string src = ex.Source;

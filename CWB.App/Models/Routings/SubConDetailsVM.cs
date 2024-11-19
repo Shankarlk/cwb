@@ -20,5 +20,6 @@
         public string Company {  get; set; }
         public string BGColor { get; set; }
         public string StrPreferredSubCon { get; set; } = string.Empty;
+        public string MandocAvl { get; set; } = string.Empty;
     }
 }

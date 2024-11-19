@@ -32,6 +32,36 @@ namespace CWB.Masters.Configurations
                 .HasMaxLength(4000)
                 .HasColumnType("nvarchar(MAX)");
             builder
+                .Property(m => m.PlantName)
+                .HasColumnName("PlantName")
+                .HasMaxLength(255)
+                .IsRequired();
+            builder
+                .Property(m => m.City)
+                .HasColumnName("City")
+                .HasMaxLength(255)
+                .IsRequired();
+            builder
+                .Property(w => w.Pincode)
+                .HasColumnName("Pincode")
+                .HasMaxLength(255)
+                .IsRequired();
+            builder
+                .Property(w => w.Country)
+                .HasColumnName("Country")
+                .HasMaxLength(255)
+                .IsRequired();
+            builder
+                .Property(w => w.GstNo)
+                .HasColumnName("GstNo")
+                .HasMaxLength(255)
+                .IsRequired();
+            builder
+                .Property(w => w.PanNo)
+                .HasColumnName("PanNo")
+                .HasMaxLength(255)
+                .IsRequired();
+            builder
                 .Property(m => m.TenantId)
                 .HasColumnName("TenantId")
                 .IsRequired();

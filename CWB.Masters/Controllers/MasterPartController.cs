@@ -103,6 +103,24 @@ namespace CWB.Masters.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route(ApiRoutes.Masters.DeleteItemMasterDoc)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> DeleteItemMasterDoc(long itemMasterDocListId, long tenantId)
+        {
+            var result = await _masterPartService.DeleteItemMasterDoc(itemMasterDocListId, tenantId);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.Masters.CheckPartNoInDocList)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckPartNoInDocList(long documentTypeId, long contentId, long tenantId)
+        {
+            bool exists = false;
+            exists = await _masterPartService.CheckDocumentTypeInItemMaster(documentTypeId,contentId, tenantId);
+            return Ok(exists);
+        }
 
     }
 

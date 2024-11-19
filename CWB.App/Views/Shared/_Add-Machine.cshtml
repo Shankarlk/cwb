@@ -38,7 +38,7 @@
                                             <!-- -----------------  -->
                                             <label class="col-md-1 form-label mb-2">Shop </label>
                                             <div class="col-md-2 mb-2">
-                                                <select id="MAC_Shops"" class="form-select form-select-sm" aria-label="form-select-sm" title="Choose the Shop in the Plant from the List" data-plugin="tippy" data-tippy-placement="top">
+                                                <select id="MAC_Shops" " class="form-select form-select-sm" aria-label="form-select-sm" title="Choose the Shop in the Plant from the List" data-plugin="tippy" data-tippy-placement="top">
                                                     <!--<option value="">Shop 1</option>-->
                                                 </select>
                                             </div>
@@ -70,7 +70,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -118,13 +117,13 @@
                                                     Enter Machine Details for :
                                                 </th>
                                                 <td>
-                                                    <span class="h6">Machine Name :</span> VMC-1
+                                                    <span class="h6">Machine Name :</span> <span id="MPopupMcNameSpan"> </span>
                                                 </td>
                                                 <td>
-                                                    <span class="h6">Plant:</span>  Plant 1
+                                                    <span class="h6">Plant:</span>  <span id="MPopupMcPlantSpan"> </span>
                                                 </td>
                                                 <td>
-                                                    <span class="h6">Shop :</span> Shop 1
+                                                    <span class="h6">Shop :</span> <span id="MPopupMcShopSpan"> </span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -161,7 +160,7 @@
                                 </div>
                                 <!-- ---------------- -->
                                 <div class="col-md-6 mt-1 text-end">
-                                    <input hidden type="text" name="PreferredMachine" value="0" id="PreferredMachine"/>
+                                    <input hidden type="text" name="PreferredMachine" value="0" id="PreferredMachine" />
                                     <input hidden type="text" name="MachineId" value="0" id="MachineId" />
                                     <input hidden type="text" name="RoutingStepId" value="0" id="MachineRoutingStepId" />
                                     <input hidden type="text" name="RoutingStepMachineId" value="0" id="RoutingStepMachineId" />
@@ -172,158 +171,31 @@
                         </form>
                         <!-- ======================== -->
                         <div class="row mt-4">
-                            <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Input / Reference Documents <span class="badge bg-primary rounded-circle noti-icon-badge m-l-10">5</span>
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <div class="row">
-                                                <div class="table-responsive table-he-180">
-                                                    <table class="table table-sm table-bordered w-100 mb-3 tableFixHead">
-                                                        <thead class="table-info th-sti text-center">
-                                                            <tr class="table-border-bottom">
-                                                                <th>File Content / Comment</th>
-                                                                <th>Type</th>
-                                                                <th>File Name</th>
-                                                                <th>Resp Person</th>
-                                                                <th>Approver</th>
-                                                                <th>Status</th>
-                                                                <th width="5%"></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#view-doc">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                    <div class="dropdown float-center">
-                                                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">View</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#add-doc-type-u-edit">Edit/Upload</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">delete</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">Download</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                    <div class="dropdown float-center">
-                                                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">View</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#add-doc-type-u-edit">Edit/Upload</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">delete</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">Download</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                    <div class="dropdown float-center">
-                                                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">View</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#add-doc-type-u-edit">Edit/Upload</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">delete</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">Download</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                    <div class="dropdown float-center">
-                                                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">View</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#add-doc-type-u-edit">Edit/Upload</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">delete</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">Download</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                    <div class="dropdown float-center">
-                                                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">View</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#add-doc-type-u-edit">Edit/Upload</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">delete</a>
-                                                                            <!-- item-->
-                                                                            <a href="javascript:void(0);" class="dropdown-item">Download</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#add-doc-type-u" title="Select to add another Document" data-plugin="tippy" data-tippy-placement="top">Add Document</button>
-                                                </div>
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="table-responsive table-he-250">
+                                    <table class="table table-sm table-bordered tableFixHead w-100" id="MachineDocGrid">
+                                        <thead class="table-info th-sti text-center">
+                                            <tr class="table-border-bottom">
+                                                <th>Document Type</th>
+                                                <th>Mandatory</th>
+                                                <th>Info / Comment</th>
+                                                <th>Uploaded by</th>
+                                                <th>Uploaded on</th>
+                                                <th>View</th>
+                                                <th>Download</th>
+                                                <th width="5%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <!-- End accordion item  -->
-                                <!-- End accordion item  -->
+                                <!-- =========== -->
+                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#doc-item" data-plugin="tippy" data-tippy-placement="top" data-tippy="" data-original-title="Click to Add a document">
+                                    Upload Other Related
+                                    Documents
+                                </button>
+                                <!-- =========== -->
                             </div>
                             <!-- ======================== -->
                         </div>
@@ -369,14 +241,66 @@
                                                             <th>M/c Name</th>
 -->
 <template id="AddMachineListRow">
-<tr>
-<td>
-<input class="form-check-input" type="radio" name="stepmachineselect" id="stepmachine_{num}" value="{machineId}" title="Select a Machine by clicking the checkbox for the Machine. Only 1 Machine can be selected at a time" data-plugin="tippy" data-tippy-placement="top" checked>
-</td>
-<td>{plant}</td>
-<td>{shop}</td>
-<td>{slNo}</td>
-<td>{name}</td>
-</tr>
-<tr>
+    <tr>
+        <td>
+            <input class="form-check-input" type="radio" name="stepmachineselect" id="stepmachine_{num}" value="{machineId}" title="Select a Machine by clicking the checkbox for the Machine. Only 1 Machine can be selected at a time" data-plugin="tippy" data-tippy-placement="top" checked>
+        </td>
+        <td>{plant}</td>
+        <td>{shop}</td>
+        <td>{slNo}</td>
+        <td>{name}</td>
+    </tr>
+    <tr>
+</template>
+
+<template id="machineDocGridRow">
+    <tr>
+        <td>{documentTypeName}</td>
+        <td>{mandatory}</td>
+        <td>{comments}</td>
+        <td>{uploadedBy}</td>
+        <td>{updatedOnStr}</td>
+        <td>
+            @*<i class="fas fa-eye btn btn-sm" data-bs-toggle="modal"
+                data-bs-target="#viewDoc"></i>*@
+            <a href="javascript:void(0);" data-filename="{fileName}" data-doctypename="{documentTypeName}" data-customername="{companyName}"
+               data-partno="{partNo}" data-partdesc="{partDesc}" data-routingname="{routingName}" data-retdate="{retentionDateStr}"
+               data-oprno="{oprNo}" data-uploadby="{uploadedBy}" data-uploadon="{updatedOnStr}"
+               onclick="viewFile(this)">
+                <i class="fas fa-eye btn btn-sm"></i><!--style="color: #007bff;"-->
+            </a>
+        </td>
+        <td>
+            <a href="javascript:void(0);" data-filename="{fileName}" onclick="downloadFile(this)">
+                <i class="fas fa-download btn btn-sm"></i><!--style="color: #007bff;"-->
+            </a>
+        </td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="mdi mdi-dots-vertical"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doc-item"
+                       data-filename="{fileName}" data-doctypename="{documentTypeName}" data-comments="{comments}" data-fileextnname="{fileExtnName}"
+                       data-documenttypeid="{documentTypeId}" data-upload="1" data-deletiondate="{deletionDate}"
+                       data-doclistid="{docListId}" data-retdate="{retentionDateStr}" data-addmachinedoc="1">Upload</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doc-item"
+                       data-filename="{fileName}" data-doctypename="{documentTypeName}" data-comments="{comments}" data-fileextnname="{fileExtnName}"
+                       data-documenttypeid="{documentTypeId}" data-upload="2" data-deletiondate="{deletionDate}"
+                       data-doclistid="{docListId}" data-retdate="{retentionDateStr}">Edit</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-doclistid="{docListId}"
+                       onclick="DeleteDocList(this)">Delete</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#RefLogPopup"
+                       data-doctypename="{documentTypeName}" data-documenttypeid="{documentTypeId}"
+                       data-doclistid="{docListId}">View Log</a>
+                </div>
+            </div>
+        </td>
+    </tr>
 </template>

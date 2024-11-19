@@ -18,12 +18,15 @@ namespace CWB.CompanySettings.Services.Location
         private readonly IPlantRepository _plantRepository;
         private readonly IPlantWDRepository _plantWDRepository;
         private readonly IHolidayRepository _holidayRepository;
+        private readonly ICityRepository _cityRepository;
+        private readonly ICountryRepository _countryRepository;
 
         public PlantService(ILoggerManager logger 
             ,IMapper mapper, IUnitOfWork unitOfWork 
             ,IPlantRepository plantRepository
             ,IPlantWDRepository plantWDRepository
-            ,IHolidayRepository holidayRepository)
+            ,IHolidayRepository holidayRepository, ICityRepository cityRepository,
+            ICountryRepository countryRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -31,7 +34,8 @@ namespace CWB.CompanySettings.Services.Location
             _plantRepository = plantRepository;
             _plantWDRepository = plantWDRepository;
             _holidayRepository = holidayRepository;
-
+            _cityRepository = cityRepository;
+            _countryRepository = countryRepository;
         }
 
         public bool CheckPlantExisit(CheckPlantVM checkPlantVM)
@@ -63,10 +67,34 @@ namespace CWB.CompanySettings.Services.Location
             var plant = _mapper.Map<Domain.Plant>(plantVM);
             if (plant.Id == 0)
             {
+                if (plant.PanNo == null)
+                {
+                    plant.PanNo = string.Empty;
+                }
+                if (plant.Pincode == null)
+                {
+                    plant.Pincode = string.Empty;
+                }
+                if (plant.GstNo == null)
+                {
+                    plant.GstNo = string.Empty;
+                }
                 await _plantRepository.AddAsync(plant);
             }
             else
             {
+                if (plant.PanNo == null)
+                {
+                    plant.PanNo = string.Empty;
+                }
+                if (plant.Pincode == null)
+                {
+                    plant.Pincode = string.Empty;
+                }
+                if (plant.GstNo == null)
+                {
+                    plant.GstNo = string.Empty;
+                }
                 plant = await _plantRepository.UpdateAsync(plant.Id, plant);
             }
             await _unitOfWork.CommitAsync();
@@ -159,6 +187,76 @@ namespace CWB.CompanySettings.Services.Location
             return _mapper.Map<PlantWorkingDetailsVM>(plantWd);
         }
 
+        public IEnumerable<CityVM> GetCitys(long TenantId)
+        {
+            var plants = _cityRepository.GetRangeAsync(p => p.TenantId == TenantId);
+            return _mapper.Map<IEnumerable<CityVM>>(plants);
+        }
+        public IEnumerable<CountryVM> GetCountrys(long TenantId)
+        {
+            var plants = _countryRepository.GetRangeAsync(p => p.TenantId == TenantId);
+            return _mapper.Map<IEnumerable<CountryVM>>(plants);
+        }
+        public async Task<CityVM> PostCity(CityVM plantWdVM)
+        {
+            var plantWd = _mapper.Map<Domain.City>(plantWdVM);
+            if (plantWd.Id == 0)
+            {
+                await _cityRepository.AddAsync(plantWd);
+            }
+            else
+            {
+                plantWd = await _cityRepository.UpdateAsync(plantWd.Id, plantWd);
+            }
+            await _unitOfWork.CommitAsync();
+            plantWdVM.CityId = plantWd.Id;
+            return plantWdVM;
+        }
+        public async Task<CountryVM> PostCountry(CountryVM plantWdVM)
+        {
+            var plantWd = _mapper.Map<Domain.Country>(plantWdVM);
+            if (plantWd.Id == 0)
+            {
+                await _countryRepository.AddAsync(plantWd);
+            }
+            else
+            {
+                plantWd = await _countryRepository.UpdateAsync(plantWd.Id, plantWd);
+            }
+            await _unitOfWork.CommitAsync();
+            plantWdVM.CountryId = plantWd.Id;
+            return plantWdVM;
+        }
+        public async Task<bool> CheckCity(string city)
+        {
+            try
+            {
+                var documentTypes = await _cityRepository.SingleOrDefaultAsync(c => c.Name == (city));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
+        }
+        public async Task<bool> CheckCountry(string country)
+        {
+            try
+            {
+                var documentTypes = await _countryRepository.SingleOrDefaultAsync(c => c.Name == (country));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
+        }
         public async Task<PlantWorkingDetailsVM> PostPlantWD(PlantWorkingDetailsVM plantWdVM)
         {
             var plantWd = _mapper.Map<Domain.PlantWorkingDetails>(plantWdVM);

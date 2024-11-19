@@ -28,6 +28,11 @@ namespace CWB.CompanySettings.CompanySettingsUtils
                 .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
                 .ForMember(m => m.Address, m => m.MapFrom(src => src.Address))
                 .ForMember(m => m.Notes, m => m.MapFrom(src => src.Notes))
+                .ForMember(m => m.City, m => m.MapFrom(src => src.City))
+                .ForMember(m => m.Pincode, m => m.MapFrom(src => src.Pincode))
+                .ForMember(m => m.Country, m => m.MapFrom(src => src.Country))
+                .ForMember(m => m.GstNo, m => m.MapFrom(src => src.GstNo))
+                .ForMember(m => m.PanNo, m => m.MapFrom(src => src.PanNo))
                 .ForMember(m => m.IsMainPlant, m => m.MapFrom(src => src.IsMainPlant))
                 .ForMember(m => m.IsProductDesigned, m => m.MapFrom(src => src.IsProductDesigned));
             CreateMap<Plant, PlantVM>()
@@ -35,11 +40,33 @@ namespace CWB.CompanySettings.CompanySettingsUtils
                 .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
                 .ForMember(m => m.Address, m => m.MapFrom(src => src.Address))
                 .ForMember(m => m.Notes, m => m.MapFrom(src => src.Notes))
+                .ForMember(m => m.City, m => m.MapFrom(src => src.City))
+                .ForMember(m => m.Pincode, m => m.MapFrom(src => src.Pincode))
+                .ForMember(m => m.Country, m => m.MapFrom(src => src.Country))
+                .ForMember(m => m.GstNo, m => m.MapFrom(src => src.GstNo))
+                .ForMember(m => m.PanNo, m => m.MapFrom(src => src.PanNo))
                 .ForMember(m => m.IsMainPlant, m => m.MapFrom(src => src.IsMainPlant))
                 .ForMember(m => m.IsProductDesigned, m => m.MapFrom(src => src.IsProductDesigned));
 
-      
 
+
+            CreateMap<CityVM, City>()
+                .ForMember(m => m.Id, m => m.MapFrom(src => src.CityId))
+                .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
+                .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+            CreateMap<Domain.City, CityVM>()
+             .ForMember(m => m.CityId, m => m.MapFrom(src => src.Id))
+             .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
+             .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+
+            CreateMap<CountryVM, Country>()
+                .ForMember(m => m.Id, m => m.MapFrom(src => src.CountryId))
+                .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
+                .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
+            CreateMap<Domain.Country, CountryVM>()
+             .ForMember(m => m.CountryId, m => m.MapFrom(src => src.Id))
+             .ForMember(m => m.Name, m => m.MapFrom(src => src.Name))
+             .ForMember(m => m.TenantId, m => m.MapFrom(src => src.TenantId));
 
             //Designation
             CreateMap<DesignationVM, Designation>()

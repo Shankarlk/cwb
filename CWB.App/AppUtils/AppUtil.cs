@@ -15,6 +15,21 @@ namespace CWB.App.AppUtils
 
             return user.Claims.FirstOrDefault(c => c.Type == "TenantId")?.Value;
         }
+        public static string GetFullName(ClaimsPrincipal userClaim)
+        {
+            var user = (userClaim.Identity as ClaimsIdentity);
+            var firstName = user.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value;
+            var lastName = user.Claims.FirstOrDefault(c => c.Type == "family_name")?.Value;
+
+            // Combine first and last name if both are available
+            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+            {
+                return $"{firstName} {lastName}";
+            }
+
+            // Return the "name" claim if it exists
+            return user.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
+        }
 
         public static async Task<Dictionary<string, string>> GetAuthToken(HttpContext httpContext)
         {

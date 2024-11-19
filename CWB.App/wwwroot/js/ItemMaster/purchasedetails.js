@@ -175,6 +175,45 @@ purchasedetails.js:222 tenantId:1
         });
     });
 
+    $('#setPreferred').on('show.bs.modal', function (event) {
+        var relatedTarget = $(event.relatedTarget);
+        var partpurchaseid = relatedTarget.data("partpurchaseid");
+        var supplier = relatedTarget.data("supplier");
+        var partNumber = $("#Span_PartNo").text();
+        var lblPartDescription = $("#Span_PartDescription").text();
+        $("#SetPreferedPDid").val(partpurchaseid);
+        $("#supplierName").text(supplier);
+        $("#ppartNameSpan").text(partNumber);
+        $("#pPartDescNameSPan").text(lblPartDescription);
+
+    });
+    $('#setPreferred').on('hidden.bs.modal', function (event) {
+        $("#SetPreferedPDid").val(0);
+        $("#SetPreferedChkBox").prop("checked", false);
+    });
+    $("#btnSetPreferedSave").click(function (event) {
+        var mkID = parseInt($("#SetPreferedPDid").val());
+        var prefred = 0;
+        if ($("#SetPreferedChkBox").prop("checked") == true) {
+            prefred = 1;
+        }
+        var rowData = {
+            PartPurchaseId: mkID,
+            PreferredSupplier: prefred
+        };
+        api.post("/masters/PreferredSupplier", rowData).then((data) => {
+            var partId = data.ppartId;
+            reloadPPDs(partId);
+            //reloadMakeFroms(partId);
+            $("#setPreferred").modal("hide");
+            event.preventDefault();
+            //$("#TabHeadMakefrom").click();
+            //document.getElementById("btnPreferredInputClose").click();
+        }).catch((error) => {
+            AppUtil.HandleError("FormEditMakeFrom", error);
+        });
+    });
+
 });
 
 
@@ -225,9 +264,14 @@ function reloadPPDs(partNo) {
     var templateElement = $("#PurchaseDetailTemplate").html();
     let uomtxt = $("#UOMId option:selected").text();
     api.get("/masters/partpurchasesfor?partId=" + partId).then((rData) => {
+        var tablebody = $("#TablePurchaseDetails tbody");
+        tablebody.html();
         for (i = 0; i < rData.length; i++) {
             rData[i].uom = uomtxt;
-            UpdatePurchaseDetailsTable(rData[i]);
+            let rowData = rData[i];
+            rowData.checked = rowData.preferredSupplier === 1 ? 'checked' : '';
+            $(tablebody).append(AppUtil.ProcessTemplateData("PurchaseDetailTemplate", rowData));
+            //UpdatePurchaseDetailsTable(rData[i]);
         }
     }).catch((error) => {
     });
@@ -316,9 +360,66 @@ function AddPurchaseDetail(event) {
         $("#BOFId").val($("#BoughtOutFinishDetailId").val());
     $("#PMasterPartType").val(masterPartType);
     $("#PPartId").val($("#PartId").val());
-
+    if ($("#PSupplierId").val() == 0) {
+        var newNamevalidate = document.getElementById('PSupplierId');
+        newNamevalidate.style.border = '2px solid red';
+        return false;
+    } else {
+        var newNamevalidate = document.getElementById('PSupplierId');
+        newNamevalidate.style.border = '';
+    }
+    var type = parseInt($("#BoughtOutFinishMadeType").val());
+    if (type == 3) {
+    } else {
+        if ($("#PSupplierPartNo").val().length == 0) {
+            var newNamevalidate = document.getElementById('PSupplierPartNo');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        } else {
+            var newNamevalidate = document.getElementById('PSupplierPartNo');
+            newNamevalidate.style.border = '';
+        }
+    }
+    if ($("#MinimumOrderQuantity").val().length == 0) {
+        var newNamevalidate = document.getElementById('MinimumOrderQuantity');
+        newNamevalidate.style.border = '2px solid red';
+        return false;
+    } else {
+        var newNamevalidate = document.getElementById('MinimumOrderQuantity');
+        newNamevalidate.style.border = '';
+    } 
+    if ($("#LeadTimeInDays").val().length == 0) {
+        var newNamevalidate = document.getElementById('LeadTimeInDays');
+        newNamevalidate.style.border = '2px solid red';
+        return false;
+    } else {
+        var newNamevalidate = document.getElementById('LeadTimeInDays');
+        newNamevalidate.style.border = '';
+    } 
+    if ($("#Price").val().length == 0) {
+        var newNamevalidate = document.getElementById('Price');
+        newNamevalidate.style.border = '2px solid red';
+        return false;
+    } else {
+        var newNamevalidate = document.getElementById('Price');
+        newNamevalidate.style.border = '';
+    }
+    var pref = 0;
+    if ($("#pPreferredSupplier").prop("checked")) {
+        pref = 1;
+        $("#pPreferredSupplier").val(pref);
+    } else {
+        pref = 0;
+        $("#pPreferredSupplier").val(pref);
+    }
     if ($("#FormPurchaseDetails").valid()) {
+        var prefred = 0;
+        if ($("#pPreferredSupplier").prop("checked") == true) {
+            prefred = 1;
+        }
+        $("#fPreferredSupplier").val(prefred);
         var formData = AppUtil.GetFormData(formName);
+        //formData.append("PreferredSupplier", parseInt(pref));
         let data = {};
         api.post("/masters/partpurchase", formData).then((data) => {
             UpdatePurchaseDetailsTable(data);

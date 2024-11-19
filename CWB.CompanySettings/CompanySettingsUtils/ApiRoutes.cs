@@ -47,12 +47,18 @@
         public static class Plant
         {
             public const string GetPlants = Base + "/plants/{tenantId}";
+            public const string GetCitys = Base + "/getcitys/{tenantId}";
+            public const string GetCountrys = Base + "/getcountry/{tenantId}";
+            public const string CheckCountrys = Base + "/checkcountry/{country}";
+            public const string CheckCity = Base + "/checkcity/{city}";
             public const string PostPlant = Base + "/plant";
             public const string CheckPlant = Base + "/plant-exist";
             public const string GetPlant = Base + "/getplant/{plantId}";
             public const string DelPlant = Base + "/delplant/{plantId}";
 
             public const string PostPlantWD = Base + "/plantwd";
+            public const string PostCity = Base + "/postcity";
+            public const string PostCountry = Base + "/postcountry";
             public const string GetPlantWD = Base + "/getplantwd/{tenantId}/{plantId}";
             public const string Holidays = Base + "/holidays/{tenantId}/{plantId}";
             public const string PostHoliday = Base + "/holiday";

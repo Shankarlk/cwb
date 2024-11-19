@@ -34,7 +34,8 @@ namespace CWB.App.Models.ItemMaster
         public string RevNo { get; set; }
         public DateTime? RevDate { get; set; }
         public string MasterPartType { get; set; }
-        public char FinalPartNosoldtoCustomer { get; set; }
+        public int FinalPartNosoldtoCustomer { get; set; }
+        public int PriceSettledwithCustomer_INR { get; set; }
         //MasterParts-
 
 

@@ -1,4 +1,5 @@
-﻿using CWB.App.Models.DocumentManagement;
+﻿using CWB.App.AppUtils;
+using CWB.App.Models.DocumentManagement;
 using CWB.App.Services.CompanySettings;
 using CWB.App.Services.DocumentMagement;
 using CWB.App.Services.Masters;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CWB.App.Controllers
@@ -168,7 +170,8 @@ namespace CWB.App.Controllers
                         }
                     }
                 }
-                var partbyid = await _masterService.GetManufPart((int)item.PartId);
+
+                var partbyid = await _masterService.ItemMasterPartById((int)item.PartId);
                 item.PartNo = partbyid.PartNo;
                 item.PartDesc = partbyid.PartDescription;
                 var routingListItems = await _routingService.Routings((int)item.PartId);
@@ -199,6 +202,10 @@ namespace CWB.App.Controllers
                 {
                     item.Archive = 'N';
                 }
+                ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+                string fullName = AppUtil.GetFullName(userClaim);
+                item.UpdatedOnStr = item.CreationDt.ToString("MM-dd-yyyy");
+                item.UploadedBy = fullName;
             }
             return Ok(docListVMs);
         }
@@ -350,5 +357,19 @@ namespace CWB.App.Controllers
             var filteredDocListVMs = docListVMs.Where(vm => vm.DocumentTypeId == docTypeId);
             return Ok(filteredDocListVMs);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllRefReson()
+        {
+            var docListVMs = await _docMangService.Getallreasonlist();
+            return Ok(docListVMs);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostDocReason([FromBody] RefDocReasonListVM custRetnDataVM)
+        {
+            var result = await _docMangService.PostDocReason(custRetnDataVM);
+            return Ok(result);
+        }
+
+
     }
 }

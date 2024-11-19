@@ -154,6 +154,12 @@ namespace CWB.App.Services.Routings
             return await RestHelper<IEnumerable<RoutingStepVM>>.GetAsync(uri, headers);
         }
 
+        public async Task<IEnumerable<RoutingStatusLogVM>> GetRoutingStatusLog(long routingId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getstatuslog/{routingId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<IEnumerable<RoutingStatusLogVM>>.GetAsync(uri, headers);
+        }
         public async Task<IEnumerable<RoutingStepPartVM>> StepParts(int stepId)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/stepparts/{stepId}");

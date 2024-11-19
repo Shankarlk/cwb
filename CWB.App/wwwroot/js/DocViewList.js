@@ -10,7 +10,6 @@ function loadDocList() {
             //console.log($(tablebody).append(AppUtil.ProcessTemplateData("DocListGridRow", data[i])));
         }
     }).catch((error) => {
-
         console.log(error);
     });
 }
@@ -154,8 +153,8 @@ $(document).ready(function () {
         var P5DocListId = parseInt($("#P5DocListId").val());
         var P5RetentionDate = new Date(Date.parse($("#P5RetentionDate").val()));
         const currentDate = $('#P5CurrentDate').val();
-        const rstDtParts = currentDate.split('-');
-        const rstDt = new Date(rstDtParts[2], rstDtParts[1] - 1, rstDtParts[0]);
+        const [month, day, year] = currentDate.split('-'); // Destructuring assignment
+        const rstDt = new Date(year, month - 1, day); // Month is 0-indexed
         const restrictDt = new Date(rstDt);
         var formattedDate;
         if (isNaN(P5DocListId)) {

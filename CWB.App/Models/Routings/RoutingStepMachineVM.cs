@@ -25,5 +25,6 @@ namespace CWB.App.Models.Routing
         public string StrPreferredMachine { get; set; } = string.Empty;
         public string BGColor { get; set; }
         public string Name { get; set; } = "NA";
+        public string MandocAvl { get; set; } = string.Empty;
     }
 }

@@ -1,7 +1,12 @@
+using CWB.App.AppUtils;
 using CWB.App.Models.Contacts;
+using CWB.App.Models.DocumentManagement;
 using CWB.App.Models.ItemMaster;
+using CWB.App.Models.Machine;
+using CWB.App.Models.OperationList;
 using CWB.App.Models.Routing;
 using CWB.App.Models.Routings;
+using CWB.App.Services.DocumentMagement;
 using CWB.App.Services.Masters;
 using CWB.App.Services.Routings;
 using CWB.CommonUtils.Common;
@@ -14,6 +19,7 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CWB.App.Controllers
@@ -25,13 +31,18 @@ namespace CWB.App.Controllers
         private readonly IRoutingService _routingService;
         private readonly IMastersServices _mastersServices;
         private readonly IMachineService _machineService;
+        private readonly IOperationService _operationService;
+        private readonly IDocMangService _docMangService;
 
-        public RoutingsController(ILoggerManager logger, IMachineService machineService, IRoutingService routingService,IMastersServices mastersServices)
+        public RoutingsController(ILoggerManager logger, IMachineService machineService, IRoutingService routingService,
+            IMastersServices mastersServices, IOperationService operationService, IDocMangService docMangService)
         {
             _logger = logger;
             _routingService = routingService;
             _mastersServices = mastersServices;
             _machineService = machineService;
+            _operationService = operationService;
+            _docMangService = docMangService;
         }
 
         public IActionResult Index()
@@ -42,6 +53,30 @@ namespace CWB.App.Controllers
         public async Task<IActionResult> RoutingListItems()
         {
             var result = await _routingService.GetRoutingListItems();
+            foreach (var item in result)
+            {
+                var oprnos = await _routingService.RoutingSteps(item.RoutingId);
+                foreach (var op in oprnos)
+                {
+                    var docmand = await _operationService.GetOperationalDocTypesByOptId(Convert.ToInt64(op.StepOperation));
+                    if (docmand.Any())
+                    {
+                        var docListVMs = await _docMangService.GetAllDocList();
+                        if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docList.RoutingId==item.RoutingId)))
+                        {
+                            item.MandocAvl = "Yes";
+                        }
+                        else
+                        {
+                            item.MandocAvl = "No";
+                        }
+                    }
+                    else
+                    {
+                        item.MandocAvl = "N/A";
+                    }
+                }
+            }
             return Json(result);
         }
         //GetRoutingListItmes
@@ -131,9 +166,29 @@ namespace CWB.App.Controllers
                     var oprnos = await _routingService.RoutingSteps(item.RoutingId);
                     if (master != null)
                     {
-                        item.MKPartName = master.PartNo;
+                        item.MKPartName = master.PartNo +" / "+master.PartDescription;
                     }
                     item.NoOprns = oprnos.Count();
+                    foreach (var op in oprnos)
+                    {
+                        var docmand = await _operationService.GetOperationalDocTypesByOptId(Convert.ToInt64(op.StepOperation));
+                        if (docmand.Any())
+                        {
+                            var docListVMs = await _docMangService.GetAllDocList();
+                            if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docList.RoutingId == item.RoutingId)))
+                            {
+                                item.MandocAvl = "Yes";
+                            }
+                            else
+                            {
+                                item.MandocAvl = "No";
+                            }
+                        }
+                        else
+                        {
+                            item.MandocAvl = "N/A";
+                        }
+                    }
                 }
                 routingListItemVM.MasterPartType = partType;
                 routingListItemVM.RoutingVMs = resultList.ToList();
@@ -191,7 +246,11 @@ namespace CWB.App.Controllers
             var result = await _routingService.RoutingSteps(routingId);
             foreach (var item in result)
             {
-                if(item.StepLocation == "1")
+                int mcminutes = 0;
+                int subminutes = 0;
+                int mcsetminutes = 0;
+                int subsetminutes = 0;
+                if (item.StepLocation == "1")
                 {
                     item.LocationName = "Inhouse";
                 }else if (item.StepLocation == "2")
@@ -207,50 +266,355 @@ namespace CWB.App.Controllers
                 {
                     foreach (var mc in stepmc)
                     {
-                        if (mc.PreferredMachine == 1)
-                        {
+                       // if (mc.PreferredMachine == 1)
+                        //{
                             TimeSpan time = TimeSpan.Parse(mc.FloorToFloorTime);
-                            int minutes = (int)time.TotalMinutes;
+                             mcminutes= (int)time.TotalMinutes;
                             TimeSpan Settime = TimeSpan.Parse(mc.SetupTime);
-                            int setminutes = (int)Settime.TotalMinutes;
-                            item.CycleTime = minutes.ToString();
-                            item.SetupTime = setminutes.ToString();
-                        }
+                            mcsetminutes = (int)Settime.TotalMinutes;
+                        //}
                     }
+                    item.CycleTime = mcminutes.ToString();
+                    item.SetupTime = mcsetminutes.ToString();
                 }
                 var stepsubcon =await _routingService.SubCons((int)item.StepId);
                 if(stepsubcon.Count() != 0)
                 {
                     foreach (var sub in stepsubcon)
                     {
-                        if (sub.PreferredSubcon == 1)
-                        {
+                        //if (sub.PreferredSubcon == 1)
+                        //{
                             var subworkdetails = await _routingService.SubConWSS((int)item.StepId, sub.SubConDetailsId);
                             if(subworkdetails.Count() !=0)
                             {
                                 foreach (var mc in subworkdetails)
                                 {
                                     TimeSpan time = TimeSpan.Parse(mc.FloorToFloorTime);
-                                    int minutes = (int)time.TotalMinutes;
+                                    subminutes = (int)time.TotalMinutes;
                                     TimeSpan Settime = TimeSpan.Parse(mc.SetupTime);
-                                    int setminutes = (int)Settime.TotalMinutes;
-                                    item.CycleTime = minutes.ToString();
-                                    item.SetupTime = setminutes.ToString();
+                                    subsetminutes = (int)Settime.TotalMinutes;
                                 }
                             }
-                        }
+                        //}
                     }
+                    item.CycleTime = subminutes.ToString();
+                    item.SetupTime = subsetminutes.ToString();
                 }
                 if(item.SetupTime == null)
                 {
                     item.SetupTime = "";
                     item.CycleTime = "";
                 }
+                var stepparts = await _routingService.StepParts((int)item.StepId);
+                item.NoOfPartsUsed = Convert.ToString((int)stepparts.Sum(op => op.QuantityAssembly));
+
+                var docmand = await _operationService.GetOperationalDocTypesByOptId(Convert.ToInt64(item.StepOperation));
+                if (docmand.Any())
+                {
+                    var docListVMs = await _docMangService.GetAllDocList();
+                    if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docList.RoutingId==routingId)))
+                    {
+                        item.MandocAvl = "Yes";
+                    }
+                    else
+                    {
+                        item.MandocAvl = "No";
+                    }
+                }
+                else
+                {
+                    item.MandocAvl = "N/A";
+                }
             }
             
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetOpertaionDocList(long opId,long routingId,long stepId)
+        {
+            var result = await _operationService.GetOperationalDocTypesByOptId(opId);
+            var docListVMs = await _docMangService.GetAllDocList();
+            var doctype = await _docMangService.GetAllDocumentType();
+            var custRetnDataVMs = await _docMangService.GetAllCustRet();
+            var companies = await _mastersServices.GetCompanies();
+            var extns = await _docMangService.GetAllFileExtn();
+
+            List<DocListVM> docListVM = new List<DocListVM>();
+            List<DocListVM> empdocLists = new List<DocListVM>();
+
+            if (stepId == 0)
+            {
+                foreach (var master in result.Where(m => m.OperationListId == opId))
+                {
+                    DocListVM empDoc = new DocListVM();
+                    PopulateItemFields(empDoc, master, doctype, extns, custRetnDataVMs, companies);
+                    empDoc.Comments = string.Empty;
+                    empDoc.DeletionDate = DateTime.Now;
+                    empdocLists.Add(empDoc);
+                }
+                return Ok(empdocLists);
+            }
+            else
+            {
+                // When partid != 0, show docListVMs related to contentid and partid
+                bool hasEntries = false;
+                foreach (var item in docListVMs.Where(d => d.McId == 0 && d.McTypeId == 0 && d.RoutingId ==routingId && d.OprNo==stepId && result.Any(m => m.OperationListId == opId && m.DocumentTypeId == d.DocumentTypeId)))
+                {
+                    PopulateItemFields(item, result.First(m => m.OperationListId == opId && m.DocumentTypeId == item.DocumentTypeId), doctype, extns, custRetnDataVMs, companies);
+                    ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+                    string fullName = AppUtil.GetFullName(userClaim);
+                    item.UpdatedOnStr = item.CreationDt.ToString("MM-dd-yyyy");
+                    item.UploadedBy = fullName;
+
+                    docListVM.Add(item);
+                    hasEntries = true;
+                }
+
+                // If there are document types related to contentid without entries in docListVMs, add to empdocLists
+                if (!hasEntries || docListVM.Count < result.Count(m => m.OperationListId == opId))
+                {
+                    foreach (var master in result.Where(m => m.OperationListId == opId && !docListVM.Any(d => d.DocumentTypeId == m.DocumentTypeId)))
+                    {
+                        DocListVM empDoc = new DocListVM();
+                        PopulateItemFields(empDoc, master, doctype, extns, custRetnDataVMs, companies);
+                        empDoc.DeletionDate = DateTime.Now;
+                        empDoc.Comments = string.Empty;
+                        empdocLists.Add(empDoc);
+                    }
+                }
+
+                // Return combination of docListVM and empdocLists when partid != 0
+                return Ok(docListVM.Concat(empdocLists).ToList());
+            }
+        }
+
+        void PopulateItemFields(DocListVM item, OperationalDocumentListVM master, IEnumerable<DocumentTypeVM> doctype,
+                                IEnumerable<ExtnInfoVM> extns, IEnumerable<CustRetnDataVM> custRetnDataVMs,
+                                IEnumerable<ContactsVM> companies)
+        {
+            var doc = doctype.FirstOrDefault(d => d.DocumentTypeId == master.DocumentTypeId);
+            if (doc != null)
+            {
+                item.DocumentTypeName = doc.DocumentName;
+                item.DocumentTypeId = doc.DocumentTypeId;
+                item.DataReqdByCust = doc.DataReqdByCust;
+                item.DocCat = doc.DocuCategory;
+                item.Mandatory = (master.IsMandatory) ? 'Y' : 'N';
+                var extn = extns.FirstOrDefault(e => e.ExtnId == doc.ExtnId);
+                item.FileExtnName = extn?.ExtnName;
+
+                // Calculate DeletionDate if required
+                if (doc.DefaultRetPerYear != 0 && doc.DefaultRetPerMon != 0)
+                {
+                    DateTime currentDate = DateTime.Now;
+                    DateTime futureDate = currentDate.AddYears(doc.DefaultRetPerYear).AddMonths(doc.DefaultRetPerMon);
+                    item.DeletionDate = futureDate;
+                }
+            }
+
+            var cust = custRetnDataVMs.FirstOrDefault(c => c.DocumentTypeId == master.DocumentTypeId);
+            if (cust != null)
+            {
+                var comp = companies.FirstOrDefault(c => c.CompanyId == cust.ComapanyId);
+                item.CompanyName = comp?.CompanyName;
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMcTypeDocList(long mcTypeId, long routingId, long stepId)
+        {
+            var result = await _machineService.GetMcTypeDocList();
+            var docListVMs = await _docMangService.GetAllDocList();
+            var doctype = await _docMangService.GetAllDocumentType();
+            var custRetnDataVMs = await _docMangService.GetAllCustRet();
+            var companies = await _mastersServices.GetCompanies();
+            var extns = await _docMangService.GetAllFileExtn();
+
+            List<DocListVM> docListVM = new List<DocListVM>();
+            List<DocListVM> empdocLists = new List<DocListVM>();
+
+            if (stepId == 0)
+            {
+                foreach (var master in result.Where(m => m.McTypeId == mcTypeId))
+                {
+                    DocListVM empDoc = new DocListVM();
+                    PopulateMcTypeFields(empDoc, master, doctype, extns, custRetnDataVMs, companies);
+                    empDoc.Comments = string.Empty;
+                    empDoc.DeletionDate = DateTime.Now;
+                    empdocLists.Add(empDoc);
+                }
+                return Ok(empdocLists);
+            }
+            else
+            {
+                // When partid != 0, show docListVMs related to contentid and partid
+                bool hasEntries = false;
+                foreach (var item in docListVMs.Where(d => d.McTypeId == mcTypeId && d.RoutingId == routingId && d.OprNo == stepId && result.Any(m => m.McTypeId == mcTypeId && m.DocumentTypeId == d.DocumentTypeId)))
+                {
+                    PopulateMcTypeFields(item, result.First(m => m.McTypeId == mcTypeId && m.DocumentTypeId == item.DocumentTypeId), doctype, extns, custRetnDataVMs, companies);
+                    ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+                    string fullName = AppUtil.GetFullName(userClaim);
+                    item.UpdatedOnStr = item.CreationDt.ToString("MM-dd-yyyy");
+                    item.UploadedBy = fullName;
+
+                    docListVM.Add(item);
+                    hasEntries = true;
+                }
+
+                // If there are document types related to contentid without entries in docListVMs, add to empdocLists
+                if (!hasEntries || docListVM.Count < result.Count(m => m.McTypeId == mcTypeId))
+                {
+                    foreach (var master in result.Where(m => m.McTypeId == mcTypeId && !docListVM.Any(d => d.DocumentTypeId == m.DocumentTypeId)))
+                    {
+                        DocListVM empDoc = new DocListVM();
+                        PopulateMcTypeFields(empDoc, master, doctype, extns, custRetnDataVMs, companies);
+                        empDoc.DeletionDate = DateTime.Now;
+                        empDoc.Comments = string.Empty;
+                        empdocLists.Add(empDoc);
+                    }
+                }
+
+                // Return combination of docListVM and empdocLists when partid != 0
+                return Ok(docListVM.Concat(empdocLists).ToList());
+            }
+        }
+
+        void PopulateMcTypeFields(DocListVM item, McTypeDocListVM master, IEnumerable<DocumentTypeVM> doctype,
+                               IEnumerable<ExtnInfoVM> extns, IEnumerable<CustRetnDataVM> custRetnDataVMs,
+                               IEnumerable<ContactsVM> companies)
+        {
+            var doc = doctype.FirstOrDefault(d => d.DocumentTypeId == master.DocumentTypeId);
+            if (doc != null)
+            {
+                item.DocumentTypeName = doc.DocumentName;
+                item.DocumentTypeId = doc.DocumentTypeId;
+                item.DataReqdByCust = doc.DataReqdByCust;
+                item.DocCat = doc.DocuCategory;
+                item.Mandatory = master.Mandatory;
+                var extn = extns.FirstOrDefault(e => e.ExtnId == doc.ExtnId);
+                item.FileExtnName = extn?.ExtnName;
+
+                // Calculate DeletionDate if required
+                if (doc.DefaultRetPerYear != 0 && doc.DefaultRetPerMon != 0)
+                {
+                    DateTime currentDate = DateTime.Now;
+                    DateTime futureDate = currentDate.AddYears(doc.DefaultRetPerYear).AddMonths(doc.DefaultRetPerMon);
+                    item.DeletionDate = futureDate;
+                }
+            }
+
+            var cust = custRetnDataVMs.FirstOrDefault(c => c.DocumentTypeId == master.DocumentTypeId);
+            if (cust != null)
+            {
+                var comp = companies.FirstOrDefault(c => c.CompanyId == cust.ComapanyId);
+                item.CompanyName = comp?.CompanyName;
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMcIdDocList(long mcId, long routingId, long stepId)
+        {
+            var result = await _machineService.GetMcProcDocList();
+            var docListVMs = await _docMangService.GetAllDocList();
+            var doctype = await _docMangService.GetAllDocumentType();
+            var custRetnDataVMs = await _docMangService.GetAllCustRet();
+            var companies = await _mastersServices.GetCompanies();
+            var extns = await _docMangService.GetAllFileExtn();
+
+            List<DocListVM> docListVM = new List<DocListVM>();
+            List<DocListVM> empdocLists = new List<DocListVM>();
+
+            if (stepId == 0)
+            {
+                foreach (var master in result.Where(m => m.McId == mcId))
+                {
+                    DocListVM empDoc = new DocListVM();
+                    PopulateMcFields(empDoc, master, doctype, extns, custRetnDataVMs, companies);
+                    empDoc.Comments = string.Empty;
+                    empDoc.DeletionDate = DateTime.Now;
+                    empdocLists.Add(empDoc);
+                }
+                return Ok(empdocLists);
+            }
+            else
+            {
+                // When partid != 0, show docListVMs related to contentid and partid
+                bool hasEntries = false;
+                foreach (var item in docListVMs.Where(d => d.McId == mcId && d.McTypeId == 0 && d.RoutingId == routingId && d.OprNo == stepId && result.Any(m => m.McId == mcId && m.DocumentTypeId == d.DocumentTypeId)))
+                {
+                    PopulateMcFields(item, result.First(m => m.McId == mcId && m.DocumentTypeId == item.DocumentTypeId), doctype, extns, custRetnDataVMs, companies);
+                    ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+                    string fullName = AppUtil.GetFullName(userClaim);
+                    item.UpdatedOnStr = item.CreationDt.ToString("MM-dd-yyyy");
+                    item.UploadedBy = fullName;
+
+                    docListVM.Add(item);
+                    hasEntries = true;
+                }
+
+                // If there are document types related to contentid without entries in docListVMs, add to empdocLists
+                if (!hasEntries || docListVM.Count < result.Count(m => m.McId == mcId))
+                {
+                    foreach (var master in result.Where(m => m.McId == mcId && !docListVM.Any(d => d.DocumentTypeId == m.DocumentTypeId)))
+                    {
+                        DocListVM empDoc = new DocListVM();
+                        PopulateMcFields(empDoc, master, doctype, extns, custRetnDataVMs, companies);
+                        empDoc.DeletionDate = DateTime.Now;
+                        empDoc.Comments = string.Empty;
+                        empdocLists.Add(empDoc);
+                    }
+                }
+
+                // Return combination of docListVM and empdocLists when partid != 0
+                return Ok(docListVM.Concat(empdocLists).ToList());
+            }
+        }
+        void PopulateMcFields(DocListVM item, McSlNoDocListVM master, IEnumerable<DocumentTypeVM> doctype,
+                              IEnumerable<ExtnInfoVM> extns, IEnumerable<CustRetnDataVM> custRetnDataVMs,
+                              IEnumerable<ContactsVM> companies)
+        {
+            var doc = doctype.FirstOrDefault(d => d.DocumentTypeId == master.DocumentTypeId);
+            if (doc != null)
+            {
+                item.DocumentTypeName = doc.DocumentName;
+                item.DocumentTypeId = doc.DocumentTypeId;
+                item.DataReqdByCust = doc.DataReqdByCust;
+                item.DocCat = doc.DocuCategory;
+                item.Mandatory = master.Mandatory;
+                var extn = extns.FirstOrDefault(e => e.ExtnId == doc.ExtnId);
+                item.FileExtnName = extn?.ExtnName;
+
+                // Calculate DeletionDate if required
+                if (doc.DefaultRetPerYear != 0 && doc.DefaultRetPerMon != 0)
+                {
+                    DateTime currentDate = DateTime.Now;
+                    DateTime futureDate = currentDate.AddYears(doc.DefaultRetPerYear).AddMonths(doc.DefaultRetPerMon);
+                    item.DeletionDate = futureDate;
+                }
+            }
+
+            var cust = custRetnDataVMs.FirstOrDefault(c => c.DocumentTypeId == master.DocumentTypeId);
+            if (cust != null)
+            {
+                var comp = companies.FirstOrDefault(c => c.CompanyId == cust.ComapanyId);
+                item.CompanyName = comp?.CompanyName;
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetRoutingStatusLog(long routingId)
+        {
+            var result = await _routingService.GetRoutingStatusLog(routingId);
+            foreach (var item in result)
+            {
+                item.DateStr = item.UpdatedDate.ToString("MM-dd-yyyy");
+                ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+                string fullName = AppUtil.GetFullName(userClaim);
+                item.UpdatedByStr = fullName;
+            }
+            return Ok(result);
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetMasterName(string ManufId)
@@ -417,6 +781,23 @@ namespace CWB.App.Controllers
                         obj.Name = mobj.Name;
                     }
                 }
+                var docmand = await _machineService.GetMcProcDocList();
+                if (docmand.Any(d => d.McId == obj.MachineId))
+                {
+                    var docListVMs = await _docMangService.GetAllDocList();
+                    if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId)))
+                    {
+                        obj.MandocAvl = "Yes";
+                    }
+                    else
+                    {
+                        obj.MandocAvl = "No";
+                    }
+                }
+                else
+                {
+                    obj.MandocAvl = "N/A";
+                }
             }
             return Ok(result);
         }
@@ -459,6 +840,7 @@ namespace CWB.App.Controllers
             var companies = await _mastersServices.GetCompanies();
             var subconwss = await _routingService.SubConWSS(stepId,-1);
             var result = await _routingService.SubCons(stepId);
+
             foreach (SubConDetailsVM obj in result)
             {
                 obj.StrPreferredSubCon = (obj.PreferredSubcon==1)?"Yes":"";
@@ -482,6 +864,24 @@ namespace CWB.App.Controllers
                     {
                         obj.NoOfOperations++;
                     }
+
+                    var docmand = await _machineService.GetMcTypeDocList();
+                    if (docmand.Any(d => d.McTypeId == mobj.MachineType))
+                    {
+                        var docListVMs = await _docMangService.GetAllDocList();
+                        if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId)))
+                        {
+                            obj.MandocAvl = "Yes";
+                        }
+                        else
+                        {
+                            obj.MandocAvl = "No";
+                        }
+                    }
+                    else
+                    {
+                        obj.MandocAvl = "N/A";
+                    }
                 }
             }
             return Ok(result);
@@ -495,6 +895,17 @@ namespace CWB.App.Controllers
         {
             var companies = await _mastersServices.GetCompanies();
             var result = await _routingService.SubConWSS(stepId,subConDetailsId);
+            var machines = await _machineService.GetMachineTypes();
+            foreach (var item in result)
+            {
+                foreach (var mc in machines)
+                {
+                    if(mc.MachineTypeTypeId== item.MachineType)
+                    {
+                        item.MachineNameStr = mc.MachineTypeName;
+                    }
+                }
+            }
             /*foreach (SubConDetailsVM obj in result)
             {
                 foreach (ContactsVM mobj in companies)
@@ -576,39 +987,45 @@ namespace CWB.App.Controllers
 
             foreach (var item in resultList)
             {
-                int inhousecount = 0;
-                int subconcount = 0;
-                var result = await RoutingSteps(item.RoutingId);
-                var oprnos = (List<RoutingStepVM>)((OkObjectResult)result).Value;
-                foreach (var op in oprnos)
+                if (item.Deleted != 1)
                 {
-                    if (op.StepLocation == "1")
+                    int inhousecount = 0;
+                    int subconcount = 0;
+                    var result = await RoutingSteps(item.RoutingId);
+                    var oprnos = (List<RoutingStepVM>)((OkObjectResult)result).Value;
+                    foreach (var op in oprnos)
                     {
-                        inhousecount++;
+                        if (op.StepLocation == "1")
+                        {
+                            inhousecount++;
+                        }
+                        else if (op.StepLocation == "2")
+                        {
+                            subconcount++;
+                        }
                     }
-                    else if(op.StepLocation == "2")
-                    {
-                        subconcount++;
-                    }
+                    var totalnoofmc = oprnos.Sum(op => op.NumberOfSimMachines);
+                    var totalCycleTime = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime)).Sum(op => int.Parse(op.CycleTime));
+                    var avgCycleTime = totalCycleTime / oprnos.Count;
+                    var countAboveAvg = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime)).Count(op => int.Parse(op.CycleTime) > avgCycleTime);
+                    var totalSetupTime = oprnos.Where(op => !string.IsNullOrEmpty(op.SetupTime)).Sum(op => int.Parse(op.SetupTime));
+                    var maxSetupTime = oprnos.Where(op => !string.IsNullOrEmpty(op.SetupTime))
+        .Select(op => int.Parse(op.SetupTime))
+        .DefaultIfEmpty(0)
+        .Max();
+                    var batchSizeManfTime = totalnoofmc > 0
+     ? oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime) && !string.IsNullOrEmpty(op.SetupTime))
+         .Select(op => (batchSize * (int.TryParse(op.CycleTime, out int cycleTime) ? cycleTime : 0)) / (totalnoofmc + (int.TryParse(op.SetupTime, out int setupTime) ? setupTime : 0)))
+         .Sum()
+     : 0; 
+                    item.MaxSetupTime = maxSetupTime;
+                    item.TotalSetupTime = totalSetupTime;
+                    item.AvgCycleTime = avgCycleTime;
+                    item.OprnGreaterAvgCycleTime = countAboveAvg;
+                    item.InhouseNo = inhousecount;
+                    item.SubconNo = subconcount;
+                    item.BacthManufTime = batchSizeManfTime / 60;
                 }
-                var totalnoofmc = oprnos.Sum(op => op.NumberOfSimMachines);
-                var totalCycleTime = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime)).Sum(op => int.Parse(op.CycleTime));
-                var avgCycleTime = totalCycleTime / oprnos.Count;
-                var countAboveAvg = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime)).Count(op => int.Parse(op.CycleTime) > avgCycleTime);
-                var totalSetupTime = oprnos.Where(op => !string.IsNullOrEmpty(op.SetupTime)).Sum(op => int.Parse(op.SetupTime));
-                var maxSetupTime = oprnos.Where(op => !string.IsNullOrEmpty(op.SetupTime))
-    .Select(op => int.Parse(op.SetupTime))
-    .DefaultIfEmpty(0)
-    .Max(); 
-                var batchSizeManfTime = oprnos.Where(op => !string.IsNullOrEmpty(op.CycleTime) && !string.IsNullOrEmpty(op.SetupTime))
-     .Select(op => (batchSize * (int.TryParse(op.CycleTime, out int cycleTime) ? cycleTime : 0)) / totalnoofmc + (int.TryParse(op.SetupTime, out int setupTime) ? setupTime : 0))
-     .Sum();
-                item.MaxSetupTime = maxSetupTime;
-                item.TotalSetupTime = totalSetupTime;
-                item.AvgCycleTime = avgCycleTime;
-                item.OprnGreaterAvgCycleTime = countAboveAvg;
-                item.InhouseNo = inhousecount;
-                item.SubconNo = subconcount;
             }
             return Ok(resultList);
         }

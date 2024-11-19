@@ -23,6 +23,14 @@ namespace CWB.Masters.Configurations
                .HasColumnName("IsMultiplePartsOfBOMUsed")
                .IsRequired()
                .HasDefaultValue(false);
+            builder
+               .Property(c => c.IsMultipleSubCon)
+               .HasColumnName("Inhouse")
+               .HasDefaultValue(0);
+            builder
+               .Property(c => c.Subcon)
+               .HasColumnName("Subcon")
+               .HasDefaultValue(0);
 
             builder
                 .Property(c => c.TenantId)

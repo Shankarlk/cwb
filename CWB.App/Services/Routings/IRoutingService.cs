@@ -1,6 +1,7 @@
 ﻿using CWB.App.Models.Contacts;
 using CWB.App.Models.ItemMaster;
 using CWB.App.Models.Routing;
+using CWB.App.Models.Routings;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace CWB.App.Services.Routings
         Task<IEnumerable<RoutingVM>> Routings(int manufPartId);
         
         Task<IEnumerable<RoutingStepPartVM>> StepParts(int stepId);
+        Task<IEnumerable<RoutingStatusLogVM>> GetRoutingStatusLog(long routingId);
         Task<IEnumerable<RoutingStepPartVM>> StepPartsByManufId(int manufId);
         Task<IEnumerable<RoutingStepSupplierVM>> StepSuppliers(int stepId);
         Task<IEnumerable<RoutingStepMachineVM>> StepMachines(int stepId);

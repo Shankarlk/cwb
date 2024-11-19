@@ -79,10 +79,10 @@ namespace CWB.Masters.Controllers
         [Produces(AppContentTypes.ContentType, Type = typeof(CompanyVM))]
         public async Task<IActionResult> PostCompany([FromBody] CompanyVM companyVM)
         {
-            var validator = new CompanyVMValidator();
-            var validationResult = await validator.ValidateAsync(companyVM);
-            if (!validationResult.IsValid)
-                return BadRequest(validationResult.Errors);
+            //var validator = new CompanyVMValidator();
+            //var validationResult = await validator.ValidateAsync(companyVM);
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult.Errors);
             var result = await _companyService.Company(companyVM);
             return Ok(result);
         }

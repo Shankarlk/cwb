@@ -24,13 +24,14 @@ namespace CWB.Masters.Services.ItemMaster
         private readonly IMPBOMRepository _mpBOMRepository;
         private readonly IUOMRepository _uOMRepository;
         private readonly IMasterPartRepository _masterPartRepository;
+        private readonly IPartStatusChangeLogRepository _partStatusChangeLogRepository;
 
         public ManufacturedPartNoDetailService(ILoggerManager logger, IMapper mapper, IUnitOfWork unitOfWork,
             IManufacturedPartNoDetailRepository manufacturedPartNoDetailRepository
             , IMPMakeFromRepository mpMakeFromRepository
             , IMPBOMRepository mpBOMRepository
             ,IUOMRepository uomRepository
-            , IMasterPartRepository masterPartRepository)
+            , IMasterPartRepository masterPartRepository, IPartStatusChangeLogRepository partStatusChangeLogRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -40,6 +41,7 @@ namespace CWB.Masters.Services.ItemMaster
             _mpBOMRepository = mpBOMRepository;
             _uOMRepository = uomRepository;
             _masterPartRepository = masterPartRepository;
+            _partStatusChangeLogRepository = partStatusChangeLogRepository;
         }
 
         public IEnumerable<ManufacturedPartNoDetailVM> GetManufacturedPartNoDetailsByTypeTenant(long ManufPartType, string companyName, long tenantID)
@@ -105,11 +107,37 @@ namespace CWB.Masters.Services.ItemMaster
                     await _unitOfWork.CommitAsync();
                     manufacturedpartnodetail.PartId = (int)masterPart.Id;
                     manufacturedPartNoDetailVM.PartId = (int)masterPart.Id;
+                    PartStatusChangeLog partStatus = new PartStatusChangeLog()
+                    {
+                        MasterPartId = masterPart.Id,
+                        Status=masterPart.Status,
+                        ChangeReason = masterPart.StatusChangeReason,
+                        TenantId = masterPart.TenantId
+                    };
+                    await _partStatusChangeLogRepository.AddAsync(partStatus);
+                    await _unitOfWork.CommitAsync();
                 }
                 else
                 {
                     if (id == manufacturedpartnodetail.PartId)
                     {
+                        //var findmp = await _masterPartRepository.SingleOrDefaultAsync(m => m.Id == masterPart.Id);
+                        //if(findmp.Status != masterPart.Status)
+                        //{
+                        //    var findpartStatus= await _partStatusChangeLogRepository.SingleOrDefaultAsync(m => m.MasterPartId == masterPart.Id);
+                        //    findpartStatus.Status = masterPart.Status;
+                        //    findpartStatus.ChangeReason = masterPart.StatusChangeReason;
+                        //    findpartStatus.LastModifiedDate = DateTime.Now;
+                        //    await _partStatusChangeLogRepository.UpdateAsync(findpartStatus.Id, findpartStatus);
+                        //}
+                        PartStatusChangeLog partStatus = new PartStatusChangeLog()
+                        {
+                            MasterPartId = masterPart.Id,
+                            Status = masterPart.Status,
+                            ChangeReason = masterPart.StatusChangeReason,
+                            TenantId = masterPart.TenantId
+                        };
+                        await _partStatusChangeLogRepository.AddAsync(partStatus);
                         masterPart = await _masterPartRepository.UpdateAsync(masterPart.Id, masterPart);
                         await _unitOfWork.CommitAsync();
                     }
@@ -133,6 +161,11 @@ namespace CWB.Masters.Services.ItemMaster
                 throw ex;
             }
             return manufacturedPartNoDetailVM;
+        }
+        public async Task<IEnumerable<PartStatusChangeLogVM>> GetPartStatusChangelog(long tenantId)
+        {
+            var allDocuType = _partStatusChangeLogRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<PartStatusChangeLogVM>>(allDocuType);
         }
 
         public async Task<MPMakeFromVM> MPMakeFrom(MPMakeFromVM mpMakeFromVM)
@@ -169,20 +202,23 @@ namespace CWB.Masters.Services.ItemMaster
 
         public async Task<MPMakeFromVM> PreferredInputMatl(MPMakeFromVM mPMakeFromVM)
         {
-            var mPMakeFrom = _mapper.Map<MPMakeFrom>(mPMakeFromVM);
+            var findmk = _mpMakeFromRepository.SingleOrDefaultAsync(f=>f.Id ==mPMakeFromVM.MPMakeFromId);
+            var mPMakeFrom = _mapper.Map<MPMakeFrom>(findmk.Result);
             if (mPMakeFrom.Id != 0)
             {
-                List<MPMakeFromVM> lst = GetMPMakeFromList(mPMakeFrom.PartId.ToString(), (int)mPMakeFrom.TenantId).ToList();
+                List<MPMakeFromVM> lst = GetMPMakeFromList(mPMakeFrom.ManufPartId.ToString(), (int)mPMakeFrom.TenantId).ToList();
                 foreach (MPMakeFromVM rv in lst)
                 {
                     var lRouting = _mapper.Map<MPMakeFrom>(rv);
                     lRouting.PreferedRawMaterial = false;
                     await _mpMakeFromRepository.UpdateAsync(lRouting.Id, lRouting);
                 }
+                mPMakeFrom.PreferedRawMaterial = true;
                 mPMakeFrom = await _mpMakeFromRepository.UpdateAsync(mPMakeFrom.Id, mPMakeFrom);
             }
             await _unitOfWork.CommitAsync();
             mPMakeFromVM.MPMakeFromId = (int)mPMakeFrom.Id;
+            mPMakeFromVM.ManufPartId = mPMakeFrom.ManufPartId;
             return mPMakeFromVM;
         }
 
@@ -272,6 +308,21 @@ namespace CWB.Masters.Services.ItemMaster
             }
             uOMVm.UOMId = uom.Id;
             return uOMVm;
+        }
+        public async Task<bool> CheckUOM(string uomName)
+        {
+            try
+            {
+                var documentTypes = await _uOMRepository.SingleOrDefaultAsync(c => c.Name == (uomName));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
         }
 
         public bool CheckPartNo(long partId)

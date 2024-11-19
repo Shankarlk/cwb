@@ -38,7 +38,7 @@ namespace CWB.CompanySettings.Controllers
         public async Task<IActionResult> GetPlants(long tenantId)
         {
            // var companyTypes = _plantService.GetPlants(tenantId);
-            var plants = await _plantService.GetPlantsWithWorkDetails(tenantId);
+            var plants =  _plantService.GetPlants(tenantId);
             return Ok(plants);
         }
 
@@ -150,6 +150,63 @@ namespace CWB.CompanySettings.Controllers
         {
             var result = await _plantService.PostPlantWD(plantWd);
             return Ok(result);
+        }
+        [HttpPost]
+        [Route(ApiRoutes.Plant.PostCity)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(PlantWorkingDetailsVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostCity([FromBody] CityVM cityVM)
+        {
+            var result = await _plantService.PostCity(cityVM);
+            return Ok(result);
+        }
+        [HttpPost]
+        [Route(ApiRoutes.Plant.PostCountry)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(PlantWorkingDetailsVM))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> PostCountry([FromBody] CountryVM cityVM)
+        {
+            var result = await _plantService.PostCountry(cityVM);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route(ApiRoutes.Plant.GetCitys)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<PlantVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetCitys(long tenantId)
+        {
+            // var companyTypes = _plantService.GetPlants(tenantId);
+            var plants =  _plantService.GetCitys(tenantId);
+            return Ok(plants);
+        }
+        [HttpGet]
+        [Route(ApiRoutes.Plant.GetCountrys)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(List<PlantVM>))]
+        [Authorize(Roles = Roles.ADMIN)]
+        public async Task<IActionResult> GetCountrys(long tenantId)
+        {
+            // var companyTypes = _plantService.GetPlants(tenantId);
+            var plants =  _plantService.GetCountrys(tenantId);
+            return Ok(plants);
+        }
+
+        [HttpGet]
+        [Route(ApiRoutes.Plant.CheckCity)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckCity(string city)
+        {
+            bool exists = false;
+            exists = await _plantService.CheckCity(city);
+            return Ok(exists);
+        }
+        [HttpGet]
+        [Route(ApiRoutes.Plant.CheckCountrys)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
+        public async Task<IActionResult> CheckCountry(string country)
+        {
+            bool exists = false;
+            exists = await _plantService.CheckCountry(country);
+            return Ok(exists);
         }
 
         [HttpGet]

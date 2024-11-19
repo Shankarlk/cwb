@@ -26,6 +26,10 @@ namespace CWB.Masters.Services.ItemMaster
         IEnumerable<BaseRawMaterialVM> GetBaseRMs(long tenantID);
 
         Task<BaseRawMaterialVM> BaseRM(BaseRawMaterialVM baseRMVm);
+        Task<bool> CheckBaseRm(string rmName);
+        Task<bool> CheckRmType(string rmName);
+        Task<bool> CheckRmSpec(string rmName);
+        Task<bool> CheckRmStandard(string rmName);
         Task<RawMaterialTypeVM> RMType(RawMaterialTypeVM rMTypeVm);
         Task<RawMaterialSepcVM> RMSpec(RawMaterialSepcVM rMSpecVm);
         Task<RawMaterialStandardVM> RMStandard(RawMaterialStandardVM rMStandardVm);

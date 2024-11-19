@@ -24,6 +24,9 @@
                            data-plugin="tippy" data-tippy-placement="top" value="ADD" id="btnOperationDocTypeSubmit" />
                 </div>
             </div>
+            <div class="row">
+                <span id="Text-Error" style="color:red;"></span>
+            </div>
             <!-- end row -->
             <input type="hidden" asp-for="OperationListIdForDocType" />
             <input type="hidden" asp-for="OperationListDocumentId" />
@@ -50,7 +53,7 @@
 <template id="operationlist-doc-template">
     <tr>
         <td data-key="DocumentType">{documentType}</td>
-        <td data-key="IsMandatory">{isMandatory}</td>
+        <td data-key="IsMandatory">{isMandatoryStr}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
@@ -61,7 +64,8 @@
                         Edit
                     </button>
                     <!-- item-->
-                    <button data-id="{operationalDocumentId}" class="dropdown-item delete">delete</button>
+                    <button data-id="{operationalDocumentId}"
+                            data-doctypeid="{documentTypeId}" onclick="DeletOperationDoc(this)" class="dropdown-item delete">delete</button>
                 </div>
             </div>
         </td>

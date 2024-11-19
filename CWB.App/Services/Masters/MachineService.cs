@@ -79,6 +79,44 @@ namespace CWB.App.Services.Masters
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/machine-types/{tenantId}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<List<MachineTypeVM>>.GetAsync(uri, headers);
+        } 
+        public async Task<IEnumerable<McTypeDocListVM>> GetMcTypeDocList()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getmctypedoclist/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<McTypeDocListVM>>.GetAsync(uri, headers);
+        }
+        public async Task<IEnumerable<McSlNoDocListVM>> GetMcProcDocList()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getmcslnodoclist/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<McSlNoDocListVM>>.GetAsync(uri, headers);
+        }
+        public async Task<McSlNoDocListVM> PostMcProcDocList(McSlNoDocListVM machineVM)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/postmcslnodoclist");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            machineVM.TenantId = tenantId;
+            return await RestHelper<McSlNoDocListVM>.PostAsync(uri, machineVM, headers);
+        }
+        public async Task<bool> DeleteMcProcDoc(long mcSlNoDocListId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/deletemcslnodoclist/{mcSlNoDocListId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
+        }
+        public async Task<McTypeDocListVM> PostMcTypeDocList(McTypeDocListVM machineVM)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/postmctypedoclist");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            machineVM.TenantId = tenantId;
+            return await RestHelper<McTypeDocListVM>.PostAsync(uri, machineVM, headers);
+        }
+        public async Task<bool> DeleteMcTypeDoc(long mcTypeDocListId)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/deletemctypdoclist/{mcTypeDocListId}/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
         }
 
         public async Task<MachineVM> Machine(MachineVM machineVM)

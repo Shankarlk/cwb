@@ -28,6 +28,8 @@ namespace CWB.Masters.Services.ItemMaster
 
 
         Task<IEnumerable<ItemMasterContentVM>> GetAllItemMasterContent();
+        Task<bool> DeleteItemMasterDoc(long itemMasterDocListId, long tenantId);
+        Task<bool> CheckDocumentTypeInItemMaster(long documentTypeId,long contentId, long tenantId);
 
     }
 }

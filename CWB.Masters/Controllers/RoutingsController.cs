@@ -134,6 +134,8 @@ namespace CWB.Masters.Controllers
                         if(routing.ManufacturedPartId == item.ManufacturedPartId)
                         {
                             item.NoOfRoutes++;
+                            item.RoutingId = (int)routing.Id;
+                            item.Status = routing.Status;
                         }
                     }
                 }
@@ -480,6 +482,23 @@ namespace CWB.Masters.Controllers
                 var src = ex.InnerException.Source;
                 return Ok("Error");
             }
+        }
+
+        [HttpPost]
+        [Route(ApiRoutes.Routings.PostStatusLog)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(RoutingStepVM))]
+        public async Task<IActionResult> PostStatusLog([FromBody] RoutingStatusLogVM routingStepVM)
+        {
+            var result = await _routingService.PostRoutingStatusLog(routingStepVM);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route(ApiRoutes.Routings.GetStatusLog)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(IEnumerable<RoutingStepMachineVM>))]
+        public async Task<IActionResult> GetStatusLog(int routingId,long tenantId)
+        {
+            var result = _routingService.GetRoutingStatusLog(routingId, tenantId);
+            return Ok(result);
         }
         //preferredsubcon
 

@@ -7,5 +7,7 @@
         public bool IsMandatory { get; set; }
         public long TenantId { get; set; }
         public long OperationListId { get; set; }
+        public string DocumentType { get; set; } = string.Empty;
+        public string IsMandatoryStr { get; set; } = string.Empty;
     }
 }

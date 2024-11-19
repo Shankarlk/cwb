@@ -22,7 +22,10 @@ namespace CWB.App.Models.DocumentManagement
             get { return (DateTime)planDate; }
             set { planDate = value; }
         }
+        public string Comments { get; set; }
         public long Status { get; set; }
+        public long McTypeId { get; set; }
+        public long McId { get; set; }
         public long TenantId { get; set; }
         public int DocCat { get; set; } = 0;
         public string DocumentTypeName { get; set; } = string.Empty;
@@ -46,5 +49,10 @@ namespace CWB.App.Models.DocumentManagement
                 return planDate.Value.ToString("MM-dd-yyyy");
             }
         }
+        public DateTime CreationDt { get; set; }
+        public string UpdatedOnStr { get; set; } = string.Empty;
+        public string FileExtnName { get; set; } = string.Empty;
+        public string UploadedBy { get; set; } = string.Empty;
+        public char Mandatory { get; set; } = ' ';
     }
 }

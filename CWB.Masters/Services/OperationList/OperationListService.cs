@@ -4,6 +4,7 @@ using CWB.Masters.Domain;
 using CWB.Masters.Infrastructure;
 using CWB.Masters.Repositories.OperationList;
 using CWB.Masters.ViewModels.OperationList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -94,6 +95,21 @@ namespace CWB.Masters.Services.OperationList
         }
 
 
+        public async Task<bool> DeleteOperationDoc(long opDocId, long tenantId)
+        {
+            var co = await _operationalDocumentRepository.SingleOrDefaultAsync(m => m.Id == opDocId && m.TenantId == tenantId);
+            if (co != null)
+            {
+                try
+                {
+                    _operationalDocumentRepository.Remove(co);
+                    await _unitOfWork.CommitAsync();
+                    return true;
+                }
+                catch (Exception ex) { }
+            }
+            return false;
+        }
 
     }
 }

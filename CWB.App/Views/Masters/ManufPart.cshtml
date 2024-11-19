@@ -42,7 +42,7 @@
                             </ul>
                         </div>
                         <div class="col-md-3 text-end">
-                            <a asp-action="Index" asp-controller="Masters">
+                            <a asp-action="Index" asp-controller="Masters" id="closeatag">
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                             <partial name="../Shared/_ManuF_Tab1" model=@Model/>
                             <!-- ===================  -->
                             <div class="row mt-2">
-                                <partial name="_ReferenceDocuments" />
+                                @*<partial name="_ReferenceDocuments" />*@
                             </div>
                             <!-- end row -->
                         </div>
@@ -91,8 +91,8 @@
 <partial name="_DeleteBOM"/>
 <partial name="_DeleteMakeFrom"/>
 
-<partial name="_ReferenceDocumentUpload" />
-<partial name="../Shared/_AddUOM" />
+@*<partial name="_ReferenceDocumentUpload" />*@
+@*<partial name="../Shared/_AddUOM" />*@
 <partial name="../Shared/_CustomerSuppliedRM" />
 <partial name="../Shared/_ExistingPart" />
 <partial name="../Shared/_ExistingPartBOF" />

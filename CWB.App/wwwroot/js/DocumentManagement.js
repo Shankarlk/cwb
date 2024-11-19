@@ -767,6 +767,81 @@ $(document).ready(function () {
         $("#fileExtensionNameEdit").val('');
         $("#fileExtensionEditId").val(0);
     });
+    $('#RefReasonPop').on('hidden.bs.modal', () => {
+        var newNamevalidate = document.getElementById('DocReason');
+        newNamevalidate.style.border = '';
+        $("#DocReason").val('');
+        $("#DocReasonId").val(0);
+    });
+
+    $('#RefReasonPop').on('shown.bs.modal', () => {
+        api.getbulk("/DocumentManagement/GetAllRefReson").then((data) => {
+            var tablebody = $("#RefDocGrid tbody");
+            $(tablebody).html("");//empty tbody
+            //console.log(data);
+            for (i = 0; i < data.length; i++) {
+                $(tablebody).append(AppUtil.ProcessTemplateData("RefDocGridRow", data[i]));
+            }
+
+        }).catch((error) => {
+
+        });
+    });
+
+    $("#RefReasonSave").on("click", function () {
+        var fileExtensionEditId = parseInt($("#DocReasonId").val());
+        var fileExtensionNameEdit = $("#DocReason").val();
+
+        if (fileExtensionNameEdit.length <= 0) {
+            var newNamevalidate = document.getElementById('DocReason');
+            newNamevalidate.style.border = '2px solid red';
+            return false;
+        } else {
+            var newNamevalidate = document.getElementById('DocReason');
+            newNamevalidate.style.border = '';
+        }
+        if (isNaN(fileExtensionEditId)) {
+            fileExtensionEditId = 0;
+        }
+        var rowData = {
+            refDocReasonListId: fileExtensionEditId,
+            docReason: fileExtensionNameEdit
+        };
+        //api.getbulk("/DocumentManagement/CheckExtnName?extnName=" + fileExtensionNameEdit).then((data) => {
+            //console.log(data);
+            // if (DTDDocTypeId === 0) {
+            /*if (!data) {*/
+                $.ajax({
+                    type: "POST",
+                    url: '/DocumentManagement/PostDocReason',
+                    contentType: "application/json; charset=utf-8",
+                    headers: { 'Content-Type': 'application/json' },
+                    data: JSON.stringify(rowData),
+                    dataType: "json",
+                    success: function (result) {
+                        $("#DocReason").val('');
+                        $("#DocReasonId").val(0);
+                        api.getbulk("/DocumentManagement/GetAllRefReson").then((data) => {
+                            var tablebody = $("#RefDocGrid tbody");
+                            $(tablebody).html("");//empty tbody
+                            //console.log(data);
+                            for (i = 0; i < data.length; i++) {
+                                $(tablebody).append(AppUtil.ProcessTemplateData("RefDocGridRow", data[i]));
+                            }
+
+                        }).catch((error) => {
+
+                        });
+                    }
+                });
+            //} else {
+            //    $("#FileName-error").text("This File Extension Already Exists. Please Enter A Different File Extension");
+            //    $("#fileExtensionEditId").val(0);
+            //}
+        //});
+
+    });
+
 });
 
 function EditCDRP(element) {
@@ -791,6 +866,14 @@ function EditCDRP(element) {
     //});
 
 }
+function EditRefDoc(element) {
+    var relatedTarget = $(element);
+    var fileextnid = relatedTarget.data("refdocid");
+    var fileextnname = relatedTarget.data("docreason");
+    $("#DocReason").val(fileextnname);
+    $("#DocReasonId").val(fileextnid);
+
+}
 function EditFileExtnsion(element) {
     var relatedTarget = $(element);
     var fileextnid = relatedTarget.data("fileextnid");
@@ -813,14 +896,23 @@ function DeleteCustRetData(custRetId) {
     }
 };
 function DeleteDocType(doctypeId) {
-    let confirmval = confirm("Are your sure you want to delete this ?", "Yes", "No");
-    if (confirmval) {
-        api.get("/DocumentManagement/DeleteDocType?doctypeId=" + doctypeId).then((data) => {
-            loadDocType();
-        }).catch((error) => {
+    api.get("/masters/CheckDocTypeInDocList?docTypeid=" + doctypeId).then((data) => {
+        // loadDocType(); 
+        if (data) {
+            let confirmval = confirm("Are your sure you want to delete this ?", "Yes", "No");
+            if (confirmval) {
+                api.get("/DocumentManagement/DeleteDocType?doctypeId=" + doctypeId).then((data) => {
+                    loadDocType();
+                }).catch((error) => {
 
-        });
-    }
+                });
+            }
+        } else {
+            alert("Deletion of File Extn can be done after files with the Extn are deleted from the System");
+        }
+    }).catch((error) => {
+
+    });
 };
 function DeleteExtn(fileExtnName, extnId) {
     api.get("/DocumentManagement/NoFilesExtn?extn=" + fileExtnName).then((data) => {

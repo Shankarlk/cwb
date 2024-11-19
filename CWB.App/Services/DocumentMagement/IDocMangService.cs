@@ -14,14 +14,19 @@ namespace CWB.App.Services.DocumentMagement
         Task<IEnumerable<ExtnInfoVM>> GetAllFileExtn();
         Task<ExtnInfoVM> PostFileExtn(ExtnInfoVM extnInfoVM);
         Task<IEnumerable<CustRetnDataVM>> GetAllCustRet();
+        Task<IEnumerable<RefDocLogVM>> GetRefDocLogOfDoclistId();
         Task<CustRetnDataVM> PostCustRetndata(CustRetnDataVM custRetnDataVM);
+        Task<RefDocReasonListVM> PostDocReason(RefDocReasonListVM custRetnDataVM);
         Task<List<DocUploadVM>> PostDocUpload(IEnumerable<DocUploadVM> docUploadVMs);
         Task<IEnumerable<DocUploadVM>> GetAllDocUpload();
+        Task<IEnumerable<RefDocReasonListVM>> Getallreasonlist();
         Task<IEnumerable<DocViewVM>> GetAllDocView();
 
         Task<List<DocViewVM>> PostDocView(IEnumerable<DocViewVM> docViewVMs);
         Task<IEnumerable<DocListVM>> GetAllDocList();
         Task<DocListVM> PostDocList(DocListVM docListVM);
+        Task<RefDocLogVM> PostRefDocReason(RefDocLogVM refDocLogVM);
+        Task<DocListVM> GetOneDoclist(long doclistId);
         Task<bool> DeleteDocType(long doctypeId);
         Task<bool> DeleteCustRetData(long custRetId);
         Task<bool> DeleteExtnInfo(long extnId);

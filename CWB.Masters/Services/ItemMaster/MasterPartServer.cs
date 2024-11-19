@@ -235,5 +235,37 @@ namespace CWB.Masters.Services.ItemMaster
             var itemMasterContents =await _itemMasterContentRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ItemMasterContentVM>>(itemMasterContents);
         }
+        public async Task<bool> DeleteItemMasterDoc(long itemMasterDocListId, long tenantId)
+        {
+            var co = await _itemMasterDocListRepository.SingleOrDefaultAsync(m => m.Id == itemMasterDocListId && m.TenantId == tenantId);
+            if (co != null)
+            {
+                try
+                {
+                    _itemMasterDocListRepository.Remove(co);
+                    await _unitOfWork.CommitAsync();
+                    return true;
+                }
+                catch (Exception ex) { }
+            }
+            return false;
+        }
+        public async Task<bool> CheckDocumentTypeInItemMaster(long documentTypeId, long contentId, long tenantId)
+        {
+            try
+            {
+                var docLists = await _itemMasterDocListRepository.SingleOrDefaultAsync(c => c.ContentId == contentId && c.DocumentTypeId == documentTypeId && c.TenantId == tenantId);
+                if (docLists == null)
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return true;
+        }
     }
 }

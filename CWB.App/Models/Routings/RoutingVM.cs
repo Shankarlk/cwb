@@ -21,12 +21,14 @@
         public string BGColor { get; set; }
         public string StrPreferredRouting { get; set; } = string.Empty;
         public string MKPartName { get; set; } = string.Empty;
+        public string MandocAvl { get; set; } = string.Empty;
         public int InhouseNo { get; set; } = 0;
         public int SubconNo { get; set; }  = 0;
         public int AvgCycleTime { get; set; }  = 0;
         public int OprnGreaterAvgCycleTime { get; set; }  = 0;
         public int TotalSetupTime { get; set; }  = 0;
         public int MaxSetupTime { get; set; }  = 0;
+        public int BacthManufTime { get; set; }  = 0;
         public int NoOprns { get; set; } 
     }
 }

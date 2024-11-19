@@ -1,11 +1,13 @@
 ﻿using CWB.App.Models.Machine;
 using CWB.App.Services.CompanySettings;
+using CWB.App.Services.DocumentMagement;
 using CWB.App.Services.Masters;
 using CWB.Constants.UserIdentity;
 using CWB.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,20 +20,109 @@ namespace CWB.App.Controllers
         private readonly IMachineService _machineService;
         private readonly IPlantService _plantService;
         private readonly IOperationService _operationService;
+        private readonly IDocMangService _docMangService;
 
         public MachineController(ILoggerManager logger, IMachineService machineService, IPlantService plantService,
-            IOperationService operationService)
+            IOperationService operationService, IDocMangService docMangService)
         {
             _logger = logger;
             _machineService = machineService;
             _plantService = plantService;
             _operationService = operationService;
+            _docMangService = docMangService;
+
         }
         public async Task<IActionResult> Index()
         {
             await PlantsViewBag();
             var machinesList = await _machineService.GetMachinesList();
             return View(machinesList);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetMcTypeDocList(long mcTypeId)
+        {
+            var result = await _machineService.GetMcTypeDocList();
+            var doctypes = await _docMangService.GetAllDocumentType();
+            List<McTypeDocListVM> docListVMs = new List<McTypeDocListVM>();
+            foreach (var item in result)
+            {
+               if(item.McTypeId== mcTypeId)
+                {
+                    foreach (var doc in doctypes)
+                    {
+                        if (doc.DocumentTypeId == item.DocumentTypeId)
+                        {
+                            item.DocumentTypeName = doc.DocumentName;
+                        }
+                    }
+                    docListVMs.Add(item);
+                }
+            }
+            return Ok(docListVMs);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostMcTypeDoc(McTypeDocListVM model)
+        {
+            var result = await _machineService.PostMcTypeDocList(model);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteMcTypeDoc(long mcTypeDocListId)
+        {
+            var result = await _machineService.DeleteMcTypeDoc(mcTypeDocListId);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMcProcDocList(long mcId)
+        {
+            var result = await _machineService.GetMcProcDocList();
+            var doctypes = await _docMangService.GetAllDocumentType();
+            List<McSlNoDocListVM> docListVMs = new List<McSlNoDocListVM>();
+            foreach (var item in result)
+            {
+                if (item.McId == mcId)
+                {
+                    foreach (var doc in doctypes)
+                    {
+                        if (doc.DocumentTypeId == item.DocumentTypeId)
+                        {
+                            item.DocumentTypeName = doc.DocumentName;
+                        }
+                    }
+                    docListVMs.Add(item);
+                }
+            }
+            return Ok(docListVMs);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostMcProcDoc(McSlNoDocListVM model)
+        {
+            var result = await _machineService.PostMcProcDocList(model);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteMcProcDoc(long mcSlNoDocListId)
+        {
+            var result = await _machineService.DeleteMcProcDoc(mcSlNoDocListId);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CheckDocumentTypeInItemMaster(long documentTypeId,long mcTypeId)
+        {
+            var result = await _machineService.GetMcTypeDocList();
+            bool exists = true;
+            foreach (var item in result)
+            {
+                if(item.DocumentTypeId==documentTypeId&& item.McTypeId == mcTypeId)
+                {
+                    exists = false;
+                    return Json(exists);
+                }
+            }
+            return Json(exists);
         }
 
         #region Machine Type        

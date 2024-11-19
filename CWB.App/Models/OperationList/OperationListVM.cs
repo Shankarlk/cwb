@@ -21,6 +21,12 @@ namespace CWB.App.Models.OperationList
 
         [Display(Name = "Are Multiple Parts of the BOM Used?")]
         public bool IsMultiplePartsOfBOMUsed { get; set; }
+        public int Inhouse { get; set; }
+        public int Subcon { get; set; }
         public long TenantId { get; set; }
+
+        public string Bom { get; set; } = string.Empty;
+        public string InhouseStr { get; set; } = string.Empty;
+        public string SubConstr { get; set; } = string.Empty;
     }
 }

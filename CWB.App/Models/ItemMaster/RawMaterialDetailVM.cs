@@ -51,7 +51,7 @@ namespace CWB.App.Models.ItemMaster
         public string RawMaterialType { get; set; } = string.Empty;
         public string BaseRawMaterial { get; set; } = string.Empty;
         //MasterParts
-
+        public char MultiplePartsMadeFrom1InputRM { get; set; } = ' ';
         public long? TenantId { get; set; }
     }
 }

@@ -26,6 +26,8 @@ namespace CWB.CompanySettings.CompanySettingsUtils
             services.AddTransient<IDesignationRepository, DesignationRepository>();
             services.AddTransient<IDesignationService, DesignationService>();
 			services.AddTransient<IDocumentTypeService, DocumentTypeService>();
+			services.AddTransient<ICityRepository, CityRepository>();
+			services.AddTransient<ICountryRepository, CountryRepository>();
 
         }
     }

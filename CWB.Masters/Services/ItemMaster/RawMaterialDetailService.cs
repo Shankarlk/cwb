@@ -28,6 +28,7 @@ namespace CWB.Masters.Services.ItemMaster
         private readonly IBaseRawMaterialRepository _baseRawMaterialRepository;
         private readonly IMasterPartRepository  _masterPartRepository;
         private readonly ICompanyRepository _companyRepository;
+        private readonly IPartStatusChangeLogRepository _partStatusChangeLogRepository;
        
 
 
@@ -40,7 +41,7 @@ namespace CWB.Masters.Services.ItemMaster
             IBaseRawMaterialRepository baseRawMaterialRepository,
             IPartPurchaseDetailRepository partPurchaseDetailRepository,
             IMasterPartRepository masterPartRepository,
-            ICompanyRepository companyRepository)
+            ICompanyRepository companyRepository,IPartStatusChangeLogRepository partStatusChangeLogRepository)
         {
             _logger = logger;
             _mapper = mapper;
@@ -53,6 +54,7 @@ namespace CWB.Masters.Services.ItemMaster
             _partPurchaseRepository = partPurchaseDetailRepository;
             _masterPartRepository = masterPartRepository;
             _companyRepository = companyRepository;
+            _partStatusChangeLogRepository = partStatusChangeLogRepository;
         }
 
         public IEnumerable<RawMaterialDetailVM> GetRawMaterialDetailsByTenant(long tenantID)
@@ -115,6 +117,14 @@ namespace CWB.Masters.Services.ItemMaster
                     await _masterPartRepository.AddAsync(masterPart);
                     await _unitOfWork.CommitAsync();
                     rawMaterialDetailVM.PartId = (int)masterPart.Id;
+                    PartStatusChangeLog partStatus = new PartStatusChangeLog()
+                    {
+                        MasterPartId = masterPart.Id,
+                        Status = masterPart.Status,
+                        ChangeReason = masterPart.StatusChangeReason,
+                        TenantId = masterPart.TenantId
+                    };
+                    await _partStatusChangeLogRepository.AddAsync(partStatus);
                 }
                 else
                 {
@@ -122,6 +132,14 @@ namespace CWB.Masters.Services.ItemMaster
                     rawmaterialdetail.PartId = masterPart.Id;
                     if (id == rawmaterialdetail.PartId)
                     {
+                        PartStatusChangeLog partStatus = new PartStatusChangeLog()
+                        {
+                            MasterPartId = masterPart.Id,
+                            Status = masterPart.Status,
+                            ChangeReason = masterPart.StatusChangeReason,
+                            TenantId = masterPart.TenantId
+                        };
+                        await _partStatusChangeLogRepository.AddAsync(partStatus);
                         masterPart = await _masterPartRepository.UpdateAsync(masterPart.Id, masterPart);
                         await _unitOfWork.CommitAsync();
                         rawMaterialDetailVM.PartId = (int)masterPart.Id;
@@ -193,7 +211,8 @@ namespace CWB.Masters.Services.ItemMaster
 
         public async Task<PartPurchaseDetailsVM> PreferredSupplier(PartPurchaseDetailsVM partPurchaseDetailVM)
         {
-            var partPurchase = _mapper.Map<PartPurchaseDetails>(partPurchaseDetailVM);
+            var findmk =await _partPurchaseRepository.SingleOrDefaultAsync(f => f.Id == partPurchaseDetailVM.PartPurchaseId && f.TenantId ==partPurchaseDetailVM.TenantId);
+            var partPurchase = _mapper.Map<PartPurchaseDetails>(findmk);
             if (partPurchase.Id != 0)
             {
                 List<PartPurchaseDetailsVM> lst = GetPartPurchasesForPartNo((int)partPurchase.PartId,(int)partPurchase.TenantId).ToList();
@@ -203,10 +222,12 @@ namespace CWB.Masters.Services.ItemMaster
                     lRouting.PreferredSupplier = 0;
                     await _partPurchaseRepository.UpdateAsync(lRouting.Id, lRouting);
                 }
-                partPurchase = await _partPurchaseRepository.UpdateAsync(partPurchase.Id, partPurchase);
+                partPurchase.PreferredSupplier = 1;
+               partPurchase = await _partPurchaseRepository.UpdateAsync(partPurchase.Id, partPurchase);
             }
             await _unitOfWork.CommitAsync();
             partPurchaseDetailVM.PartPurchaseId = (int)partPurchase.Id;
+            partPurchaseDetailVM.PPartId = (int)partPurchase.PartId;
             return partPurchaseDetailVM;
         }
 
@@ -324,9 +345,32 @@ namespace CWB.Masters.Services.ItemMaster
             else
             {
                 baseRM = await _baseRawMaterialRepository.UpdateAsync(baseRM.Id, baseRM);
+                try
+                {
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    string str = ex.ToString();
+                }
             }
             baseRMVm.BaseRawMaterialId = baseRM.Id;
             return baseRMVm;
+        }
+        public async Task<bool> CheckBaseRm(string rmName)
+        {
+            try
+            {
+                var documentTypes = await _baseRawMaterialRepository.SingleOrDefaultAsync(c => c.Name == (rmName));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
         }
         public async Task<RawMaterialTypeVM> RMType(RawMaterialTypeVM rMTypeVm)
         {
@@ -349,6 +393,21 @@ namespace CWB.Masters.Services.ItemMaster
             rMTypeVm.RawMaterialTypeId = rmType.Id;
             return rMTypeVm;
         }
+        public async Task<bool> CheckRmType(string rmName)
+        {
+            try
+            {
+                var documentTypes = await _rawMaterialTypeRepository.SingleOrDefaultAsync(c => c.Name == (rmName));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
+        }
 
         public async Task<RawMaterialSepcVM> RMSpec(RawMaterialSepcVM rMSpecVm)
         {
@@ -369,9 +428,32 @@ namespace CWB.Masters.Services.ItemMaster
             else
             {
                 rmSpec = await _rawMaterialSpecRepository.UpdateAsync(rmSpec.Id, rmSpec);
+                try
+                {
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    string str = ex.ToString();
+                }
             }
             rMSpecVm.MaterialSpecId = rmSpec.Id;
             return rMSpecVm;
+        }
+        public async Task<bool> CheckRmSpec(string rmName)
+        {
+            try
+            {
+                var documentTypes = await _rawMaterialSpecRepository.SingleOrDefaultAsync(c => c.Name == (rmName));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
         }
 
         public async Task<RawMaterialStandardVM> RMStandard(RawMaterialStandardVM rMStandardVm)
@@ -391,9 +473,32 @@ namespace CWB.Masters.Services.ItemMaster
             else
             {
                 standard = await _rawMaterialStandardRepository.UpdateAsync(standard.Id, standard);
+                try
+                {
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    string str = ex.ToString();
+                }
             }
             rMStandardVm.Standard = standard.Id;
             return rMStandardVm;
+        }
+        public async Task<bool> CheckRmStandard(string rmName)
+        {
+            try
+            {
+                var documentTypes = await _rawMaterialStandardRepository.SingleOrDefaultAsync(c => c.Name == (rmName));
+                if (documentTypes != null)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return true;
         }
 
         public bool CheckPartNo(long partId)

@@ -7,6 +7,8 @@ namespace CWB.Masters.Domain
     {
         public string Operation { get; set; }
         public bool IsMultiplePartsOfBOMUsed { get; set; }
+        public int IsMultipleSubCon { get; set; }
+        public int Subcon { get; set; }
         public long TenantId { get; set; }
 
         public ICollection<OperationalDocument> OperationalDocuments { get; set; }

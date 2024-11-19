@@ -42,7 +42,6 @@ namespace CWB.Masters.Configurations.ItemMaster
             builder
                 .Property(t => t.FinishedWeight)
                 .HasColumnName("FinishedWeight")
-                .IsUnicode(true)
                 .HasMaxLength(255);
 
             builder
@@ -61,8 +60,11 @@ namespace CWB.Masters.Configurations.ItemMaster
                 .HasDefaultValue(0);
             builder
                 .Property(t => t.FinalPartNosoldtoCustomer)
-                .HasColumnName("FinalPartNosoldtoCustomer")
-                .HasDefaultValue(' ');
+                .HasColumnName("FinalPartNosoldtoCustomer");
+            builder
+               .Property(t => t.PriceSettledwithCustomer_INR)
+               .HasColumnName("PriceSettledwithCustomer_INR")
+               .HasDefaultValue(0);
             builder
                .Property(t => t.LeadTimeManf)
                .HasColumnName("LeadTimeManf")

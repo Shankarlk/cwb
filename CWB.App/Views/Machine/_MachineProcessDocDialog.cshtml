@@ -4,7 +4,7 @@
         <h5 class="mb-2 ">Process Document required for Machine</h5>
         <div class="col-md-4 dott-bord-r">
             <div class="row">
-                @Html.Partial("_MachineProcessDocFormDialog", new CWB.App.Models.Machine.MachineProcDocumentVM())
+                @Html.Partial("_MachineProcessDocFormDialog", new CWB.App.Models.Machine.McSlNoDocListVM())
                 <!-- ================ -->
                 <div class="table-responsive table-he-150 mt-3">
                     <table class="table table-sm table-bordered text-center tableFixHead w-100" id="tbl-machine-proc-doc-list">
@@ -38,19 +38,19 @@
 </div>
 <template id="template-machine-proc-doc">
     <tr>
-        <td data-key="MachineProcDocumentType">{machineProcDocumentType}</td>
-        <td data-key="IsMachineProcDocumentMandatory">{isMachineProcDocumentMandatory}</td>
+        <td>{documentTypeName}</td>
+        <td>{mandatory}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <button data-id="{machineProcDocumentId}" data-mandatory="{isMachineProcDocumentMandatory}"
-                            data-doctype="{machineProcDocumentType}" data-doctypeid="{machineProcDocumentTypeId}" class="dropdown-item edit">
+                    <button data-id="{mcSlNoDocListId}" data-mandatory="{mandatory}" data-doctype="{documentTypeName}" data-doctypeid="{documentTypeId}"
+                            class="dropdown-item edit">
                         Edit
                     </button>
                     <!-- item-->
-                    <button class="dropdown-item delete">Delete</button>
+                    <button data-id="{mcSlNoDocListId}" data-doctypeid="{documentTypeId}" onclick="DeleteMcProcDoc(this)" class="dropdown-item delete">Delete</button>
                 </div>
             </div>
         </td>

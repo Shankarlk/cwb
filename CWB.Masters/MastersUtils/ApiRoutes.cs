@@ -29,6 +29,7 @@
             public const string PostOperation = Base + "/operation";
             public const string PostOperationalDocumentTypes = Base + "/operation-doctype";
             public const string IsOperationExist = Base + "/check-operation";
+            public const string DeleteOperationDoc = Base + "/deleteopdoclist/{opDocId}/{tenantId}";
         }
 
         public static class Machine
@@ -56,7 +57,9 @@
             public const string GetStatuses = Base + "/statuses";
             public const string GetAllItemMasterDocList = Base + "/getallitemmasterdoclist/{tenantId}";
             public const string PostItemMasterDocList = Base + "/postitemmasterdoclist";
-            public const string GetAllItemMasterContent = Base + "/postitemmastercontent";
+            public const string GetAllItemMasterContent = Base + "/getallitemmastercontent";
+            public const string DeleteItemMasterDoc = Base + "/deleteitemmasterdoc/{itemMasterDocListId}/{tenantId}";
+            public const string CheckPartNoInDocList = Base + "/checkdoctypeinitemdoc/{documentTypeId}/{contentId}/{tenantId}";
         }
 
         public static class Routings {
@@ -68,6 +71,8 @@
             public const string PostDeleteRouting = Base + "/deleterouting/{routingId}";
             public const string PreferredRouting = Base + "/preferredrouting";
             public const string PostRoutingStep = Base + "/routingstep";
+            public const string PostStatusLog = Base + "/routingstatuslog";
+            public const string GetStatusLog = Base + "/getstatuslog/{routingId}/{tenantId}";
             public const string ChangeRoutingStepSequence = Base + "/changeroutingstepsequence";
             
             
@@ -114,6 +119,7 @@
             public const string GetMPMakeFromList = Base + "/mpmakefromlist/{partId}";//pass manufPartId from MPRawMeterials
             public const string GetMPMakeFrom = Base + "/getmakefrom/{Id}";
             public const string RemMakeFrom = Base + "/remmakefrom";
+            public const string GetPartStatus = Base + "/getpartstatus/{tenantId}";
 
             public const string GetMPBOMList = Base + "/boms/{partId}";//pass manufPartId from MPBOMs
             public const string GetMPBOM = Base + "/getbom/{Id}";
@@ -121,6 +127,7 @@
           //  public const string HelloWorld = Base + "/helloworld";
             public const string GetUOMs = Base + "/getuoms/{tenantId}";
             public const string AddUOM = Base + "/adduom";
+            public const string CheckUOM = Base + "/checkuom/{uomName}";
         }
 
         public static class RawMaterialDetail
@@ -134,6 +141,10 @@
             public const string GetRMStandards = Base + "/rmstandards";
             public const string GetBaseRMs = Base + "/baserms";
             public const string BaseRM = Base + "/baserm";
+            public const string CheckBaseRm = Base + "/checkbaserm/{rmName}";
+            public const string CheckRMType = Base + "/checkrmtype/{rmTypeName}";
+            public const string CheckRMSpec = Base + "/checkrmspec/{rmSpecName}";
+            public const string CheckRMStandard = Base + "/checkrmstandard/{rmStName}";
             public const string RMType = Base + "/rmtype";
             public const string RMSpec = Base + "/rmspec";
             public const string RMStandard = Base + "/rmstandard";
@@ -144,7 +155,7 @@
             public const string GetPartPurchases = Base + "/partpurchases/{tenantId}";
             //Add/Edit
             public const string PostPartPurchaseDetail = Base + "/partpurchase";
-            public const string PostPartPreferredSupplier = Base + "/preferredsupplierpartpurchase";
+            public const string PostPartPreferredSupplier = Base + "/preferredsupplierpart";
             //Get a single object
             public const string GetPartPurchase = Base + "/getpartpurchase/{partPurchaseId}/{tenantId}";
             //public const string RemovePartPurchase = Base + "/rempartpurchase/{partPurchaseId}";
@@ -184,8 +195,11 @@
             public const string GetAllDocView = Base + "/getalldocview/{tenantId}";
             public const string GetAllDocCategory = Base + "/getalldoccategory";
             public const string GetAllDocList = Base + "/getalldoclist/{tenantId}";
+            public const string GetOneDocList = Base + "/getonedoclist/{doclistId}/{tenantId}";
             public const string CheckPartNoInDocList = Base + "/checkpartnoindoclist/{partId}/{tenantId}";
             public const string GetAllUiName = Base + "/getalluiname/{tenantId}";
+            public const string GetReasonList = Base + "/getallreasonlist/{tenantId}";
+            public const string GetAllRefDoc = Base + "/getallrefdoc/{tenantId}";
             public const string GetDocStatus = Base + "/getdocstatus/{statusid}";
             public const string PostDocumentType = Base + "/postdocumenttype";
             public const string PostCustRetnData = Base + "/postcustretndata";
@@ -194,12 +208,15 @@
             public const string PostDocView = Base + "/postdocview";
             public const string PostDocList = Base + "/postdocList";
             public const string PostUiName = Base + "/postuiname";
+            public const string PostDocReason = Base + "/postdocreason";
+            public const string PostDocLog = Base + "/postrefdoc";
             public const string DeleteDocType = Base + "/deletedocumenttype/{doctypeId}/{tenantId}";
             public const string DeleteCustRetdata = Base + "/deletecustretdata/{custRetId}/{tenantId}";
             public const string DeleteExtndata = Base + "/deleteextndata/{extnId}/{tenantId}";
             public const string DeleteDocListdata = Base + "/deletedoclistdata/{docListId}/{tenantId}";
             public const string CheckDocTypeName = Base + "/checkdoctypename/{docTypeName}";
             public const string CheckExtnName = Base + "/checkextnname/{extnName}";
+            public const string DocumentTypeInDoclist = Base + "/doctypeindoclist/{docTypeid}/{tenantId}";
         }
     }
 }

@@ -27,6 +27,7 @@ namespace CWB.App.Services.Masters
 
         Task<IEnumerable<ManufacturedPartNoDetailVM>> GetManufacturedPartNoDetailList(long ManufPartType, string companyName);
         Task<IEnumerable<ManufacturedPartNoDetailVM>> GetAllManufacturedPartNoDetailList();
+        Task<IEnumerable<ItemMasterDocListVM>> Getallitemmasterdoclist();
         //Task<String> HelloWorld();
         
 
@@ -41,6 +42,8 @@ namespace CWB.App.Services.Masters
         Task<bool> CheckIfDivisionExisit(long CompanyId, long DivisionId, string DivisionName);
         Task<ManufacturedPartNoDetailVM> ManufacturedPartNoDetail(ManufacturedPartNoDetailVM manufacturedPartNoDetailVM);
         Task<MPMakeFromVM> MPMakeFrom(MPMakeFromVM manufacturedPartNoDetailVM);
+        Task<MPMakeFromVM> MPPreferredMK(MPMakeFromVM manufacturedPartNoDetailVM);
+        Task<PartPurchaseDetailsVM> PreferredSupplier(PartPurchaseDetailsVM manufacturedPartNoDetailVM);
         Task<MPBomVM> MPBOM(MPBomVM manufacturedPartNoDetailVM);
         Task<IEnumerable<MPMakeFromVM>> GetMPMakeFromListByPartId(string partId);
         
@@ -65,6 +68,10 @@ namespace CWB.App.Services.Masters
         Task<MPBomVM> GetBOM(string id);
 
         Task<IEnumerable<ItemMasterPartVM>> ItemMasterParts();
+        Task<IEnumerable<PartStatusChangeLogVM>> GetPartStatus();
+        Task<IEnumerable<ItemMasterContentVM>> ItemMasterContents();
+        Task<ItemMasterDocListVM> PostItemMasteDocList(ItemMasterDocListVM masterDocListVM);
+        Task<bool> DeleteItemMasterDocList(long itemMasterDocListId);
         Task<MasterPartVM> ItemMasterPartById(int partid);
 
         Task<IEnumerable<SelectPartVM>> SelectParts();
@@ -85,10 +92,18 @@ namespace CWB.App.Services.Masters
         Task<RawMaterialDetailVM> GetRMPart(int partId);
         Task<BoughtOutFinishDetailVM> GetBOFPart(int partId);
         Task<UOMVM> AddUOM(UOMVM model);
+        Task<bool> CheckUOM(string uomName);
+        Task<bool> CheckRmType(string rmTypeName);
+        Task<bool> CheckBaseRm(string rmBaseName);
+        Task<bool> CheckRmStandard(string rmStName);
+        Task<bool> CheckRmSpec(string rmSpecName);
 
         //Task<BaseRawMatrialVM> BaseRM(BaseRawMatrialVM rawMatrialVM);
         //Task<RawMaterialSpecVM> 
 
         Task<bool> CheckPartNoInDocList(long partId);
+
+        Task<bool> CheckDocumentTypeInItemMaster(long documentTypeId, long contentId);
+        Task<bool> CheckDocTypeInDocList(long docTypeid);
     }
 }

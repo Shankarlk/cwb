@@ -14,6 +14,12 @@ namespace CWB.App.Services.Masters
         Task<MachineVM> Machine(MachineVM machineVM);
         Task<MachineVM> GetMachine(long Id);
         Task<IEnumerable<MachineListVM>> GetMachinesList();
+        Task<IEnumerable<McTypeDocListVM>> GetMcTypeDocList();
+        Task<IEnumerable<McSlNoDocListVM>> GetMcProcDocList();
+        Task<McTypeDocListVM> PostMcTypeDocList(McTypeDocListVM machineVM);
+        Task<McSlNoDocListVM> PostMcProcDocList(McSlNoDocListVM machineVM);
+        Task<bool> DeleteMcProcDoc(long mcSlNoDocListId);
+        Task<bool> DeleteMcTypeDoc(long mcTypeDocListId);
         Task<IEnumerable<MachineProcDocumentListVM>> GetMachineProcsDocLists(long MachineId);
         Task<IEnumerable<DocumentTypeListVM>> GetMachineDocTypes(long MachineId);
         Task<MachineProcDocumentVM> MachineProcDoc(MachineProcDocumentVM machineProcDocumentVM);

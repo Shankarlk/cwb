@@ -24,6 +24,13 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(m => m.CompanyName, m => m.MapFrom(src => src.Company.Name))
                 .ForMember(m => m.DivisionName, m => m.MapFrom(src => src.Name))
                 .ForMember(m => m.Location, m => m.MapFrom(src => src.Location))
+                .ForMember(m => m.Notes, m => m.MapFrom(src => src.Notes))
+                .ForMember(m => m.PlantName, m => m.MapFrom(src => src.PlantName))
+                .ForMember(m => m.City, m => m.MapFrom(src => src.City))
+                .ForMember(m => m.Pincode, m => m.MapFrom(src => src.Pincode))
+                .ForMember(m => m.Country, m => m.MapFrom(src => src.Country))
+                .ForMember(m => m.GstNo, m => m.MapFrom(src => src.GstNo))
+                .ForMember(m => m.PanNo, m => m.MapFrom(src => src.PanNo))
                 .ForMember(m => m.Notes, m => m.MapFrom(src => src.Notes));
             CreateMap<CompanyVM, Division>()
                 .ForMember(s => s.Id, s => s.MapFrom(src => src.DivisionId))
@@ -33,14 +40,34 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Name, s => s.MapFrom(src => src.CompanyName))
                 .ForMember(s => s.Type, s => s.MapFrom(src => src.CompanyType.ToEnum<CompanyType>()));
 
+            CreateMap<RoutingStatusLog, RoutingStatusLogVM>()
+                .ForMember(m => m.RoutingStatusLogId, m => m.MapFrom(src => src.Id))
+                .ForMember(m => m.RoutingId, m => m.MapFrom(src => src.RoutingId))
+                .ForMember(m => m.UpdatedDate, m => m.MapFrom(src => src.UpdatedDate))
+                .ForMember(m => m.UpdatedBy, m => m.MapFrom(src => src.UpdatedBy))
+                .ForMember(m => m.PrevStatus, m => m.MapFrom(src => src.PrevStatus))
+                .ForMember(m => m.ChangedStatus, m => m.MapFrom(src => src.ChangedStatus))
+                .ForMember(m => m.Reason, m => m.MapFrom(src => src.Reason));
+            CreateMap<RoutingStatusLogVM, RoutingStatusLog>()
+                .ForMember(m => m.Id, m => m.MapFrom(src => src.RoutingStatusLogId))
+                .ForMember(m => m.RoutingId, m => m.MapFrom(src => src.RoutingId))
+                .ForMember(m => m.UpdatedDate, m => m.MapFrom(src => src.UpdatedDate))
+                .ForMember(m => m.UpdatedBy, m => m.MapFrom(src => src.UpdatedBy))
+                .ForMember(m => m.PrevStatus, m => m.MapFrom(src => src.PrevStatus))
+                .ForMember(m => m.ChangedStatus, m => m.MapFrom(src => src.ChangedStatus))
+                .ForMember(m => m.Reason, m => m.MapFrom(src => src.Reason));
             CreateMap<Domain.OperationList, OperationListVM>()
                 .ForMember(m => m.OperationId, m => m.MapFrom(src => src.Id))
                 .ForMember(m => m.IsMultiplePartsOfBOMUsed, m => m.MapFrom(src => src.IsMultiplePartsOfBOMUsed))
+                .ForMember(m => m.Inhouse, m => m.MapFrom(src => src.IsMultipleSubCon))
+                .ForMember(m => m.Subcon, m => m.MapFrom(src => src.Subcon))
                 .ForMember(m => m.Operation, m => m.MapFrom(src => src.Operation));
 
             CreateMap<OperationListVM, Domain.OperationList>()
                 .ForMember(m => m.Operation, m => m.MapFrom(src => src.Operation))
                 .ForMember(m => m.Id, m => m.MapFrom(src => src.OperationId))
+                .ForMember(m => m.IsMultipleSubCon, m => m.MapFrom(src => src.Inhouse))
+                .ForMember(m => m.Subcon, m => m.MapFrom(src => src.Subcon))
                 .ForMember(m => m.IsMultiplePartsOfBOMUsed, m => m.MapFrom(src => src.IsMultiplePartsOfBOMUsed));
             CreateMap<OperationalDocument, OperationalDocumentListVM>()
                 .ForMember(m => m.OperationalDocumentId, m => m.MapFrom(src => src.Id));
@@ -134,6 +161,19 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
                 .ForMember(s => s.StatusChangeReason, s => s.MapFrom(src => src.StatusChangeReason));
 
+            CreateMap<Domain.ItemMaster.PartStatusChangeLog, PartStatusChangeLogVM>()
+                .ForMember(s => s.PartStatusChangeLogId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.Status, s => s.MapFrom(src => src.Status.ToString()))
+                .ForMember(s => s.ChangeReason, s => s.MapFrom(src => src.ChangeReason))
+                .ForMember(s => s.MasterPartId, s => s.MapFrom(src => src.MasterPartId))
+                .ForMember(s => s.UpdateDate, s => s.MapFrom(src => src.LastModifiedDate));
+
+            CreateMap<PartStatusChangeLogVM, PartStatusChangeLog>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.MasterPartId))
+                .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
+                .ForMember(s => s.ChangeReason, s => s.MapFrom(src => src.ChangeReason))
+                .ForMember(s => s.MasterPartId, s => s.MapFrom(src => src.MasterPartId))
+                .ForMember(s => s.LastModifiedDate, s => s.MapFrom(src => src.UpdateDate));
 
             CreateMap<Domain.ItemMaster.MasterPart, RawMaterialDetailVM>()
                 .ForMember(s => s.PartId, s => s.MapFrom(src => src.Id))
@@ -155,6 +195,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.LeadTimeManf, s => s.MapFrom(src => src.LeadTimeManf))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
                 .ForMember(s => s.FinalPartNosoldtoCustomer, s => s.MapFrom(src => src.FinalPartNosoldtoCustomer))
+                .ForMember(s => s.PriceSettledwithCustomer_INR, s => s.MapFrom(src => src.PriceSettledwithCustomer_INR))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
             /**.ForMember(s => s.PartDescription, s => s.MapFrom(src => src.PartDescription))
             .ForMember(s => s.RevNo, s => s.MapFrom(src => src.RevNo))
@@ -172,6 +213,7 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.LeadTimeManf, s => s.MapFrom(src => src.LeadTimeManf))
                 .ForMember(s => s.ReorderLevel, s => s.MapFrom(src => src.ReorderLevel))
                 .ForMember(s => s.FinalPartNosoldtoCustomer, s => s.MapFrom(src => src.FinalPartNosoldtoCustomer))
+                .ForMember(s => s.PriceSettledwithCustomer_INR, s => s.MapFrom(src => src.PriceSettledwithCustomer_INR))
                 .ForMember(s => s.ReorderQnty, s => s.MapFrom(src => src.ReorderQnty));
 
             /** .ForMember(s => s.PartDescription, s => s.MapFrom(src => src.PartDescription))
@@ -627,7 +669,11 @@ namespace CWB.Masters.MastersUtils
             .ForMember(s => s.RoutingId, s => s.MapFrom(src => src.RoutingId))
             .ForMember(s => s.OprNo, s => s.MapFrom(src => src.OprNo))
             .ForMember(s => s.DeletionDate, s => s.MapFrom(src => src.DeletionDate))
-            .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
+            .ForMember(s => s.Comments, s => s.MapFrom(src => src.Comments))
+            .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
+            .ForMember(s => s.McTypeId, s => s.MapFrom(src => src.McTypeId))
+            .ForMember(s => s.McId, s => s.MapFrom(src => src.McId))
+            .ForMember(s => s.CreationDt, s => s.MapFrom(src => src.CreationDate));
 
 
             CreateMap<DocListVM, DocList>()
@@ -642,7 +688,11 @@ namespace CWB.Masters.MastersUtils
             .ForMember(s => s.RoutingId, s => s.MapFrom(src => src.RoutingId))
             .ForMember(s => s.OprNo, s => s.MapFrom(src => src.OprNo))
             .ForMember(s => s.DeletionDate, s => s.MapFrom(src => src.DeletionDate))
-            .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
+            .ForMember(s => s.Comments, s => s.MapFrom(src => src.Comments))
+            .ForMember(s => s.Status, s => s.MapFrom(src => src.Status))
+            .ForMember(s => s.McTypeId, s => s.MapFrom(src => src.McTypeId))
+            .ForMember(s => s.McId, s => s.MapFrom(src => src.McId))
+            .ForMember(s => s.CreationDate, s => s.MapFrom(src => src.CreationDt));
 
 
             CreateMap<UiList, UiListVM>()
@@ -720,6 +770,37 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Mandatory, s => s.MapFrom(src => src.Mandatory))
                 .ForMember(s => s.UpdatedBy, s => s.MapFrom(src => src.UpdatedBy))
                 .ForMember(s => s.UpdatedOn, s => s.MapFrom(src => src.UpdatedOn));
+
+
+
+            CreateMap<RefDocLogVM, RefDocLog>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.RefDocLogId))
+                .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
+                .ForMember(s => s.DocListId, s => s.MapFrom(src => src.DocListId))
+                .ForMember(s => s.DocReasonId, s => s.MapFrom(src => src.DocReasonId))
+                .ForMember(s => s.Action, s => s.MapFrom(src => src.Action))
+                .ForMember(s => s.Comments, s => s.MapFrom(src => src.Comments))
+                .ForMember(s => s.UploadedBy, s => s.MapFrom(src => src.UploadedBy))
+                .ForMember(s => s.UploadedOn, s => s.MapFrom(src => src.UploadedOn))
+                .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
+            CreateMap<RefDocLog, RefDocLogVM>()
+                .ForMember(s => s.RefDocLogId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.DocListId, s => s.MapFrom(src => src.DocListId))
+                .ForMember(s => s.PartId, s => s.MapFrom(src => src.PartId))
+                .ForMember(s => s.DocReasonId, s => s.MapFrom(src => src.DocReasonId))
+                .ForMember(s => s.Action, s => s.MapFrom(src => src.Action))
+                .ForMember(s => s.Comments, s => s.MapFrom(src => src.Comments))
+                .ForMember(s => s.UploadedBy, s => s.MapFrom(src => src.UploadedBy))
+                .ForMember(s => s.UploadedOn, s => s.MapFrom(src => src.UploadedOn))
+                .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
+            CreateMap<RefDocReasonListVM, RefDocReasonList>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.RefDocReasonListId))
+                .ForMember(s => s.DocReason, s => s.MapFrom(src => src.DocReason))
+                .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
+            CreateMap<RefDocReasonList, RefDocReasonListVM>()
+                .ForMember(s => s.RefDocReasonListId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.DocReason, s => s.MapFrom(src => src.DocReason))
+                .ForMember(s => s.TenantId, s => s.MapFrom(src => src.TenantId));
         }
     }
 }

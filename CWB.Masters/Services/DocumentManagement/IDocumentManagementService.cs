@@ -20,9 +20,14 @@ namespace CWB.Masters.Services.DocumentManagement
         Task<List<DocViewVM>> PostDocView(List<DocViewVM> docUpload);
         Task<IEnumerable<DocCategoryVM>> GetAllDocCategory();
         Task<IEnumerable<DocListVM>> GetAllDocList(long tenantId);
+        Task<DocListVM> GetOneDocList(long doclistId, long tenantId);
         Task<DocListVM> PostDocList(DocListVM docUpload);
         Task<IEnumerable<UiListVM>> GetAllUiName(long tenantId);
+        Task<IEnumerable<RefDocLogVM>> GetAllRefDoc(long tenantId);
+        Task<RefDocLogVM> PostDocLog(RefDocLogVM uiList);
+        Task<IEnumerable<RefDocReasonListVM>> GetReasonList(long tenantId);
         Task<UiListVM> PostUiName(UiListVM uiList);
+        Task<RefDocReasonListVM> PostDocReason(RefDocReasonListVM uiList);
         Task<DocStatusVM> GetDocStatus(long statusid);
         Task<bool> CheckPartNoInDocList(long partId, long tenantId);
         Task<bool> DeleteDocType(long doctypeId, long tenantId);
@@ -31,6 +36,7 @@ namespace CWB.Masters.Services.DocumentManagement
         Task<bool> DeleteDocListdata(long docListId, long tenantId);
         Task<bool> CheckDocTypeName(string docTypeName);
         Task<bool> CheckExtnName(string extnName);
+        Task<bool> DocumentTypeInDoclist(long docTypeid, long tenantId);
 
     }
 }

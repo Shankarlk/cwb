@@ -29,6 +29,13 @@ namespace CWB.App.Controllers
         public async Task<JsonResult> GetPlants()
         {
             var result = await _plantService.GetPlants();
+            foreach (var item in result)
+            {
+                var wd = await _plantService.GetPlantWD(item.PlantId);
+                item.NoOfShifts = wd.NoOfShifts;
+                item.WeeklyOff1 = wd.WeeklyOff1;
+                item.FirstShiftStartTime = wd.FirstShiftStartTime;
+            }
             return Json(result);
         }
 
@@ -51,6 +58,42 @@ namespace CWB.App.Controllers
             }
             var result = await _plantService.PostPlantWD(model);
             return Json(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostCity(CityVM model)
+        {
+            var result = await _plantService.PostCity(model);
+            return Json(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostCountry(CountryVM model)
+        {
+            var result = await _plantService.PostCountry(model);
+            return Json(result);
+        }
+        [HttpGet]
+        public async Task<JsonResult> GetCitys()
+        {
+            var result = await _plantService.GetCities();
+            return Json(result);
+        }
+        [HttpGet]
+        public async Task<JsonResult> GetCountrys()
+        {
+            var result = await _plantService.GetCountries();
+            return Json(result);
+        }
+        [HttpGet]
+        public async Task<JsonResult> CheckCity(string city)
+        {
+            var result = await _plantService.CheckCity(city);
+            return Json(!result);
+        }
+        [HttpGet]
+        public async Task<JsonResult> CheckCountry(string city)
+        {
+            var result = await _plantService.CheckCountry(city);
+            return Json(!result);
         }
         [HttpPost]
         public async Task<IActionResult> PlantHoliday(HolidayVM model)

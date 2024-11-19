@@ -12,5 +12,6 @@ namespace CWB.Masters.Services.OperationList
         bool CheckIfOperationExisit(CheckOperationVM checkOperationVM);
         IEnumerable<OperationalDocumentListVM> GetOperationDocumentTypes(long TenantId, long OperationId);
         Task<OperationalDocumentListVM> OperationDocumentTypes(OperationalDocumentListVM operationalDocumentListVM);
+        Task<bool> DeleteOperationDoc(long opDocId, long tenantId);
     }
 }

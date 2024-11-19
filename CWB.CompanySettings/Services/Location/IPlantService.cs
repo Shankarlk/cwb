@@ -17,6 +17,13 @@ namespace CWB.CompanySettings.Services.Location
         IEnumerable<HolidayVM> Holidays(long plantId);
         Task<HolidayVM> PostHoliday(HolidayVM holidayVM);
         Task<PlantWorkingDetailsVM> PostPlantWD(PlantWorkingDetailsVM plantWd);
+        Task<CityVM> PostCity(CityVM plantWd);
+        Task<CountryVM> PostCountry(CountryVM plantWd);
+        IEnumerable<CityVM> GetCitys(long TenantId);
+        IEnumerable<CountryVM> GetCountrys(long TenantId);
+        Task<bool> CheckCity(string city);
+        Task<bool> CheckCountry(string country);
+
         Task<PlantWorkingDetailsVM> GetPlantWD(long tenantId,long plantId);
     }
 }

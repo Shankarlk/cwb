@@ -62,8 +62,46 @@ namespace CWB.App.Services.CompanySettings
             return await RestHelper<PlantWorkingDetailsVM>.PostAsync(uri, model, headers);
         }
 
-        
 
+
+        public async Task<IEnumerable<CityVM>> GetCities()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getcitys/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<CityVM>>.GetAsync(uri, headers);
+        }
+        public async Task<IEnumerable<CountryVM>> GetCountries()
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/getcountry/{tenantId}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<List<CountryVM>>.GetAsync(uri, headers);
+        }
+        public async Task<CityVM> PostCity(CityVM model)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/postcity");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            model.TenantId = tenantId;
+            return await RestHelper<CityVM>.PostAsync(uri, model, headers);
+        }
+        public async Task<CountryVM> PostCountry(CountryVM model)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/postcountry");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            model.TenantId = tenantId;
+            return await RestHelper<CountryVM>.PostAsync(uri, model, headers);
+        }
+        public async Task<bool> CheckCity(string city)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/checkcity/{city}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
+        }
+        public async Task<bool> CheckCountry(string country)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/checkcountry/{country}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<bool>.GetAsync(uri, headers);
+        }
         public async Task<HolidayVM> PlantHoliday(HolidayVM model)
         {
             var uri = new Uri(_apiUrls.Gateway + $"/cwbcs/holiday");

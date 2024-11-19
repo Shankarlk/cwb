@@ -58,6 +58,17 @@ namespace CWB.Masters.Configurations.DocumentManagement
                 .HasColumnName("DeletionDate")
                 .IsRequired();
             builder
+                .Property(t => t.Comments)
+                .HasColumnName("Comments");
+            builder
+                .Property(c => c.McTypeId)
+                .HasColumnName("McTypeId")
+                .IsRequired();
+            builder
+                .Property(c => c.McId)
+                .HasColumnName("McId")
+                .IsRequired();
+            builder
                 .Property(c => c.Status)
                 .HasColumnName("Status")
                 .IsRequired();

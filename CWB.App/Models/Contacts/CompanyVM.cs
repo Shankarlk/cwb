@@ -43,6 +43,12 @@ namespace CWB.App.Models.Contacts
         [Display(Name = "Notes")]
         [StringLength(250, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 2)]
         public string Notes { get; set; }
+        public string PlantName { get; set; }
+        public string City { get; set; }
+        public string Pincode { get; set; }
+        public string Country { get; set; }
+        public string GstNo { get; set; }
+        public string PanNo { get; set; }
         public long TenantId { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace CWB.App.Models.ItemMaster
         public string InputPartNo { get; set; } 
 
         public string UOM { get; set; } = "";
+        public string MadeFrom { get; set; } = "";
         public long TenantId { get; set; }
     }
 }

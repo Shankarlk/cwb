@@ -6,6 +6,7 @@ using CWB.Masters.Repositories.DocumentManagement;
 using CWB.Masters.ViewModels.DocumentManagement;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CWB.Masters.Services.DocumentManagement
@@ -24,10 +25,13 @@ namespace CWB.Masters.Services.DocumentManagement
         private readonly IDocListRepository _docListRepository;
         private readonly IUiListrepository _uiListrepository;
         private readonly IDocStatusRepository _docStatusRepository;
+        private readonly IRefDocReasonListRepository _reasonListRepository;
+        private readonly IRefDocLogRepository _refDocLogRepository;
         public DocumentManagementService(ILoggerManager logger, IMapper mapper,IUnitOfWork unitOfWork, IDocumentTypeRepository documentTypeRepository,
             ICustRetnDataRepository custRetnDataRepository,IExtnInfoRepository extnInfoRepository, IDocUploadRepository docUploadRepository, IDocViewRepository docViewRepository,
             IDocCategoryRepository docCategoryRepository, IDocListRepository docListRepository, IDocStatusRepository docStatusRepository
-            , IUiListrepository uiListrepository) //
+            , IUiListrepository uiListrepository, IRefDocReasonListRepository reasonListRepository,
+            IRefDocLogRepository refDocLogRepository) //
         {
             _logger = logger;
             _mapper = mapper;
@@ -41,6 +45,8 @@ namespace CWB.Masters.Services.DocumentManagement
             _docListRepository = docListRepository;
             _uiListrepository = uiListrepository;
             _docStatusRepository = docStatusRepository;
+            _reasonListRepository = reasonListRepository;
+            _refDocLogRepository = refDocLogRepository;
         }
         public async Task<IEnumerable<DocumentTypeVM>> GetDocumentType(long tenantId)
         {
@@ -305,6 +311,7 @@ namespace CWB.Masters.Services.DocumentManagement
             {
                 try
                 {
+                    postdoclist.Status = 1;
                     await _docListRepository.AddAsync(postdoclist);
                 }
                 catch (Exception ex)
@@ -320,8 +327,16 @@ namespace CWB.Masters.Services.DocumentManagement
                 {
                     return docList;
                 }
+                //doclistupdate.Status = 2;
+                doclistupdate.DocumentTypeId = postdoclist.DocumentTypeId;
+                doclistupdate.FileName = postdoclist.FileName;
+                doclistupdate.Comments = postdoclist.Comments;
                 doclistupdate.DeletionDate = postdoclist.DeletionDate;
+                doclistupdate.CreationDate = DateTime.Now;
                 postdoclist = await _docListRepository.UpdateAsync(doclistupdate.Id, doclistupdate);
+                //doclistupdate.Id = 0;
+                //doclistupdate.Status = 1;
+                //await _docListRepository.AddAsync(doclistupdate);
             }
             try
             {
@@ -332,6 +347,27 @@ namespace CWB.Masters.Services.DocumentManagement
                 Exception exa = ex.InnerException;
                 string msg = ex.Message;
             }
+            if (docList.DocListId == 0)
+            {
+                RefDocLog refDoc = new RefDocLog();
+                refDoc.DocListId = postdoclist.Id;
+                refDoc.PartId = postdoclist.PartId;
+                refDoc.TenantId  = postdoclist.TenantId;
+                refDoc.DocReasonId = 0;
+                refDoc.Comments = string.Empty;
+                refDoc.Action = "New Entry";
+                refDoc.UploadedOn = DateTime.Now;
+                await _refDocLogRepository.AddAsync(refDoc);
+                try
+                {
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    Exception exa = ex.InnerException;
+                    string msg = ex.Message;
+                }
+            }
             docList.DocListId = postdoclist.Id;
             return docList;
         }
@@ -340,11 +376,21 @@ namespace CWB.Masters.Services.DocumentManagement
             var docLists = _docListRepository.GetRangeAsync(d => d.TenantId == tenantId);
             return _mapper.Map<IEnumerable<DocListVM>>(docLists);
         }
+        public async Task<DocListVM> GetOneDocList(long doclistId,long tenantId)
+        {
+            var docLists =await _docListRepository.SingleOrDefaultAsync(d => d.Id==doclistId && d.TenantId == tenantId);
+            if (docLists != null)
+            {
+                return _mapper.Map<DocListVM>(docLists);
+            }
+            return new DocListVM();
+        }
 
         public async Task<bool> CheckPartNoInDocList(long partId, long tenantId)
         {
-            var docLists = await _docListRepository.SingleOrDefaultAsync(c => c.PartId == partId);
-            if (docLists==null)
+            var docLists = _docListRepository.GetRangeAsync(c => c.PartId == partId && c.TenantId == tenantId);
+
+            if (docLists == null || !docLists.Any())
             {
                 return false;
             }
@@ -356,6 +402,88 @@ namespace CWB.Masters.Services.DocumentManagement
         {
             var docLists = _uiListrepository.GetRangeAsync(d => d.TenantId == tenantId);
             return _mapper.Map<IEnumerable<UiListVM>>(docLists);
+        }
+        public async Task<IEnumerable<RefDocLogVM>> GetAllRefDoc(long tenantId)
+        {
+            var docLists = _refDocLogRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<RefDocLogVM>>(docLists);
+        }
+        public async Task<IEnumerable<RefDocReasonListVM>> GetReasonList(long tenantId)
+        {
+            var docLists = _reasonListRepository.GetRangeAsync(d => d.TenantId == tenantId);
+            return _mapper.Map<IEnumerable<RefDocReasonListVM>>(docLists);
+        }
+        public async Task<RefDocLogVM> PostDocLog(RefDocLogVM uiList)
+        {
+            var postuiname = _mapper.Map<RefDocLog>(uiList);
+            if (postuiname.Id == 0)
+            {
+                try
+                {
+                    await _refDocLogRepository.AddAsync(postuiname);
+                }
+                catch (Exception ex)
+                {
+                    Exception exa = ex.InnerException;
+                    string msg = ex.Message;
+                }
+            }
+            else
+            {
+                var docUpload1 = await _refDocLogRepository.SingleOrDefaultAsync(x => x.Id == postuiname.Id);
+                if (docUpload1 == null)
+                {
+                    return uiList;
+                }
+                postuiname = await _refDocLogRepository.UpdateAsync(docUpload1.Id, postuiname);
+            }
+            try
+            {
+                await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                Exception exa = ex.InnerException;
+                string msg = ex.Message;
+            }
+            uiList.RefDocLogId = postuiname.Id;
+            return uiList;
+        }
+        public async Task<RefDocReasonListVM> PostDocReason(RefDocReasonListVM uiList)
+        {
+            var postuiname = _mapper.Map<RefDocReasonList>(uiList);
+            if (postuiname.Id == 0)
+            {
+                try
+                {
+                    await _reasonListRepository.AddAsync(postuiname);
+                }
+                catch (Exception ex)
+                {
+                    Exception exa = ex.InnerException;
+                    string msg = ex.Message;
+                }
+            }
+            else
+            {
+                var docUpload1 = await _reasonListRepository.SingleOrDefaultAsync(x => x.Id == postuiname.Id);
+                if (docUpload1 == null)
+                {
+                    return uiList;
+                }
+                postuiname = await _reasonListRepository.UpdateAsync(docUpload1.Id, postuiname);
+            }
+            try
+            {
+                await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                Exception exa = ex.InnerException;
+                string msg = ex.Message;
+            }
+            uiList.RefDocReasonListId = postuiname.Id;
+            return uiList;
         }
         public async Task<UiListVM> PostUiName(UiListVM uiList)
         {
@@ -489,6 +617,23 @@ namespace CWB.Masters.Services.DocumentManagement
             }
             catch (Exception ex)
             {
+            }
+            return true;
+        }
+        public async Task<bool> DocumentTypeInDoclist(long docTypeid, long tenantId)
+        {
+            try
+            {
+                var docLists = _docListRepository.GetRangeAsync(c => c.DocumentTypeId == docTypeid && c.TenantId == tenantId);
+
+                if (docLists == null || !docLists.Any())
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
             return true;
         }
