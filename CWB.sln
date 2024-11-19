@@ -74,7 +74,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CWB.BusinessAquisition", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductionPlanWO", "ProductionPlanWO", "{C2BD8335-A110-4156-8C6C-979A4ACCC6F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CWB.ProductionPlanWO", "CWB.ProductionPlanWO\CWB.ProductionPlanWO.csproj", "{8B6264E0-DBD7-4E5E-A59F-B2C4DA9C7D55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CWB.ProductionPlanWO", "CWB.ProductionPlanWO\CWB.ProductionPlanWO.csproj", "{8B6264E0-DBD7-4E5E-A59F-B2C4DA9C7D55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
