@@ -21,6 +21,7 @@ namespace CWB.App.Controllers
         public async Task<IActionResult> Index()
         {
             var token = await HttpContext.GetTokenAsync("access_token");
+            ViewBag.AccessToken = token; // Store the token in ViewBag
             return View();
         }
 
