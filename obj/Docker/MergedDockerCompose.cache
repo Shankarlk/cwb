@@ -7,7 +7,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:80
-    image: cwbapigateway
+    image: shankar84kl/cwbapigateway
     networks:
       cwb-network: null
     ports:
@@ -43,7 +43,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: cwbapp
+    image: shankar84kl/cwbapp
     networks:
       cwb-network: null
     ports:
@@ -95,7 +95,7 @@ services:
         required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: cwbbusinessprocesses
+    image: shankar84kl/cwbbusinessprocesses
     links:
       - db
     networks:
@@ -131,7 +131,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: cwbcompanysettings
+    image: shankar84kl/cwbcompanysettings
     links:
       - db
     networks:
@@ -176,7 +176,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: cwbidentity
+    image: shankar84kl/cwbidentity
     links:
       - db
     networks:
@@ -220,7 +220,7 @@ services:
         required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: cwbmasters
+    image: shankar84kl/cwbmasters
     links:
       - db
     networks:
@@ -256,7 +256,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: cwbmodules
+    image: shankar84kl/cwbmodules
     links:
       - db
     networks:
@@ -300,7 +300,7 @@ services:
         required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: cwbproductionplanwo
+    image: shankar84kl/cwbproductionplanwo
     links:
       - db
     networks:
@@ -336,7 +336,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: cwbsimulation
+    image: shankar84kl/cwbsimulation
     links:
       - db
     networks:
@@ -381,7 +381,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: cwbtenant
+    image: shankar84kl/cwbtenant
     links:
       - db
     networks:
