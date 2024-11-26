@@ -128,20 +128,7 @@ namespace CWB.App
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             logger.LogInformation("Application started");
-            //    app.UseRewriter(new RewriteOptions()
-            //.AddRewrite(@"^WorkOrder/SoToWo(.*)", "http://192.168.43.56:9005/WorkOrder/$1", skipRemainingRules: true));
-            //app.Use(async (context, next) => {
-            //    var url = context.Request.Path.Value;
-            //    if (url.Contains("/SOWO"))
-            //    {
-            //        context.Response.Redirect("/WorkOrder/SoToWo");
-            //        return;
-            //    }
-            //    await next();
-            //});
-            //          var rewrite = new RewriteOptions()
-            //.AddRewrite("WorkOrder/SoToWo", "HiddenFeature", true);
-            //          app.UseRewriter(rewrite);
+            
             app.UseRouting();
             
             if (_enableAuth)
