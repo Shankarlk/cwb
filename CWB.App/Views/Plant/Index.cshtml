@@ -1,4 +1,6 @@
-﻿<!-- Left Sidebar End -->
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!-- Left Sidebar End -->
 <!-- ============================================================== -->
 <!-- Start Page Content here -->
 <!-- ============================================================== -->
@@ -14,6 +16,15 @@
                             <input class="form-control form-control-sm" type="text" id="docname" name="text">
                         </div>
                         <!-- ----- -->
+                        @{
+                            List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                            var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                            if (permissionsJson != null)
+                            {
+                                permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                            }
+                        }
                         <div class="col-md-8 mt-1">
                             <div class="table-responsive mb-2 table-he-180">
                                 <table id="PlantTable" class="table table-sm table-bordered w-100 mb-3 text-center">
@@ -32,7 +43,27 @@
                                 </table>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <button class="btn btn-sm btn-primary" onclick="SetOp('add');$('#shop-details').modal('show');" data-bs-toggle="modal">Add Location</button>
+                                @if (permissionResult != null)
+                                {
+                                    @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Location "))
+                                    {
+                                        var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Location ").FirstOrDefault();
+                                        if (pr.PermissionId >= 3)
+                                        {
+                                            <button class="btn btn-sm btn-primary" on click="SetOp('add');$('#shop-details').modal('show');" data-bs-toggle="modal">Add Location</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-sm btn-primary" onclick="SetOp('add');$('#shop-details').modal('show');" data-bs-toggle="modal" disabled>Add Location</button>
+                                        }
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    <button class="btn btn-sm btn-primary" onclick="SetOp('add');$('#shop-details').modal('show');" data-bs-toggle="modal">Add Location</button>
+                                }
                             </div>
                         </div>
                         <!-- -------------  -->
@@ -386,14 +417,58 @@
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Location"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Location").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" onclick="SetOp('edit');" data-address={address} data-name={name}
+                                   data-notes={notes} data-plantId={plantId} data-isproductdesigned={isProductDesigned} data-ismainplant={isMainPlant}
+                                   data-city="{city}" data-pin="{pincode}" data-country="{country}" data-gst="{gstNo}" data-pan="{panNo}"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#shop-details" class="dropdown-item">Edit</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" onclick="SetOp('edit');" data-address={address} data-name={name}
+                           data-notes={notes} data-plantId={plantId} data-isproductdesigned={isProductDesigned} data-ismainplant={isMainPlant}
+                           data-city="{city}" data-pin="{pincode}" data-country="{country}" data-gst="{gstNo}" data-pan="{panNo}"
+                           data-bs-toggle="modal"
+                           data-bs-target="#shop-details" class="dropdown-item">Edit</a>
+                    }
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Location"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Location").FirstOrDefault();
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" onclick="DelPlant('{name}',{plantId});" class="dropdown-item">
+                                Delete</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" onclick="DelPlant('{name}',{plantId});" class="dropdown-item">
+                         Delete</a>
+                    }
                     <!-- item-->
-                    <a href="javascript:void(0);" onclick="SetOp('edit');" data-address={address} data-name={name}
-                       data-notes={notes} data-plantId={plantId} data-isproductdesigned={isProductDesigned} data-ismainplant={isMainPlant}
-                       data-city="{city}" data-pin="{pincode}" data-country="{country}" data-gst="{gstNo}" data-pan="{panNo}"
-                       data-bs-toggle="modal"
-                       data-bs-target="#shop-details" class="dropdown-item">Edit</a>
                     <!-- item-->
-                    <a href="javascript:void(0);" onclick="DelPlant('{name}',{plantId});" class="dropdown-item">Delete</a>
                 </div>
             </div>
         </td>

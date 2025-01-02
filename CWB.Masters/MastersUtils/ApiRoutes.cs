@@ -201,6 +201,7 @@
             public const string GetReasonList = Base + "/getallreasonlist/{tenantId}";
             public const string GetAllRefDoc = Base + "/getallrefdoc/{tenantId}";
             public const string GetDocStatus = Base + "/getdocstatus/{statusid}";
+            public const string GetDocListStatus = Base + "/getdocliststatus/{statusid}";
             public const string PostDocumentType = Base + "/postdocumenttype";
             public const string PostCustRetnData = Base + "/postcustretndata";
             public const string PostExtn = Base + "/postextn";

@@ -55,6 +55,12 @@ function GetPlantWD(plantId) {
         $("#WDId").val(data.wdId);
         $("#WeeklyOff1").val(data.weeklyOff1);
         $("#WeeklyOff2").val(data.weeklyOff2);
+        if (data.weeklyOff1 == null) {
+            $("#WeeklyOff1").val("Sunday");
+        }
+        if (data.weeklyOff2 == null) {
+            $("#WeeklyOff2").val("Sunday");
+        }
         $("#NoOfShifts").val(data.noOfShifts);
         $("#FirstShiftStartTime").val(data.firstShiftStartTime);
         $("#SecondShiftStartTime").val(data.secondShiftStartTime);
@@ -161,6 +167,24 @@ $(function () {
             return;
         }
         $("#GEN").show();
+        const navItem = document.getElementById("GEN");
+        navItem.classList.add("active");
+        const navLink = navItem.querySelector("a");
+        if (navLink) {
+            navLink.classList.add("active");
+        }
+        const navItemP = document.getElementById("PWD");
+        navItemP.classList.remove("active");
+        const navLinkp = navItemP.querySelector("a");
+        if (navLinkp) {
+            navLinkp.classList.remove("active");
+        }
+        const navItemH = document.getElementById("HLI");
+        navItemH.classList.remove("active");
+        const navLinkH = navItemH.querySelector("a");
+        if (navLinkH) {
+            navLinkH.classList.remove("active");
+        }
         $("#tab-001").show();
         $("#tab-002").hide();
         $("#tab-003").hide();
@@ -235,6 +259,53 @@ $(function () {
         document.getElementById("WDForm").reset();
         document.getElementById("HolidayForm").reset();
         document.getElementById("plantname").innerHTML = '';
+        var newNamevalidate = $('#CitySelect').next('.select2-container');
+        newNamevalidate.css('border', '');
+        var CountrySelect = $('#CountrySelect').next('.select2-container');
+        CountrySelect.css('border', '');
+        var Name = document.getElementById('Name');
+        Name.style.border = '';
+        var noofshitfs = document.getElementById('NoOfShifts');
+        noofshitfs.style.border = '';
+        var FirstShiftStartTime = document.getElementById('FirstShiftStartTime');
+        FirstShiftStartTime.style.border = '';
+        var SecondShiftStartTime = document.getElementById('SecondShiftStartTime');
+        SecondShiftStartTime.style.border = '';
+        var ThirdShiftStartTime = document.getElementById('ThirdShiftStartTime');
+        ThirdShiftStartTime.style.border = '';
+        var FirstShiftDuration = document.getElementById('FirstShiftDuration');
+        FirstShiftDuration.style.border = '';
+        var SecondShiftDuration = document.getElementById('SecondShiftDuration');
+        SecondShiftDuration.style.border = '';
+        var ThirdShiftDuration = document.getElementById('ThirdShiftDuration');
+        ThirdShiftDuration.style.border = '';
+        var HolidayDate = document.getElementById('HolidayDate');
+        HolidayDate.style.border = '';
+        var HName = document.getElementById('HName');
+        HName.style.border = '';
+        $("#GEN").show();
+        const navItem = document.getElementById("GEN");
+        navItem.classList.add("active");
+        const navLink = navItem.querySelector("a");
+        if (navLink) {
+            navLink.classList.add("active");
+        }
+        const navItemP = document.getElementById("PWD");
+        navItemP.classList.remove("active");
+        const navLinkp = navItemP.querySelector("a");
+        if (navLinkp) {
+            navLinkp.classList.remove("active");
+        }
+        const navItemH = document.getElementById("HLI");
+        navItemH.classList.remove("active");
+        const navLinkH = navItemH.querySelector("a");
+        if (navLinkH) {
+            navLinkH.classList.remove("active");
+        }
+        $("#tab-001").show();
+        $("#tab-002").hide();
+        $("#tab-003").hide();
+
     });
 
     $("#docname").on("keyup", function () {
@@ -304,8 +375,15 @@ $(function () {
     $("#AddHoliday").on('click', function (event) {
         var nameInput = document.getElementById('HName');
         var dateInput = document.getElementById('HolidayDate');
+        var PlantId = document.getElementById('PlantId');
         
 
+        if (PlantId.value == 0) {
+            //PlantId.style.border = '2px solid red';
+            alert("Please Save The Plant Details.");
+            return false;
+        } else {
+        }
         if (!nameInput.value) {
             nameInput.style.border = '2px solid red';
             return false;
@@ -448,7 +526,7 @@ $(function () {
         }
         var Address = document.getElementById('Address');
         if (!Address.value) {
-            $("#Address").val("");
+            $("#Address").val("-");
         } else {
             Address.style.border = '';
         }
@@ -494,17 +572,36 @@ $(function () {
            //document.getElementById("btn-shopdetails-close").click();
             //document.getElementById("PlantForm").reset();
             var wd = $("#WDPlantId").val();
-            if (wd === "0") {
-                $("#btn-shopdetails-close").prop('disabled', true);
-            } else {
-                $("#btn-shopdetails-close").prop('disabled', false);
-            }
+            //if (wd === "0") {
+            //    $("#btn-shopdetails-close").prop('disabled', true);
+            //} else {
+            //    $("#btn-shopdetails-close").prop('disabled', false);
+            //}
             var plantID = data.plantId;
             $("#WDPlantId").val(plantID);
             $("#HolidayPlantId").val(plantID);
             alert("Please Save the Work Details !");
             $("#tab-002").show();
             $("#tab-001").hide();
+            $("#GEN").show();
+            const navItem = document.getElementById("PWD");
+            navItem.classList.add("active");
+            const navLink = navItem.querySelector("a");
+            if (navLink) {
+                navLink.classList.add("active");
+            }
+            const navItemP = document.getElementById("GEN");
+            navItemP.classList.remove("active");
+            const navLinkp = navItemP.querySelector("a");
+            if (navLinkp) {
+                navLinkp.classList.remove("active");
+            }
+            const navItemH = document.getElementById("HLI");
+            navItemH.classList.remove("active");
+            const navLinkH = navItemH.querySelector("a");
+            if (navLinkH) {
+                navLinkH.classList.remove("active");
+            }
         }).catch((error) => {
             AppUtil.HandleError("PlantForm", error);
         });

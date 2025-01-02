@@ -17,10 +17,10 @@ namespace CWB.App.Services.DocumentMagement
         private readonly ApiUrls _apiUrls;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly long tenantId;
-        public DocMangService(ILoggerManager logger, IOptions<ApiUrls> apiUrlsOptions, IHttpContextAccessor httpContextAccessor)
+        public DocMangService(ILoggerManager logger, ApiUrls apiUrlsOptions, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
-            _apiUrls = apiUrlsOptions.Value;
+            _apiUrls = apiUrlsOptions;
             _httpContextAccessor = httpContextAccessor;
             tenantId = long.Parse(AppUtil.GetTenantId(_httpContextAccessor.HttpContext.User));
 
@@ -200,6 +200,12 @@ namespace CWB.App.Services.DocumentMagement
             var uri = new Uri(_apiUrls.Gateway + $"/cwbms/checkextnname/{extnName}");
             var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
             return await RestHelper<bool>.GetAsync(uri, headers);
+        }
+        public async Task<Doc_status_listVM> GetDoc_Status_List(long extnName)
+        {
+            var uri = new Uri(_apiUrls.Gateway + $"/cwbms/getdocliststatus/{extnName}");
+            var headers = await AppUtil.GetAuthToken(_httpContextAccessor.HttpContext);
+            return await RestHelper<Doc_status_listVM>.GetAsync(uri, headers);
         }
 
     }

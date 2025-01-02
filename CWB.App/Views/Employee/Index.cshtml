@@ -1,0 +1,1037 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<input value="M-E" type="hidden" id="hdn-nav-menu" />
+<div class="content">
+    <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="mb-3">Employee List</h5>
+                    <div class="row">
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label mb-1">Employee No</label>
+                            <input class="form-control form-control-sm" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top"
+                                   id="SearchEmplno">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label mb-1">Employee Name</label>
+                            <input class="form-control form-control-sm" id="SearchEmplName" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label mb-1">Date Of joining</label>
+                            <input class="form-control form-control-sm" id="SearchDateOfJoin" type="date" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label mb-1">Location</label>
+                            <input class="form-control form-control-sm" type="text" id="SearchLoc" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label class="form-label mb-1">Email Id</label>
+                            <input class="form-control form-control-sm" type="text" id="SearchEmailId" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </div>
+                    </div>
+                    <!-- =========== -->
+                    <!-- =========== -->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive table-he-294">
+                                    <table class="table table-sm table-bordered w-100 text-center" id="EmployeeGrid">
+                                        <thead class="  table-info th-sti">
+                                            <tr class="table-border-bottom">
+                                                <th>Employee No</th>
+                                                <th>Employee Name</th>
+                                                <th>Date Of Joining</th>
+                                                <th>Location</th>
+                                                <th>Email Id</th>
+                                                <th width="5%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-10 mt-3">
+                                    @if (permissionResult != null)
+                                    {
+                                        @if (permissionResult.Any(r => r.Menu3 == "Employee Master"))
+                                        {
+                                            var pr = permissionResult.Where(r => r.Menu3 == "Employee Master").FirstOrDefault();
+                                            if (pr.PermissionId >= 3)
+                                            {
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployee" title="" data-plugin="tippy" data-tippy-placement="top">Add New Employee</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#orgChart" title="" data-plugin="tippy" data-tippy-placement="top">Organization Chart</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#roleList" title="" data-plugin="tippy" data-tippy-placement="top">Role List</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#uiList" title="" data-plugin="tippy" data-tippy-placement="top">UI List</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled title="" data-plugin="tippy" data-tippy-placement="top">Add New Employee</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled title="" data-plugin="tippy" data-tippy-placement="top">Organization Chart</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#"disabled title="" data-plugin="tippy" data-tippy-placement="top">Role List</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled title="" data-plugin="tippy" data-tippy-placement="top">UI List</button>
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployee" title="" data-plugin="tippy" data-tippy-placement="top">Add New Employee</button>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#orgChart" title="" data-plugin="tippy" data-tippy-placement="top">Organization Chart</button>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#roleList" title="" data-plugin="tippy" data-tippy-placement="top">Role List</button>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#uiList" title="" data-plugin="tippy" data-tippy-placement="top">UI List</button>
+                                    }
+                                </div>
+                                <div class="col-md-2 mt-3 text-end">
+                                    <!-- <a href="viewmanagedoc.html"><button class="btn btn-sm btn-primary">View / Manage
+                                  Documents</button></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- =========== -->
+                </div>
+                <!-- end card body -->
+            </div>
+            <!-- end card -->
+            <!-- ================= -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>
+@section scripts {
+    <script src="~/js/employee-model.js"></script>
+}
+<div class="modal fade modal-fullscreen-xl-down" id="addEmployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header" style="background-color: #32AADD;">
+                <h4 class="modal-title" id="mySmallModalLabel">Employee Master</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <div class="col-md-12 dott-bord-r">
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-3 ms-3">Head Of The Organization</label>
+                                <input class="form-check-input mt-3 ms-3" id="EPHeadOrg" type="checkbox" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label mb-1">Employee No *</label>
+                                <input class="form-control form-control-sm" id="EPEmpNo" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                                <span id="empno-error"></span>
+                            </div>
+                            <!-- -----------------  -->
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label mb-1">Date of Joining</label>
+                                <input class="form-control form-control-sm" id="EPDateOfJoin" type="date" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <!-- -----------------  -->
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label mb-1">Employee Name</label>
+                                <input class="form-control form-control-sm" id="EPEmpName" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label mb-1">Designation</label>
+                                <select class="form-select form-select-sm" id="EPDes" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label mb-1">Locaiton</label>
+                                <select class="form-select form-select-sm" id="EPloc" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Home Dept</label>
+                                <select class="form-select form-select-sm" id="EPDept" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Roles</label>
+                                <input class="form-control form-control-sm" id="EPEmpRoles" disabled type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                                <input class="form-control form-control-sm" hidden id="EPEmpRoleid" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Cell No</label>
+                                <input class="form-control form-control-sm" id="EPCell" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Email ID</label>
+                                <input class="form-control form-control-sm" id="EPEmail" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                                <span id="email-error"></span>
+                            </div>
+                            @*<div class="col-md-4 mb-2">
+                                </div>*@
+                            @*<div class="col-md-4 mb-2">
+                                    <label class="form-check-label mt-1">User Name</label>
+                                    <input class="form-control form-control-sm" id="EPUserName" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                                    <span id="error-username"></span>
+                                </div>*@
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Password</label>
+                                <input class="form-control form-control-sm" id="EPPassword" type="password" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Confirm Password</label>
+                                <input class="form-control form-control-sm" id="EPCfmPassword" type="password" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                                <span id="error-password"></span>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <label class="form-check-label mt-1">Residential Address</label>
+                                <input class="form-control form-control-sm" id="EPAddress" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Emergency Contact Person</label>
+                                <input class="form-control form-control-sm" id="EPContPer" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-1">Emergency Contac Number</label>
+                                <input class="form-control form-control-sm" id="EPContNo" type="text" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-check-label mt-3">Resigned</label>
+                                <input class="form-check-input mt-3" id="EPResignChk" type="checkbox" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2" id="DateOfLeaveDIv">
+                                <label class="form-check-label mt-1">Date of Leaving </label>
+                                <input class="form-control form-control-sm" id="EPDateOfLeave" type="date" placeholder="xxx / xxx" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-4 mb-2" id="RoleReportDIv">
+                                <label class="form-check-label mt-1">Role Report To </label>
+                                <select class="form-select form-select-sm" id="EPRoleReportTo" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                                </select>
+                            </div>
+                            <!-- -----------------  -->
+                            <!-- -----------------  -->
+                            <div class="col-md-12 mb-2 text-end">
+                                <input type="text" id="EPEmpId" hidden />
+                                <button class="btn btn-sm btn-primary" id="EmployeeSave">Save</button>
+                            </div>
+                            <!-- -----------------  -->
+                            <!-- -----------------  -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-2 ">
+                                <div class="col-md-12">
+                                    <h5>UI Access List</h5>
+                                </div>
+                                <div class="table-responsive table-he-150">
+                                    <table class="table table-sm table-bordered w-100 text-center" id="EmpUiGrid">
+                                        <thead class="table-info th-sti">
+                                            <tr class="table-border-bottom">
+                                                <th>Role</th>
+                                                <th>UI</th>
+                                                <th>View</th>
+                                                <th>Add - Edit</th>
+                                                <th>Delete</th>
+                                                <th>Approve</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ========================= -->
+                    <!-- ========================= -->
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addUiAccessEmpl" title="" data-plugin="tippy" data-tippy-placement="top">Add UI Access</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="orgChart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="mySmallModalLabel">Organization Chart</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <div class="col-md-2 mb-2">
+                        <label class="form-label mb-1">Location</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchOrgloc" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                        <!-- <input class="form-control form-control-sm" type="text" value="Document Type Name" title=""
+                           data-plugin="tippy" data-tippy-placement="top"> -->
+                    </div>
+                    <!-- -----------------  -->
+                    <div class="col-md-2 mb-2">
+                        <label class="form-label mb-1">Department</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchOrgDept" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label class="form-label mb-1">Role</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchOrgRole" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <div class="col-md-2 mb-2" hidden>
+                        <label class="form-label mb-1">Employee</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchOrgEmp" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <div class="col-md-2 mb-2" hidden>
+                        <label class="form-label mb-1">Reporting To Role</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchOrgRRole" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label class="form-label mb-1">Level</label>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="SearchOrgLevel" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="0">--select--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8 mb-2">
+                    </div>
+                    <div class="col-md-2 mb-2" hidden>
+                        <label class="form-label mb-1">Reporting To Empl.</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchOrgREmp" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <!-- -----------------  -->
+                    <!-- ========================= -->
+                    <div class="col-md-12">
+                        <div class="table-responsive table-he-150">
+                            <table class="table table-sm table-bordered w-100 text-center" id="OrgChartGrid">
+                                <thead class="  table-info th-sti">
+                                    <tr class="table-border-bottom">
+                                        <th>Location</th>
+                                        <th>Department</th>
+                                        <th>Role Name</th>
+                                        <th hidden>Employee</th>
+                                        <th hidden>Reporting To</th>
+                                        <th>Level</th>
+                                        <th width="5%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="dropdown float-center">
+                                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">Edit</a>
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- ----------- -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- ========================= -->
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addOrgChart" title="" data-plugin="tippy" data-tippy-placement="top">Add Org Chart Position</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addOrgChart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="fullWidthModalLabel">Org Chart Position Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <label hidden class="form-label col-md-5 mb-2">Head Of Organization</label>
+                    <div hidden class="col-md-7 mb-2">
+                        <input type="checkbox" class="form-check-input" id="OrgHead" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Location</label>
+                    <div class="col-md-7 mb-2">
+                        <select class="form-select form-select-sm" id="OrgLoc" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Department</label>
+                    <div class="col-md-7 mb-2">
+                        <select class="form-select form-select-sm" id="OrgDept" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Role</label>
+                    <div class="col-md-7 mb-2">
+                        <select class="form-select form-select-sm" id="OrgRole" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top" multiple>
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label hidden class="form-label col-md-5 mb-2">Employee in Role</label>
+                    <div hidden class="col-md-7 mb-2">
+                        <select class="form-select form-select-sm" id="OrgEmpl" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <div hidden class="row" id="DivRoleReportTo">
+                        <label class="form-label col-md-5 mb-2">Role Reports To</label>
+                        <div class="col-md-7 mb-2">
+                            <select class="form-select form-select-sm" id="OrgRoleReport" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">xxxxxx</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- ========================= -->
+                    <!-- ========================= -->
+                    <div class="col-md-12 text-end">
+                        <input type="text" id="POrgId" hidden />
+                        <button class="btn btn-sm btn-primary" id="OrgSave">Save</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- body end -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modal-fullscreen-xl-down" id="roleList" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header" style="background-color: #32AADD;">
+                <h4 class="modal-title" id="mySmallModalLabel">Role List</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <!-- -----------------  -->
+                    <!-- ========================= -->
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">Role Name</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchRlRoleName" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">UI Access</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchRlUiAccess" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-responsive" style=" max-height: 500px;  overflow-y: auto;">
+                            <table class="table table-sm table-bordered w-100 text-center" id="RoleGrid">
+                                <thead class="  table-info th-sti">
+                                    <tr class="table-border-bottom">
+                                        <th>Role Name</th>
+                                        <th>UI Access</th>
+                                        <th>View</th>
+                                        <th>Add - Edit</th>
+                                        <th>Delete</th>
+                                        <th>Approve</th>
+                                        <th width="5%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- ========================= -->
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addRole" title="" data-plugin="tippy" data-tippy-placement="top">Add Role</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addRole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="fullWidthModalLabel">Role Add - Edit</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <label class="form-label col-md-2 mb-2">Role Name</label>
+                    <div class="col-md-4 mb-2">
+                        <input class="form-control form-control-sm" id="ARPName" type="text" placeholder="Enter Role Name" title="" data-plugin="tippy" data-tippy-placement="top">
+                        <span id="error-rolename"></span>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Work Done</label>
+                    <div class="col-md-4 mb-2">
+                        <input class="form-control form-control-sm" id="ARPWork" type="text" placeholder="Enter Work Done" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <div class="col-md-12 text-end">
+                        <input type="text" hidden id="ARPId" />
+                        <button class="btn btn-sm btn-primary" id="ARPSave">Save</button>
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 ">
+                        <div class="col-md-12">
+                            <h5>UI Access List</h5>
+                        </div>
+                        <div class="table-responsive table-he-150">
+                            <table class="table table-sm table-bordered w-100 text-center" id="RPGrid">
+                                <thead class="table-info th-sti">
+                                    <tr class="table-border-bottom">
+                                        <th>Menu Level 1</th>
+                                        <th>Menu Level 2</th>
+                                        <th>Menu Level 3 </th>
+                                        <th>Menu Level 4 </th>
+                                        <th>Menu Level 5</th>
+                                        <th>Permission</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Level 1 + Level 2</td>
+                                        <td>y</td>
+                                        <td>y</td>
+                                        <td>y</td>
+                                        <td>n</td>
+                                        <td>
+                                            <div class="dropdown float-center">
+                                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">Edit</a>
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 ">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addUiAccessRole" title="" data-plugin="tippy" data-tippy-placement="top">Add UI Access</button>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- body end -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addUiAccessRole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="fullWidthModalLabel">UI Access</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <label class="form-label col-md-2 mb-2">Menu Level 1</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessRMenu1" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 2</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessRMenu2" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 3</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessRMenu3" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 4</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessRMenu4" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 5</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessRMenu5" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Permission</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessRPermission" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12 text-end">
+                        <input type="text" hidden id="UiAccessRUiId" />
+                        <input type="text" hidden id="UiAccessRRoleid" />
+                        <button class="btn btn-sm btn-primary" id="UiAccessRSave">Save</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+                <!-- end row -->
+                <!-- end row -->
+                <!-- end row -->
+            </div>
+            <!-- body end -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addUiAccessEmpl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="fullWidthModalLabel">UI Access</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <label class="form-label col-md-2 mb-2">Menu Level 1</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessEMenu1" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 2</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessEMenu2" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 3</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessEMenu3" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 4</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessEMenu4" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Menu Level 5</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessEMenu5" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <label class="form-label col-md-2 mb-2">Permission</label>
+                    <div class="col-md-2 mb-2">
+                        <select class="form-select form-select-sm" id="UiAccessEPermission" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="">xxxxxx</option>
+                        </select>
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12 text-end">
+                        <input type="text" hidden id="UiAccessEUiId" />
+                        <input type="text" hidden id="UiAccessERoleId" />
+                        <input type="text" hidden id="UiAccessEEmplid" />
+                        <button class="btn btn-sm btn-primary" id="UiAccessESave">Save</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+                <!-- end row -->
+                <!-- end row -->
+                <!-- end row -->
+            </div>
+            <!-- body end -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modal-fullscreen-xl-down" id="uiList" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header" style="background-color: #32AADD;">
+                <h4 class="modal-title" id="mySmallModalLabel">UI List</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <!-- -----------------  -->
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">Menu Level 1</label>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="SearchUim1" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">Menu Level 2</label>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="SearchUim2" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">Menu Level 3</label>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="SearchUim3" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">Menu Level 4</label>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="SearchUim4" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">Menu Level 5</label>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="SearchUim5" title="" data-plugin="tippy" data-tippy-placement="top">
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label mb-1">UI Type</label>
+                        <input class="form-control form-control-sm" type="text" id="SearchUiType" value="" title=""
+                               data-plugin="tippy" data-tippy-placement="top">
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12">
+                        <div class="table-responsive" style=" max-height: 500px;  overflow-y: auto;">
+                            <table class="table table-sm table-bordered w-100 text-center" id="UiGrid">
+                                <thead class="  table-info th-sti">
+                                    <tr class="table-border-bottom">
+                                        <th>Add</th>
+                                        <th>Menu Level 2</th>
+                                        <th>Menu Level 3</th>
+                                        <th>Menu Level 4</th>
+                                        <th>Menu Level 5</th>
+                                        <th>UI Type</th>
+                                        <th>View</th>
+                                        <th>Add - Edit</th>
+                                        <th>Delete</th>
+                                        <th>Approve</th>
+                                        <th width="5%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- ========================= -->
+                    </div>
+                    <!-- ========================= -->
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addUi" title="" data-plugin="tippy" data-tippy-placement="top">Add UI</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addUi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bxs-modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="fullWidthModalLabel">UI Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- ========================= -->
+                    <label class="form-label col-md-5 mb-2">Top Level</label>
+                    <div class="col-md-7 mb-2">
+                        <input type="checkbox" class="form-check-input" id="UPTopLevel" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Menu / UI Name</label>
+                    <div class="col-md-7 mb-2">
+                        <input type="text" class="form-control form-control-sm" id="UPUiName">
+                        <span id="error-uiname"></span>
+                    </div>
+                    <label class="form-label col-md-5 mb-2">UI Type</label>
+                    <div class="col-md-7 mb-2">
+                        <select class="form-select form-select-sm" aria-label="form-select-sm" id="UPUiType" title="" data-plugin="tippy" data-tippy-placement="top">
+                            <option value="Landing Page">Landing Page</option>
+                            <option value="Popup">Popup</option>
+                            <option value="Tab">Tab</option>
+                            <option value="Command">Command</option>
+                        </select>
+                    </div>
+                    <div id="DivUiPartOf" class="row">
+                        <label class="form-label col-md-5 m-1">Menu / UI Part Of</label>
+                        <div class="col-md-6 m-1">
+                            <select class="form-select form-select-sm" id="UPPartOf" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-12 text-center">
+                            <h5>Permissions Applicale List (Select as required)</h5>
+                        </div>
+                    </div>
+                    <label class="form-label col-md-5 mb-2">View</label>
+                    <div class="col-md-7 mb-2">
+                        <input type="checkbox" id="UPView" class="form-check-input" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Add - Edit</label>
+                    <div class="col-md-7 mb-2">
+                        <input type="checkbox" id="UPAddEdit" class="form-check-input" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Delete</label>
+                    <div class="col-md-7 mb-2">
+                        <input type="checkbox" id="UPDelete" class="form-check-input" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <label class="form-label col-md-5 mb-2">Approve</label>
+                    <div class="col-md-7 mb-2">
+                        <input type="checkbox" id="UPApprove" class="form-check-input" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
+
+                    </div>
+                    <!-- ========================= -->
+                    <!-- ========================= -->
+                    <div class="col-md-12 text-end">
+                        <input type="text" id="UPUiListId" hidden />
+                        <button class="btn btn-sm btn-primary" id="UPSaveUi">Save</button>
+                    </div>
+                    <!-- ========================= -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- body end -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<template id="EmployeeGridRow">
+    <tr>
+        <td>{employee_No}</td>
+        <td>{employee_name}</td>
+        <td>{dateOfJoinStr}</td>
+        <td>{location}</td>
+        <td>{email}</td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Employee Master"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Employee Master").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addEmployee" data-employeeid="{employee_ID}"
+                                   data-employeeno="{employee_No}" data-emplname="{employee_name}" data-rolereport="{roleReportTo}" data-headoforg="{headOfDepartment}" data-eroleids="{roleIds}"
+                                   data-dept="{home_Dept_Id}" data-desg="{designation_Id}" data-cell="{phone}" data-address="{residential_Address}" data-uname="{userName}" data-passwd="{password}"
+                                   data-email="{email}" data-dateofjoin="{date_Of_Joining}" data-chkresign="{employee_Resigned}" data-dateofresigning="{date_Of_Resigning}"
+                                   data-plantid="{plant_Id}" data-emergcontactno="{emerg_Contact_No}" data-emergcontactname="{emerg_Contact_Name}">Edit</a>
+                                <!-- item-->
+                            }
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" class="dropdown-item" data-employeeid="{employee_ID}" onclick="DeleteEmployee(this)">Delete</a>
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addEmployee" data-employeeid="{employee_ID}"
+                           data-employeeno="{employee_No}" data-emplname="{employee_name}" data-rolereport="{roleReportTo}" data-headoforg="{headOfDepartment}" data-eroleids="{roleIds}"
+                           data-dept="{home_Dept_Id}" data-desg="{designation_Id}" data-cell="{phone}" data-address="{residential_Address}" data-uname="{userName}" data-passwd="{password}"
+                           data-email="{email}" data-dateofjoin="{date_Of_Joining}" data-chkresign="{employee_Resigned}" data-dateofresigning="{date_Of_Resigning}"
+                           data-plantid="{plant_Id}" data-emergcontactno="{emerg_Contact_No}" data-emergcontactname="{emerg_Contact_Name}">Edit</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item" data-employeeid="{employee_ID}" onclick="DeleteEmployee(this)">Delete</a>
+                    }
+                </div>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<template id="OrgChartGridRow">
+    <tr>
+        <td>{location}</td>
+        <td>{department}</td>
+        <td>{roleName}</td>
+        <td hidden>{employee}</td>
+        <td hidden>{reporting}</td>
+        <td>{level}</td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addOrgChart" data-orgid="{org_ChartId}"
+                       data-roleid="{role_NameId}" data-dept="{dept_ID}" data-toplevel="{first_node}"
+                       data-reportto="{reporting_to}" data-roleids="{roleIds}" data-orgchartids="{orgChartIds}"
+                       data-employee="{employee_Id}"
+                       data-plantid="{location_id}">Edit</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-orgid="{org_ChartId}" data-dept="{dept_ID}" onclick="DeleteOrgChart(this)">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<template id="UiGridRow">
+    <tr>
+        <td>{menu1}</td>
+        <td>{menu2}</td>
+        <td>{menu3}</td>
+        <td>{menu4}</td>
+        <td>{menu5}</td>
+        <td>{uI_Type}</td>
+        <td>{view_Allowed}</td>
+        <td>{add_Edit_Allowed}</td>
+        <td>{delete_Allowed}</td>
+        <td>{approval_Allowed}</td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addUi" data-uilistid="{uiListId}"
+                       data-toplevel="{topLevelId}" data-uitype="{uI_Type}"
+                       data-uiname="{uI_Name_Label}"
+                       data-uipartto="{uI_Part_linked_to}"
+                       data-approveallow="{approval_Allowed}" data-viewallow="{view_Allowed}" data-addedit="{add_Edit_Allowed}"
+                       data-deleteallow="{delete_Allowed}">Edit</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-uilistid="{uiListId}" onclick="DeleteUiList(this)">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<template id="RoleGridRow">
+    <tr>
+        <td>{roleName}</td>
+        <td>{uiLevel}</td>
+        <td>{view_Allowed}</td>
+        <td>{add_Edit_Allowed}</td>
+        <td>{delete_Allowed}</td>
+        <td>{approval_Allowed}</td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addRole" data-roleid="{roleId}"
+                       data-rolename="{roleName}" data-workdone="{workDone}">Edit</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-uilistid="{roleId}" onclick="DeleteRoleList(this)">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<template id="RPGridRow">
+    <tr>
+        <td>{menu1}</td>
+        <td>{menu2}</td>
+        <td>{menu3}</td>
+        <td>{menu4}</td>
+        <td>{menu5}</td>
+        <td>{permission}</td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addUiAccessRole" data-uilistid="{role_Ui_ListId}"
+                       data-roleid="{roleId}" data-uid="{ui_Id}" data-menuo="{menu1}" data-menut="{menu2}" data-menuth="{menu3}" data-menuf="{menu4}" data-menufi="{menu5}"
+                       data-permissionid="{permissionId}"
+                       data-uilevel="{uiLevel}">Edit</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-uilistid="{role_Ui_ListId}" onclick="DeleteRoleUiList(this)">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<template id="EmpUiGridRow">
+    <tr>
+        <td>{roleName}</td>
+        <td>{uiLevel}</td>
+        <td>{view_Allowed}</td>
+        <td>{add_Edit_Allowed}</td>
+        <td>{delete_Allowed}</td>
+        <td>{approval_Allowed}</td>
+        <td>
+            <div class="dropdown float-center">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addUiAccessEmpl" data-uilistid="{role_Ui_ListId}"
+                       data-roleid="{roleId}" data-uid="{ui_Id}" data-menuo="{menu1}" data-menut="{menu2}" data-menuth="{menu3}" data-menuf="{menu4}" data-menufi="{menu5}"
+                       data-permissionid="{permissionId}"
+                       data-uilevel="{uiLevel}">Edit</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item" data-uilistid="{empl_Role_ListId}" onclick="DeleteEmplUiList(this)">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</template>

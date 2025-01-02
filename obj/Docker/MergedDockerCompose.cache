@@ -7,7 +7,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:80
-    image: shankar84kl/cwbapigateway
+    image: cwbapigateway
     networks:
       cwb-network: null
     ports:
@@ -43,7 +43,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: shankar84kl/cwbapp
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbapp
     networks:
       cwb-network: null
     ports:
@@ -95,7 +96,8 @@ services:
         required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: shankar84kl/cwbbusinessprocesses
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbbusinessprocesses
     links:
       - db
     networks:
@@ -131,7 +133,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: shankar84kl/cwbcompanysettings
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbcompanysettings
     links:
       - db
     networks:
@@ -176,7 +179,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: shankar84kl/cwbidentity
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbidentity
     links:
       - db
     networks:
@@ -220,7 +224,8 @@ services:
         required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: shankar84kl/cwbmasters
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbmasters
     links:
       - db
     networks:
@@ -256,7 +261,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: shankar84kl/cwbmodules
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbmodules
     links:
       - db
     networks:
@@ -300,7 +306,8 @@ services:
         required: true
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: shankar84kl/cwbproductionplanwo
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbproductionplanwo
     links:
       - db
     networks:
@@ -336,7 +343,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: shankar84kl/cwbsimulation
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbsimulation
     links:
       - db
     networks:
@@ -381,7 +389,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: shankar84kl/cwbtenant
+      HOST_DEFAULT_SWITCH_IP: 192.168.43.56
+    image: cwbtenant
     links:
       - db
     networks:

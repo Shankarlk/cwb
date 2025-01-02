@@ -53,10 +53,10 @@ namespace CWB.CompanySettings.Controllers
         [Authorize(Roles = Roles.ADMIN)]
         public async Task<IActionResult> PostPlant([FromBody] PlantVM plantVM)
         {
-            var validator = new PlantVMValidator();
-            var validationResult = await validator.ValidateAsync(plantVM);
-            if (!validationResult.IsValid)
-                return BadRequest(validationResult.Errors);
+            //var validator = new PlantVMValidator();
+            //var validationResult = await validator.ValidateAsync(plantVM);
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult.Errors);
             //check if duplicate
             var plantExist = _plantService.CheckPlantExisit(new CheckPlantVM
             {

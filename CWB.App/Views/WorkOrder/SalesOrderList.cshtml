@@ -1,10 +1,21 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Sales Order List";
 }
 <div class="content">
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -238,25 +249,62 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item"
-                       data-customerorderid={customerOrderId}
-                       data-salesorderid={salesOrderId}
-                       data-scheduleid={scheduleId}
-                       data-requiredbydatestr='{requiredByDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-comment='{comment}'
-                       data-partid={partId}
-                       data-salesorder="Y"
-                       data-bs-toggle="modal"
-                       data-bs-target="#Edit-SalesOrder">Edit</a>
-                    <a href="javascript:void(0);" class="dropdown-item"
-                       data-bs-toggle="modal" data-partno='{partNo}'
-                       data-customerorderid={customerOrderId}
-                       data-salesorder="Y" data-salesorderid={salesOrderId}
-                       data-bs-target="#po-hold">
-                        Hold /
-                        Resume
-                    </a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "SO List / View"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "SO List / View").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" class="dropdown-item"
+                                   data-customerorderid={customerOrderId}
+                                   data-salesorderid={salesOrderId}
+                                   data-scheduleid={scheduleId}
+                                   data-requiredbydatestr='{requiredByDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-comment='{comment}'
+                                   data-partid={partId}
+                                   data-salesorder="Y"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#Edit-SalesOrder">Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"
+                                   data-bs-toggle="modal" data-partno='{partNo}'
+                                   data-customerorderid={customerOrderId}
+                                   data-salesorder="Y" data-salesorderid={salesOrderId}
+                                   data-bs-target="#po-hold">
+                                    Hold /
+                                    Resume
+                                </a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" class="dropdown-item"
+                           data-customerorderid={customerOrderId}
+                           data-salesorderid={salesOrderId}
+                           data-scheduleid={scheduleId}
+                           data-requiredbydatestr='{requiredByDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-comment='{comment}'
+                           data-partid={partId}
+                           data-salesorder="Y"
+                           data-bs-toggle="modal"
+                           data-bs-target="#Edit-SalesOrder">Edit</a>
+                        <a href="javascript:void(0);" class="dropdown-item"
+                           data-bs-toggle="modal" data-partno='{partNo}'
+                           data-customerorderid={customerOrderId}
+                           data-salesorder="Y" data-salesorderid={salesOrderId}
+                           data-bs-target="#po-hold">
+                            Hold /
+                            Resume
+                        </a>
+                    }
 
                 </div>
             </div>

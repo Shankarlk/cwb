@@ -29,6 +29,7 @@ namespace CWB.Masters.Services.DocumentManagement
         Task<UiListVM> PostUiName(UiListVM uiList);
         Task<RefDocReasonListVM> PostDocReason(RefDocReasonListVM uiList);
         Task<DocStatusVM> GetDocStatus(long statusid);
+        Task<Doc_status_listVM> GetDocListStatus(long statusid);
         Task<bool> CheckPartNoInDocList(long partId, long tenantId);
         Task<bool> DeleteDocType(long doctypeId, long tenantId);
         Task<bool> DeleteCustRetData(long custRetId, long tenantId);

@@ -9,6 +9,7 @@ namespace CWB.Masters.Domain.DocumentManagement
     public class DocumentType : BaseEntity
     {
         public string DocumentName { get; set; }
+        public int Approval_Reqd { get; set; }
         public long ExtnId { get; set; }
         public char AllowDelete { get; set; }
         public int DocuCategory { get; set; }

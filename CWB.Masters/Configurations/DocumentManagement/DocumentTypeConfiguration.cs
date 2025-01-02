@@ -39,6 +39,10 @@ namespace CWB.Masters.Configurations.DocumentManagement
                 .HasColumnName("DataReqdByCust")
                 .IsRequired();
             builder
+                .Property(c => c.Approval_Reqd)
+                .HasColumnName("Approval_Reqd")
+                .IsRequired();
+            builder
                 .Property(c => c.DefaultRetPerMon)
                 .HasColumnName("DefaultRetPerMon")
                 .IsRequired();

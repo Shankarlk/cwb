@@ -10,6 +10,7 @@ namespace CWB.Masters.ViewModels.DocumentManagement
         public long DocumentTypeId { get; set; }
         public string DocumentName { get; set; }
         public long ExtnId { get; set; }
+        public int Approval_Reqd { get; set; }
         public char AllowDelete { get; set; }
         public int DocuCategory { get; set; }
         public char DataReqdByCust { get; set; }

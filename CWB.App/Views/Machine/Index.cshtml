@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Machine List";
 }
 @model IEnumerable<CWB.App.Models.Machine.MachineListVM>
@@ -7,6 +9,15 @@
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -42,7 +53,7 @@
                         </div>
                         <!-- -----------------  -->
                         <div class="col-md-3 mb-2">
-                            <button class="btn btn-sm btn-primary" data-plugin="tippy" data-tippy-placement="top" data-tippy="" data-original-title="" id="clearMachineBtn">Clear Search Fields </button>          
+                            <button class="btn btn-sm btn-primary" data-plugin="tippy" data-tippy-placement="top" data-tippy="" data-original-title="" id="clearMachineBtn">Clear Search Fields </button>
                         </div>
                         <!-- ======================== -->
                     </div>
@@ -76,9 +87,29 @@
                                                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <!-- item-->
-                                                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-machine" data-id="@machine.MachineId" class="dropdown-item">Edit</a>
-                                                                <!-- item-->
-                                                                <a href="javascript:void(0);" data-id="@machine.MachineId" class="dropdown-item">Delete</a>
+                                                                @if (permissionResult != null)
+                                                                {
+                                                                    @if (permissionResult.Any(r => r.Menu3 == "Add Machine Details"))
+                                                                    {
+                                                                        var pr = permissionResult.Where(r => r.Menu3 == "Add Machine Details").FirstOrDefault();
+                                                                        if (pr.PermissionId >= 3)
+                                                                        {
+                                                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-machine" data-id="@machine.MachineId" class="dropdown-item">Edit</a>
+                                                                        }
+                                                                        if (pr.PermissionId >= 4)
+                                                                        {
+                                                                            <a href="javascript:void(0);" data-id="@machine.MachineId" class="dropdown-item">Delete</a>
+                                                                        }
+                                                                    }
+
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-machine" data-id="@machine.MachineId" class="dropdown-item">Edit</a>
+                                                                    <!-- item-->
+                                                                    <a href="javascript:void(0);" data-id="@machine.MachineId" class="dropdown-item">Delete</a>
+                                                                }
                                                             </div>
                                                         </div>
                                                     </td>
@@ -118,9 +149,29 @@
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-machine" data-id="{machineId}" class="dropdown-item">Edit</a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" data-id="{machineId}" class="dropdown-item">Delete</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Add Machine Details"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Add Machine Details").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-machine" data-id="{machineId}" class="dropdown-item">Edit</a>
+                            }
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" data-id="{machineId}" class="dropdown-item">Delete</a>
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-machine" data-id="{machineId}" class="dropdown-item">Edit</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" data-id="{machineId}" class="dropdown-item">Delete</a>
+                    }
                 </div>
             </div>
         </td>

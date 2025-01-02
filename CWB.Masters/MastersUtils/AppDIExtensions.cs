@@ -71,6 +71,7 @@ namespace CWB.Masters.MastersUtils
             services.AddTransient<IRefDocReasonListRepository, RefDocReasonListRepository>();
             services.AddTransient<IRefDocLogRepository, RefDocLogRepository>();
             services.AddTransient<IRoutingStatusLogRepository, RoutingStatusLogRepository>();
+            services.AddTransient<IDoc_status_listRepository, Doc_status_listRepository>();
             services.AddTransient<IDocumentManagementService, DocumentManagementService>();
         }
     }

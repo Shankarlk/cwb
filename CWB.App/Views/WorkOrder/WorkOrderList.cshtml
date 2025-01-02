@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Work Order List";
 }
 
@@ -8,6 +10,15 @@
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -20,10 +31,10 @@
                                        data-plugin="tippy" data-tippy-placement="top"
                                        placeholder="Enter Part No" id="searchPartNo">
                                 @*<button type="button" id="#" class="btn btn-sm btn-outline-dark"
-                                            title="Search Part No" data-plugin="tippy" data-tippy-placement="top"
-                                            data-bs-toggle="modal" data-bs-target="#">
-                                        <i class="ri-search-2-line serch-part-btn1"></i>
-                                    </button>*@
+                                    title="Search Part No" data-plugin="tippy" data-tippy-placement="top"
+                                    data-bs-toggle="modal" data-bs-target="#">
+                                <i class="ri-search-2-line serch-part-btn1"></i>
+                            </button>*@
                             </div>
                         </div>
                         <!-- -----------------  -->
@@ -110,8 +121,8 @@
                         </div>
                         <!-- =======================  -->
                         @*<div class="col-md-12 text-end">
-                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#popup3">Build to Stock</button>
-                        </div>*@
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#popup3">Build to Stock</button>
+                    </div>*@
                         <!-- =========== -->
                     </div>
                     <!-- =========== -->
@@ -239,14 +250,14 @@
                                 <option value="">==========</option>
                             </select>
                         </div>
-                        </div>
-                        <!-- ===============  -->
-                        <div class="col-md-12 text-end">
-                            <button class="btn btn-primary btn-sm" id="updateWO">Generate WO</button>
-                        </div>
-                        <!-- ===============  -->
                     </div>
+                    <!-- ===============  -->
+                    <div class="col-md-12 text-end">
+                        <button class="btn btn-primary btn-sm" id="updateWO">Generate WO</button>
+                    </div>
+                    <!-- ===============  -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -472,7 +483,7 @@
                             <label class="form-label"> Routing</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleRouting" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -480,7 +491,7 @@
                             <label class="form-label"> Starting Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleStartOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -488,25 +499,25 @@
                             <label class="form-label"> Ending Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleEndOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
-                      </div>
-                        <!-- ========================= -->
-                        <hr>
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="woid" hidden />
-                            <input type="text" id="soid" hidden />
-                            <input type="text" id="partId" hidden />
-                            <input type="text" id="partType" hidden />
-                            <input type="text" id="p3Status" hidden />
-                            <input type="text" id="p3ReloadOption" hidden />
-                            <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+                    <!-- ========================= -->
+                    <hr>
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="woid" hidden />
+                        <input type="text" id="soid" hidden />
+                        <input type="text" id="partId" hidden />
+                        <input type="text" id="partType" hidden />
+                        <input type="text" id="p3Status" hidden />
+                        <input type="text" id="p3ReloadOption" hidden />
+                        <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -595,7 +606,7 @@
                             <label class="form-label"> Routing</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualRouting" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -603,7 +614,7 @@
                             <label class="form-label"> Starting Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualStartOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -611,24 +622,24 @@
                             <label class="form-label"> Ending Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualEndOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
-                        </div>
-                        <!-- ========================= -->
-                        <hr>
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="Manualwoid" hidden />
-                            <input type="text" id="Manualsoid" hidden />
-                            <input type="text" id="ManualpartId" hidden />
-                            <input type="text" id="ManualpartType" hidden />
-                            <input type="text" id="ManualStatus" hidden />
-                            <button class="btn btn-primary btn-sm" id="ManualSaveWo">Generate WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+                    <!-- ========================= -->
+                    <hr>
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="Manualwoid" hidden />
+                        <input type="text" id="Manualsoid" hidden />
+                        <input type="text" id="ManualpartId" hidden />
+                        <input type="text" id="ManualpartType" hidden />
+                        <input type="text" id="ManualStatus" hidden />
+                        <button class="btn btn-primary btn-sm" id="ManualSaveWo">Generate WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -718,7 +729,7 @@
                             <label class="form-label"> Routing</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewRouting" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -726,7 +737,7 @@
                             <label class="form-label"> Starting Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewStartOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -734,25 +745,25 @@
                             <label class="form-label"> Ending Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewEndOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
-                        </div>
-                        <!-- ========================= -->
-                        <hr>
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="Newwoid" hidden />
-                            <input type="text" id="Newsoid" hidden />
-                            <input type="text" id="NewpartId" hidden />
-                            <input type="text" id="NewpartType" hidden />
-                            <input type="text" id="NewWoStatus" hidden />
-                            <input id="p3NReloadOption" type="text" hidden>
-                            <button class="btn btn-primary btn-sm" id="NewSaveWo">Generate WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+                    <!-- ========================= -->
+                    <hr>
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="Newwoid" hidden />
+                        <input type="text" id="Newsoid" hidden />
+                        <input type="text" id="NewpartId" hidden />
+                        <input type="text" id="NewpartType" hidden />
+                        <input type="text" id="NewWoStatus" hidden />
+                        <input id="p3NReloadOption" type="text" hidden>
+                        <button class="btn btn-primary btn-sm" id="NewSaveWo">Generate WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -840,62 +851,61 @@
                                     data-plugin="tippy" data-tippy-placement="top" id="popup7EndingOpNo">
                             </select>
                         </div>
-                       </div>
-
-                        <!-- ===============  -->
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="Popup7woid" hidden />
-                            <input type="text" id="Popup7soid" hidden />
-                            <input type="text" id="Popup7partId" hidden />
-                            <input type="text" id="Popup7partType" hidden />
-                            <input type="text" id="Popup7WoStatus" hidden />
-                            <button class="btn btn-primary btn-sm" id="popup7SaveWo">Update WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+
+                    <!-- ===============  -->
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="Popup7woid" hidden />
+                        <input type="text" id="Popup7soid" hidden />
+                        <input type="text" id="Popup7partId" hidden />
+                        <input type="text" id="Popup7partType" hidden />
+                        <input type="text" id="Popup7WoStatus" hidden />
+                        <button class="btn btn-primary btn-sm" id="popup7SaveWo">Update WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-----popup7----->
-
 <!--------------------WO Hold-------------------------->
 <div class="modal fade" id="wohold" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content bxs-modal">
             @*<form id="poholdform" onclick="return false;">*@
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">WO Hold / Resume *</h5>
-                    <button type="button" id="btnholdclose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">WO Hold / Resume *</h5>
+                <button type="button" id="btnholdclose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-                    @*<textarea id="POHComment" name="Comment" class="form-control" placeholder="Enter Comments"></textarea>*@
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">WO Ref</label>
-                        <input class="form-control form-control-sm" type="text" title="" data-plugin="tippy"
-                               data-tippy-placement="top" id="HoldWoNumber" readonly>
-                    </div>
-                    
+                @*<textarea id="POHComment" name="Comment" class="form-control" placeholder="Enter Comments"></textarea>*@
+                <div class="col-md-4 mb-2">
+                    <label class="form-label">WO Ref</label>
+                    <input class="form-control form-control-sm" type="text" title="" data-plugin="tippy"
+                           data-tippy-placement="top" id="HoldWoNumber" readonly>
                 </div>
-                <input type="text" hidden id="" name="POLogId" value="0" />
-                <input type="text" hidden id="HoldWorkOrderId" />
-                <input type="text" hidden id="HoldSalesOrderId"  />
-                <input type="text" id="HoldPlanWoQnty" hidden />
-                <input type="text" id="HoldPartId" hidden />
-                <input type="text" id="HoldPartType" hidden />
-                <input type="text" id="HolWoComlDt" hidden />
-                <input type="text" id="HoldRoutingId" hidden />
-                <input type="text" id="HoldStartingOpNo" hidden />
-                <input type="text" id="HoldEndingOpNo" hidden />
-                <input type="text" id="HoldBuildToStock" hidden />
-                <input type="text" id="HoldWoStatus" hidden />
-                <div class="modal-footer">
-                    <button id="BtnWOHold" type="button" class="btn btn-primary btn-sm">Save</button>
-                </div>
+
+            </div>
+            <input type="text" hidden id="" name="POLogId" value="0" />
+            <input type="text" hidden id="HoldWorkOrderId" />
+            <input type="text" hidden id="HoldSalesOrderId" />
+            <input type="text" id="HoldPlanWoQnty" hidden />
+            <input type="text" id="HoldPartId" hidden />
+            <input type="text" id="HoldPartType" hidden />
+            <input type="text" id="HolWoComlDt" hidden />
+            <input type="text" id="HoldRoutingId" hidden />
+            <input type="text" id="HoldStartingOpNo" hidden />
+            <input type="text" id="HoldEndingOpNo" hidden />
+            <input type="text" id="HoldBuildToStock" hidden />
+            <input type="text" id="HoldWoStatus" hidden />
+            <div class="modal-footer">
+                <button id="BtnWOHold" type="button" class="btn btn-primary btn-sm">Save</button>
+            </div>
             @*</form>*@
         </div>
     </div>
@@ -985,54 +995,117 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <!-- item-->
-                   <a href="javascript:void(0);" onclick="EditWo(this)" class="dropdown-item"
-                       data-workorderid={woid}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partdesc={partDesc}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-reloadoption={reloadOption}
-                       data-wostatus={status}>Edit</a>
-                    <a href="javascript:void(0);"
-                       class="dropdown-item" data-bs-toggle="modal"
-                       data-workorderid={woid}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partdesc={partDesc}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-wostatus={status}
-                       data-bs-target="#popup7">WO Source</a>
-                    <a href="javascript:void(0);"
-                       class="dropdown-item" data-bs-toggle="modal"
-                       data-workorderid={woid}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partdesc={partDesc}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-wostatus={status}
-                       data-buildtostock={buildToStock}
-                       data-routingid={routingId}
-                       data-startingopno={startingOpNo}
-                       data-endingopno={endingOpNo}
-                       data-bs-target="#wohold">Hold / Resume</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Work Order List View"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Work Order List View").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" onclick="EditWo(this)" class="dropdown-item"
+                                   data-workorderid={woid}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partdesc={partDesc}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-reloadoption={reloadOption}
+                                   data-wostatus={status}>Edit</a>
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item" data-bs-toggle="modal"
+                                   data-workorderid={woid}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partdesc={partDesc}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-wostatus={status}
+                                   data-bs-target="#popup7">WO Source</a>
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item" data-bs-toggle="modal"
+                                   data-workorderid={woid}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partdesc={partDesc}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-wostatus={status}
+                                   data-buildtostock={buildToStock}
+                                   data-routingid={routingId}
+                                   data-startingopno={startingOpNo}
+                                   data-endingopno={endingOpNo}
+                                   data-bs-target="#wohold">Hold / Resume</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" onclick="EditWo(this)" class="dropdown-item"
+                           data-workorderid={woid}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partdesc={partDesc}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-reloadoption={reloadOption}
+                           data-wostatus={status}>Edit</a>
+                        <a href="javascript:void(0);"
+                           class="dropdown-item" data-bs-toggle="modal"
+                           data-workorderid={woid}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partdesc={partDesc}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-wostatus={status}
+                           data-bs-target="#popup7">WO Source</a>
+                        <a href="javascript:void(0);"
+                           class="dropdown-item" data-bs-toggle="modal"
+                           data-workorderid={woid}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partdesc={partDesc}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-wostatus={status}
+                           data-buildtostock={buildToStock}
+                           data-routingid={routingId}
+                           data-startingopno={startingOpNo}
+                           data-endingopno={endingOpNo}
+                           data-bs-target="#wohold">Hold / Resume</a>
+                        <a href="javascript:void(0);"
+                           class="dropdown-item">Delete</a>
+                    }
                     <!-- item-->
-                    <a href="javascript:void(0);"
-                       class="dropdown-item">Delete</a>
                 </div>
             </div>
         </td>

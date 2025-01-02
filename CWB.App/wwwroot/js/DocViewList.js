@@ -69,6 +69,49 @@ $(document).ready(function () {
             $(this).toggle($(this.children[11]).text().toLowerCase().indexOf(selectedValue) > -1)
         });// show only the filtered rows
     });
+    $("#SearchRefDocCat").change(function () {
+        var selval = $("#SearchRefDocCat").val();
+        if (selval != "0") {
+            var data = $("#SearchRefDocCat option:selected").text();
+            var value = data.toLowerCase();
+            $("#DocViewListGrid tbody tr").filter(function () {
+                $(this).toggle($(this.children[2]).text().toLowerCase().indexOf(value) > -1)
+            });
+
+        } else {
+            $("#mptable tbody tr").show();
+        }
+    });
+    // Function to filter rows based on the date range
+    function filterRowsByDateRange() {
+        const fromDateInput = $("#SearchApprovUploadFrom").val();
+        const toDateInput = $("#SearchApprovUploadTo").val();
+
+        // Format the input dates (assuming column data is in 'dd-MM-yyyy' format)
+        const fromDate = fromDateInput ? new Date(fromDateInput) : null;
+        const toDate = toDateInput ? new Date(toDateInput) : null;
+
+        $("#DocViewListGrid tbody tr").filter(function () {
+            const columnDateText = $(this.children[6]).text().trim(); // Get the date from column 3
+            const columnDateParts = columnDateText.split("-"); // Assuming 'dd-MM-yyyy'
+            const columnDate = new Date(`${columnDateParts[2]}-${columnDateParts[1]}-${columnDateParts[0]}`); // Convert to 'yyyy-MM-dd'
+
+            let isVisible = true;
+
+            if (fromDate) {
+                isVisible = isVisible && columnDate >= fromDate;
+            }
+            if (toDate) {
+                isVisible = isVisible && columnDate <= toDate;
+            }
+
+            $(this).toggle(isVisible);
+        });
+    }
+
+    // Attach the change event listeners to both date inputs
+    $("#SearchApprovUploadFrom, #SearchApprovUploadTo").on("change", filterRowsByDateRange);
+
 
     $('#SearchDataShareCust').on('click', function () {
         if ($(this).is(':checked')) {
@@ -104,10 +147,14 @@ $(document).ready(function () {
         $("#SearchUploadFrom").val('');
         $("#SearchUploadTo").val('');
         $("#SearchWo").val('');
+        $("#SearchApprovBy").val('');
+        $("#SearchApprovUploadFrom").val('');
+        $("#SearchApprovUploadTo").val('');
         $("#SearchDataShareCust").prop('checked', false);
         $("#SearchArchive").prop('checked', false);
         var SearchDocCat = $('#SearchDocCat');
         SearchDocCat.val(0).trigger('change');
+        $("#SearchRefDocCat").val(0);
     });
     $("#SearchDocTypeName").on("keyup", function () {
         var value = $(this).val().toLowerCase();

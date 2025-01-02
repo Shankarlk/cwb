@@ -25,13 +25,14 @@ namespace CWB.Masters.Services.DocumentManagement
         private readonly IDocListRepository _docListRepository;
         private readonly IUiListrepository _uiListrepository;
         private readonly IDocStatusRepository _docStatusRepository;
+        private readonly IDoc_status_listRepository _docStatusListRepository;
         private readonly IRefDocReasonListRepository _reasonListRepository;
         private readonly IRefDocLogRepository _refDocLogRepository;
         public DocumentManagementService(ILoggerManager logger, IMapper mapper,IUnitOfWork unitOfWork, IDocumentTypeRepository documentTypeRepository,
             ICustRetnDataRepository custRetnDataRepository,IExtnInfoRepository extnInfoRepository, IDocUploadRepository docUploadRepository, IDocViewRepository docViewRepository,
             IDocCategoryRepository docCategoryRepository, IDocListRepository docListRepository, IDocStatusRepository docStatusRepository
             , IUiListrepository uiListrepository, IRefDocReasonListRepository reasonListRepository,
-            IRefDocLogRepository refDocLogRepository) //
+            IRefDocLogRepository refDocLogRepository,IDoc_status_listRepository doc_Status_ListRepository) //
         {
             _logger = logger;
             _mapper = mapper;
@@ -47,6 +48,7 @@ namespace CWB.Masters.Services.DocumentManagement
             _docStatusRepository = docStatusRepository;
             _reasonListRepository = reasonListRepository;
             _refDocLogRepository = refDocLogRepository;
+            _docStatusListRepository = doc_Status_ListRepository;
         }
         public async Task<IEnumerable<DocumentTypeVM>> GetDocumentType(long tenantId)
         {
@@ -331,6 +333,9 @@ namespace CWB.Masters.Services.DocumentManagement
                 doclistupdate.DocumentTypeId = postdoclist.DocumentTypeId;
                 doclistupdate.FileName = postdoclist.FileName;
                 doclistupdate.Comments = postdoclist.Comments;
+                doclistupdate.AppvStatus = postdoclist.AppvStatus;
+                doclistupdate.Approved_by = postdoclist.Approved_by;
+                doclistupdate.Appv_Date_time = postdoclist.Appv_Date_time;
                 doclistupdate.DeletionDate = postdoclist.DeletionDate;
                 doclistupdate.CreationDate = DateTime.Now;
                 postdoclist = await _docListRepository.UpdateAsync(doclistupdate.Id, doclistupdate);
@@ -531,6 +536,15 @@ namespace CWB.Masters.Services.DocumentManagement
                 return new DocStatusVM();
             }
             return _mapper.Map<DocStatusVM>(docStatus);
+        }
+        public async Task<Doc_status_listVM> GetDocListStatus(long statusid)
+        {
+            var docStatus = await _docStatusListRepository.SingleOrDefaultAsync(x => x.Id == statusid);
+            if (docStatus == null)
+            {
+                return new Doc_status_listVM();
+            }
+            return _mapper.Map<Doc_status_listVM>(docStatus);
         }
 
         public async Task<bool> DeleteDocType(long doctypeId, long tenantId)

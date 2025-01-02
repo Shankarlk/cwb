@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Operation List";
 }
 
@@ -9,6 +11,15 @@
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
+                    @{
+                        List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                        var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                        if (permissionsJson != null)
+                        {
+                            permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                        }
+                    }
                     <h5 class="pb-1 mb-2 mt-1">Operation List</h5>
                     <div class="row">
                         <label class="form-label col-md-2 mb-2"> Operation Name</label>
@@ -50,9 +61,29 @@
                                                         <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <!-- item-->
-                                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation" data-id="@operation.OperationId" class="dropdown-item">Edit</a>
-                                                            <!-- item-->
-                                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation" data-id="@operation.OperationId" class="dropdown-item">Delete</a>
+                                                            @if (permissionResult != null)
+                                                            {
+                                                                @if (permissionResult.Any(r => r.Menu3 == "Edit Operation"))
+                                                                {
+                                                                    var pr = permissionResult.Where(r => r.Menu3 == "Edit Operation").FirstOrDefault();
+                                                                    if (pr.PermissionId >= 3)
+                                                                    {
+                                                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation" data-id="@operation.OperationId" class="dropdown-item">Edit</a>
+                                                                        <!-- item-->}
+                                                                    if (pr.PermissionId >= 4)
+                                                                    {
+                                                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation" data-id="@operation.OperationId" class="dropdown-item">Delete</a>
+                                                                    }
+                                                                }
+
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation" data-id="@operation.OperationId" class="dropdown-item">Edit</a>
+                                                                <!-- item-->
+                                                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation" data-id="@operation.OperationId" class="dropdown-item">Delete</a>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </td>
@@ -62,7 +93,27 @@
                                 </table>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-id="0" data-bs-target="#dialog-operation" title="Select to create a new Operation" data-plugin="tippy" data-tippy-placement="top">Add Operation</button>
+                                @if (permissionResult != null)
+                                {
+                                    @if (permissionResult.Any(r => r.Menu3 == "Edit Operation"))
+                                    {
+                                        var pr = permissionResult.Where(r => r.Menu3 == "Edit Operation").FirstOrDefault();
+                                        if (pr.PermissionId >= 3)
+                                        {
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-id="0" data-bs-target="#dialog-operation" title="Select to create a new Operation" data-plugin="tippy" data-tippy-placement="top">Add Operation</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-id="0" data-bs-target="#" title="Select to create a new Operation" data-plugin="tippy" data-tippy-placement="top" disabled>Add Operation</button>
+                                        }
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-id="0" data-bs-target="#dialog-operation" title="Select to create a new Operation" data-plugin="tippy" data-tippy-placement="top">Add Operation</button>
+                                }
                             </div>
                         </div>
 
@@ -92,8 +143,33 @@
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation"
-                       data-id="{operationId}" class="dropdown-item">Edit</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Edit Operation"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Edit Operation").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation"
+                                   data-id="{operationId}" class="dropdown-item">Edit</a>
+                                <!-- item-->
+                            }
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation"
+                                   data-id="{operationId}" class="dropdown-item">Delete</a>
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation"
+                           data-id="{operationId}" class="dropdown-item">Edit</a>
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation"
+                           data-id="{operationId}" class="dropdown-item">Delete</a>
+                    }
                     <!-- item-->
                     <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-operation"
                        data-id="{operationId}" class="dropdown-item">Delete</a>

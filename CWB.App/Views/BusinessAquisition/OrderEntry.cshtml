@@ -1,7 +1,19 @@
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 <div class="content">
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -333,11 +345,39 @@
                                     </table>
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <button onclick="SetOp('add');" class="btn btn-sm btn-primary" title="" data-plugin="tippy"
-                                            data-tippy-placement="top" data-bs-toggle="modal"
-                                            data-bs-target="#new-order-entry">
-                                        New Order Entry
-                                    </button>
+                                    @if (permissionResult != null)
+                                    {
+                                        @if (permissionResult.Any(r => r.Menu3 == "Order Entry"))
+                                        {
+                                            var pr = permissionResult.Where(r => r.Menu3 == "Order Entry").FirstOrDefault();
+                                            if (pr.PermissionId >= 3)
+                                            {
+                                                <button onclick="SetOp('add');" class="btn btn-sm btn-primary" title="" data-plugin="tippy"
+                                                        data-tippy-placement="top" data-bs-toggle="modal"
+                                                        data-bs-target="#new-order-entry">
+                                                    New Order Entry
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button onclick="SetOp('add');" class="btn btn-sm btn-primary" title="" data-plugin="tippy"
+                                                        data-tippy-placement="top" data-bs-toggle="modal"
+                                                        data-bs-target="#new-order-entry" disabled>
+                                                    New Order Entry
+                                                </button>
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <button onclick="SetOp('add');" class="btn btn-sm btn-primary" title="" data-plugin="tippy"
+                                                data-tippy-placement="top" data-bs-toggle="modal"
+                                                data-bs-target="#new-order-entry">
+                                            New Order Entry
+                                        </button>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -394,20 +434,67 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <!--<a href="javascript:void(0);" class="dropdown-item">View</a>-->
-                    <a href="javascript:void(0);"
-                       class="dropdown-item" onclick="SetOp('edit');" data-bs-toggle="modal"
-                       data-customerorderid ={customerOrderId} data-customerid={customerId}
-                       data-comment='{comment}' data-ordertype={orderType}
-                       data-ponumber='{poNumber}' data-podate='{poDateStr}'
-                       data-customername='{customenName}'
-                       data-directentrydetails='{directEntryDetails}'
-                       data-bs-target="#new-order-entry">Edit</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Order Entry"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Order Entry").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item" onclick="SetOp('edit');" data-bs-toggle="modal"
+                                   data-customerorderid={customerOrderId} data-customerid={customerId}
+                                   data-comment='{comment}' data-ordertype={orderType}
+                                   data-ponumber='{poNumber}' data-podate='{poDateStr}'
+                                   data-customername='{customenName}'
+                                   data-directentrydetails='{directEntryDetails}'
+                                   data-bs-target="#new-order-entry">Edit</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);"
+                           class="dropdown-item" onclick="SetOp('edit');" data-bs-toggle="modal"
+                           data-customerorderid={customerOrderId} data-customerid={customerId}
+                           data-comment='{comment}' data-ordertype={orderType}
+                           data-ponumber='{poNumber}' data-podate='{poDateStr}'
+                           data-customername='{customenName}'
+                           data-directentrydetails='{directEntryDetails}'
+                           data-bs-target="#new-order-entry">Edit</a>
+                    }
                     <a href="javascript:void(0);"
                        class="dropdown-item" data-customerorderid={customerOrderId} data-salesorderid="0" data-salesorder="N" data-bs-toggle="modal"
                        data-bs-target="#po-hold">Hold / Resume</a>
-                    <a href="javascript:void(0);" data-customerorderid={customerOrderId} data-salesorderid="0" data-salesorder="N"
-                       class="dropdown-item"data-bs-toggle="modal"
-                       data-bs-target="#po-Delete">Delete</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Order Entry"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Order Entry").FirstOrDefault();
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" data-customerorderid={customerOrderId} data-salesorderid="0" data-salesorder="N"
+                                   class="dropdown-item" data-bs-toggle="modal"
+                                   data-bs-target="#po-Delete">Delete</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" data-customerorderid={customerOrderId} data-salesorderid="0" data-salesorder="N"
+                           class="dropdown-item" data-bs-toggle="modal"
+                           data-bs-target="#po-Delete">Delete</a>
+                    }
                     <a href="javascript:void(0);"
                        class="dropdown-item" data-customerorderid={customerOrderId} data-salesorderid=0 data-salesorder="N" data-bs-toggle="modal"
                        data-bs-target="#po-log">View PO Log</a>

@@ -39,6 +39,10 @@ namespace CWB.App.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if(model.ProdDept == null)
+            {
+                model.ProdDept = false;
+            }
             var result = await _departmentService.PostDepartment(model);
             return Ok(result);
         }

@@ -30,7 +30,21 @@ namespace CWB.App.AppUtils
             // Return the "name" claim if it exists
             return user.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
         }
+        public static string GetUsername(ClaimsPrincipal userClaim)
+        {
+            var user = userClaim.Identity as ClaimsIdentity;
 
+            // Look for the username in the "preferred_username" claim
+            var username = user.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value;
+
+            if (!string.IsNullOrEmpty(username))
+            {
+                return username;
+            }
+
+            // Fallback to the "sub" claim, which sometimes contains the username
+            return user.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+        }
         public static async Task<Dictionary<string, string>> GetAuthToken(HttpContext httpContext)
         {
             var token = await httpContext.GetTokenAsync("access_token");

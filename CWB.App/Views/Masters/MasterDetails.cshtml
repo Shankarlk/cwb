@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Item Master";
 }
 <input value="M-IM" type="hidden" id="hdn-nav-menu" />
@@ -6,6 +8,15 @@
     <div class="row" id="myRadioGroup">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <table class="w-100 mb-2">
@@ -40,7 +51,7 @@
                         </div>
                         <!-- -------------------------------------  -->
                         <!-- end col -->
-                        <label class="form-label col-md-1 mb-2">Status </label>
+                        <label class="form-label col-md-1 mb-2">Part Status </label>
                         <div class="col-md-3 mb-2">
                             <select class="form-select form-select-sm" id="Status" name="Status" asp-items="ViewBag.Statuses" required>
                             </select>
@@ -52,8 +63,18 @@
                         </div>
                         <!-- =============== -->
                         <label class="form-label col-md-1 mb-2">Part Desc </label>
-                        <div class="col-md-7 mb-2">
+                        <div class="col-md-3 mb-2">
                             <textarea name="master_description" form="usrform" id="master_description" class="form-control form-control-sm" title="Enter Part Description - full or partial to shortlist Part Nos" data-plugin="tippy" data-tippy-placement="top"></textarea>
+                        </div>
+                        <label class="form-label col-md-1 mb-2">Docu Status </label>
+                        <div class="col-md-3 mb-2">
+                            <select class="form-select form-select-sm" id="DocRefStatus">
+                                <option value="0">--Select--</option>
+                                <option value="1">Approved</option>
+                                <option value="2">Waiting for Approval</option>
+                                <option value="3">Not Approved</option>
+                                <option value="4">N/A</option>
+                            </select>
                         </div>
                         <!-- =============== -->
                         <!-- end col -->
@@ -229,54 +250,85 @@
                                         <th>RM Avl</th>
                                         <th>Supplier Avl</th>
                                         <th>Mandatory Doc Avl</th>
+                                        <th>Docu Status</th>
                                         <th width="5%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- --------------------  -->
-                                    <tr>
-                                        <td>XXXXXXXXX</td>
-                                        <td>XXXXXXXXX</td>
-                                        <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
-                                        <td> Manufactured Part without Routing</td>
-                                        <td>N/A</td>
-                                        <td>Yes</td>
-                                        <td>N/A</td>
-                                        <td>No</td>
-                                        <td>
-                                            <div class="dropdown float-center">
-                                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <!-- item-->
-                                                    <a href="#" class="dropdown-item">Edit Part Details</a>
-                                                    <!-- item-->
-                                                    <a href="routing.html" class="dropdown-item">Edit Routing</a>
-                                                    <!-- item-->
-                                                    <a href="bom.html" class="dropdown-item">Edit BOM</a>
-                                                    <!-- item-->
-                                                    <a href="bom.html" class="dropdown-item">Create BOM</a>
-                                                    <!-- item-->
-                                                    <a href="routing.html" class="dropdown-item">Create Routing</a>
-                                                    <!-- item-->
-                                                    <a href="manf-part.html" class="dropdown-item">Create Balloon</a>
-                                                    <!-- item-->
-                                                    <a href="manf-part.html" class="dropdown-item">Edit Balloon</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <!--<tr>
+                <td>XXXXXXXXX</td>
+                <td>XXXXXXXXX</td>
+                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                <td> Manufactured Part without Routing</td>
+                <td>N/A</td>
+                <td>Yes</td>
+                <td>N/A</td>
+                <td>No</td>
+                <td>
+                    <div class="dropdown float-center">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end">-->
+                                    <!-- item-->
+                                    <!--<a href="#" class="dropdown-item">Edit Part Details</a>-->
+                                    <!-- item-->
+                                    <!--<a href="routing.html" class="dropdown-item">Edit Routing</a>-->
+                                    <!-- item-->
+                                    <!--<a href="bom.html" class="dropdown-item">Edit BOM</a>-->
+                                    <!-- item-->
+                                    <!--<a href="bom.html" class="dropdown-item">Create BOM</a>-->
+                                    <!-- item-->
+                                    <!--<a href="routing.html" class="dropdown-item">Create Routing</a>-->
+                                    <!-- item-->
+                                    <!--<a href="manf-part.html" class="dropdown-item">Create Balloon</a>-->
+                                    <!-- item-->
+                                    <!--<a href="manf-part.html" class="dropdown-item">Edit Balloon</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>-->
                                     <!-- --------------------  -->
                                     <!-- --------------------  -->
                                 </tbody>
                             </table>
                         </div>
                         <!-- =========================== -->
-                        <div class="col-md-12 mt-2">
-                            <button class="btn btn-purple btn-sm" data-bs-toggle="modal" data-bs-target="#adtimc">
-                                Associated Document Type with Item Master
-                                Content
-                            </button>
-                        </div>
+                        @if (permissionResult != null)
+                        {
+                            @if (permissionResult.Any(r => r.Menu3 == "View / Edit Part No"))
+                            {
+                                var pr = permissionResult.Where(r => r.Menu3 == "View / Edit Part No").FirstOrDefault();
+                                if (pr.PermissionId >= 3)
+                                {
+                                    <div class="col-md-12 mt-2">
+                                        <button class="btn btn-purple btn-sm" data-bs-toggle="modal" data-bs-target="#adtimc">
+                                            Associated Document Type with Item Master
+                                            Content
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-12 mt-2">
+                                        <button class="btn btn-purple btn-sm" data-bs-toggle="modal" data-bs-target="#" disabled>
+                                            Associated Document Type with Item Master
+                                            Content
+                                        </button>
+                                    </div>
+                                }
+                            }
+
+
+                        }
+                        else
+                        {
+                            <div class="col-md-12 mt-2">
+                                <button class="btn btn-purple btn-sm" data-bs-toggle="modal" data-bs-target="#adtimc">
+                                    Associated Document Type with Item Master
+                                    Content
+                                </button>
+                            </div>
+                        }
                         <!-- =========================== -->
                     </div>
                 </div>
@@ -348,12 +400,32 @@
         <td data-key="MandocAvl">{mandocAvl}</td>
         <td data-key="Status" hidden>{status}</td>
         <td data-key="FinalPart" hidden>{finalPart}</td>
+        <td data-key="DocStatus">{docStatus}</td>
         <td>
             <div class="dropdown float-center">
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="/masters/editpart?partId={partId}&partType={masterPartType}">Edit Part Details</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "View / Edit Part No"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "View / Edit Part No").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="/masters/editpart?partId={partId}&partType={masterPartType}">Edit Part Details</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="/masters/editpart?partId={partId}&partType={masterPartType}">Edit Part Details</a>
+                    }
                 </div>
             </div>
         </td>

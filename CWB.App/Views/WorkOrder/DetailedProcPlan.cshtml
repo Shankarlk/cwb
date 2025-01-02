@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Detailed-Planning";
 }
 
@@ -6,6 +8,15 @@
     <div class="row" id="myRadioGroup">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -295,11 +306,11 @@
                                                data-plugin="tippy" data-tippy-placement="top"
                                                placeholder="Enter Part No" id="searchWoPartNo">
                                         @*<button type="button" id="#" class="btn btn-sm btn-outline-dark"
-                                                title="Search Part No" data-plugin="tippy"
-                                                data-tippy-placement="top" data-bs-toggle="modal"
-                                                data-bs-target="#">
-                                            <i class="ri-search-2-line serch-part-btn1"></i>
-                                        </button>*@
+                                            title="Search Part No" data-plugin="tippy"
+                                            data-tippy-placement="top" data-bs-toggle="modal"
+                                            data-bs-target="#">
+                                        <i class="ri-search-2-line serch-part-btn1"></i>
+                                    </button>*@
                                     </div>
                                 </div>
                                 <!-- ======================== -->
@@ -387,8 +398,8 @@
                                         <div class="col-md-2 mt-3 text-end">
                                             <!-- =============================  -->
                                             <a class="btn btn-sm btn-purple" asp-controller="WorkOrder"
-                                                    asp-action="DownloadProductionWoGridData" id="DownloadWo">
-                                               Download WorkOrders
+                                               asp-action="DownloadProductionWoGridData" id="DownloadWo">
+                                                Download WorkOrders
                                             </a>
                                             <!-- =============================  -->
                                         </div>
@@ -646,7 +657,6 @@
                                                             </thead>
                                                             <tbody>
                                                                 <!-- -------------  -->
-                                                                
                                                                 <!-- -------------  -->
                                                             </tbody>
                                                         </table>
@@ -786,7 +796,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for Part No : <span id="partNo"></span>
+                    Detailed Production Plan Work Order Creation for Part No : <span id="partNo"></span>
                 </h5>
                 <button type="button" id="btnPop1Close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1040,7 +1050,6 @@
 </div>
 <!-- ============================================================================================== -->
 <!-----------------Popup2 End ---------->
-
 <!-----popup3------>
 <div class="modal fade" id="popup3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1048,7 +1057,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for <span id="p3soNumber"></span> for  <span id="p3partNo"></span> to completed by <span id="woCompletedBy"></span>
+                    Detailed Production Plan Work Order Creation for <span id="p3soNumber"></span> for  <span id="p3partNo"></span> to completed by <span id="woCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1162,7 +1171,6 @@
     </div>
 </div>
 <!-----popup3-End----->
-
 <!-----popup3-For-ManualMultiple----->
 
 <div class="modal fade" id="popup3ManualMultiple" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -1171,7 +1179,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for <span id="p3MsoNumber"></span> for
+                    Detailed Production Plan Work Order Creation for <span id="p3MsoNumber"></span> for
                     <span id="ManualpartNo"></span> to completed by <span id="ManualwoCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1286,9 +1294,6 @@
 </div>
 
 <!-----popup3-For-ManualMultiple----->
-
-
-
 <!-----popup3-For-New WO----->
 
 <div class="modal fade" id="popup3NewWo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -1297,7 +1302,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                   Detailed Production Plan Work Order Creation for <span id="p2NsoNumber"></span> for  <span id="NewpartNo"></span> to completed by <span id="NewwoCompletedBy"></span>
+                    Detailed Production Plan Work Order Creation for <span id="p2NsoNumber"></span> for  <span id="NewpartNo"></span> to completed by <span id="NewwoCompletedBy"></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1706,7 +1711,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Updation WO Ref <span id="popup5WoNumber"> </span> for 
+                    Work Order Updation WO Ref <span id="popup5WoNumber"> </span> for
                     <span id="pup5PatNo"> </span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1805,7 +1810,6 @@
     </div>
 </div>
 <!-- ==========Popup5--End=============== -->
-
 <!-- =================Popup5 Edit================== -->
 <div class="modal fade" id="popup5Edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1813,7 +1817,7 @@
         <div class="modal-content bxs-modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    Work Order Updation WO Ref <span id="popup5EditWoNumber"> </span> 
+                    Work Order Updation WO Ref <span id="popup5EditWoNumber"> </span>
                     <span id="popup5EditPatNo"> </span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1917,7 +1921,7 @@
 <template id="detailedPlanWoRow">
     <tr>
         <td>
-            <input type="checkbox"/>
+            <input type="checkbox" />
         </td>
         <td hidden>{woId}</td>
         <td hidden>{salesOrderId}</td>
@@ -1949,21 +1953,54 @@
                     <a href="javascript:void(0);"
                        class="dropdown-item">View</a>
                     <!-- item-->
-                    <a href="javascript:void(0);"
-                       class="dropdown-item" onclick="EditWo(this)"
-                       data-ppid={productionPlanId}
-                       data-workorderid={woId}
-                       data-parentwoid={parentWoId}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-parentlevel={parentlevel}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-wostatus={status}>Edit</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Detailed Production Planning"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Detailed Production Planning").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item" onclick="EditWo(this)"
+                                   data-ppid={productionPlanId}
+                                   data-workorderid={woId}
+                                   data-parentwoid={parentWoId}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-parentlevel={parentlevel}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-wostatus={status}>Edit</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);"
+                           class="dropdown-item" onclick="EditWo(this)"
+                           data-ppid={productionPlanId}
+                           data-workorderid={woId}
+                           data-parentwoid={parentWoId}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-parentlevel={parentlevel}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-wostatus={status}>Edit</a>
+                    }
                 </div>
             </div>
         </td>
@@ -2158,7 +2195,7 @@
         <td>{partNo} / {partDesc}</td>
         <td>{partType}</td>
         <td>{woNumber}</td>
-        <td>{location}</td>  
+        <td>{location}</td>
         <td>{oprationNo}</td>
         <td>{machineTypeName}</td>
         <td>{machineName}</td>

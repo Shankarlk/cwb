@@ -1,4 +1,6 @@
-﻿<input value="B-BA" type="hidden" id="hdn-nav-menu" />
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<input value="B-BA" type="hidden" id="hdn-nav-menu" />
 <div class="content">
     <div class="row" id="myRadioGroup">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
@@ -10,166 +12,220 @@
                             <h3 style="padding: 10px;">Business Acquisition</h3>
                         </div>
                         <!-- =============================  -->
+
+                        @{
+                            List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                            var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                            if (permissionsJson != null)
+                            {
+                                permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                            }
+                        }
+
                         <div class="col-md-12">
                             <div class="row">
                                 <!-- ================================ -->
-                                <div class="col-md-2 col-sm-6  dott-bord-r" style="padding: 10px;">
-                                    <!-- end row -->
-                                    <div class="row mt-2">
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Lead Entry</h6>
-                                                </a>
+                                @if (permissionResult != null)
+                                {
+                                }
+                                else
+                                {
+                                    <div class="col-md-2 col-sm-6  dott-bord-r" style="padding: 10px;">
+                                        <!-- end row -->
+                                        <div class="row mt-2">
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Lead Entry</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Enquiry Entry </h6>
-                                                </a>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Enquiry Entry </h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Costing</h6>
-                                                </a>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Costing</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Quotation</h6>
-                                                </a>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Quotation</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Customer Interactions</h6>
-                                                </a>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Customer Interactions</h6>
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <!-- end -->
                                         </div>
-                                        <!-- end -->
                                     </div>
-                                </div>
-                                <!-- ================================ -->
-                                <div class="col-md-3 col-sm-6 dott-bord-r" style="padding: 10px;">
-                                    <!-- end row -->
-                                    <div class="row mt-2">
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                    <!-- ================================ -->
+                                    <div class="col-md-3 col-sm-6 dott-bord-r" style="padding: 10px;">
+                                        <!-- end row -->
+                                        <div class="row mt-2">
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
+                                            <!-- end -->
                                         </div>
-                                        <!-- end -->
                                     </div>
-                                </div>
+                                }
                                 <!-- ================================ -->
                                 <div class="col-md-2 col-sm-6 dott-bord-r" style="padding: 10px;">
                                     <div class="row mt-2">
-                                        <div class="col-md-12">
-                                            <a asp-controller="BusinessAquisition" asp-action="OrderEntry">
+
+                                        @if (permissionResult != null)
+                                        {
+                                            @if (permissionResult.Any(r => r.Menu3 == "Order Entry"))
+                                            {
+                                                var pr = permissionResult.Where(r => r.Menu3 == "Order Entry").FirstOrDefault();
+                                                if (pr.PermissionId==1)
+                                                {
+                                                    <div class="col-md-12">
+                                                        <a >
+                                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                                <h6>Order Entry</h6>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-md-12">
+                                                        <a asp-controller="BusinessAquisition" asp-action="OrderEntry">
+                                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                                <h6>Order Entry</h6>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="col-md-12">
+                                                <a asp-controller="BusinessAquisition" asp-action="OrderEntry">
+                                                    <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                        <h6>Order Entry</h6>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-12">
                                                 <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                    <h6>Order Entry</h6>
+                                                    <a href="#">
+                                                        <h6>TDL</h6>
+                                                    </a>
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <!-- ========================= -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>TDL</h6>
-                                                </a>
                                             </div>
-                                        </div>
-                                        <!-- ========================= -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>MIS</h6>
-                                                </a>
+                                            <!-- ========================= -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>MIS</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
+                                        <!-- ========================= -->
                                         <!-- ========================= -->
                                     </div>
                                     <!-- ================= -->
                                 </div>
                                 <!-- ================================ -->
-                                <div class="col-md-3 col-sm-6 dott-bord-r" style="padding: 10px;">
-                                    <!-- end row -->
-                                    <div class="row mt-2">
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                @if (permissionResult != null)
+                                {
+                                }
+                                else
+                                {
+                                    <div class="col-md-3 col-sm-6 dott-bord-r" style="padding: 10px;">
+                                        <!-- end row -->
+                                        <div class="row mt-2">
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-light w-100 mb-2">
-                                                <h6>xxxxxx</h6>
+                                            <!-- end -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-light w-100 mb-2">
+                                                    <h6>xxxxxx</h6>
+                                                </div>
                                             </div>
+                                            <!-- end -->
                                         </div>
-                                        <!-- end -->
                                     </div>
-                                </div>
-                                <!-- ================================ -->
-                                <div class="col-md-2 col-sm-12" style="padding: 10px;">
-                                    <div class="row">
-                                        <div class="col-md-12" style="margin-top: 49px;">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Price List Update</h6>
-                                                </a>
+                                    <!-- ================================ -->
+                                    <div class="col-md-2 col-sm-12" style="padding: 10px;">
+                                        <div class="row">
+                                            <div class="col-md-12" style="margin-top: 49px;">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Price List Update</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- ========================= -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Costing Master Update</h6>
-                                                </a>
+                                            <!-- ========================= -->
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-sm btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Costing Master Update</h6>
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <!-- ========================= -->
                                         </div>
-                                        <!-- ========================= -->
+                                        <!-- ================= -->
                                     </div>
-                                    <!-- ================= -->
-                                </div>
+                                }
                                 <!-- ================================ -->
                             </div>
                             <!-- end row -->

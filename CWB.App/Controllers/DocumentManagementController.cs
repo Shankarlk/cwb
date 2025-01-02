@@ -94,6 +94,14 @@ namespace CWB.App.Controllers
                         noOfFiles++;
                     }
                 }
+                if (item.Approval_Reqd == 1)
+                {
+                    item.Approval_ReqdStr = "Y";
+                }
+                else
+                {
+                    item.Approval_ReqdStr = "N";
+                }
                 item.NoOfFiles = noOfFiles;
                 noOfFiles = 0;
             }
@@ -206,6 +214,21 @@ namespace CWB.App.Controllers
                 string fullName = AppUtil.GetFullName(userClaim);
                 item.UpdatedOnStr = item.CreationDt.ToString("MM-dd-yyyy");
                 item.UploadedBy = fullName;
+                var getdoc = await _docMangService.GetDoc_Status_List(item.AppvStatus);
+                item.DocStatus = getdoc.Doc_Status_Desc;
+                if (item.DocCat == 1)
+                {
+                    if (item.Approved_by > 0)
+                    {
+                        item.ApprovedOnStr = item.Appv_Date_time.ToString("MM-dd-yyyy");
+                        item.ApprovedByStr = fullName;
+                    }
+                }
+                else
+                {
+                    item.ApprovedOnStr = "";
+                    item.ApprovedByStr = "";
+                }
             }
             return Ok(docListVMs);
         }

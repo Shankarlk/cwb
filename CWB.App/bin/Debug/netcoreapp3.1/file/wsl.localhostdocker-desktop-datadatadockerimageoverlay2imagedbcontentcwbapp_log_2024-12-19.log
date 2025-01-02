@@ -1,0 +1,90 @@
+2024-12-19 06:31:14.0796 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 06:42:03.6051 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 06:42:45.6926 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 06:47:24.6232 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 06:55:40.5312 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 07:05:11.3410 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 07:09:51.2361 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 07:16:40.4055 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+2024-12-19 07:23:00.5585 ERROR CWB APP startup failed System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: CWB.App.Services.EmployeeMaster.IEmployeeService Lifetime: Transient ImplementationType: CWB.App.Services.EmployeeMaster.EmployeeService': Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Net.Http.HttpClient' while attempting to activate 'CWB.App.Services.EmployeeMaster.EmployeeService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "SO-TO-WO";
 }
 
@@ -6,6 +8,15 @@
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -49,17 +60,17 @@
                                        data-plugin="tippy" data-tippy-placement="top"
                                        placeholder="Enter Part No">
                                 @*<button type="button" id="btnSearchPartNo" class="btn btn-sm btn-outline-dark"
-                                        title="Search Part No" data-plugin="tippy" data-tippy-placement="top"
-                                        data-bs-toggle="modal" data-bs-target="#">
-                                    <i class="ri-search-2-line serch-part-btn1"></i>
-                                </button>*@
+                                    title="Search Part No" data-plugin="tippy" data-tippy-placement="top"
+                                    data-bs-toggle="modal" data-bs-target="#">
+                                <i class="ri-search-2-line serch-part-btn1"></i>
+                            </button>*@
                             </div>
                         </div>
                         <div class="col-md-12 mb-2 text-end" style="margin-top: -2px;">
                             <button id="btnClear" class="btn btn-sm btn-outline-purple" title=""
                                     data-plugin="tippy" data-tippy-placement="top">
                                 Clear The Fields
-                                </button>
+                            </button>
                         </div>
                         <!-- -----------------  -->
                         <!-- ======================== -->
@@ -93,37 +104,96 @@
                                     </table>
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <button id="btnAG" class="btn btn-sm btn-outline-purple" title="" disabled>
-                                        <!--data-plugin="tippy" data-tippy-placement="top"
-        data-bs-toggle="modal" data-bs-target="#woc-partno"-->
-                                        Auto Generate
-                                        One WO for each Part No for SO Qnty / SO Plan Date
-                                    </button>
-                                    <!-- =============================  -->
-                                    <button id="btnGW" class="btn btn-sm btn-outline-purple" title=""
-                                            data-plugin="tippy" data-tippy-placement="top">
-                                        Generate WO for
-                                        Selected
-                                        SO
-                                    </button>
-                                    <!-- =============================  -->
-                                    <button class="btn btn-sm btn-outline-purple" title=""
-                                            data-plugin="tippy" data-tippy-placement="top"
-                                            data-bs-toggle="modal" data-bs-target="#">
-                                        Conclude Production
-                                        Planning Session & Exit
-                                    </button>
-                                    <!-- =============================  -->
-                                    @*<a class="btn btn-sm btn-outline-purple" title="" asp-controller="WorkOrder"
-           asp-action="ProcPlan">
-            Initiate Detailed
-            Production Planning
-        </a>*@
-                                <button class="btn btn-sm btn-outline-purple" title=""
-                                        onclick="showLoadingScreen()" id="initiateDetaileBtn" disabled>
-                                    Initiate Detailed
-                                    Production Planning
-                                </button>
+                                    @if (permissionResult != null)
+                                    {
+                                        @if (permissionResult.Any(r => r.Menu3 == "Convert SO to WO"))
+                                        {
+                                            var pr = permissionResult.Where(r => r.Menu3 == "Convert SO to WO").FirstOrDefault();
+                                            if (pr.PermissionId >= 3)
+                                            {
+                                                <button id="btnAG" class="btn btn-sm btn-outline-purple" title="" disabled>
+                                                    Auto Generate
+                                                    One WO for each Part No for SO Qnty / SO Plan Date
+                                                </button>
+                                                <!-- =============================  -->
+                                                <button id="btnGW" class="btn btn-sm btn-outline-purple" title=""
+                                                        data-plugin="tippy" data-tippy-placement="top">
+                                                    Generate WO for
+                                                    Selected
+                                                    SO
+                                                </button>
+                                                <!-- =============================  -->
+                                                <button class="btn btn-sm btn-outline-purple" title=""
+                                                        data-plugin="tippy" data-tippy-placement="top"
+                                                        data-bs-toggle="modal" data-bs-target="#">
+                                                    Conclude Production
+                                                    Planning Session & Exit
+                                                </button>
+                                                <!-- =============================  -->
+                                                <button class="btn btn-sm btn-outline-purple" title=""
+                                                        onclick="showLoadingScreen()" id="initiateDetaileBtn" disabled>
+                                                    Initiate Detailed
+                                                    Production Planning
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button id="btnAGP" class="btn btn-sm btn-outline-purple" title="" disabled>
+                                                    Auto Generate
+                                                    One WO for each Part No for SO Qnty / SO Plan Date
+                                                </button>
+                                                <!-- =============================  -->
+                                                <button id="btnGWP" class="btn btn-sm btn-outline-purple" title=""
+                                                        data-plugin="tippy" data-tippy-placement="top" disabled>
+                                                    Generate WO for
+                                                    Selected
+                                                    SO
+                                                </button>
+                                                <!-- =============================  -->
+                                                <button class="btn btn-sm btn-outline-purple" title=""
+                                                        data-plugin="tippy" data-tippy-placement="top"
+                                                        data-bs-toggle="modal" data-bs-target="#">
+                                                    Conclude Production
+                                                    Planning Session & Exit
+                                                </button>
+                                                <!-- =============================  -->
+                                                <button class="btn btn-sm btn-outline-purple" title=""
+                                                        onclick="showLoadingScreen()" id="initiateDetaileBtnP" disabled>
+                                                    Initiate Detailed
+                                                    Production Planning
+                                                </button>
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <button id="btnAG" class="btn btn-sm btn-outline-purple" title="" disabled>
+                                            Auto Generate
+                                            One WO for each Part No for SO Qnty / SO Plan Date
+                                        </button>
+                                        <!-- =============================  -->
+                                        <button id="btnGW" class="btn btn-sm btn-outline-purple" title=""
+                                                data-plugin="tippy" data-tippy-placement="top">
+                                            Generate WO for
+                                            Selected
+                                            SO
+                                        </button>
+                                        <!-- =============================  -->
+                                        <button class="btn btn-sm btn-outline-purple" title=""
+                                                data-plugin="tippy" data-tippy-placement="top"
+                                                data-bs-toggle="modal" data-bs-target="#">
+                                            Conclude Production
+                                            Planning Session & Exit
+                                        </button>
+                                        <!-- =============================  -->
+                                        <button class="btn btn-sm btn-outline-purple" title=""
+                                                onclick="showLoadingScreen()" id="initiateDetaileBtn" disabled>
+                                            Initiate Detailed
+                                            Production Planning
+                                        </button>
+                                    }
                                     <!-- =============================  -->
                                 </div>
                             </div>
@@ -157,37 +227,6 @@
                                     data-bs-target="#woc-partno" hidden>
                                 popup 2
                             </button>
-                            <!--<button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#popup2">
-                                popup 2
-                            </button>-->
-                            <!-- ===========================  -->
-                            <!--<button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#popup3">
-                                popup 3
-                            </button>-->
-                            <!-- ===========================  -->
-                            <!--<button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#popup4">
-                                popup 4
-                            </button>-->
-                            <!-- ===========================  -->
-                            <!--<button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#popup5">
-                                popup 5
-                            </button>-->
-                            <!-- ===========================  -->
-                            <!--<button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#popup6">
-                                popup 6
-                            </button>-->
-                            <!-- ===========================  -->
-                            <!--<button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#popup7">
-                                popup 7
-                            </button>-->
-                            <!-- ===========================  -->
-                            <!-- ===========================  -->
                         </div>
                     </div>
                     <!-- =========== -->
@@ -291,35 +330,35 @@
                     <!-- ===============  -->
                     <div id="popup1DivRouting">
 
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Routing Selection</label>
-                        <select id="routing" class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top">
-                            <option value="">==========</option>
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Starting Opr No</label>
-                        <select id="StartingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top">
-                            <option value="">==========</option>
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <div class="col-md-4 mb-2">
-                        <label class="form-label">Ending Opr No</label>
-                        <select id="EndingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
-                                data-plugin="tippy" data-tippy-placement="top">
-                            <option value="">==========</option>
-                        </select>
-                    </div>
-                    <!-- ===============  -->
-                    <div class="col-md-12 text-end">
-                        <button class="btn btn-primary btn-sm" id="updateWO">Generate WO</button>
-                    </div>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Routing Selection</label>
+                            <select id="routing" class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">==========</option>
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Starting Opr No</label>
+                            <select id="StartingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">==========</option>
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Ending Opr No</label>
+                            <select id="EndingOpNo" class="form-select form-select-sm" aria-label="form-select-sm" title=""
+                                    data-plugin="tippy" data-tippy-placement="top">
+                                <option value="">==========</option>
+                            </select>
+                        </div>
+                        <!-- ===============  -->
+                        <div class="col-md-12 text-end">
+                            <button class="btn btn-primary btn-sm" id="updateWO">Generate WO</button>
+                        </div>
 
-                </div>
+                    </div>
                     <!-- ===============  -->
                 </div>
             </div>
@@ -464,7 +503,6 @@
 </div>
 <!-- ============================================================================================== -->
 <!-----------------Popup2 End ---------->
-
 <!-----------------Popu3 ---------->
 
 <div class="modal fade" id="popup3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -550,7 +588,7 @@
                             <label class="form-label"> Routing</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleRouting" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -558,7 +596,7 @@
                             <label class="form-label"> Starting Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleStartOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -566,30 +604,29 @@
                             <label class="form-label"> Ending Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="singleEndOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
-                        </div>
-                        <!-- ========================= -->
-                        <hr>
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="woid" hidden />
-                            <input type="text" id="soid" hidden />
-                            <input type="text" id="partId" hidden />
-                            <input type="text" id="partType" hidden />
-                            <input type="text" id="p3Status" hidden />
-                            <input type="text" id="p3ReloadOption" hidden />
-                            <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+                    <!-- ========================= -->
+                    <hr>
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="woid" hidden />
+                        <input type="text" id="soid" hidden />
+                        <input type="text" id="partId" hidden />
+                        <input type="text" id="partType" hidden />
+                        <input type="text" id="p3Status" hidden />
+                        <input type="text" id="p3ReloadOption" hidden />
+                        <button class="btn btn-primary btn-sm" id="singleSaveWo">Save WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
 <!-----------------Popu3 End ---------->
-
 <!-----popup3-For-ManualMultiple----->
 
 <div class="modal fade" id="popup3ManualMultiple" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -674,7 +711,7 @@
                             <label class="form-label"> Routing</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualRouting" disabled>
                                 @*<option value="">==========</option>
-                <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -682,7 +719,7 @@
                             <label class="form-label"> Starting Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualStartOpNo" disabled>
                                 @*<option value="">==========</option>
-                <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -690,11 +727,11 @@
                             <label class="form-label"> Ending Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="ManualEndOpNo" disabled>
                                 @*<option value="">==========</option>
-                <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                     </div>
-                   
+
                     <!-- ========================= -->
                     <hr>
                     <!-- ========================= -->
@@ -714,8 +751,6 @@
 </div>
 
 <!-----popup3-For-ManualMultiple----->
-
-
 <!-----popup3-For-NewWO----->
 
 <div class="modal fade" id="popup3NewWo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -800,7 +835,7 @@
                             <label class="form-label"> Routing</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewRouting" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -808,7 +843,7 @@
                             <label class="form-label"> Starting Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewStartOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
                         <!-- ========================= -->
@@ -816,31 +851,30 @@
                             <label class="form-label"> Ending Opr No</label>
                             <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="NewEndOpNo" disabled>
                                 @*<option value="">==========</option>
-                    <option value="">==========</option>*@
+                                    <option value="">==========</option>*@
                             </select>
                         </div>
-                        </div>
-                        <!-- ========================= -->
-                        <hr>
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="Newwoid" hidden />
-                            <input type="text" id="Newsoid" hidden />
-                            <input type="text" id="NewpartId" hidden />
-                            <input type="text" id="NewpartType" hidden />
-                            <input type="text" id="NewWoStatus" hidden />
-                            <input id="p3NReloadOption" type="text" hidden>
-                            <button class="btn btn-primary btn-sm" id="NewSaveWo">Generate WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+                    <!-- ========================= -->
+                    <hr>
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="Newwoid" hidden />
+                        <input type="text" id="Newsoid" hidden />
+                        <input type="text" id="NewpartId" hidden />
+                        <input type="text" id="NewpartType" hidden />
+                        <input type="text" id="NewWoStatus" hidden />
+                        <input id="p3NReloadOption" type="text" hidden>
+                        <button class="btn btn-primary btn-sm" id="NewSaveWo">Generate WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-----popup3-For-NewWO----->
-
 <!-----popup7----->
 
 <div class="modal fade" id="popup7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -923,21 +957,21 @@
                                     data-plugin="tippy" data-tippy-placement="top" id="popup7EndingOpNo">
                             </select>
                         </div>
-                        </div>
-
-                        <!-- ===============  -->
-                        <!-- ========================= -->
-                        <div class="col-md-12 mb-2 text-end">
-                            <input type="text" id="Popup7woid" hidden />
-                            <input type="text" id="Popup7soid" hidden />
-                            <input type="text" id="Popup7partId" hidden />
-                            <input type="text" id="Popup7partType" hidden />
-                            <input type="text" id="Popup7WoStatus" hidden />
-                            <button class="btn btn-primary btn-sm" id="popup7SaveWo">Update WO</button>
-                        </div>
-                        <!-- ========================= -->
                     </div>
+
+                    <!-- ===============  -->
+                    <!-- ========================= -->
+                    <div class="col-md-12 mb-2 text-end">
+                        <input type="text" id="Popup7woid" hidden />
+                        <input type="text" id="Popup7soid" hidden />
+                        <input type="text" id="Popup7partId" hidden />
+                        <input type="text" id="Popup7partType" hidden />
+                        <input type="text" id="Popup7WoStatus" hidden />
+                        <button class="btn btn-primary btn-sm" id="popup7SaveWo">Update WO</button>
+                    </div>
+                    <!-- ========================= -->
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -993,36 +1027,89 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" onclick="EditWo(this)" class="dropdown-item"
-                       data-workorderid={woid}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partdesc={partDesc}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-reloadoption={reloadOption}
-                       data-wostatus={status}>Edit</a>
-                    <a href="javascript:void(0);"
-                       class="dropdown-item"data-bs-toggle="modal"
-                       data-workorderid={woid}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partdesc={partDesc}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-wostatus={status}
-                       data-bs-target="#popup7">WO Source</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Convert SO to WO"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Convert SO to WO").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" onclick="EditWo(this)" class="dropdown-item"
+                                   data-workorderid={woid}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partdesc={partDesc}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-reloadoption={reloadOption}
+                                   data-wostatus={status}>Edit</a>
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item" data-bs-toggle="modal"
+                                   data-workorderid={woid}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partdesc={partDesc}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-wostatus={status}
+                                   data-bs-target="#popup7">WO Source</a>
+                            }
+                            else
+                            {
+                            }
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item">Delete</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" onclick="EditWo(this)" class="dropdown-item"
+                           data-workorderid={woid}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partdesc={partDesc}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-reloadoption={reloadOption}
+                           data-wostatus={status}>Edit</a>
+                        <a href="javascript:void(0);"
+                           class="dropdown-item" data-bs-toggle="modal"
+                           data-workorderid={woid}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partdesc={partDesc}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-wostatus={status}
+                           data-bs-target="#popup7">WO Source</a>
+                        <a href="javascript:void(0);"
+                           class="dropdown-item">Delete</a>
+                    }
                     <!-- item-->
-                    <a href="javascript:void(0);"
-                       class="dropdown-item">Delete</a>
                 </div>
             </div>
         </td>
@@ -1060,21 +1147,54 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal"
-                        data-workorderid={woid}
-                       data-salesorderid={salesOrderId}
-                       data-wonumber={woNumber}
-                       data-partno={partNo}
-                       data-partid={partId}
-                       data-parttype={partType}
-                       data-plancompletiondatestr='{planCompletionDateStr}'
-                       data-requiredquantity={requiredQuantity}
-                       data-calwoqty={calcWOQty}
-                       data-ptstatus={status}
-                       data-nreloadoption={reloadOption}
-                       data-bs-target="#popup3">
-                    Edit
-                    </a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Order Entry"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Order Entry").FirstOrDefault();
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal"
+                                   data-workorderid={woid}
+                                   data-salesorderid={salesOrderId}
+                                   data-wonumber={woNumber}
+                                   data-partno={partNo}
+                                   data-partid={partId}
+                                   data-parttype={partType}
+                                   data-plancompletiondatestr='{planCompletionDateStr}'
+                                   data-requiredquantity={requiredQuantity}
+                                   data-calwoqty={calcWOQty}
+                                   data-ptstatus={status}
+                                   data-nreloadoption={reloadOption}
+                                   data-bs-target="#popup3">
+                                    Edit
+                                </a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal"
+                           data-workorderid={woid}
+                           data-salesorderid={salesOrderId}
+                           data-wonumber={woNumber}
+                           data-partno={partNo}
+                           data-partid={partId}
+                           data-parttype={partType}
+                           data-plancompletiondatestr='{planCompletionDateStr}'
+                           data-requiredquantity={requiredQuantity}
+                           data-calwoqty={calcWOQty}
+                           data-ptstatus={status}
+                           data-nreloadoption={reloadOption}
+                           data-bs-target="#popup3">
+                            Edit
+                        </a>
+                    }
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">Delete</a>
                 </div>

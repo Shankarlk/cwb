@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Document Management";
 }
 
@@ -7,6 +9,15 @@
     <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
             <!-- ================= -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="card">
                 <div class="card-body">
                     <h5 class="mb-3">Document Management</h5>
@@ -43,9 +54,9 @@
                         <div class="col-md-2 mb-2">
                             <label class="form-label mb-1">Uploading Dept.</label>
                             @*<select class="form-select form-select-sm" aria-label="form-select-sm" data-plugin="tippy" id="SearchDepartment"
-                                        data-tippy-placement="top" data-tippy="" data-original-title="Select the Department">
-                                    <option value="">Department</option>
-                                </select>*@
+                                data-tippy-placement="top" data-tippy="" data-original-title="Select the Department">
+                            <option value="">Department</option>
+                        </select>*@
                             <input type="text" id="SeacrchUploaddept" class="form-control form-control-sm" placeholder="Enter Here"
                                    title="" data-plugin="tippy" data-tippy-placement="top">
                         </div>
@@ -87,6 +98,7 @@
                                                 <th>Document Type Name</th>
                                                 <th>Data Entry Format</th>
                                                 <th>Share w Cust.</th>
+                                                <th>Apprv Reqd</th>
                                                 <th>Uploading Dept.</th>
                                                 <th>File Extn(s)</th>
                                                 <th>Viewing Departments List</th>
@@ -101,33 +113,113 @@
                                     </table>
                                 </div>
                                 <div class="col-md-10 mt-3">
-                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
-                                            title="" data-plugin="tippy" data-tippy-placement="top">
-                                        Add New Document
-                                        Type
-                                    </button>
-                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rpdcCustomerPopUp"
-                                            title="" data-plugin="tippy" data-tippy-placement="top">
-                                        View Retention Period for
-                                        Customer Data
-                                    </button>
-                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#CDRP"
-                                            title="" data-plugin="tippy" data-tippy-placement="top">
-                                        Add Customer Data
-                                        Retention Period
-                                    </button>
-                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#RefReasonPop"
-                                            title="" data-plugin="tippy" data-tippy-placement="top">
-                                        Add / Edit Reference Document
-                                        Replacement Reason
-                                    </button>
+                                    @if (permissionResult != null)
+                                    {
+                                        @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Document Type "))
+                                        {
+                                            var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Document Type ").FirstOrDefault();
+                                            if (pr.PermissionId >= 3)
+                                            {
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    Add New Document
+                                                    Type
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rpdcCustomerPopUp"
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    View Retention Period for
+                                                    Customer Data
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#CDRP"
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    Add Customer Data
+                                                    Retention Period
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#RefReasonPop"
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    Add / Edit Reference Document
+                                                    Replacement Reason
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    Add New Document
+                                                    Type
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    View Retention Period for
+                                                    Customer Data
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    Add Customer Data
+                                                    Retention Period
+                                                </button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#" disabled
+                                                        title="" data-plugin="tippy" data-tippy-placement="top">
+                                                    Add / Edit Reference Document
+                                                    Replacement Reason
+                                                </button>
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
+                                                title="" data-plugin="tippy" data-tippy-placement="top">
+                                            Add New Document
+                                            Type
+                                        </button>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rpdcCustomerPopUp"
+                                                title="" data-plugin="tippy" data-tippy-placement="top">
+                                            View Retention Period for
+                                            Customer Data
+                                        </button>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#CDRP"
+                                                title="" data-plugin="tippy" data-tippy-placement="top">
+                                            Add Customer Data
+                                            Retention Period
+                                        </button>
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#RefReasonPop"
+                                                title="" data-plugin="tippy" data-tippy-placement="top">
+                                            Add / Edit Reference Document
+                                            Replacement Reason
+                                        </button>
+                                    }
                                 </div>
                                 <div class="col-md-2 mt-3 text-end">
                                     @*<a href="viewmanagedoc.html">*@
-                                    <a asp-controller="DocumentManagement" asp-action="ViewDocument" class="btn btn-sm btn-primary" id="DocViewBtn">
-                                        View / Manage
-                                        Documents
-                                    </a>
+                                    @if (permissionResult != null)
+                                    {
+                                        @if (permissionResult.Any(r => r.Menu3 == "View Documents"))
+                                        {
+                                            var pr = permissionResult.Where(r => r.Menu3 == "View Documents").FirstOrDefault();
+                                            if (pr.PermissionId >= 3)
+                                            {
+                                                <a asp-controller="DocumentManagement" asp-action="ViewDocument" class="btn btn-sm btn-primary" id="DocViewBtn">
+                                                    View / Manage
+                                                    Documents
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="DocumentManagement" asp-action="ViewDocument" class="btn btn-sm btn-primary" id="DocViewBtn">
+                                            View / Manage
+                                            Documents
+                                        </a>
+                                    }
                                     @*</a>*@
                                 </div>
                             </div>
@@ -177,6 +269,11 @@
                             <div class="col-md-12 mb-2" id="DTDDataCustDiv">
                                 <label class="form-check-label mt-1">Data to be shared Customer</label>
                                 <input class="form-check-input mt-1" type="checkbox" id="DTDDataCust"
+                                       title="" data-plugin="tippy" data-tippy-placement="top">
+                            </div>
+                            <div class="col-md-12 mb-2" id="DTDApprovDiv">
+                                <label class="form-check-label mt-1">Approval Required</label>
+                                <input class="form-check-input mt-1" type="checkbox" id="DTDApprovReq"
                                        title="" data-plugin="tippy" data-tippy-placement="top">
                             </div>
                             <!-- -----------------  -->
@@ -549,6 +646,7 @@
         <td>{documentName}</td>
         <td>{dataReqdByCust}</td>
         <td>{dataReqdByCust}</td>
+        <td>{approval_ReqdStr}</td>
         <td>{deptUploadName}</td>
         <td>{fileExtnName}</td>
         <td>{deptViewName}</td>
@@ -559,11 +657,33 @@
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
-                       data-doctypeid="{documentTypeId}" data-doccatid="{docuCategory}" data-doctypename="{documentName}" data-docdatareqdcust="{dataReqdByCust}"
-                       data-retperyear="{defaultRetPerYear}" data-retpermon="{defaultRetPerMon}" data-fileextnid="{extnId}">Edit</a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item" onclick="DeleteDocType({documentTypeId})">Delete</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Document Type "))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Document Type ").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
+                                   data-doctypeid="{documentTypeId}" data-doccatid="{docuCategory}" data-doctypename="{documentName}" data-docdatareqdcust="{dataReqdByCust}" data-approvreq="{approval_Reqd}"
+                                   data-retperyear="{defaultRetPerYear}" data-retpermon="{defaultRetPerMon}" data-fileextnid="{extnId}">Edit</a>
+                            }
+                            if (pr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" class="dropdown-item" onclick="DeleteDocType({documentTypeId})">Delete</a>
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#doc-type-detail"
+                           data-doctypeid="{documentTypeId}" data-doccatid="{docuCategory}" data-doctypename="{documentName}" data-docdatareqdcust="{dataReqdByCust}" data-approvreq="{approval_Reqd}"
+                           data-retperyear="{defaultRetPerYear}" data-retpermon="{defaultRetPerMon}" data-fileextnid="{extnId}">Edit</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item" onclick="DeleteDocType({documentTypeId})">Delete</a>
+                    }
                 </div>
             </div>
         </td>

@@ -10,6 +10,9 @@ namespace CWB.App.Models.DocumentManagement
         public long DocListId { get; set; }
         public long DocumentTypeId { get; set; }
         public string FileName { get; set; }
+        public long Approved_by { get; set; }
+        public DateTime Appv_Date_time { get; set; }
+        public long AppvStatus { get; set; }
         public string StorageLocation { get; set; }
         public long UploadUiId { get; set; }
         public long WoId { get; set; }
@@ -51,6 +54,9 @@ namespace CWB.App.Models.DocumentManagement
         }
         public DateTime CreationDt { get; set; }
         public string UpdatedOnStr { get; set; } = string.Empty;
+        public string ApprovedByStr { get; set; } = string.Empty;
+        public string ApprovedOnStr { get; set; } = string.Empty;
+        public string DocStatus { get; set; } = string.Empty;
         public string FileExtnName { get; set; } = string.Empty;
         public string UploadedBy { get; set; } = string.Empty;
         public char Mandatory { get; set; } = ' ';

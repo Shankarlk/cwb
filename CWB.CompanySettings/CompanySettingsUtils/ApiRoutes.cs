@@ -79,5 +79,29 @@
             public const string PostDesignation = Base + "/designation";
             public const string DelDesignation = Base + "/deldesignation/{designationId}";
         }
+        public static class EmployeeMaster
+        {
+            public const string GetAllUiList = Base + "/getalluilist/{tenantId}";
+            public const string GetAllOrgChart = Base + "/getallorgchart/{tenantId}";
+            public const string GetAllRoleList = Base + "/getallrolelist/{tenantId}";
+            public const string GetAllRoleUiList = Base + "/getallroleuilist/{tenantId}";
+            public const string GetAllEmplRoleList = Base + "/getallemplrolelist/{tenantId}";
+            public const string GetAllPermissionList = Base + "/getallpermissionlist/{tenantId}";
+            public const string GetAllEmployee = Base + "/getallemployeelist/{tenantId}";
+            public const string PostUilist = Base + "/postuilist";
+            public const string PostOrgChart = Base + "/postorgchart";
+            public const string PostRoleList = Base + "/postrolelist";
+            public const string PostRoleUiList = Base + "/postroleuilist";
+            public const string PostEmplRoleList = Base + "/postemplrolelist";
+            public const string PostPermissionList = Base + "/postpermissionlist";
+            public const string PostEmployee = Base + "/postemployee";
+            public const string DelUiList = Base + "/deluilist/{designationId}";
+            public const string DelOrgChart = Base + "/delorgchart/{designationId}";
+            public const string DelRoleList = Base + "/delrolelist/{designationId}";
+            public const string DelRoleUiList = Base + "/delroleuilist/{designationId}";
+            public const string DelEmplRoleList = Base + "/delemplrolelist/{designationId}";
+            public const string DelPermissionList = Base + "/delpermissionlist/{designationId}";
+            public const string DelEmployee = Base + "/delemployee/{designationId}";
+        }
     }
 }

@@ -49,5 +49,6 @@ namespace CWB.App.Models.ItemMaster
         public string PartSupplied { get; set; } = string.Empty;
         public string NoOfActive { get; set; } = string.Empty;
         public string NoOfInActive { get; set; } = string.Empty;
+        public string DocStatus { get; set; } = string.Empty;
     }
 }

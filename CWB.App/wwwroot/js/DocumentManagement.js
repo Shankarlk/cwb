@@ -161,8 +161,11 @@ $(document).ready(function () {
             $("#RetPeriodDiv").hide();
            // $("#RetPeriodDiv").hide();
             $("#DTDDataCustDiv").hide();
+            $("#DTDApprovDiv").show();
+            $("#DTDApprovReq").prop('checked', true);
         } else {
             $("#DTDDataCustDiv").show();
+            $("#DTDApprovDiv").hide();
         }
        
     });
@@ -308,6 +311,7 @@ $(document).ready(function () {
         newNamevalidate.style.border = '';
         var newDTDTypeNameNamevalidate = document.getElementById('DTDTypeName');
         newDTDTypeNameNamevalidate.style.border = '';
+        $("#DTDApprovDiv").hide();
 
         var DTDRetYear = document.getElementById('DTDRetYear');
         DTDRetYear.style.border = '';
@@ -333,6 +337,7 @@ $(document).ready(function () {
         var doctypeid = relatedTarget.data("doctypeid");
         var doctypename = relatedTarget.data("doctypename");
         var docdatareqdcust = relatedTarget.data("docdatareqdcust");
+        var approvreq = relatedTarget.data("approvreq");
         var doccatid = relatedTarget.data("doccatid");
         var fileextnid = relatedTarget.data("fileextnid");
         var retperyear = relatedTarget.data("retperyear");
@@ -343,6 +348,11 @@ $(document).ready(function () {
             LoadDepartment();
             $("#DTDDocTypeId").val(doctypeid);
             $("#DTDTypeName").val(doctypename);
+            if (approvreq == 1) {
+                $("#DTDApprovReq").prop('checked', true);
+            } else {
+                $("#DTDApprovReq").prop('checked', false);
+            }
             if (docdatareqdcust == "N") {
                 $("#DTDDataCust").prop('checked', false);
                 $("#RetPeriodDiv").hide();
@@ -353,9 +363,11 @@ $(document).ready(function () {
             if (doccatid == 1) {
                 $("#RetPeriodDiv").hide();
                 // $("#RetPeriodDiv").hide();
+                $("#DTDApprovDiv").show();
                 $("#DTDDataCustDiv").hide();
             } else {
                 $("#DTDDataCustDiv").show();
+                $("#DTDApprovDiv").hide();
             }
             var DTDDocCat = $('#DTDDocCat');
             var DTDFileExtn = $('#DTDFileExtn');
@@ -457,7 +469,9 @@ $(document).ready(function () {
         var DTDRetMonth = parseInt($("#DTDRetMonth").val());
         var DTDFileExtn = parseInt($("#DTDFileExtn").val());
         var checkbox = document.getElementById("DTDDataCust");
+        var DTDApprovReq = document.getElementById("DTDApprovReq");
         var DataReqdByCust = 'N';
+        var DTDApprovReqVal = 0;
         if (DocTypeName.length <= 0) {
             var newNamevalidate = document.getElementById('DTDTypeName');
             newNamevalidate.style.border = '2px solid red';
@@ -493,6 +507,11 @@ $(document).ready(function () {
         if (isNaN(DTDDocTypeId)) {
             DTDDocTypeId = 0;
         }
+        if (DTDApprovReq.checked) {
+            DTDApprovReqVal = 1;
+        } else {
+            DTDApprovReqVal = 0;
+        }
         if (checkbox.checked) {
             DataReqdByCust = 'Y';
         } else {
@@ -511,6 +530,7 @@ $(document).ready(function () {
             allowDelete:'N',
             docuCategory: DTDDocCat,
             dataReqdByCust: DataReqdByCust,
+            approval_Reqd: DTDApprovReqVal,
             defaultRetPerMon: DTDRetMonth,
             defaultRetPerYear: DTDRetYear,
             retentionDays:0

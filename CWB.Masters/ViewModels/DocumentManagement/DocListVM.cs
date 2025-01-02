@@ -9,6 +9,7 @@ namespace CWB.Masters.ViewModels.DocumentManagement
     {
         public long DocListId { get; set; }
         public long DocumentTypeId { get; set; }
+        public long Approved_by { get; set; }
         public string FileName { get; set; }
         public string StorageLocation { get; set; }
         public long UploadUiId { get; set; }
@@ -18,8 +19,10 @@ namespace CWB.Masters.ViewModels.DocumentManagement
         public long RoutingId { get; set; }
         public long OprNo { get; set; }
         public DateTime DeletionDate { get; set; }
+        public DateTime Appv_Date_time { get; set; }
         public string Comments { get; set; }
         public long Status { get; set; }
+        public long AppvStatus { get; set; }
         public DateTime CreationDt { get; set; }
         public long McTypeId { get; set; }
         public long McId { get; set; }

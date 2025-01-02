@@ -7,6 +7,7 @@ using CWB.App.Models.OperationList;
 using CWB.App.Models.Routing;
 using CWB.App.Models.Routings;
 using CWB.App.Services.DocumentMagement;
+using CWB.App.Services.EmployeeMaster;
 using CWB.App.Services.Masters;
 using CWB.App.Services.Routings;
 using CWB.CommonUtils.Common;
@@ -29,12 +30,13 @@ namespace CWB.App.Controllers
     {
         private readonly ILoggerManager _logger;
         private readonly IRoutingService _routingService;
+        private readonly IEmployeeService _employeeService;
         private readonly IMastersServices _mastersServices;
         private readonly IMachineService _machineService;
         private readonly IOperationService _operationService;
         private readonly IDocMangService _docMangService;
 
-        public RoutingsController(ILoggerManager logger, IMachineService machineService, IRoutingService routingService,
+        public RoutingsController(ILoggerManager logger, IMachineService machineService, IRoutingService routingService, IEmployeeService employeeService,
             IMastersServices mastersServices, IOperationService operationService, IDocMangService docMangService)
         {
             _logger = logger;
@@ -43,10 +45,125 @@ namespace CWB.App.Controllers
             _machineService = machineService;
             _operationService = operationService;
             _docMangService = docMangService;
+            _employeeService = employeeService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ClaimsPrincipal userClaim = HttpContext.User;
+            string fullName = AppUtil.GetUsername(userClaim);
+            var emp = await _employeeService.GetAllEmployee();
+            var e = emp.Where(e => e.UserName == fullName).FirstOrDefault();
+            if (e != null)
+            {
+                var org = await _employeeService.GetAllOrgChart();
+                var designation = await _employeeService.GetAllUilist();
+                var sorg = org.Where(r => r.Employee_Id == e.Employee_ID).FirstOrDefault();
+                var role = await _employeeService.GetAllRoleList();
+                if (sorg != null)
+                {
+                    var roleui = await _employeeService.GetAllRoleUiList();
+                    var result = roleui.Where(r => r.RoleId == sorg.Role_NameId).ToList();
+                    foreach (var item in result)
+                    {
+                        var d = designation.Where(u => u.UiListId == item.Ui_Id).FirstOrDefault();
+                        var r = role.Where(u => u.Role_ListId == item.RoleId).FirstOrDefault();
+                        item.RoleName = r.Role_Desc;
+                        if (d != null)
+                        {
+                            if (d.UI_Part_linked_to == 0)
+                            {
+                                item.UiLevel = d.UI_Name_Label;
+                                item.Menu1 = d.UI_Name_Label;
+                            }
+                            else
+                            {
+                                var menu2 = designation.Where(m => m.UiListId == d.UI_Part_linked_to).FirstOrDefault();
+                                if (menu2.UI_Part_linked_to == 0)
+                                {
+                                    item.UiLevel = menu2.UI_Name_Label + "+" + d.UI_Name_Label;
+                                    item.Menu2 = d.UI_Name_Label;
+                                    item.Menu1 = menu2.UI_Name_Label;
+                                }
+                                else
+                                {
+                                    var menu3 = designation.Where(m => m.UiListId == menu2.UI_Part_linked_to).FirstOrDefault();
+                                    if (menu3.UI_Part_linked_to == 0)
+                                    {
+                                        item.UiLevel = menu3.UI_Name_Label + "+" + menu2.UI_Name_Label + "+" + d.UI_Name_Label;
+                                        item.Menu1 = menu3.UI_Name_Label;
+                                        item.Menu2 = menu2.UI_Name_Label;
+                                        item.Menu3 = d.UI_Name_Label;
+                                    }
+                                    else
+                                    {
+                                        var menu4 = designation.Where(m => m.UiListId == menu3.UI_Part_linked_to).FirstOrDefault();
+                                        if (menu4.UI_Part_linked_to == 0)
+                                        {
+                                            item.UiLevel = menu4.UI_Name_Label + "+" + menu3.UI_Name_Label + "+" + menu2.UI_Name_Label + "+" + d.UI_Name_Label;
+                                            item.Menu1 = menu4.UI_Name_Label;
+                                            item.Menu2 = menu3.UI_Name_Label;
+                                            item.Menu3 = menu2.UI_Name_Label;
+                                            item.Menu4 = d.UI_Name_Label;
+                                        }
+                                        else
+                                        {
+                                            var menu5 = designation.Where(m => m.UiListId == menu4.UI_Part_linked_to).FirstOrDefault();
+                                            if (menu5.UI_Part_linked_to == 0)
+                                            {
+                                                item.UiLevel = menu5.UI_Name_Label + "+" + menu4.UI_Name_Label + "+" + menu3.UI_Name_Label + "+" + menu2.UI_Name_Label + "+" + d.UI_Name_Label;
+                                                item.Menu1 = menu5.UI_Name_Label;
+                                                item.Menu2 = menu4.UI_Name_Label;
+                                                item.Menu3 = menu3.UI_Name_Label;
+                                                item.Menu4 = menu2.UI_Name_Label;
+                                                item.Menu5 = d.UI_Name_Label;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (item.PermissionId == 1)
+                        {
+                            item.View_Allowed = "N";
+                            item.Add_Edit_Allowed = "N";
+                            item.Delete_Allowed = "N";
+                            item.Approval_Allowed = "N";
+                        }
+                        else if (item.PermissionId == 2)
+                        {
+                            item.View_Allowed = "Y";
+                            item.Add_Edit_Allowed = "N";
+                            item.Delete_Allowed = "N";
+                            item.Approval_Allowed = "N";
+                        }
+                        else if (item.PermissionId == 3)
+                        {
+                            item.View_Allowed = "Y";
+                            item.Add_Edit_Allowed = "Y";
+                            item.Delete_Allowed = "N";
+                            item.Approval_Allowed = "N";
+                        }
+                        else if (item.PermissionId == 4)
+                        {
+                            item.View_Allowed = "Y";
+                            item.Add_Edit_Allowed = "Y";
+                            item.Delete_Allowed = "Y";
+                            item.Approval_Allowed = "N";
+                        }
+                        else if (item.PermissionId == 5)
+                        {
+                            item.View_Allowed = "Y";
+                            item.Add_Edit_Allowed = "Y";
+                            item.Delete_Allowed = "Y";
+                            item.Approval_Allowed = "Y";
+                        }
+                    }
+                    var permissionresult = result;
+                   // ViewBag.Permissions = result;
+                    //ViewData["PermissionResult"] = permissionresult;
+                }
+            }
             return View();
         }
 

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Designations";
 }
 
@@ -13,6 +15,15 @@
                 </div>
             </div>
             <!-- -------- -->
+            @{
+                List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                if (permissionsJson != null)
+                {
+                    permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                }
+            }
             <div class="row mt-2">
                 <div class="col-md-3" title="Enter the Designation Name Partially or Fully to shortlist " data-plugin="tippy" data-tippy-placement="top">
                     <input class="form-control form-control-sm" type="text" id="searchDesignation" placeholder="Designation Name">
@@ -57,10 +68,36 @@
             <!-- ------- -->
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-id="0" data-bs-target="#dialog-designation" title="Select to Add details of a Designation"
-                            data-plugin="tippy" data-tippy-placement="top">
-                        Add Designation
-                    </button>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Designation"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Designation").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-id="0" data-bs-target="#dialog-designation" title="Select to Add details of a Designation"
+                                        data-plugin="tippy" data-tippy-placement="top">
+                                    Add Designation
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-id="0" data-bs-target="#" title="Select to Add details of a Designation"
+                                        data-plugin="tippy" data-tippy-placement="top" disabled>
+                                    Add Designation
+                                </button>
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-id="0" data-bs-target="#dialog-designation" title="Select to Add details of a Designation"
+                                data-plugin="tippy" data-tippy-placement="top">
+                            Add Designation
+                        </button>
+                    }
                 </div>
             </div>
             <!-- ============================== -->
@@ -84,10 +121,35 @@
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-designation"
-                       data-id="{designationId}" data-designationname="{name}" class="dropdown-item">Edit</a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" onclick="DelDesignation('{name}',{designationId});" class="dropdown-item">Delete</a>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Add / Edit Designation"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Add / Edit Designation").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-designation"
+                                   data-id="{designationId}" data-designationname="{name}" class="dropdown-item">Edit</a>
+                            }
+                            var prr = permissionResult.Where(r => r.Menu3 == "Designation List").FirstOrDefault();
+                            if (prr.PermissionId >= 4)
+                            {
+                                <a href="javascript:void(0);" onclick="DelDesignation('{name}',{designationId});" class="dropdown-item">Delete</a>
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#dialog-designation"
+                           data-id="{designationId}" data-designationname="{name}" class="dropdown-item">Edit</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" onclick="DelDesignation('{name}',{designationId});" class="dropdown-item">Delete</a>
+                    }
                     <!-- item-->
                 </div>
             </div>

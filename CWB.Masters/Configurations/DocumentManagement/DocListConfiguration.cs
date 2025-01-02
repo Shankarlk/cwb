@@ -22,6 +22,10 @@ namespace CWB.Masters.Configurations.DocumentManagement
                 .HasColumnName("DocumentTypeId")
                 .IsRequired();
             builder
+                .Property(t => t.Approved_by)
+                .HasColumnName("Approved_by")
+                .IsRequired();
+            builder
                 .Property(t => t.FileName)
                 .HasColumnName("FileName")
                 .IsRequired();
@@ -58,6 +62,10 @@ namespace CWB.Masters.Configurations.DocumentManagement
                 .HasColumnName("DeletionDate")
                 .IsRequired();
             builder
+                .Property(c => c.Appv_Date_time)
+                .HasColumnName("Appv_Date_time")
+                .IsRequired();
+            builder
                 .Property(t => t.Comments)
                 .HasColumnName("Comments");
             builder
@@ -71,6 +79,10 @@ namespace CWB.Masters.Configurations.DocumentManagement
             builder
                 .Property(c => c.Status)
                 .HasColumnName("Status")
+                .IsRequired();
+            builder
+                .Property(c => c.AppvStatus)
+                .HasColumnName("AppvStatus")
                 .IsRequired();
             builder
                 .Property(c => c.TenantId)

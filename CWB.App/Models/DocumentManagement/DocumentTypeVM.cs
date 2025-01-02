@@ -11,6 +11,8 @@ namespace CWB.App.Models.DocumentManagement
     {
         public long DocumentTypeId { get; set; }
         public string DocumentName { get; set; }
+        public int Approval_Reqd { get; set; }
+        public string Approval_ReqdStr { get; set; }
         public long ExtnId { get; set; }
         public char AllowDelete { get; set; }
         public int DocuCategory { get; set; }

@@ -63,6 +63,19 @@ $(function () {
     $("#Status").change(function () {
         loadMPDList();
     });
+    $("#DocRefStatus").change(function () {
+        var selval = $("#DocRefStatus").val();
+        if (selval != "0") {
+            var data = $("#DocRefStatus option:selected").text();
+            var value = data.toLowerCase();
+            $("#mptable tbody tr").filter(function () {
+                $(this).toggle($(this.children[10]).text().toLowerCase().indexOf(value) > -1)
+            });
+
+        } else {
+            $("#mptable tbody tr").show();
+        }
+    });
 
     var RawMaterialMadeType = 0;
     //////debugger;

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Work Order";
 }
 <input value="B-BP" type="hidden" id="hdn-nav-menu" />
@@ -13,37 +15,71 @@
                             <h3 style="padding: 10px;">Operations</h3>
                         </div>
                         <!-- =============================  -->
+                        @{
+                            List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                            var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                            if (permissionsJson != null)
+                            {
+                                permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                            }
+                        }
                         <div class="col-md-12">
                             <div class="row">
                                 <!-- ================================ -->
                                 <div class="col-md-3 col-sm-12 dott-bord-r" style="padding: 10px;">
                                     <!-- end row -->
                                     <div class="row">
-                                        <h5 class="mb-3">Production Planning Flow</h5>
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-outline-info w-100 mb-2">
-                                                <a asp-controller="WorkOrder" asp-action="SoToWo">
-                                                    <h6>Convert SO to WO</h6>
-                                                </a>
+                                        @if (permissionResult != null)
+                                        {
+                                            @if (permissionResult.Any(r => r.Menu3 == "Convert SO to WO"))
+                                            {
+                                                <h5 class="mb-3">Production Planning Flow</h5>
+                                                <div class="col-md-12">
+                                                    <div class="text-center btn btn-outline-info w-100 mb-2">
+                                                        <a asp-controller="WorkOrder" asp-action="SoToWo">
+                                                            <h6>Convert SO to WO</h6>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (permissionResult.Any(r => r.Menu3 == "Detailed Production Planning"))
+                                            {
+                                                <div class="col-md-12">
+                                                    <div class="text-center btn btn-outline-info w-100 mb-2">
+                                                        <a asp-controller="WorkOrder" asp-action="DetailedProcPlan">
+                                                            <h6>Detailed Production Planning</h6>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <h5 class="mb-3">Production Planning Flow</h5>
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-outline-info w-100 mb-2">
+                                                    <a asp-controller="WorkOrder" asp-action="SoToWo">
+                                                        <h6>Convert SO to WO</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-outline-info w-100 mb-2">
-                                                <a asp-controller="WorkOrder" asp-action="DetailedProcPlan">
-                                                    <h6>Detailed Production Planning</h6>
-                                                </a>
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-outline-info w-100 mb-2">
+                                                    <a asp-controller="WorkOrder" asp-action="DetailedProcPlan">
+                                                        <h6>Detailed Production Planning</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
-                                        <div class="col-md-12">
-                                            <div class="text-center btn btn-outline-info w-100 mb-2">
-                                                <a href="#">
-                                                    <h6>Release WO for Production </h6>
-                                                </a>
+                                            <div class="col-md-12">
+                                                <div class="text-center btn btn-outline-info w-100 mb-2">
+                                                    <a href="#">
+                                                        <h6>Release WO for Production </h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- end -->
+                                            <!-- end -->
+                                        }
                                         <div class="col-md-12">
                                             <div class="text-center btn btn-outline-info w-100 mb-2">
                                                 <a href="#">
@@ -67,6 +103,8 @@
                                                 </a>
                                             </div>
                                         </div>
+                                        <!-- end -->
+                                        <!-- end -->
                                         <!-- end -->
                                     </div>
                                 </div>
@@ -191,21 +229,48 @@
                                             </div>
                                             <!-- ========================  -->
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
-                                                <a asp-controller="WorkOrder" asp-action="SalesOrderList">
-                                                    <h6>SO List View / Edit</h6>
-                                                </a>
+
+                                        @if (permissionResult != null)
+                                        {
+                                            @if (permissionResult.Any(r => r.Menu3 == "SO List / View"))
+                                            {
+                                                <div class="col-md-4">
+                                                    <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
+                                                        <a asp-controller="WorkOrder" asp-action="SalesOrderList">
+                                                            <h6>SO List View / Edit</h6>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (permissionResult.Any(r => r.Menu3 == "Work Order List View"))
+                                            {
+                                                <div class="col-md-4">
+                                                    <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
+                                                        <a asp-controller="WorkOrder" asp-action="WorkOrderList">
+                                                            <h6>WO List View / Edit</h6>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="col-md-4">
+                                                <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
+                                                    <a asp-controller="WorkOrder" asp-action="SalesOrderList">
+                                                        <h6>SO List View / Edit</h6>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="col-md-4">
+                                                <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
+                                                    <a asp-controller="WorkOrder" asp-action="WorkOrderList">
+                                                        <h6>WO List View / Edit</h6>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        }
                                         <!-- ========================  -->
-                                        <div class="col-md-4">
-                                            <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">
-                                                <a asp-controller="WorkOrder" asp-action="WorkOrderList">
-                                                    <h6>WO List View / Edit</h6>
-                                                </a>
-                                            </div>
-                                        </div>
                                         <!-- ========================  -->
                                         <div class="col-md-4">
                                             <div class="text-center btn-sm btn btn-outline-info w-100 mb-2">

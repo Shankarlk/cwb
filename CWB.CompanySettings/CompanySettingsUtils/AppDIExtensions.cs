@@ -1,9 +1,11 @@
 ﻿using CWB.CompanySettings.Infrastructure;
 using CWB.CompanySettings.Repositories.Designations;
 using CWB.CompanySettings.Repositories.DocType;
+using CWB.CompanySettings.Repositories.EmployeeMaster;
 using CWB.CompanySettings.Repositories.Location;
 using CWB.CompanySettings.Services.Designations;
 using CWB.CompanySettings.Services.DocType;
+using CWB.CompanySettings.Services.EmployeeMaster;
 using CWB.CompanySettings.Services.Location;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -25,9 +27,17 @@ namespace CWB.CompanySettings.CompanySettingsUtils
             services.AddTransient<IDepartmentService, DepartmentService>();
             services.AddTransient<IDesignationRepository, DesignationRepository>();
             services.AddTransient<IDesignationService, DesignationService>();
+            services.AddTransient<IEmployeeSerivce, EmployeeService>();
 			services.AddTransient<IDocumentTypeService, DocumentTypeService>();
 			services.AddTransient<ICityRepository, CityRepository>();
 			services.AddTransient<ICountryRepository, CountryRepository>();
+			services.AddTransient<IUi_ListRepository, UiListRepository>();
+			services.AddTransient<IOrg_ChartRepository, Org_ChartRepository>();
+			services.AddTransient<IRole_ListRepository, Role_ListRepository>();
+			services.AddTransient<IRole_Ui_ListRepository, Role_Ui_ListRepository>();
+			services.AddTransient<IEmpl_Role_ListRepository, Empl_Role_ListRepository>();
+			services.AddTransient<IPermission_ListRepository, Permission_ListRepository>();
+			services.AddTransient<IEmployeeMasterRepository, EmployeeMasterRepository>();
 
         }
     }

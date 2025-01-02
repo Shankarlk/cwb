@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using NLog;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
@@ -24,10 +25,12 @@ namespace CWB.App
     public class Startup
     {
         private bool _enableAuth = true;
+        private readonly string _localIpAddress;
         public Startup(IConfiguration configuration)
         {
             //LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
+            _localIpAddress = Environment.GetEnvironmentVariable("HOST_DEFAULT_SWITCH_IP");
         }
 
         public IConfiguration Configuration { get; }
@@ -40,7 +43,13 @@ namespace CWB.App
             services.AddControllersWithViews();
 
             //configureApp URLS..
-            services.Configure<ApiUrls>(Configuration.GetSection("ApiUrls"));
+            ApiUrls apiUrls = new ApiUrls
+            {
+                Idenitity = $"http://{_localIpAddress}:9003",
+                Gateway = $"http://{_localIpAddress}:9001"
+            };
+            services.AddSingleton(apiUrls);
+            //services.Configure<ApiUrls>(Configuration.GetSection("ApiUrls"));
             //Dependency Injection..
             services.ConfigureAppDI();
             
@@ -59,7 +68,7 @@ namespace CWB.App
             })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = Configuration["ApiUrls:Idenitity"];
+                    options.Authority = $"http://{_localIpAddress}:9003";
                     options.ClientId = "cwbmvc";
                     options.ClientSecret = "cwbsecret";
                     //options.ResponseType = "code";
@@ -107,6 +116,12 @@ namespace CWB.App
                         RoleClaimType = "role"
                     };
                 });
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60); // Set the session timeout
+                options.Cookie.HttpOnly = true; // Make the session cookie HTTP only
+                options.Cookie.IsEssential = true; // Make the session cookie essential
+            });
             services.AddAuthorization();
         }
 
@@ -135,7 +150,7 @@ namespace CWB.App
             {
                 app.UseAuthentication();
                 app.UseAuthorization();
-
+                app.UseSession();
                 app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapDefaultControllerRoute()

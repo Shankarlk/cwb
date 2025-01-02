@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Item Master";
 }
 <input value="M-IM" type="hidden" id="hdn-nav-menu" />
@@ -13,46 +15,111 @@
                     </div>
                     <!-- end row -->
                     <div class="row mt-2">
-                        <div class="col-md-3">
-                            <div class="widget-simple text-center card btn btn-outline-info">
-                                <a asp-action="MasterDetails">
-                                    <div class="card-body">
-                                        <h5><br>View / Edit Part Numbers<br><br></h5>
+                        @{
+                            List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+                            var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+                            if (permissionsJson != null)
+                            {
+                                permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+                            }
+                        }
+
+                        @if (permissionResult != null)
+                        {
+                            @if (permissionResult.Any(r => r.Menu3 == "View / Edit Part No"))
+                            {
+                                <div class="col-md-3">
+                                    <div class="widget-simple text-center card btn btn-outline-info">
+                                        <a asp-action="MasterDetails">
+                                            <div class="card-body">
+                                                <h5><br>View / Edit Part Numbers<br><br></h5>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- end -->
-                        <div class="col-md-3">
-                            <div class="widget-simple text-center card btn btn-outline-info">
-                                <a asp-action="ManufPart" asp-route-id="@ViewBag.IndexId">
-                                    <div class="card-body">
-                                        <h5><br>Create New Manf Part No <br><br></h5>
+                                </div>
+                            }
+                            @if (permissionResult.Any(r => r.Menu3 == "Create New Manf Part No"))
+                            {
+                                <div class="col-md-3">
+                                    <div class="widget-simple text-center card btn btn-outline-info">
+                                        <a asp-action="ManufPart" asp-route-id="@ViewBag.IndexId">
+                                            <div class="card-body">
+                                                <h5><br>Create New Manf Part No <br><br></h5>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- end -->
-                        <div class="col-md-3">
-                            <div class="widget-simple text-center card btn btn-outline-info">
-                                <a asp-action="RawMaterial" asp-route-id="@ViewBag.IndexId">
-                                    <div class="card-body">
-                                        <h5>Create New Raw Material <br><br> Part No</h5>
+                                </div>
+                            }
+                            @if (permissionResult.Any(r => r.Menu3 == "Create New Raw Material Part No"))
+                            {
+                                <div class="col-md-3">
+                                    <div class="widget-simple text-center card btn btn-outline-info">
+                                        <a asp-action="RawMaterial" asp-route-id="@ViewBag.IndexId">
+                                            <div class="card-body">
+                                                <h5>Create New Raw Material <br><br> Part No</h5>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- end -->
-                        <div class="col-md-3">
-                            <div class="widget-simple text-center card btn btn-outline-info">
-                                <a asp-action="BOF" asp-route-id="@ViewBag.IndexId">
-                                    <div class="card-body">
-                                        <h5>Create New Bought Out Finish <br><br> (BOF) Part No</h5>
+                                </div>
+                            }
+                            @if (permissionResult.Any(r => r.Menu3 == "Create New Bof Part No"))
+                            {
+                                <div class="col-md-3">
+                                    <div class="widget-simple text-center card btn btn-outline-info">
+                                        <a asp-action="BOF" asp-route-id="@ViewBag.IndexId">
+                                            <div class="card-body">
+                                                <h5>Create New Bought Out Finish <br><br> (BOF) Part No</h5>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+
+                            <div class="col-md-3">
+                                <div class="widget-simple text-center card btn btn-outline-info">
+                                    <a asp-action="MasterDetails">
+                                        <div class="card-body">
+                                            <h5><br>View / Edit Part Numbers<br><br></h5>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- end -->
+                            <!-- end -->
+                            <div class="col-md-3">
+                                <div class="widget-simple text-center card btn btn-outline-info">
+                                    <a asp-action="ManufPart" asp-route-id="@ViewBag.IndexId">
+                                        <div class="card-body">
+                                            <h5><br>Create New Manf Part No <br><br></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end -->
+                            <div class="col-md-3">
+                                <div class="widget-simple text-center card btn btn-outline-info">
+                                    <a asp-action="RawMaterial" asp-route-id="@ViewBag.IndexId">
+                                        <div class="card-body">
+                                            <h5>Create New Raw Material <br><br> Part No</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end -->
+                            <div class="col-md-3">
+                                <div class="widget-simple text-center card btn btn-outline-info">
+                                    <a asp-action="BOF" asp-route-id="@ViewBag.IndexId">
+                                        <div class="card-body">
+                                            <h5>Create New Bought Out Finish <br><br> (BOF) Part No</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end -->
+                        }
                     </div>
                     <!-- end row -->
                 </div>

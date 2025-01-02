@@ -33,5 +33,6 @@ namespace CWB.App.Services.DocumentMagement
         Task<bool> DeleteDocList(long docListId);
         Task<bool> CheckDocTypeName(string docTypeName);
         Task<bool> CheckExtnName(string extnName);
+        Task<Doc_status_listVM> GetDoc_Status_List(long extnName);
     }
 }

@@ -582,6 +582,7 @@ namespace CWB.Masters.MastersUtils
             CreateMap<DocumentType, DocumentTypeVM>()
             .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.Id))
             .ForMember(s => s.DocumentName, s => s.MapFrom(src => src.DocumentName))
+            .ForMember(s => s.Approval_Reqd, s => s.MapFrom(src => src.Approval_Reqd))
             .ForMember(s => s.ExtnId, s => s.MapFrom(src => src.ExtnId))
             .ForMember(s => s.AllowDelete, s => s.MapFrom(src => src.AllowDelete))
             .ForMember(s => s.DocuCategory, s => s.MapFrom(src => src.DocuCategory))
@@ -595,6 +596,7 @@ namespace CWB.Masters.MastersUtils
                         .ForMember(s => s.Id, s => s.MapFrom(src => src.DocumentTypeId))
                         .ForMember(s => s.DocumentName, s => s.MapFrom(src => src.DocumentName))
                         .ForMember(s => s.ExtnId, s => s.MapFrom(src => src.ExtnId))
+                        .ForMember(s => s.Approval_Reqd, s => s.MapFrom(src => src.Approval_Reqd))
                         .ForMember(s => s.AllowDelete, s => s.MapFrom(src => src.AllowDelete))
                         .ForMember(s => s.DocuCategory, s => s.MapFrom(src => src.DocuCategory))
                         .ForMember(s => s.DataReqdByCust, s => s.MapFrom(src => src.DataReqdByCust))
@@ -660,6 +662,9 @@ namespace CWB.Masters.MastersUtils
             CreateMap<DocList, DocListVM>()
             .ForMember(s => s.DocListId, s => s.MapFrom(src => src.Id))
             .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
+            .ForMember(s => s.AppvStatus, s => s.MapFrom(src => src.AppvStatus))
+            .ForMember(s => s.Approved_by, s => s.MapFrom(src => src.Approved_by))
+            .ForMember(s => s.Appv_Date_time, s => s.MapFrom(src => src.Appv_Date_time))
             .ForMember(s => s.FileName, s => s.MapFrom(src => src.FileName))
             .ForMember(s => s.StorageLocation, s => s.MapFrom(src => src.StorageLocation))
             .ForMember(s => s.UploadUiId, s => s.MapFrom(src => src.UploadUiId))
@@ -680,6 +685,9 @@ namespace CWB.Masters.MastersUtils
             .ForMember(s => s.Id, s => s.MapFrom(src => src.DocListId))
             .ForMember(s => s.DocumentTypeId, s => s.MapFrom(src => src.DocumentTypeId))
             .ForMember(s => s.FileName, s => s.MapFrom(src => src.FileName))
+            .ForMember(s => s.AppvStatus, s => s.MapFrom(src => src.AppvStatus))
+            .ForMember(s => s.Approved_by, s => s.MapFrom(src => src.Approved_by))
+            .ForMember(s => s.Appv_Date_time, s => s.MapFrom(src => src.Appv_Date_time))
             .ForMember(s => s.StorageLocation, s => s.MapFrom(src => src.StorageLocation))
             .ForMember(s => s.UploadUiId, s => s.MapFrom(src => src.UploadUiId))
             .ForMember(s => s.WoId, s => s.MapFrom(src => src.WoId))
@@ -713,6 +721,12 @@ namespace CWB.Masters.MastersUtils
                 .ForMember(s => s.Status, s => s.MapFrom(src => src.Status));
 
 
+            CreateMap<Doc_status_list, Doc_status_listVM>()
+                .ForMember(s => s.Doc_status_listId, s => s.MapFrom(src => src.Id))
+                .ForMember(s => s.Doc_Status_Desc, s => s.MapFrom(src => src.Doc_Status_Desc));
+            CreateMap<Doc_status_listVM, Doc_status_list>()
+                .ForMember(s => s.Id, s => s.MapFrom(src => src.Doc_status_listId))
+                .ForMember(s => s.Doc_Status_Desc, s => s.MapFrom(src => src.Doc_Status_Desc));
 
             CreateMap<ItemMasterDocList, ItemMasterDocListVM>()
             .ForMember(s => s.ItemMasterDocListId, s => s.MapFrom(src => src.Id))

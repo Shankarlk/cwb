@@ -33,9 +33,8 @@
                                         <!-- ----------  -->
                                         <div class="col-md-6">
                                             <label class="form-label mb-1">Uploaded by</label>
-                                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" data-plugin="tippy" data-tippy-placement="top">
-                                                <option value="">Person</option>
-                                            </select>
+                                            <input class="form-control form-control-sm" type="text" placeholder="Enter Here" id="SearchUploadedBy"
+                                                   title="" data-plugin="tippy" data-tippy-placement="top">
                                         </div>
                                         <!-- ----------  -->
                                         <div class="col-md-6 mt-3">
@@ -111,13 +110,58 @@
                                             <input type="date" class="form-control form-control-sm" id="SearchUploadTo">
                                         </div>
                                         <!-- ----------  -->
-                                        <div class="col-md-12 text-end">
+                                        @*<div class="col-md-12 text-end">
                                             <label class="form-label mb-1">&nbsp;</label>
                                             <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="ClearSearchFields" >Clear Fields</button>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                                 <!-- ======================= -->
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-3 dott-bord-r">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="form-label mb-1">Approved by</label>
+                                            <input type="text" class="form-control form-control-sm" id="SearchApprovBy">
+                                        </div>
+                                        <!-- ----------  -->
+                                        <div class="col-md-12">
+                                            <label class="form-label mb-1">Ref Doc Status</label>
+                                            <select class="form-select form-select-sm" aria-label="form-select-sm" title="" id="SearchRefDocCat"
+                                                    data-plugin="tippy" data-tippy-placement="top">
+                                                <option value="0">Status</option>
+                                                <option value="1">Approved</option>
+                                                <option value="2">Waiting for Approval</option>
+                                                <option value="3">Not Approved</option>
+                                            </select>
+                                        </div>
+                                        <!-- ----------  -->
+                                        @*<div class="col-md-12 text-end">
+                                            <label class="form-label mb-1">&nbsp;</label>
+                                            <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="ClearSearchFields">Clear Fields</button>
+                                        </div>*@
+                                    </div>
+                                </div>
+                                <div class="col-md-3 dott-bord-r">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="form-label mb-1">Apprvd From</label>
+                                            <input type="date" class="form-control form-control-sm" id="SearchApprovUploadFrom">
+                                        </div>
+                                        <!-- ----------  -->
+                                        <div class="col-md-12">
+                                            <label class="form-label mb-1">Apprvd To</label>
+                                            <input type="date" class="form-control form-control-sm" id="SearchApprovUploadTo">
+                                        </div>
+                                        <!-- ----------  -->
+                                        <div class="col-md-12 text-end">
+                                            <label class="form-label mb-1">&nbsp;</label>
+                                            <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="ClearSearchFields">Clear Fields</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- =========== -->
                         </div>
@@ -140,8 +184,11 @@
                                                data-plugin="tippy" data-tippy-placement="top">
                                     </th>
                                     <th>Document Type Name</th>
+                                    <th>Status</th>
                                     <th>Upload Date</th>
                                     <th>Uploaded by</th>
+                                    <th>Apprvd Date</th>
+                                    <th>Apprvd by</th>
                                     <th>Customer</th>
                                     <th>PO No / WO No</th>
                                     <th>Part No / Desc</th>
@@ -272,8 +319,11 @@
             <input type="checkbox" class="row-checkbox" />
         </td>
         <td>{documentTypeName}</td>
+        <td>{docStatus}</td>
         <td>{uploadedBy}</td>
         <td>{updatedOnStr}</td>
+        <td>{approvedByStr}</td>
+        <td>{approvedOnStr}</td>
         <td>{companyName}</td>
         <td></td>
         <td>{partNo} / {partDesc}</td>

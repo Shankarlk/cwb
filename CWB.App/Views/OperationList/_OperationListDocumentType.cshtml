@@ -1,7 +1,18 @@
-﻿@model CWB.App.Models.OperationList.OperationDocumentTypeVM
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model CWB.App.Models.OperationList.OperationDocumentTypeVM
 <div class="row" id="containerOperationListDocType">
     <h6 class="text-center mb-2">Document Required for the Operation</h6>
     <!-- ----- -->
+    @{
+        List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM> permissionResult = null;
+        var permissionsJson = HttpContextAccessor.HttpContext.Session.GetString("Permissions");
+        if (permissionsJson != null)
+        {
+            permissionResult = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CWB.App.Models.EmployeeMaster.Role_UI_ListVM>>(permissionsJson);
+
+        }
+    }
     <div class="col-md-6 dott-bord-r">
         <form id="frmOperationlistdoc" method="post">
             <div class="row">
@@ -20,8 +31,31 @@
                 </div>
                 <!-- ----- -->
                 <div class="col-md-12 text-end">
-                    <input type="button" class="btn btn-sm btn-primary" title="Select to Add the Document Type to the List of Documents"
-                           data-plugin="tippy" data-tippy-placement="top" value="ADD" id="btnOperationDocTypeSubmit" />
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Document Required for the Operation"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Document Required for the Operation").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <input type="button" class="btn btn-sm btn-primary" title="Select to Add the Document Type to the List of Documents"
+                                       data-plugin="tippy" data-tippy-placement="top" value="ADD" id="btnOperationDocTypeSubmit" />
+                            }
+                            else
+                            {
+                                <input type="button" class="btn btn-sm btn-primary" title="Select to Add the Document Type to the List of Documents"
+                                       data-plugin="tippy" data-tippy-placement="top" value="ADD" id="btnOperationDocTypeSubmitp" disabled />
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <input type="button" class="btn btn-sm btn-primary" title="Select to Add the Document Type to the List of Documents"
+                               data-plugin="tippy" data-tippy-placement="top" value="ADD" id="btnOperationDocTypeSubmit" />
+                    }
+
                 </div>
             </div>
             <div class="row">
@@ -59,13 +93,41 @@
                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <button data-id="{operationalDocumentId}" data-mandatory="{isMandatory}" data-doctype="{documentType}"
-                            data-doctypeid="{documentTypeId}" class="dropdown-item edit">
-                        Edit
-                    </button>
-                    <!-- item-->
-                    <button data-id="{operationalDocumentId}"
-                            data-doctypeid="{documentTypeId}" onclick="DeletOperationDoc(this)" class="dropdown-item delete">delete</button>
+                    @if (permissionResult != null)
+                    {
+                        @if (permissionResult.Any(r => r.Menu3 == "Document Required for the Operation"))
+                        {
+                            var pr = permissionResult.Where(r => r.Menu3 == "Document Required for the Operation").FirstOrDefault();
+                            if (pr.PermissionId >= 3)
+                            {
+                                <button data-id="{operationalDocumentId}" data-mandatory="{isMandatory}" data-doctype="{documentType}"
+                                        data-doctypeid="{documentTypeId}" class="dropdown-item edit">
+                                    Edit
+                                </button>
+                            }
+                            if (pr.PermissionId >= 4)
+                            {
+                                <button data-id="{operationalDocumentId}"
+                                        data-doctypeid="{documentTypeId}" onclick="DeletOperationDoc(this)" class="dropdown-item delete">
+                                    delete
+                                </button>
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        <button data-id="{operationalDocumentId}" data-mandatory="{isMandatory}" data-doctype="{documentType}"
+                                data-doctypeid="{documentTypeId}" class="dropdown-item edit">
+                            Edit
+                        </button>
+                        <button data-id="{operationalDocumentId}"
+                                data-doctypeid="{documentTypeId}" onclick="DeletOperationDoc(this)" class="dropdown-item delete">
+                            delete
+                        </button>
+                        <!-- item-->
+                    }
                 </div>
             </div>
         </td>

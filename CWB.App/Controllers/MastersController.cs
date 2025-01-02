@@ -1942,6 +1942,24 @@ namespace CWB.App.Controllers
                         if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId)))
                         {
                             item.MandocAvl = "Yes";
+                            if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y')))
+                            {
+                                var firstMatch = docListVMs
+                                                   .FirstOrDefault(docList =>
+                                                       docmand.Any(docMand =>
+                                                           docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y' && docList.PartId == item.PartId
+                                                       )
+                                                   );
+                                if (firstMatch != null)
+                                {
+                                    var getdoc = await _docMangService.GetDoc_Status_List(firstMatch.AppvStatus);
+                                    item.DocStatus = getdoc.Doc_Status_Desc;
+                                }
+                                else
+                                {
+                                    item.DocStatus = "N/A";
+                                }
+                            }
                         }
                         else
                         {
@@ -1951,6 +1969,7 @@ namespace CWB.App.Controllers
                     else
                     {
                         item.MandocAvl = "N/A";
+                        item.DocStatus = "N/A";
                     }
                     if (mk.Count() > 0)
                     {
@@ -1983,6 +2002,24 @@ namespace CWB.App.Controllers
                         if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId)))
                         {
                             item.MandocAvl = "Yes";
+                            if(docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory =='Y')))
+                            {
+                                var firstMatch = docListVMs
+                                                   .FirstOrDefault(docList =>
+                                                       docmand.Any(docMand =>
+                                                           docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y' && docList.PartId == item.PartId
+                                                       )
+                                                   );
+                                if(firstMatch != null)
+                                {
+                                    var getdoc = await _docMangService.GetDoc_Status_List(firstMatch.AppvStatus);
+                                    item.DocStatus = getdoc.Doc_Status_Desc;
+                                }
+                                else
+                                {
+                                    item.DocStatus = "N/A";
+                                }
+                            }
                         }
                         else
                         {
@@ -1992,6 +2029,7 @@ namespace CWB.App.Controllers
                     else
                     {
                         item.MandocAvl = "N/A";
+                        item.DocStatus = "N/A";
                     }
                     if (mpmakefromlist.Count() > 0)
                     {
@@ -2014,10 +2052,29 @@ namespace CWB.App.Controllers
                         if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId)))
                         {
                             item.MandocAvl = "Yes";
+                            if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y')))
+                            {
+                                var firstMatch = docListVMs
+                                                   .FirstOrDefault(docList =>
+                                                       docmand.Any(docMand =>
+                                                           docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y' && docList.PartId == item.PartId
+                                                       )
+                                                   );
+                                if (firstMatch != null)
+                                {
+                                    var getdoc = await _docMangService.GetDoc_Status_List(firstMatch.AppvStatus);
+                                    item.DocStatus = getdoc.Doc_Status_Desc;
+                                }
+                                else
+                                {
+                                    item.DocStatus = "N/A";
+                                }
+                            }
                         }
                         else
                         {
                             item.MandocAvl = "No";
+                            item.DocStatus = "N/A";
                         }
                     }
                     else
@@ -2057,7 +2114,25 @@ namespace CWB.App.Controllers
                         var docListVMs = await _docMangService.GetAllDocList();
                         if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId)))
                         {
-                            item.MandocAvl = "Yes";
+                            item.MandocAvl = "Yes"; 
+                            if (docListVMs.Any(docList => docmand.Any(docMand => docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y')))
+                            {
+                                var firstMatch = docListVMs
+                                                   .FirstOrDefault(docList =>
+                                                       docmand.Any(docMand =>
+                                                           docList.DocumentTypeId == docMand.DocumentTypeId && docMand.Mandatory == 'Y' && docList.PartId == item.PartId
+                                                       )
+                                                   );
+                                if (firstMatch != null)
+                                {
+                                    var getdoc = await _docMangService.GetDoc_Status_List(firstMatch.AppvStatus);
+                                    item.DocStatus = getdoc.Doc_Status_Desc;
+                                }
+                                else
+                                {
+                                    item.DocStatus = "N/A";
+                                }
+                            }
                         }
                         else
                         {
@@ -2067,6 +2142,7 @@ namespace CWB.App.Controllers
                     else
                     {
                         item.MandocAvl = "N/A";
+                        item.DocStatus = "N/A";
                     }
                     var rm = await _mastersService.GetRMPart((int)item.PartId);
                     if (rm.RawMaterialMadeType == 1)
@@ -2393,6 +2469,14 @@ namespace CWB.App.Controllers
             var result = await _mastersService.CheckDocTypeInDocList(docTypeid);
             return Json(!result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetUserTenant()
+        {
+            ClaimsPrincipal userClaim = HttpContext.User;
+            string fullName = AppUtil.GetFullName(userClaim);
+            //var result = await _mastersService.CheckDocTypeInDocList(docTypeid);
+            return Json(fullName);
+        }
 
         [HttpGet]
         public async Task<IActionResult> BOFDoclist(int contentid, long partid)
@@ -2409,7 +2493,6 @@ namespace CWB.App.Controllers
 
             if (partid == 0)
             {
-                // Show all document types related to contentid when partid is 0
                 foreach (var master in result.Where(m => m.ContentId == contentid))
                 {
                     DocListVM empDoc = new DocListVM();
@@ -2422,16 +2505,29 @@ namespace CWB.App.Controllers
             }
             else
             {
-                // When partid != 0, show docListVMs related to contentid and partid
                 bool hasEntries = false;
                 foreach (var item in docListVMs.Where(d => d.PartId == partid && result.Any(m => m.ContentId == contentid && m.DocumentTypeId == d.DocumentTypeId)))
                 {
                     PopulateItemFields(item, result.First(m => m.ContentId == contentid && m.DocumentTypeId == item.DocumentTypeId), doctype, extns, custRetnDataVMs, companies);
-                    ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+                    ClaimsPrincipal userClaim = HttpContext.User; 
                     string fullName = AppUtil.GetFullName(userClaim);
                     item.UpdatedOnStr =item.CreationDt.ToString("MM-dd-yyyy"); 
                     item.UploadedBy = fullName;
-
+                    var getdoc = await _docMangService.GetDoc_Status_List(item.AppvStatus);
+                    item.DocStatus = getdoc.Doc_Status_Desc;
+                    if (item.DocCat == 1)
+                    {
+                        if(item.Approved_by > 0)
+                        {
+                            item.ApprovedOnStr = item.Appv_Date_time.ToString("MM-dd-yyyy");
+                            item.ApprovedByStr = fullName;
+                        }
+                    }
+                    else
+                    {
+                        item.ApprovedOnStr = "";
+                        item.ApprovedByStr = "";
+                    }
                     docListVM.Add(item);
                     hasEntries = true;
                 }
@@ -2539,6 +2635,17 @@ namespace CWB.App.Controllers
             }
             docListVM.FileName = fileNameWithTimestamp;
             docListVM.StorageLocation = "/Active";
+            var doctype = await _docMangService.GetAllDocumentType();
+            var singleDoc = doctype.Where(d => d.DocumentTypeId == docListVM.DocumentTypeId).FirstOrDefault();
+            if (singleDoc.Approval_Reqd == 1)
+            {
+                docListVM.AppvStatus = 1;
+            }
+            else
+            {
+                docListVM.AppvStatus = 2;
+            }
+            docListVM.Appv_Date_time = DateTime.Now;
             var result = await _docMangService.PostDocList(docListVM);
 
             return Ok(result);
@@ -2576,6 +2683,17 @@ namespace CWB.App.Controllers
                     }
                     docListVM.FileName = fileNameWithTimestamp;
                     docListVM.StorageLocation = "/Active";
+                    var doctype = await _docMangService.GetAllDocumentType();
+                    var singleDoc = doctype.Where(d => d.DocumentTypeId == docListVM.DocumentTypeId).FirstOrDefault();
+                    if (singleDoc.Approval_Reqd == 1)
+                    {
+                        docListVM.AppvStatus = 1;
+                    }
+                    else
+                    {
+                        docListVM.AppvStatus = 2;
+                    }
+                    docListVM.Appv_Date_time = DateTime.Now;
                 }
                 else
                 {
@@ -2586,6 +2704,18 @@ namespace CWB.App.Controllers
             }
             var result = await _docMangService.PostDocList(docListVM);
 
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DocApprov(DocListVM docListVM)
+        {
+            var finddoc = await _docMangService.GetOneDoclist(docListVM.DocListId);
+            finddoc.AppvStatus = docListVM.AppvStatus;
+            finddoc.Appv_Date_time = DateTime.Now;
+            ClaimsPrincipal userClaim = HttpContext.User; // Assuming you're in a controller or middleware
+            string fullName = AppUtil.GetTenantId(userClaim);
+            finddoc.Approved_by = Convert.ToInt64(fullName);
+            var result = await _docMangService.PostDocList(finddoc);
             return Ok(result);
         }
 

@@ -6,6 +6,7 @@ using CWB.CommonUtils.Common;
 using CWB.CommonUtils.KafkaConfigs;
 using CWB.CommonUtils.MessageBrokers;
 using CWB.Constants.MessageBrokers;
+using CWB.Constants.UserIdentity;
 using CWB.Identity.Domain;
 using CWB.Identity.IdentityUtils;
 using CWB.Identity.Services;
@@ -258,16 +259,146 @@ namespace CWB.Identity
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Register(string returnUrl)
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            // build a model so we know what to show on the reg page
-            var vm = await BuildRegisterViewModelAsync(returnUrl);
+            var user = new CwbUser
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true,
+                PhoneNumber = model.PhoneNumber
+            };
 
-            return View(vm);
+            try
+            {
+                var finduser = await _userManager.FindByEmailAsync(model.Email);
+                if(finduser != null)
+                {
+                    finduser.UserName = model.Username;
+                    finduser.FirstName = model.FirstName;
+                    finduser.LastName = model.LastName;
+                    finduser.PhoneNumber = model.PhoneNumber;
+
+                    var updateResult = await _userManager.UpdateAsync(finduser);
+                    if (updateResult.Succeeded)
+                    {
+                        var roleResult = await _userManager.AddToRoleAsync(finduser, Roles.ADMIN);
+                        var claims = new[]
+                        {
+            new Claim(JwtClaimTypes.Name, $"{finduser.FirstName} {finduser.LastName}"),
+            new Claim(JwtClaimTypes.GivenName, finduser.FirstName),
+            new Claim(JwtClaimTypes.FamilyName, finduser.LastName),
+            new Claim(JwtClaimTypes.Role, Roles.ADMIN),
+            new Claim("TenantId", model.TenantId)
+        };
+                        var claimsResult = await _userManager.AddClaimsAsync(finduser, claims);
+                    }
+                }
+                else
+                {
+
+                    var result = await _userManager.CreateAsync(user, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        var roleResult = await _userManager.AddToRoleAsync(user, Roles.ADMIN);
+                        if (!roleResult.Succeeded)
+                        {
+                            return Ok(model);
+                        }
+
+                        // Add claims for the user
+                        var claims = new[]
+                        {
+            new Claim(JwtClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+            new Claim(JwtClaimTypes.GivenName, user.FirstName),
+            new Claim(JwtClaimTypes.FamilyName, user.LastName),
+            new Claim(JwtClaimTypes.Role, Roles.ADMIN),
+            new Claim("TenantId", model.TenantId)
+        };
+                        var claimsResult = await _userManager.AddClaimsAsync(user, claims);
+                        if (!claimsResult.Succeeded)
+                        {
+                            return Ok(model);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            //if (result.Succeeded)
+            //{
+            //    // Ensure the required roles exist
+            //    if (!await _roleManager.RoleExistsAsync("User"))
+            //    {
+            //        var roleResult = await _roleManager.CreateAsync(new IdentityRole("User"));
+            //        if (!roleResult.Succeeded)
+            //        {
+            //            foreach (var error in roleResult.Errors)
+            //            {
+            //                ModelState.AddModelError(string.Empty, error.Description);
+            //            }
+            //            return Ok(model);
+            //        }
+            //    }
+
+            //    //        // Assign the "User" role to the newly registered user
+            //    var roleAssignResult = await _userManager.AddToRoleAsync(user, "User");
+            //    if (!roleAssignResult.Succeeded)
+            //    {
+            //        foreach (var error in roleAssignResult.Errors)
+            //        {
+            //            ModelState.AddModelError(string.Empty, error.Description);
+            //        }
+            //        return View(model);
+            //    }
+
+            //    // Optionally add claims for the user
+            //    var claims = new[]
+            //    {
+            //        new Claim(JwtClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+            //        new Claim(JwtClaimTypes.GivenName, user.FirstName),
+            //        new Claim(JwtClaimTypes.FamilyName, user.LastName),
+            //        new Claim(JwtClaimTypes.Role, "User")
+            //    };
+            //    var claimsResult = await _userManager.AddClaimsAsync(user, claims);
+            //    if (!claimsResult.Succeeded)
+            //    {
+            //        foreach (var error in claimsResult.Errors)
+            //        {
+            //            ModelState.AddModelError(string.Empty, error.Description);
+            //        }
+            //        return Ok(model);
+            //    }
+
+            //    // Redirect to a confirmation page
+            //    return Ok("RegisterConfirmation");
+            //}
+
+            // Handle errors during user creation
+            //foreach (var error in result.Errors)
+            //{
+            //    ModelState.AddModelError(string.Empty, error.Description);
+            //}
+
+            return Ok(model);
         }
+            //[HttpGet]
+            //public async Task<IActionResult> Register(string returnUrl)
+            //{
+            //    // build a model so we know what to show on the reg page
+            //    var vm = await BuildRegisterViewModelAsync(returnUrl);
 
-        [HttpGet]
+            //    return View(vm);
+            //}
+
+            [HttpGet]
         [Authorize]
         public IActionResult ChangePassword(string returnUrl)
         {

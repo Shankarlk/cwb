@@ -219,6 +219,14 @@ namespace CWB.Masters.Controllers
             return Ok(documentTypeVM);
         }
         [HttpGet]
+        [Route(ApiRoutes.DocumentManagement.GetDocListStatus)]
+        [Produces(AppContentTypes.ContentType, Type = typeof(Doc_status_listVM))]
+        public async Task<IActionResult> GetDocListStatus(long statusid)
+        {
+            var documentTypeVM = await _documentManagementService.GetDocListStatus(statusid);
+            return Ok(documentTypeVM);
+        }
+        [HttpGet]
         [Route(ApiRoutes.DocumentManagement.DeleteDocType)]
         [Produces(AppContentTypes.ContentType, Type = typeof(bool))]
         public async Task<IActionResult> DeleteDocType(long doctypeId, long tenantId)

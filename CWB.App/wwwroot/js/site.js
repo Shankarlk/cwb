@@ -281,4 +281,25 @@ $(function () {
     document.onkeypress = resetIdleTime;
     document.onscroll = resetIdleTime;
     document.onclick = resetIdleTime;
+    checkTokenExpiry();
+    const tokenExpiryTime = localStorage.getItem("tokenExpiryTime");
+    checkTokenExpiry(tokenExpiryTime * 1000);
 });
+function checkTokenExpiry(expiryTime) {
+    if (!expiryTime) return;
+
+    const logoutUrl = "Home/Logout"; 
+    const interval = 1000;
+
+    // Periodically check the current time against the expiry time
+    const intervalId = setInterval(() => {
+        const currentTime = Date.now(); // Get current time in milliseconds
+        //console.log("Current time:", currentTime, "Token expiry time:", expiryTime);
+
+        if (currentTime >= expiryTime) {
+            clearInterval(intervalId); // Stop further checks
+           // alert("Your session has expired. You will be logged out.");
+            window.location.href = logoutUrl; // Redirect to logout URL
+        }
+    }, interval);
+}

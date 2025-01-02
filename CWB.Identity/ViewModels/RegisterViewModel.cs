@@ -16,9 +16,11 @@ namespace CWB.Identity.ViewModels
         public string LastName { get; set; }
         [Required]
         public string Password { get; set; }
+        public string PhoneNumber { get; set; }
+        public string TenantId { get; set; }
 
         public string ReturnUrl { get; set; }
-        [Required]
+        //[Required]
         public string ClientCode { get; set; }
 
         public bool AllowRememberLogin { get; set; } = true;

@@ -887,6 +887,70 @@ $(function () {
     $("#RawMaterialMadeSubType").change(function () {
         loadDocUploadList();
     });
+    $('#ApprovPopup').on('show.bs.modal', function (event) {
+        var relatedTarget = $(event.relatedTarget);
+        var docid = relatedTarget.data("docid");
+        var uploadedon = relatedTarget.data("uploadedon");
+        var uploadedby = relatedTarget.data("uploadedby");
+        var doctype = relatedTarget.data("doctype");
+        //var inputpartdesc = relatedTarget.data("inputpartdesc");
+        var partNumber = $("#PartNo").val();
+        var CompanyId = $("#CompanyId option:selected").text();
+        var lblPartDescription = $("#PartDescription").val();
+        //$("#SetPreferedMKId").val(makefromid);
+        $("#ApprovdDocId").val(docid);
+        $("#SpanAppDt").text(doctype);
+        $("#SpanAppUpby").text(uploadedby);
+        $("#SpanAppUpOn").text(uploadedon);
+        $("#SpanAppPart").text(partNumber);
+        $("#SpanAppDesc").text(lblPartDescription);
+        $("#SpanAppComp").text(CompanyId);
+
+    });
+    $('#ApprovPopup').on('hidden.bs.modal', function (event) {
+        $("#SpanAppPart").text('');
+        $("#SpanAppDesc").text('');
+        $("#SpanAppComp").text('');
+        $("#NotChk").prop("checked", false);
+        $("#ApprovdChk").prop("checked", false);
+    });
+    $("#NotChk").change(function () {
+        if ($("#NotChk").prop("checked")) {
+            $("#ApprovdChk").prop("checked", false);
+        } else {
+            $("#ApprovdChk").prop("checked", false);
+            $("#NotChk").prop("checked", false);
+        }
+        //checkboxFinalPart();
+    });
+    $("#ApprovdChk").change(function () {
+        if ($("#ApprovdChk").prop("checked")) {
+            $("#NotChk").prop("checked", false);
+        } else {
+            $("#ApprovdChk").prop("checked", false);
+            $("#NotChk").prop("checked", false);
+        }
+        //checkboxFinalPart();
+    });
+    $("#ApprovSave").click(function (event) {
+        var mkID = parseInt($("#ApprovdDocId").val());
+        var prefred = 1;
+        if ($("#ApprovdChk").prop("checked") == true) {
+            prefred = 3;
+        }
+        if ($("#NotChk").prop("checked") == true) {
+            prefred = 2;
+        }
+        var rowData = {
+            docListId: mkID,
+            appvStatus: prefred
+        };
+        api.post("/masters/DocApprov", rowData).then((data) => {
+            loadDocUploadList();
+            $("#ApprovPopup").modal("hide");
+        }).catch((error) => {
+        });
+    });
 
 });
 $(document).on('change', '#RawMaterialMadeType', function () {
@@ -1171,17 +1235,18 @@ function displayFileName() {
     }
 }
 
+
 function viewFile(element) {
     var relatedTarget = $(element);
     var file = relatedTarget.data("filename");
     var doctypename = relatedTarget.data("doctypename");
-    var customername = relatedTarget.data("customername");
-    var partno = relatedTarget.data("partno");
-    var partdesc = relatedTarget.data("partdesc");
+    var customername = $("#CompanyId option:selected").text();
+    var partno = $("#PartNo").val();
+    var partdesc = $("#PartDescription").val();
     var routingname = relatedTarget.data("routingname");
     var oprno = relatedTarget.data("oprno");
     var retdate = relatedTarget.data("retdate");
-    if (file == null) {
+    if (file == null || file == "") {
         $('#viewDoc').modal('hide');
         return false;
     }
@@ -1282,22 +1347,109 @@ function loadDocUploadList() {
                     $(tablebody).html("");//empty tbody
                     //console.log(data);
                     for (i = 0; i < data.length; i++) {
-                        var rowHtml = AppUtil.ProcessTemplateData("maufDocUploadRow", data[i]);
+                        let rowHtml = $(`
+        <tr>
+            <td>${data[i].documentTypeName || ''}</td>
+            <td>${data[i].mandatory || ''}</td>
+            <td>${data[i].comments || ''}</td>
+            <td>{docStatus}</td> <!-- Placeholder to be replaced -->
+            <td>${data[i].uploadedBy || ''}</td>
+            <td>${data[i].updatedOnStr || ''}</td>
+            <td>${data[i].approvedByStr || ''}</td>
+            <td>${data[i].approvedOnStr || ''}</td>
+            <td>
+                <a href="javascript:void(0);" 
+                   data-filename="${data[i].fileName || ''}"   
+                   data-doctypename="${data[i].documentTypeName || ''}"
+                   data-customername="${data[i].customerName || ''}" 
+                   data-partno="${data[i].partNo || ''}" 
+                   data-partdesc="${data[i].partDesc || ''}" 
+                   data-routingname="${data[i].routingName || ''}" 
+                   data-retdate="${data[i].retDate || ''}" 
+                   data-oprno="${data[i].oprNo || ''}"
+                   onclick="viewFile(this)">
+                    <i class="fas fa-eye btn btn-sm"></i>
+                </a>
+            </td>
+            <td>
+                <a href="javascript:void(0);" 
+                   data-filename="${data[i].fileName || ''}" 
+                   onclick="downloadFile(this)">
+                    <i class="fas fa-download btn btn-sm"></i>
+                </a>
+            </td>
+            <td>
+                <div class="dropdown float-center">
+                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-dots-vertical"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href="javascript:void(0);" class="dropdown-item upload-link"
+data-bs-toggle="modal"
+                           data-bs-target="#doc-item"
+                           data-filename="${data[i].fileName || ''}" 
+                           data-doctypename="${data[i].documentTypeName || ''}" 
+                           data-comments="${data[i].comments || ''}" 
+                           data-fileextnname="${data[i].fileExtnName || ''}" 
+                           data-documenttypeid="${data[i].documentTypeId || ''}" 
+                           data-upload="1" 
+                           data-deletiondate="${data[i].deletionDate || ''}" 
+                           data-doclistid="${data[i].docListId || ''}" 
+                           data-retdate="${data[i].retDate || ''}">Upload</a>
+                        <a href="javascript:void(0);" class="dropdown-item edit-link"
+ data-bs-toggle="modal"
+                           data-bs-target="#doc-item"
+                           data-filename="${data[i].fileName || ''}" 
+                           data-doctypename="${data[i].documentTypeName || ''}" 
+                           data-comments="${data[i].comments || ''}" 
+                           data-fileextnname="${data[i].fileExtnName || ''}" 
+                           data-documenttypeid="${data[i].documentTypeId || ''}" 
+                           data-upload="2" 
+                           data-deletiondate="${data[i].deletionDate || ''}" 
+                           data-doclistid="${data[i].docListId || ''}" 
+                           data-retdate="${data[i].retDate || ''}">Edit</a>
+                        <a href="javascript:void(0);" class="dropdown-item delete-link" data-doclistid="${data[i].docListId || ''}"
+                           onclick="DeleteDocList(this)">Delete</a>
+                        <a href="javascript:void(0);" class="dropdown-item view-log-link"
+data-bs-toggle="modal"
+                           data-bs-target="#RefLogPopup"
+                           data-doctypename="${data[i].documentTypeName || ''}" 
+                           data-documenttypeid="${data[i].documentTypeId || ''}" 
+                           data-doclistid="${data[i].docListId || ''}">View Log</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    `);
 
-                        // Check if mandatory is 'Y', if so, hide the Delete option
-                        if (data[i].docListId === 0) {
-                            // Simplified regex to match the Upload link
-                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Edit *<\/a>/i, '');
-                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                        if (data[i].docCat === 1) {
+                            const approveTag = $(`
+            <a href="javascript:void(0);" 
+               class="dropdown-item open-approve-modal" 
+               data-bs-toggle="modal" 
+               data-bs-target="#ApprovPopup"
+               data-docid="${data[i].docListId}"
+               data-doctype="${data[i].documentTypeName}"
+               data-uploadedby="${data[i].uploadedBy}"
+               data-uploadedon="${data[i].updatedOnStr}">
+                ${data[i].docStatus || ''}
+            </a>`);
+                            rowHtml.find('td').eq(3).html(approveTag); // Replace {docStatus} placeholder
+                        } else {
+                            rowHtml.find('td').eq(3).html(''); // Clear {docStatus} if not applicable
                         }
-                        if (data[i].docListId != 0) {
-                            // Remove the Edit link from the generated row
-                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Upload *<\/a>/i, '');
+
+                        if (data[i].docListId === 0) {
+                            rowHtml.find('.edit-link').remove(); // Remove Edit link
+                            rowHtml.find('.delete-link').remove(); // Remove Delete link
+                        }
+
+                        if (data[i].docListId !== 0) {
+                            rowHtml.find('.upload-link').remove(); // Remove Upload link
                         }
 
                         if (data[i].mandatory === 'Y') {
-                            // Remove the Delete link from the generated row
-                            rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                            rowHtml.find('.delete-link').remove(); // Remove Delete link for mandatory items
                         }
 
                         // Append the processed row to the table body
@@ -1315,22 +1467,108 @@ function loadDocUploadList() {
             $(tablebody).html("");//empty tbody
             //console.log(data);
             for (i = 0; i < data.length; i++) {
-                var rowHtml = AppUtil.ProcessTemplateData("maufDocUploadRow", data[i]);
+                let rowHtml = $(`
+        <tr>
+            <td>${data[i].documentTypeName || ''}</td>
+            <td>${data[i].mandatory || ''}</td>
+            <td>${data[i].comments || ''}</td>
+            <td>{docStatus}</td> <!-- Placeholder to be replaced -->
+            <td>${data[i].uploadedBy || ''}</td>
+            <td>${data[i].updatedOnStr || ''}</td>
+            <td>${data[i].approvedByStr || ''}</td>
+            <td>${data[i].approvedOnStr || ''}</td>
+            <td>
+                <a href="javascript:void(0);" 
+                   data-filename="${data[i].fileName || ''}"   data-doctypename="${data[i].documentTypeName || ''}" 
+                   data-customername="${data[i].customerName || ''}" 
+                   data-partno="${data[i].partNo || ''}" 
+                   data-partdesc="${data[i].partDesc || ''}" 
+                   data-routingname="${data[i].routingName || ''}" 
+                   data-retdate="${data[i].retDate || ''}" 
+                   data-oprno="${data[i].oprNo || ''}"
+                   onclick="viewFile(this)">
+                    <i class="fas fa-eye btn btn-sm"></i>
+                </a>
+            </td>
+            <td>
+                <a href="javascript:void(0);" 
+                   data-filename="${data[i].fileName || ''}" 
+                   onclick="downloadFile(this)">
+                    <i class="fas fa-download btn btn-sm"></i>
+                </a>
+            </td>
+            <td>
+                <div class="dropdown float-center">
+                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-dots-vertical"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href="javascript:void(0);" class="dropdown-item upload-link"
+data-bs-toggle="modal"
+                           data-bs-target="#doc-item"
+                           data-filename="${data[i].fileName || ''}" 
+                           data-doctypename="${data[i].documentTypeName || ''}" 
+                           data-comments="${data[i].comments || ''}" 
+                           data-fileextnname="${data[i].fileExtnName || ''}" 
+                           data-documenttypeid="${data[i].documentTypeId || ''}" 
+                           data-upload="1" 
+                           data-deletiondate="${data[i].deletionDate || ''}" 
+                           data-doclistid="${data[i].docListId || ''}" 
+                           data-retdate="${data[i].retDate || ''}">Upload</a>
+                        <a href="javascript:void(0);" class="dropdown-item edit-link"
+ data-bs-toggle="modal"
+                           data-bs-target="#doc-item"
+                           data-filename="${data[i].fileName || ''}" 
+                           data-doctypename="${data[i].documentTypeName || ''}" 
+                           data-comments="${data[i].comments || ''}" 
+                           data-fileextnname="${data[i].fileExtnName || ''}" 
+                           data-documenttypeid="${data[i].documentTypeId || ''}" 
+                           data-upload="2" 
+                           data-deletiondate="${data[i].deletionDate || ''}" 
+                           data-doclistid="${data[i].docListId || ''}" 
+                           data-retdate="${data[i].retDate || ''}">Edit</a>
+                        <a href="javascript:void(0);" class="dropdown-item delete-link" data-doclistid="${data[i].docListId || ''}"
+                           onclick="DeleteDocList(this)">Delete</a>
+                        <a href="javascript:void(0);" class="dropdown-item view-log-link"
+data-bs-toggle="modal"
+                           data-bs-target="#RefLogPopup"
+                           data-doctypename="${data[i].documentTypeName || ''}" 
+                           data-documenttypeid="${data[i].documentTypeId || ''}" 
+                           data-doclistid="${data[i].docListId || ''}">View Log</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    `);
 
-                // Check if mandatory is 'Y', if so, hide the Delete option
-                if (data[i].docListId === 0) {
-                    // Simplified regex to match the Upload link
-                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Edit *<\/a>/i, '');
-                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                if (data[i].docCat === 1) {
+                    const approveTag = $(`
+            <a href="javascript:void(0);" 
+               class="dropdown-item open-approve-modal" 
+               data-bs-toggle="modal" 
+               data-bs-target="#ApprovPopup"
+               data-docid="${data[i].docListId}"
+               data-doctype="${data[i].documentTypeName}"
+               data-uploadedby="${data[i].uploadedBy}"
+               data-uploadedon="${data[i].updatedOnStr}">
+                ${data[i].docStatus || ''}
+            </a>`);
+                    rowHtml.find('td').eq(3).html(approveTag); // Replace {docStatus} placeholder
+                } else {
+                    rowHtml.find('td').eq(3).html(''); // Clear {docStatus} if not applicable
                 }
-                if (data[i].docListId != 0) {
-                    // Remove the Edit link from the generated row
-                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*> *Upload *<\/a>/i, '');
+
+                if (data[i].docListId === 0) {
+                    rowHtml.find('.edit-link').remove(); // Remove Edit link
+                    rowHtml.find('.delete-link').remove(); // Remove Delete link
+                }
+
+                if (data[i].docListId !== 0) {
+                    rowHtml.find('.upload-link').remove(); // Remove Upload link
                 }
 
                 if (data[i].mandatory === 'Y') {
-                    // Remove the Delete link from the generated row
-                    rowHtml = rowHtml.replace(/<a href="javascript:void\(0\);" class="dropdown-item"[^>]*data-doclistid="[^"]*"[^>]*onclick="DeleteDocList\(this\)"[^>]*>Delete<\/a>/, '');
+                    rowHtml.find('.delete-link').remove(); // Remove Delete link for mandatory items
                 }
 
                 // Append the processed row to the table body

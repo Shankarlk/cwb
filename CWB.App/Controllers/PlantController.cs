@@ -33,8 +33,8 @@ namespace CWB.App.Controllers
             {
                 var wd = await _plantService.GetPlantWD(item.PlantId);
                 item.NoOfShifts = wd.NoOfShifts;
-                item.WeeklyOff1 = wd.WeeklyOff1;
-                item.FirstShiftStartTime = wd.FirstShiftStartTime;
+                item.WeeklyOff1 = wd.WeeklyOff1 == null ? " " : wd.WeeklyOff1;
+                item.FirstShiftStartTime = wd.FirstShiftStartTime == null ? " ":wd.FirstShiftStartTime;
             }
             return Json(result);
         }
